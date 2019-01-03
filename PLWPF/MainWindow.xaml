@@ -45,19 +45,19 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"/>
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Margin="436,14,408,16">ממשק ניהול לימודי נהיגה</TextBlock>
             
-            <Button Height="Auto" Click="Button_Click_1" Margin="1025,10,10,4" RenderTransformOrigin="0.381,0.452">
+            <Button Height="Auto" Click="Button_Click_1" Margin="1027,7,8,7" RenderTransformOrigin="0.381,0.452">
                 <Canvas Width="30" Height="20" RenderTransformOrigin="3.033,1.117">
                     <Path Data="M19,3H16.3H7.7H5A2,2 0 0,0 3,5V7.7V16.4V19A2,2 0 0,0 5,21H7.7H16.4H19A2,2 0 0,0 21,19V16.3V7.7V5A2,2 0 0,0 19,3M15.6,17L12,13.4L8.4,17L7,15.6L10.6,12L7,8.4L8.4,7L12,10.6L15.6,7L17,8.4L13.4,12L17,15.6L15.6,17Z" 
                           Fill="Blue" Canvas.Left="-2.4" Stretch="Fill" Width="20" RenderTransformOrigin="0.276,0.256" Canvas.Top="0.8" />
                 </Canvas>
             </Button>
             
-            <Button Height="Auto" Margin="1003,27,60,16" Click="Button_Click">
+            <Button Height="Auto" Margin="983,25,80,18" Click="Button_Click">
                 <Canvas Width="24" Height="24">
                     <Path Data="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" Fill="Black" Height="10" Canvas.Left="-12.833" Stretch="Fill" Canvas.Top="-0.667" Width="10" />
                 </Canvas>
             </Button>
-            <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Margin="957,11,0,9">
+            <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Margin="837,7,0,13">
                 <StackPanel Width="150">
                     <Button Content="Settings"/>
                     <Button Content="Account"/>

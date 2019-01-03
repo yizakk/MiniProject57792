@@ -17,41 +17,38 @@ using BE;
 namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for DeletTeste.xaml
+    /// Interaction logic for deletTrenee.xaml
     /// </summary>
-    public partial class DeletTeste : UserControl
+    public partial class DeleteTrainee : UserControl
     {
-
         BL.IBL bl = BL.BlFactory.GetBL();
-
-
-        public DeletTeste()
+        public DeleteTrainee()
         {
             InitializeComponent();
-            var sourceList = bl.GetTesterIdList();
-            if (!sourceList.Any())
+            var sourceList = bl.GetTraineesIdList();
+            if(!sourceList.Any())
             {
-                MessageBox.Show("אין בוחנים במאגר", "", MessageBoxButton.OK, MessageBoxImage.None,
-                                    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                MessageBox.Show("אין תלמידים במאגר", "", MessageBoxButton.OK, MessageBoxImage.None,
+                    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
                 button.IsEnabled = false;
                 comboBox.IsEnabled = false;
             }
-
             comboBox.ItemsSource = sourceList;
             comboBox.SelectedIndex = 0;
-
         }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
             try
             {
-                bl.DelTester((comboBox.SelectedValue.ToString().Split(' '))[0]);
+              bl.DelTrainee((comboBox.SelectedValue.ToString().Split(' '))[0]);
             }
-            catch ( Exceptions a)
+            catch (Exceptions a)
             {
                 MessageBox.Show(a._message);
-
+                return;
             }
 
             int choice;
@@ -60,9 +57,12 @@ namespace PLWPF
               MessageBoxImage.Asterisk, MessageBoxResult.Yes, MessageBoxOptions.RtlReading);
             if (choice == 6)
             {
-                Data.MainUserControl = new DeletTeste();
+                Data.MainUserControl = new DeleteTrainee();
                 Data.Change = 1;
             }
+
+
+
         }
     }
 }

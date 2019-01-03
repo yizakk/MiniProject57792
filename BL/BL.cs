@@ -268,8 +268,7 @@ namespace BL
         public IEnumerable<string> GetTraineesIdList()
         {
             var listId = from item in dal.GetTrainees()
-                         select item.Id;
-
+                         select item.Id +" " + item.FullName;
 
             return listId;
 
@@ -277,8 +276,7 @@ namespace BL
         public IEnumerable<string> GetTesterIdList()
         {
             var listId = from item in dal.GetTesters()
-                         select item.Id;
-
+                         select item.Id + " " + item.FullName;
 
             return listId;
 
@@ -346,14 +344,14 @@ namespace BL
             return dal.GetTests();
         }
 
-        public void DelTester(Tester tester)
+        public void DelTester(string id)
         {
-            throw new NotImplementedException();
+            dal.DelTester(id);
         }
 
-        public void DelTrainee(Trainee trainee)
+        public void DelTrainee(string id)
         {
-            throw new NotImplementedException();
+            dal.DelTrainee(id);
         }
 
         public bool Passed ( string TraineeId )
