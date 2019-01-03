@@ -1,0 +1,168 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             x:Class="PLWPF.AddTester"
+             mc:Ignorable="d" d:DesignWidth="800" Height="678" FlowDirection="RightToLeft">
+
+    <Grid  >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="461*"/>
+            <RowDefinition Height="175*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Id:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <TextBox x:Name="idTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding Id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+
+            <Label Content="First Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+            <TextBox x:Name="firstNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+
+            <Label Content="Last Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+            <TextBox x:Name="lastNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+
+            <Label Content="gender:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+            <ComboBox x:Name="genderComboBox" Grid.Column="1" HorizontalAlignment="Left" Height="Auto" SelectedValue="{Binding gender}" Margin="3" Grid.Row="3" VerticalAlignment="Center" Width="120"/>
+
+            <Label Content="Birth Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+            <DatePicker x:Name="birthDateDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="4" SelectedDate="{Binding BirthDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
+            
+            <Label Content="Phone Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
+            <TextBox x:Name="phoneNumberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding PhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+
+            <Label Content="Car type:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
+            <ComboBox x:Name="car_typeComboBox" Grid.Column="1" HorizontalAlignment="Left" Height="Auto" SelectedValue="{Binding Car_type}" Margin="3" Grid.Row="6" VerticalAlignment="Center" Width="120" />
+
+            <Label Content="Max Distance:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="7" VerticalAlignment="Center"/>
+            <TextBox x:Name="maxDistanceTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="7" Text="{Binding MaxDistance, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+
+            <Label Content="Max Tests Per Week:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="8" VerticalAlignment="Center"/>
+            <TextBox x:Name="maxTestsPerWeekTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="8" Text="{Binding MaxTestsPerWeek, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+
+
+            <Label Content="Seniority:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="9" VerticalAlignment="Center"/>
+            <TextBox x:Name="seniorityTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="9" Text="{Binding Seniority, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+        
+        </Grid>
+        <Grid x:Name="grid2" HorizontalAlignment="Left" Margin="420,296,0,0" VerticalAlignment="Top" Height="154" Width="319" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Building Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <TextBox x:Name="buildingNumberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding BuildingNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+
+            <Label Content="Street:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+            <TextBox x:Name="streetTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding Street, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+
+            <Label Content="city:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+            <TextBox x:Name="cityTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding city, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+
+        </Grid>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="659,415.4,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" RenderTransformOrigin="-0.21,4.211" Grid.Row="1"/>
+        <Grid Name="ScheduleGrid" HorizontalAlignment="Left" Height="216" Margin="306,51,0,0" Grid.Row="1" VerticalAlignment="Top" Width="458">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <CheckBox x:Name="checkBox1"  Grid.Column="1" Grid.Row="1" Width=" auto"/>
+            <CheckBox x:Name="checkBox2"  Grid.Column="1" Grid.Row="2" Width=" auto"/>
+            <CheckBox x:Name="checkBox3"  Grid.Column="1" Grid.Row="3" Width=" auto"/>
+            <CheckBox x:Name="checkBox4"  Grid.Column="1" Grid.Row="4" Width=" auto"/>
+            <CheckBox x:Name="checkBox5"  Grid.Column="1" Grid.Row="5" Width=" auto"/>
+            <CheckBox x:Name="checkBox6"  Grid.Column="1" Grid.Row="6" Width=" auto"/>
+            <CheckBox x:Name="checkBox7"  Grid.Column="1" Grid.Row="7" Width=" auto"/>
+
+            <CheckBox x:Name="checkBox8"  Grid.Column="2" Grid.Row="1" Width=" auto"/>
+            <CheckBox x:Name="checkBox9"  Grid.Column="2" Grid.Row="2" Width=" auto"/>
+            <CheckBox x:Name="checkBox10"  Grid.Column="2" Grid.Row="3" Width=" auto"/>
+            <CheckBox x:Name="checkBox11"  Grid.Column="2" Grid.Row="4" Width=" auto"/>
+            <CheckBox x:Name="checkBox12"  Grid.Column="2" Grid.Row="5" Width=" auto"/>
+            <CheckBox x:Name="checkBox13"  Grid.Column="2" Grid.Row="6" Width=" auto"/>
+            <CheckBox x:Name="checkBox14"  Grid.Column="2" Grid.Row="7" Width=" auto"/>
+
+            <CheckBox x:Name="checkBox15"  Grid.Column="3" Grid.Row="1" Width=" auto"/>
+            <CheckBox x:Name="checkBox16"  Grid.Column="3" Grid.Row="2" Width=" auto"/>
+            <CheckBox x:Name="checkBox17"  Grid.Column="3" Grid.Row="3" Width=" auto"/>
+            <CheckBox x:Name="checkBox18"  Grid.Column="3" Grid.Row="4" Width=" auto"/>
+            <CheckBox x:Name="checkBox19"  Grid.Column="3" Grid.Row="5" Width=" auto"/>
+            <CheckBox x:Name="checkBox20"  Grid.Column="3" Grid.Row="6" Width=" auto"/>
+            <CheckBox x:Name="checkBox21"  Grid.Column="3" Grid.Row="7" Width=" auto"/>
+
+            <CheckBox x:Name="checkBox22"  Grid.Column="4" Grid.Row="1" Width=" auto"/>
+            <CheckBox x:Name="checkBox23"  Grid.Column="4" Grid.Row="2" Width=" auto"/>
+            <CheckBox x:Name="checkBox24"  Grid.Column="4" Grid.Row="3" Width=" auto"/>
+            <CheckBox x:Name="checkBox25"  Grid.Column="4" Grid.Row="4" Width=" auto"/>
+            <CheckBox x:Name="checkBox26"  Grid.Column="4" Grid.Row="5" Width=" auto"/>
+            <CheckBox x:Name="checkBox27"  Grid.Column="4" Grid.Row="6" Width=" auto"/>
+            <CheckBox x:Name="checkBox28"  Grid.Column="4" Grid.Row="7" Width=" auto"/>
+
+            <CheckBox x:Name="checkBox29"  Grid.Column="5" Grid.Row="1" Width=" auto"/>
+            <CheckBox x:Name="checkBox30"  Grid.Column="5" Grid.Row="2" Width=" auto"/>
+            <CheckBox x:Name="checkBox31"  Grid.Column="5" Grid.Row="3" Width=" auto"/>
+            <CheckBox x:Name="checkBox32"  Grid.Column="5" Grid.Row="4" Width=" auto"/>
+            <CheckBox x:Name="checkBox33"  Grid.Column="5" Grid.Row="5" Width=" auto"/>
+            <CheckBox x:Name="checkBox34"  Grid.Column="5" Grid.Row="6" Width=" auto"/>
+            <CheckBox x:Name="checkBox35"  Grid.Column="5" Grid.Row="7" Width=" auto"/>
+
+            <Label x:Name="label1" Content="ראשון"  Grid.Column="1" Grid.Row="0" Width=" auto"/>
+            <Label x:Name="label2" Content="שני"  Grid.Column="2" Grid.Row="0" Width=" auto"/>
+            <Label x:Name="label3" Content="שלישי"  Grid.Column="3" Grid.Row="0" Width=" auto"/>
+            <Label x:Name="label4" Content="רביעי"  Grid.Column="4" Grid.Row="0" Width=" auto"/>
+            <Label x:Name="label5" Content="חמישי"  Grid.Column="5" Grid.Row="0" Width=" auto"/>
+
+
+            <Label x:Name="label6" Content="9"  Grid.Column="0" Grid.Row="1" Width=" auto"/>
+            <Label x:Name="label7" Content="10"  Grid.Column="0" Grid.Row="2" Width=" auto"/>
+            <Label x:Name="label8" Content="11"  Grid.Column="0" Grid.Row="3" Width=" auto"/>
+            <Label x:Name="label9" Content="12"  Grid.Column="0" Grid.Row="4" Width=" auto"/>
+            <Label x:Name="label10" Content="13"  Grid.Column="0" Grid.Row="5" Width=" auto"/>
+            <Label x:Name="label11" Content="14"  Grid.Column="0" Grid.Row="6" Width=" auto"/>
+            <Label x:Name="label12" Content="15"  Grid.Column="0" Grid.Row="7" Width=" auto"/>
+
+
+        </Grid>
+        <Label x:Name="label" Content="לוז עבודה שבועי" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95" Height="31" Grid.Row="1" Margin="474,17.4,0,0"/>
+
+
+
+    </Grid>
+</UserControl>
