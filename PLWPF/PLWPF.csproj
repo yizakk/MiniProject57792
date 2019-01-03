@@ -94,8 +94,8 @@
     <Compile Include="DeletTester.xaml.cs">
       <DependentUpon>DeletTester.xaml</DependentUpon>
     </Compile>
-    <Compile Include="deletTrenee.xaml.cs">
-      <DependentUpon>deletTrenee.xaml</DependentUpon>
+    <Compile Include="DeleteTrainee.xaml.cs">
+      <DependentUpon>DeleteTrainee.xaml</DependentUpon>
     </Compile>
     <Compile Include="HomePanel.xaml.cs">
       <DependentUpon>HomePanel.xaml</DependentUpon>
@@ -191,7 +191,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="deletTrenee.xaml">
+    <Page Include="DeleteTrainee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

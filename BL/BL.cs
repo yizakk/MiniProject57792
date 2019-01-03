@@ -268,8 +268,7 @@ namespace BL
         public IEnumerable<string> GetTraineesIdList()
         {
             var listId = from item in dal.GetTrainees()
-                         select item.Id;
-
+                         select item.Id +" " + item.FullName;
 
             return listId;
 
@@ -277,8 +276,7 @@ namespace BL
         public IEnumerable<string> GetTesterIdList()
         {
             var listId = from item in dal.GetTesters()
-                         select item.Id;
-
+                         select item.Id + " " + item.FullName;
 
             return listId;
 

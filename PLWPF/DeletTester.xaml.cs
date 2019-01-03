@@ -38,6 +38,7 @@ namespace PLWPF
             }
 
             comboBox.ItemsSource = sourceList;
+            comboBox.SelectedIndex = 0;
 
         }
 
@@ -45,7 +46,7 @@ namespace PLWPF
         {
             try
             {
-                bl.DelTester(comboBox.SelectedValue.ToString());
+                bl.DelTester((comboBox.SelectedValue.ToString().Split(' '))[0]);
             }
             catch ( Exceptions a)
             {

@@ -19,11 +19,10 @@ namespace PLWPF
     /// <summary>
     /// Interaction logic for deletTrenee.xaml
     /// </summary>
-    public partial class deletTrenee : UserControl
+    public partial class DeleteTrainee : UserControl
     {
         BL.IBL bl = BL.BlFactory.GetBL();
-        Trainee tempTrainee;
-        public deletTrenee()
+        public DeleteTrainee()
         {
             InitializeComponent();
             var sourceList = bl.GetTraineesIdList();
@@ -35,6 +34,7 @@ namespace PLWPF
                 comboBox.IsEnabled = false;
             }
             comboBox.ItemsSource = sourceList;
+            comboBox.SelectedIndex = 0;
         }
 
 
@@ -43,7 +43,7 @@ namespace PLWPF
 
             try
             {
-              bl.DelTrainee(comboBox.SelectedValue.ToString());
+              bl.DelTrainee((comboBox.SelectedValue.ToString().Split(' '))[0]);
             }
             catch (Exceptions a)
             {
@@ -51,7 +51,15 @@ namespace PLWPF
                 return;
             }
 
-            MessageBox.Show("העידכון הסתיים בהצלחה");
+            int choice;
+
+            choice = (int)MessageBox.Show("המחיקה בוצעה בהצלחה, האם ברצונך לבצע עוד מחיקה?", "", MessageBoxButton.YesNo,
+              MessageBoxImage.Asterisk, MessageBoxResult.Yes, MessageBoxOptions.RtlReading);
+            if (choice == 6)
+            {
+                Data.MainUserControl = new DeleteTrainee();
+                Data.Change = 1;
+            }
 
 
 
