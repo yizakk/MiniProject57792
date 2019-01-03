@@ -23,16 +23,45 @@ namespace PLWPF
     {
 
         BL.IBL bl = BL.BlFactory.GetBL();
-        Tester tempTester;
+
 
         public DeletTeste()
         {
+            InitializeComponent();
+            var sourceList = bl.GetTesterIdList();
+            if (!sourceList.Any())
+            {
+                MessageBox.Show("אין בוחנים במאגר", "", MessageBoxButton.OK, MessageBoxImage.None,
+                                    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                button.IsEnabled = false;
+                comboBox.IsEnabled = false;
+            }
 
+            comboBox.ItemsSource = sourceList;
 
+        }
 
-            comboBox.ItemsSource = bl.GetTesterIdList();
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                bl.DelTester(comboBox.SelectedValue.ToString());
+            }
+            catch ( Exceptions a)
+            {
+                MessageBox.Show(a._message);
 
-                InitializeComponent();
+            }
+
+            int choice;
+
+            choice = (int)MessageBox.Show("המחיקה בוצעה בהצלחה, האם ברצונך לבצע עוד מחיקה?", "", MessageBoxButton.YesNo,
+              MessageBoxImage.Asterisk, MessageBoxResult.Yes, MessageBoxOptions.RtlReading);
+            if (choice == 6)
+            {
+                Data.MainUserControl = new DeletTeste();
+                Data.Change = 1;
+            }
         }
     }
 }

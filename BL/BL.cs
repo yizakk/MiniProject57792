@@ -346,14 +346,14 @@ namespace BL
             return dal.GetTests();
         }
 
-        public void DelTester(Tester tester)
+        public void DelTester(string id)
         {
-            throw new NotImplementedException();
+            dal.DelTester(id);
         }
 
-        public void DelTrainee(Trainee trainee)
+        public void DelTrainee(string id)
         {
-            throw new NotImplementedException();
+            dal.DelTrainee(id);
         }
 
         public bool Passed ( string TraineeId )

@@ -13,8 +13,8 @@ namespace Dal
         void AddTester(Tester tester);
         void AddTrainee(Trainee trainee);
 
-        void DelTester(Tester tester);
-        void DelTrainee(Trainee trainee);
+        void DelTester(string id);
+        void DelTrainee(string id);
 
         void UpdateTest(Test test);
         void UpdateTester(Tester tester);

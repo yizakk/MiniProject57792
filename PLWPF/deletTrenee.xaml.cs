@@ -26,31 +26,31 @@ namespace PLWPF
         public deletTrenee()
         {
             InitializeComponent();
-            comboBox.ItemsSource = bl.GetTraineesIdList();
-
-            
+            var sourceList = bl.GetTraineesIdList();
+            if(!sourceList.Any())
+            {
+                MessageBox.Show("אין תלמידים במאגר", "", MessageBoxButton.OK, MessageBoxImage.None,
+                    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                button.IsEnabled = false;
+                comboBox.IsEnabled = false;
+            }
+            comboBox.ItemsSource = sourceList;
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-            string a = comboBox.SelectedValue.ToString();
-            tempTrainee = bl.FindTrainee(a);
-        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // bl.DelTrainee(tempTrainee);
 
             try
             {
-              bl.DelTrainee(tempTrainee);
+              bl.DelTrainee(comboBox.SelectedValue.ToString());
             }
             catch (Exceptions a)
             {
                 MessageBox.Show(a._message);
                 return;
             }
+
             MessageBox.Show("העידכון הסתיים בהצלחה");
 
 

@@ -18,8 +18,8 @@ namespace BL
         void AddTester(Tester tester);
         void AddTrainee(Trainee trainee);
 
-        void DelTester(Tester tester);
-        void DelTrainee(Trainee trainee);
+        void DelTester(string id);
+        void DelTrainee(string id);
 
         /// <summary>
         /// Getting parameters for specified test Id , finding it and updating it's details

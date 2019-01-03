@@ -55,39 +55,15 @@ namespace Dal
 
         public void AddTest(Test test)
         {
-            //foreach(Test item in Ds.Tests2)
-            //{   
-            //    // if test id already exist
-            //    if(test.Id == item.Id)
-            //    {
-            //        throw new Exceptions( "Test Id:" + test.Id +" already exist!");
-            //    }
-            //}
-            // else - add a new test 
+
             test.Id = Configuration.TestId++;
             Ds.Tests2.Add(test);
             
             // sign this hour as "not available" in this tester schedule
             Ds.Testers2.First(t => t.Id == test.TesterId).TestsList.Add(test.Date);
            
-            //foreach (Tester tester in Ds.Testers2)
-            //{
-            //    if (tester.Id == test.TesterId)
-            //    {
-            //        tester.TestsList.Add(test.Date);
-            //    }
-            //}
-
             // updating the last date of test for this trainee
             Ds.Trainees.First(t => t.Id == test.TraineeId).LastTest = test.Date;
-           
-            //foreach(var item in Ds.Trainees)
-           //{
-           //     if (test.TraineeId==item.Id)
-           //     {
-           //         item.LastTest = test.Date;
-           //     }
-           //}
         }
 
         public void AddTester(Tester tester)
@@ -150,14 +126,14 @@ namespace Dal
                 throw new Exceptions("Id isn't a valid Id!");
         }
 
-        public void DelTester(Tester tester)
+        public void DelTester(string id)
         {
-            Ds.Testers2.Remove(tester);
+            Ds.Testers2.Remove(FindTester(id));
         }
 
-        public void DelTrainee(Trainee trainee)
+        public void DelTrainee(string id)
         {
-            Ds.Trainees.Remove(trainee);
+            Ds.Trainees.Remove(FindTrainee(id));
         }
 
         public void UpdateTest(Test test)
