@@ -63,5 +63,11 @@ namespace PLWPF.UC
             Data.MainUserControl = new DeleteTester();
             Data.Change = 1;
         }
+
+        private void UpTestButton1_Click(object sender, RoutedEventArgs e)
+        {
+            Data.MainUserControl = new Grouping();
+            Data.Change = 1;
+        }
     }
 }
