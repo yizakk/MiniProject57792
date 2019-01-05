@@ -27,8 +27,15 @@ namespace PLWPF
         {
             InitializeComponent();
 
-            comboBox.ItemsSource = bl.GetTraineesIdList();
-           
+            var sourceList = bl.GetTraineesIdList();
+            if (!sourceList.Any())
+            {
+                MessageBox.Show("אין תלמידים במאגר", "", MessageBoxButton.OK, MessageBoxImage.None,
+                    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                button.IsEnabled = false;
+                comboBox.IsEnabled = false;
+            }
+            comboBox.ItemsSource = sourceList;
 
             car_typeComboBox.ItemsSource = Enum.GetValues(typeof(CarType));
             genderComboBox.ItemsSource = Enum.GetValues(typeof(Gender));
@@ -39,7 +46,7 @@ namespace PLWPF
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string a = comboBox.SelectedValue.ToString();
+            string a = comboBox.SelectedValue.ToString().Split(' ')[0];
             tempTrainee = bl.FindTrainee(a);
             grid1.DataContext = tempTrainee;
 

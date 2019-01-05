@@ -35,11 +35,11 @@ namespace DS
               };
             testers = new List<Tester>
             {
-                new Tester ( Convert.ToString(5555555) , "Elchanan", "arbiv"){ BirthDate = DateTime.Parse("1968 12 10"),Car_type=CarType.Private },
-                new Tester {Id = Convert.ToString(4444444) , FirstName= "yizak",LastName = "nusboum",BirthDate = DateTime.Parse("1986 12 10"),Car_type=CarType.Bike },
-                new Tester {Id = Convert.ToString(333333) , FirstName= "moshiko",LastName = "sagab",BirthDate = DateTime.Parse("1971 10 12"),Car_type=CarType.FullTrailer},
-                new Tester {Id = Convert.ToString(2222222) , FirstName= "shlomo",LastName = "cohen",BirthDate = DateTime.Parse("1972 11 10") ,Car_type=CarType.FullTrailer},
-                new Tester {Id = Convert.ToString(1111111) , FirstName= "shlomo",LastName = "sixt",BirthDate = DateTime.Parse("1970 9 10") ,Car_type=CarType.Bike},
+                new Tester ( Convert.ToString(5555555) , "Elchanan", "arbiv"){ BirthDate = DateTime.Parse("1968 12 10"),Car_type=CarType.פרטי },
+                new Tester {Id = Convert.ToString(4444444) , FirstName= "yizak",LastName = "nusboum",BirthDate = DateTime.Parse("1986 12 10"),Car_type=CarType.אופנוע },
+                new Tester {Id = Convert.ToString(333333) , FirstName= "moshiko",LastName = "sagab",BirthDate = DateTime.Parse("1971 10 12"),Car_type=CarType.פול_טריילר},
+                new Tester {Id = Convert.ToString(2222222) , FirstName= "shlomo",LastName = "cohen",BirthDate = DateTime.Parse("1972 11 10") ,Car_type=CarType.פול_טריילר},
+                new Tester {Id = Convert.ToString(1111111) , FirstName= "shlomo",LastName = "sixt",BirthDate = DateTime.Parse("1970 9 10") ,Car_type=CarType.אופנוע},
             };
 
             trainees = new List<Trainee>
@@ -48,7 +48,7 @@ namespace DS
                   new Trainee (Convert.ToString(123412344) , "Ktzos","Hahoshen"){SchoolName= "SchoolEly",TeacherName ="shira"},
                   new Trainee (Convert.ToString(029985090) , "David" , "Lor"){SchoolName= "SchoolAvi",TeacherName ="shira"},
                   new Trainee (Convert.ToString(444433332) , "Ein","Od-Milvado"){SchoolName= "SchoolMoty",TeacherName ="moty"},
-                  new Trainee (Convert.ToString(202020101) , "yosi","cohen"){SchoolName= "SchoolAvi",TeacherName ="shira" , NumLessons = 21 , Car_type = CarType.Private},
+                  new Trainee (Convert.ToString(202020101) , "yosi","cohen"){SchoolName= "SchoolAvi",TeacherName ="shira" , NumLessons = 21 , Car_type = CarType.פרטי},
             };
         }
     }

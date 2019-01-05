@@ -18,8 +18,9 @@ namespace PLWPF
 
         private void TraineeButton_Click(object sender, RoutedEventArgs e)
         {
-             Data.MainUserControl = new AddStudent();
-             Data.UserType = 1;
+            Data.MainUserControl = new AddStudent();
+            Data.Change = 1;
+            Data.UserType = Data.Usertype.תלמיד;
         }
 
         private void TesterButton_Click(object sender, RoutedEventArgs e)
@@ -44,10 +45,12 @@ namespace PLWPF
                 return;
 
             }
+
             if (textBox.GetLineText(0) == BE.Configuration.TesterPassword)
             {
                 Data.MainUserControl = new AddTester();
-                Data.UserType = 1;
+                Data.UserType = Data.Usertype.בוחן;
+                Data.Change = 1;
             }
             else
             {

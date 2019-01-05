@@ -19,13 +19,13 @@ namespace BE
         {
             get
             {
-                if (Address == null)
+                if (Address.city != "")
                 {
-                    return Address.city + "," + Address.Street + "," + Address.BuildingNumber.ToString();
+                    return Address.city + "," + Address.Street + " " + Address.BuildingNumber.ToString();
 
                 }
                 else
-                    return ("");
+                    return "";
             }
                 
         }

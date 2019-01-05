@@ -80,17 +80,20 @@ namespace PLWPF
                 return;
             }
 
-            int i = 0, j = 0;
+            int i = 0, j = 0 , k=1;
             foreach(var item in ScheduleGrid.Children)
             {
                 if(item is CheckBox)
                 {
                     var value = item as CheckBox;
-                    TempTester.WorkSchedule(i, j++, value.IsChecked);
-                    if(j==7)
+                    if (value.Name == "checkBox" + k++)
                     {
-                        j = 0;
-                        i++;
+                        TempTester.WorkSchedule(i, j++, value.IsChecked);
+                        if (j == 7)
+                        {
+                            j = 0;
+                            i++;
+                        }
                     }
                 }
             }

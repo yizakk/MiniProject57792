@@ -1,32 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace BE
 {
     public enum Gender
     {
-        Male,
-        Female
+        זכר,
+        נקבה
     }
 
     public enum Gear
     {
-        Auto,
-        Manual
+        אוטומטי,
+        ידני
     }
 
     public enum CarType
     {
-        Private,
-        Bike,
-        SemiTrailer,
-        FullTrailer
+        פרטי,
+        אופנוע,
+        משאית_קטנה,
+        פול_טריילר
     }
-
-   
 
     public struct Parameters
     {
@@ -37,7 +30,6 @@ namespace BE
         public bool usingVinkers;
     }
 
-
     public class Address
     {
 
@@ -45,29 +37,17 @@ namespace BE
         public string Street { get; set; }
         public int BuildingNumber { get; set; }
 
-        public Address() { }
+        public Address()
+        {
+            city = "";
+            Street = "";
+        }
+
         public Address(Address other)
         {
             city = other.city;
             Street = other.Street;
             BuildingNumber = other.BuildingNumber;
         }
-
-    }
-
-
-    public class Print
-    {
-        public enum PrintOptions
-        {
-            print_all_trainees,
-            הדפסת_כל_הבוחנים,
-            הדפסת_מבחנים_לפי_תאריך
-
-        }
-
-        public PrintOptions a = PrintOptions.print_all_trainees;
-
-        public Print() { }
     }
 }

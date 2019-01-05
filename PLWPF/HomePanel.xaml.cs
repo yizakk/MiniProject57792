@@ -60,7 +60,7 @@ namespace PLWPF.UC
         private void DelTraineeButton_Click(object sender, RoutedEventArgs e)
         {
 
-            Data.MainUserControl = new DeletTeste();
+            Data.MainUserControl = new DeleteTester();
             Data.Change = 1;
         }
     }

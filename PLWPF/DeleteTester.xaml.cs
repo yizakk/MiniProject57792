@@ -19,13 +19,13 @@ namespace PLWPF
     /// <summary>
     /// Interaction logic for DeletTeste.xaml
     /// </summary>
-    public partial class DeletTeste : UserControl
+    public partial class DeleteTester : UserControl
     {
 
         BL.IBL bl = BL.BlFactory.GetBL();
 
 
-        public DeletTeste()
+        public DeleteTester()
         {
             InitializeComponent();
             var sourceList = bl.GetTesterIdList();
@@ -46,7 +46,7 @@ namespace PLWPF
         {
             try
             {
-                bl.DelTester((comboBox.SelectedValue.ToString().Split(' '))[0]);
+                bl.DelTester(comboBox.SelectedValue.ToString().Split(' ')[0]);
             }
             catch ( Exceptions a)
             {
@@ -60,7 +60,7 @@ namespace PLWPF
               MessageBoxImage.Asterisk, MessageBoxResult.Yes, MessageBoxOptions.RtlReading);
             if (choice == 6)
             {
-                Data.MainUserControl = new DeletTeste();
+                Data.MainUserControl = new DeleteTester();
                 Data.Change = 1;
             }
         }

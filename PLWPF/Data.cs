@@ -22,11 +22,17 @@ namespace PLWPF
 
         public static int BackPage { get; set; }
 
-        static int _userType = 0;
-        public static int UserType { get { return _userType; } set { _userType = value; TypeChanged?.Invoke(); } }
+        static Usertype _userType = 0;
+        public static Usertype UserType { get { return _userType; } set { _userType = value; TypeChanged?.Invoke(); } }
 
         static int _change;
         public static int Change { get { return _change; } set { TypeChanged?.Invoke(); } }
 
+        public enum Usertype
+        {
+            בוחן,
+            תלמיד,
+            מנהל
+        }
     }
 }

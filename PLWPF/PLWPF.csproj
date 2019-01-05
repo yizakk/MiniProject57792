@@ -91,8 +91,8 @@
     <Compile Include="Add\schedule.xaml.cs">
       <DependentUpon>schedule.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DeletTester.xaml.cs">
-      <DependentUpon>DeletTester.xaml</DependentUpon>
+    <Compile Include="DeleteTester.xaml.cs">
+      <DependentUpon>DeleteTester.xaml</DependentUpon>
     </Compile>
     <Compile Include="DeleteTrainee.xaml.cs">
       <DependentUpon>DeleteTrainee.xaml</DependentUpon>
@@ -111,9 +111,6 @@
     </Compile>
     <Compile Include="print\PrintOptions.xaml.cs">
       <DependentUpon>PrintOptions.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="stam.xaml.cs">
-      <DependentUpon>stam.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -154,7 +151,6 @@
     </EmbeddedResource>
     <None Include="Properties\DataSources\BE.Address.datasource" />
     <None Include="Properties\DataSources\BE.Parameters.datasource" />
-    <None Include="Properties\DataSources\BE.Print.datasource" />
     <None Include="Properties\DataSources\BE.Test.datasource" />
     <None Include="Properties\DataSources\BE.Tester.datasource" />
     <None Include="Properties\DataSources\BE.Trainee.datasource" />
@@ -187,7 +183,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DeletTester.xaml">
+    <Page Include="DeleteTester.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -214,10 +210,6 @@
     <Page Include="print\PrintOptions.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="stam.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>

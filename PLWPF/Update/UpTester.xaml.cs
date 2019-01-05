@@ -21,45 +21,98 @@ namespace PLWPF
     /// </summary>
     public partial class UpTester : UserControl
     {
-        BL.IBL bL = BL.BlFactory.GetBL();
-        Tester TempTtester;
+        BL.IBL bl = BL.BlFactory.GetBL();
+        Tester TempTester;
         public UpTester()
         {
             InitializeComponent();
 
-            comboBox.ItemsSource = bL.GetTesterIdList();
-
-
+            var sourceList = bl.GetTesterIdList();
+            if (!sourceList.Any())
+            {
+                MessageBox.Show("אין בוחנים במאגר", "", MessageBoxButton.OK, MessageBoxImage.None,
+                    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                button.IsEnabled = false;
+                comboBox.IsEnabled = false;
+            }
+             comboBox.ItemsSource = sourceList;
+            button.IsEnabled = false;
             car_typeComboBox.ItemsSource = Enum.GetValues(typeof(CarType));
             genderComboBox.ItemsSource = Enum.GetValues(typeof(Gender));
-            
+           
 
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           string a = comboBox.SelectedValue.ToString();
-            TempTtester = bL.FindTester(a);
-            grid1.DataContext = TempTtester;
+            button.IsEnabled = true;
 
+            string a = comboBox.SelectedValue.ToString().Split(' ')[0];
+            TempTester = bl.FindTester(a);
+            grid1.DataContext = TempTester;
+            AddressGrid.DataContext = TempTester.Address;
 
+            int i = 0, j=0, k=1;
+            foreach (var item in ScheduleGrid.Children)
+            {
+                if (item is CheckBox)
+                {
+                    var value = item as CheckBox;
+                    if (value.Name == "checkBox" + k++)
+                    {
+                        Binding binding = new Binding();
+                        binding.Source = TempTester.m_WorkSchedule[i,j++];
+                        binding.Mode = BindingMode.TwoWay;
+                       // SetBinding(value.IsChecked, binding);
+                        //value.IsChecked= SetBinding(binding,binding);
+                        //value.IsChecked = TempTester.WorkSchedule(i, j++);
+                        if (j == 7)
+                        {
+                            j = 0;
+                            i++;
+                        }
+                    }
+                }
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-                try
+            int i = 0, j = 0, k = 1;
+            foreach (var item in ScheduleGrid.Children)
+            {
+                if (item is CheckBox)
                 {
-                bL.UpdateTester(TempTtester);
+                    var value = item as CheckBox;
+                    if (value.Name == "checkBox" + k++)
+                    {
+                        TempTester.WorkSchedule(i, j++, value.IsChecked);
+                        if (j == 7)
+                        {
+                            j = 0;
+                            i++;
+                        }
+                    }
                 }
-                catch (Exceptions a)
-                {
-                    MessageBox.Show(a._message);
+            }
+
+            try
+            {
+                bl.UpdateTester(TempTester);
+            }
+            catch (Exceptions a)
+            {
+                MessageBox.Show(a._message);
                 return;
-                }
+            }
 
-                    MessageBox.Show("העידכון הסתיים בהצלחה");
+            MessageBox.Show("העידכון הסתיים בהצלחה");
 
+
+        }
+
+        private void CheckBoxMain1_Checked(object sender, RoutedEventArgs e)
+        {
 
         }
     }

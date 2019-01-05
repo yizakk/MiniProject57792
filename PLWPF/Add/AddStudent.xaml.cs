@@ -102,10 +102,12 @@ namespace PLWPF
                 return;
             }
 
-            if (Data.UserType == 1)
+            if (Data.UserType == Data.Usertype.תלמיד)
             {
                 MessageBox.Show("התלמיד נוסף בהצלחה!", "", MessageBoxButton.OK, MessageBoxImage.Asterisk, MessageBoxResult.OK,
                     MessageBoxOptions.RtlReading);
+                Data.MainUserControl = new UC.HomePanel();
+                Data.Change = 1;
                 return;
             }
 
@@ -114,6 +116,7 @@ namespace PLWPF
             if(choice == 6)
             {
                 Data.MainUserControl = new AddStudent();
+                Data.UserID = "";
                 Data.Change = 1;
             }
         }

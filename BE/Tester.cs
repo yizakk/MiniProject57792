@@ -112,8 +112,7 @@ namespace BE
         private List<DateTime> _TestsList =new List<DateTime> ();
         public List<DateTime> TestsList { get { return _TestsList; } }
 
-        bool[,] m_WorkSchedule = new bool[Configuration.WorkDays, Configuration.WorkHours];
-        private Tester item;
+        public bool[,] m_WorkSchedule = new bool[Configuration.WorkDays, Configuration.WorkHours];
 
         /// <summary>
         /// Getting the value of the matrix "Work schedule" in place " [day] , [hour]"
@@ -123,7 +122,6 @@ namespace BE
         /// <returns></returns>
         public bool WorkSchedule(int day, int hour) 
         {
-
             return m_WorkSchedule[day, hour];
         }
 
