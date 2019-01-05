@@ -12,6 +12,11 @@
         </Grid.ColumnDefinitions>
         <Button x:Name="traineeButton" Content="הוספת תלמיד"  Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="60" Click="TraineeButton_Click"/>
         <Button x:Name="testerButton" Content="הוספת בוחן"  Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="60" Click="TesterButton_Click"/>
+        <TextBox x:Name="codTester" Height="23" TextWrapping="Wrap" Text="TextBox" Width="120" Visibility="Hidden"/>
+        <Button x:Name="buttonIfIsTester" Grid.Column="1" HorizontalAlignment="Left" Margin="56.667,255,0,0" VerticalAlignment="Top" Width="auto" Content="הכנס סיסמא" Visibility="Hidden" Click="ButtonIfIsTester_Click">
+        </Button>
+        <TextBox x:Name="textBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="56.667,100,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <Label x:Name="label" Content="אנא הכנס סיסמא"  Margin="171,25,171,0" Height="auto" Width="auto" VerticalAlignment="Top" Visibility="Hidden" Grid.ColumnSpan="2"/>
 
     </Grid>
 </UserControl>

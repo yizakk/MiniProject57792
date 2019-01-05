@@ -17,5 +17,7 @@ namespace BE
         public const int TesterMinAge=40;
         public const int MinDaysBetweenTests=7;
         public static int TestId = 10000000;
+        public const string TesterPassword = "123";
+
     }
 }
