@@ -106,13 +106,14 @@ namespace BE
         public int MaxDistance { get; set; } // Maximum distance (in KMs) this tester can be from his test
 
         #region Work Schedule and availability
-        //****************************************   work schedule  ***************
 
         // A new field we added for holding all the dates this Tester is associated to 
         private List<DateTime> _TestsList =new List<DateTime> ();
         public List<DateTime> TestsList { get { return _TestsList; } }
 
         public bool[,] m_WorkSchedule = new bool[Configuration.WorkDays, Configuration.WorkHours];
+
+        public bool [,] workSChedule { get { return m_WorkSchedule; } set { m_WorkSchedule = value; } }
 
         /// <summary>
         /// Getting the value of the matrix "Work schedule" in place " [day] , [hour]"

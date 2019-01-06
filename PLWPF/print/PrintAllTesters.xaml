@@ -6,7 +6,6 @@
              x:Class="PLWPF.PrintAllTesters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="850" FlowDirection="RightToLeft" >
-
     <Grid >
 
         <ListView x:Name="testerListView" SelectionMode="Single" ItemsSource="{Binding}" FlowDirection="RightToLeft">

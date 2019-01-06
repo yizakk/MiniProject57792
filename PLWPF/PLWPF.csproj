@@ -91,6 +91,9 @@
     <Compile Include="Add\schedule.xaml.cs">
       <DependentUpon>schedule.xaml</DependentUpon>
     </Compile>
+    <Compile Include="checkings.xaml.cs">
+      <DependentUpon>checkings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DeleteTester.xaml.cs">
       <DependentUpon>DeleteTester.xaml</DependentUpon>
     </Compile>
@@ -185,6 +188,10 @@
     <Page Include="Add\schedule.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="checkings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DeleteTester.xaml">
       <SubType>Designer</SubType>

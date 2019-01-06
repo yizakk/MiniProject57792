@@ -7,6 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="550" d:DesignWidth="600" FlowDirection="RightToLeft" >
 
+    <UserControl.Resources>
+    </UserControl.Resources>
     <Grid Name="MainGrid">
         <ComboBox x:Name="comboBox" HorizontalAlignment="Center" VerticalAlignment="Top" Width="246" SelectionChanged="ComboBox_SelectionChanged"/>
 
@@ -162,13 +164,13 @@
             <Label x:Name="label13" Content="סמן כל היום"  Grid.Column="0" Grid.Row="8" Width=" auto"/>
 
             <Label x:Name="label14" Content="סמן הכל"  Grid.Column="0" Grid.Row="9" Width=" auto"/>
-            
-            <CheckBox x:Name="checkBoxMain1" IsChecked="{Binding ElementName=checkBoxMain, Path=IsChecked, Mode=OneWay}" Checked="CheckBoxMain1_Checked" Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="8" VerticalAlignment="Center"/>
-            <CheckBox x:Name="checkBoxMain2" IsChecked="{Binding ElementName=checkBoxMain, Path=IsChecked, Mode=OneWay}" Grid.Column="2" HorizontalAlignment="Left"  Grid.Row="8" VerticalAlignment="Center"/>
-            <CheckBox x:Name="checkBoxMain3" IsChecked="{Binding ElementName=checkBoxMain, Path=IsChecked, Mode=OneWay}" Grid.Column="3" HorizontalAlignment="Left"  Grid.Row="8" VerticalAlignment="Center"/>
-            <CheckBox x:Name="checkBoxMain4" IsChecked="{Binding ElementName=checkBoxMain, Path=IsChecked, Mode=OneWay}" Grid.Column="4" HorizontalAlignment="Left"  Grid.Row="8" VerticalAlignment="Center"/>
-            <CheckBox x:Name="checkBoxMain5" IsChecked="{Binding ElementName=checkBoxMain, Path=IsChecked, Mode=OneWay}" Grid.Column="5" HorizontalAlignment="Left"  Grid.Row="8" VerticalAlignment="Center"/>
-            <CheckBox x:Name="checkBoxMain" Grid.ColumnSpan="5" Grid.Column="0" HorizontalAlignment="Center"  Grid.Row="9" VerticalAlignment="Center"/>
+
+            <CheckBox x:Name="checkBoxMain1" IsChecked="{Binding ElementName=checkBoxMain, Path=IsChecked, Mode=OneWay}" Checked="CheckBoxMain1_Checked" Unchecked="CheckBoxMain1_Checked" Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="8" VerticalAlignment="Center"/>
+            <CheckBox x:Name="checkBoxMain2" IsChecked="{Binding ElementName=checkBoxMain, Path=IsChecked, Mode=OneWay}" Checked="CheckBoxMain1_Checked" Unchecked="CheckBoxMain1_Checked" Grid.Column="2" HorizontalAlignment="Left"  Grid.Row="8" VerticalAlignment="Center"/>
+            <CheckBox x:Name="checkBoxMain3" IsChecked="{Binding ElementName=checkBoxMain, Path=IsChecked, Mode=OneWay}" Checked="CheckBoxMain1_Checked" Unchecked="CheckBoxMain1_Checked" Grid.Column="3" HorizontalAlignment="Left"  Grid.Row="8" VerticalAlignment="Center"/>
+            <CheckBox x:Name="checkBoxMain4" IsChecked="{Binding ElementName=checkBoxMain, Path=IsChecked, Mode=OneWay}" Checked="CheckBoxMain1_Checked" Unchecked="CheckBoxMain1_Checked" Grid.Column="4" HorizontalAlignment="Left"  Grid.Row="8" VerticalAlignment="Center"/>
+            <CheckBox x:Name="checkBoxMain5" IsChecked="{Binding ElementName=checkBoxMain, Path=IsChecked, Mode=OneWay}" Checked="CheckBoxMain1_Checked" Unchecked="CheckBoxMain1_Checked" Grid.Column="5" HorizontalAlignment="Left"  Grid.Row="8" VerticalAlignment="Center"/>
+            <CheckBox x:Name="checkBoxMain" Grid.ColumnSpan="5" Grid.Column="0" HorizontalAlignment="Center" Unchecked="CheckBoxMain_Checked" Checked="CheckBoxMain_Checked" Grid.Row="9" VerticalAlignment="Center"/>
 
 
         </Grid>
