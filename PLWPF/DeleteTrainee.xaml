@@ -7,7 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="378,39,0,0" VerticalAlignment="Top" Width="auto" />
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="378,39,0,0" VerticalAlignment="Top" Width="auto" >
+        </ComboBox>
         <Button x:Name="button" Content="מחק" HorizontalAlignment="Left" Margin="290,355,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="140,39,0,0" TextWrapping="Wrap" Text="בחר תלמיד למחיקה" VerticalAlignment="Top"/>
 

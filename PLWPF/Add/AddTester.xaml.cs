@@ -68,7 +68,7 @@ namespace PLWPF
             TimeSpan a = DateTime.Now - birthDateDatePicker.SelectedDate.Value;
             if (a.Days / 365 < 40)
             {
-                MessageBox.Show("אין אפשרות להוסיף בוחן לפני גיל 40 שנים");
+                MessageBox.Show("אין אפשרות להוסיף בוחן שגילו מתחת ל" +Configuration.TesterMinAge.ToString() +" שנים");
                 birthDateDatePicker.SelectedDate = DateTime.Parse("01 01 2000");
 
                 return;
@@ -115,13 +115,12 @@ namespace PLWPF
                 Data.MainUserControl = new AddTester();
                 Data.Change = 1;
             }
-            else
-            {
-
-            }
-
         }
 
+        private void ScrollBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            seniorityTextBox.Text = SeniorityScrollBar.Value.ToString();
+        }
     }
 }
 

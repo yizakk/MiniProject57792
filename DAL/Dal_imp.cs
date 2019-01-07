@@ -128,11 +128,17 @@ namespace Dal
 
         public void DelTester(string id)
         {
-            Ds.Testers2.Remove(FindTester(id));
+            Tester TempTester = FindTester(id);
+            if (TempTester == null)
+                throw new Exceptions("תעודת הזהות לא נמצאה!");
+            Ds.Testers2.Remove(TempTester);
         }
 
         public void DelTrainee(string id)
         {
+            Trainee TempTrainee = FindTrainee(id);
+            if (TempTrainee == null)
+                throw new Exceptions("תעודת הזהות לא נמצאה!");
             Ds.Trainees.Remove(FindTrainee(id));
         }
 

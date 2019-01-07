@@ -25,25 +25,45 @@ namespace PLWPF
         public DeleteTrainee()
         {
             InitializeComponent();
-            var sourceList = bl.GetTraineesIdList();
-            if(!sourceList.Any())
+
+            if (Data.UserType == Data.Usertype.תלמיד)
             {
-                MessageBox.Show("אין תלמידים במאגר", "", MessageBoxButton.OK, MessageBoxImage.None,
-                    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-                button.IsEnabled = false;
-                comboBox.IsEnabled = false;
+                ComboBoxItem sourceList = new ComboBoxItem();
+                sourceList.Content = Data.UserID;
+                comboBox.Items.Add(sourceList);
             }
-            comboBox.ItemsSource = sourceList;
+
+            else
+            {
+                comboBox.Items.Clear();
+                var sourceList = bl.GetTraineesIdList();
+                if (!sourceList.Any())
+                {
+                    MessageBox.Show("אין תלמידים במאגר", "", MessageBoxButton.OK, MessageBoxImage.None,
+                        MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                    button.IsEnabled = false;
+                    comboBox.IsEnabled = false;
+                }
+                comboBox.ItemsSource = sourceList;
+            }
+
             comboBox.SelectedIndex = 0;
         }
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (Data.UserType == Data.Usertype.תלמיד)
+            {
+                TraineeDeletion();
+            }
+
+            string IdString = comboBox.SelectedValue.ToString();
+            IdString = IdString.Split(' ')[0];
 
             try
             {
-              bl.DelTrainee((comboBox.SelectedValue.ToString().Split(' '))[0]);
+              bl.DelTrainee(IdString);
             }
             catch (Exceptions a)
             {
@@ -60,8 +80,23 @@ namespace PLWPF
                 Data.MainUserControl = new DeleteTrainee();
                 Data.Change = 1;
             }
+        }
 
-
+        private void TraineeDeletion()
+        {
+            try
+            {
+                bl.DelTrainee(Data.UserID);
+            }
+            catch (Exceptions a)
+            {
+                MessageBox.Show(a._message);
+                return;
+            }
+            Data.logged = false;
+            Data.UserType = Data.Usertype.אורח;
+            Data.MainUserControl = new Login();
+            Data.Change = 1;
 
         }
     }

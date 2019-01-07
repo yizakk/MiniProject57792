@@ -29,7 +29,8 @@ namespace PLWPF
 
             if (Data.UserID == BE.Configuration.MasterPassword)
             {
-                MessageBox.Show("שלום מנהל");
+                MessageBox.Show("שלום מנהל", "", MessageBoxButton.OK, MessageBoxImage.None,
+                    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
 
                 Data.logged = true;
                 Data.MainUserControl = new HomePanel();
@@ -52,27 +53,23 @@ namespace PLWPF
 
             if(TesterFound!=null)
             {
-                MessageBox.Show("שלום  " + TesterFound.FullName);
+                MessageBox.Show("שלום  " + TesterFound.FullName,"",MessageBoxButton.OK,MessageBoxImage.None,
+                    MessageBoxResult.OK,MessageBoxOptions.RtlReading);
 
                 Data.UserType = Data.Usertype.בוחן;
-
-                MainGrid.Children.Clear();
-                Data.MainUserControl = new UpTester();
-                MainGrid.Children.Add(Data.MainUserControl);
-                return;
+                Data.logged = true;
+                Data.MainUserControl = new HomePanel();
+                Data.Change = 1;
             }
 
             if(TraineeFound!=null)
             {
-
-                MessageBox.Show("שלום  " + TraineeFound.FullName);
+                MessageBox.Show("שלום  " + TraineeFound.FullName, "", MessageBoxButton.OK, MessageBoxImage.None,
+                    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
                 Data.UserType = Data.Usertype.תלמיד;
-
-                MainGrid.Children.Clear();
-                Data.MainUserControl = new UpStudent();
-                MainGrid.Children.Add(Data.MainUserControl);
-                
-                return;
+                Data.logged = true;
+                Data.MainUserControl = new HomePanel();
+                Data.Change = 1;
             }
 
         }
@@ -97,34 +94,9 @@ namespace PLWPF
             {
                 MessageBox.Show("שלום ולהתראות", "GB", MessageBoxButton.OK, MessageBoxImage.Hand,
                     MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-               // Application.Current.Shutdown();
             }
 
-
         }
-
-
-        ///// <summary>
-        ///// Button2 apperance means id wasn't found and now we are looking for admin password to insert a new user
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void Button2_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if(IdTextBox.GetLineText(0) == BE.Configuration.MasterPassword)
-        //    {
-        //        AddPerson();
-        //    }
-
-        //    else
-        //    {
-        //        MessageBox.Show("סיסמה שגויה!", "שגיאת סיסמה", MessageBoxButton.OK, 
-        //            MessageBoxImage.Stop, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-
-        //        IdTextBox.Clear();
-        //        IdTextBox.Focus();
-        //    }
-        //}
 
         private void AddPerson()
         {

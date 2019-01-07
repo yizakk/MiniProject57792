@@ -22,7 +22,7 @@ namespace PLWPF
 
         public static int BackPage { get; set; }
 
-        static Usertype _userType = 0;
+        static Usertype _userType = Usertype.אורח;
         public static Usertype UserType { get { return _userType; } set { _userType = value; TypeChanged?.Invoke(); } }
 
         static int _change;
@@ -30,6 +30,7 @@ namespace PLWPF
 
         public enum Usertype
         {
+            אורח,
             בוחן,
             תלמיד,
             מנהל
