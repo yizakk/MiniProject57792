@@ -37,6 +37,8 @@ namespace PLWPF
         {
             ButtonCloseMenu.Visibility = Visibility.Visible;
             ButtonOpenMenu.Visibility = Visibility.Collapsed;
+
+            Data.Change = 0;
         }
 
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)

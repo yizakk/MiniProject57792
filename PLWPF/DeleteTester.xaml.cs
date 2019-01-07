@@ -28,6 +28,11 @@ namespace PLWPF
         public DeleteTester()
         {
             InitializeComponent();
+            if(Data.UserType == Data.Usertype.בוחן)
+            {
+
+            }
+
             var sourceList = bl.GetTesterIdList();
             if (!sourceList.Any())
             {
@@ -51,7 +56,6 @@ namespace PLWPF
             catch ( Exceptions a)
             {
                 MessageBox.Show(a._message);
-
             }
 
             int choice;
@@ -62,6 +66,10 @@ namespace PLWPF
             {
                 Data.MainUserControl = new DeleteTester();
                 Data.Change = 1;
+            }
+            else
+            {
+                Data.MainUserControl = new UC.HomePanel();
             }
         }
     }

@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BE;
+using System.Xml.Linq;
+using System.Xml;
 
 namespace PLWPF
 {
@@ -25,6 +27,7 @@ namespace PLWPF
         public DeleteTrainee()
         {
             InitializeComponent();
+
 
             if (Data.UserType == Data.Usertype.תלמיד)
             {

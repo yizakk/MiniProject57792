@@ -31,7 +31,7 @@ namespace PLWPF
             bl = BL.BlFactory.GetBL();
 
             TempTester = new Tester();
-            TempTester.BirthDate = DateTime.Parse("2000 01 01");
+            TempTester.BirthDate = DateTime.Now.AddYears(-Configuration.TesterMinAge);
 
 
             try
@@ -46,8 +46,6 @@ namespace PLWPF
             TempTester.Id = Data.UserID;
             car_typeComboBox.ItemsSource = Enum.GetValues(typeof(CarType));
             genderComboBox.ItemsSource = Enum.GetValues(typeof(Gender));
-
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -99,6 +97,7 @@ namespace PLWPF
                 }
             }
 
+            TempTester.Seniority = int.Parse(seniorityTextBox.Text);
             try
             {
                 bl.AddTester(TempTester);
@@ -120,6 +119,9 @@ namespace PLWPF
 
         private void ScrollBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            int Tempsum =0 ;
+            int.TryParse(seniorityTextBox.Text,out Tempsum);
+            SeniorityScrollBar.Value = Tempsum + 1;
             seniorityTextBox.Text = SeniorityScrollBar.Value.ToString();
         }
     }

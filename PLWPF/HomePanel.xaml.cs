@@ -10,12 +10,8 @@ namespace PLWPF.UC
     {
         public HomePanel()
         {
+
             InitializeComponent();
-            Data.BackPage = 0;
-            if(Data.UserType== Data.Usertype.בוחן)
-            {
-                delTesterButton.Visibility = Visibility.Collapsed;
-            }
 
             if(Data.UserType == Data.Usertype.תלמיד)
             {
