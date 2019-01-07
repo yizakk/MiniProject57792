@@ -146,7 +146,7 @@ namespace Dal
         {
             foreach(Test item in Ds.Tests2)
             {
-                if ((item.Id) == test.Id)
+                if (item.Id == test.Id)
                 {
                     Ds.Tests2.Remove(item);
                     break;

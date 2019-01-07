@@ -31,7 +31,7 @@
                     <GridViewColumn x:Name="addressToStringColumn" Width="auto" Header="כתובת">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="-8,-2" Text="{Binding AddressToString, Mode=OneWay}"/>
+                                <TextBlock Margin="-8,-2" Text="{Binding AddressToString}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

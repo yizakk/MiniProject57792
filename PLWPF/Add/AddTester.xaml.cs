@@ -118,10 +118,15 @@ namespace PLWPF
 
         private void ScrollBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            int Tempsum =0 ;
-            int.TryParse(seniorityTextBox.Text,out Tempsum);
-            SeniorityScrollBar.Value = Tempsum + 1;
-            seniorityTextBox.Text = SeniorityScrollBar.Value.ToString();
+            if (seniorityTextBox.Text.Any())
+            {
+                int Tempsum = 0;
+                int.TryParse(seniorityTextBox.Text, out Tempsum);
+                SeniorityScrollBar.Value = Tempsum;
+                seniorityTextBox.Text = ((int) (e.NewValue- e.OldValue) + Tempsum).ToString();
+            }
+            else
+                seniorityTextBox.Text = SeniorityScrollBar.Value.ToString();
         }
     }
 }

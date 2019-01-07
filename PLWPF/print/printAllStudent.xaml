@@ -39,7 +39,7 @@
                     <GridViewColumn x:Name="addressColumn" Header="כתובת" Width="auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="6,-1,-6,-1" Text="{Binding AddressToString, Mode=OneTime, NotifyOnValidationError=true, ValidatesOnExceptions=true}" FlowDirection="RightToLeft"/>
+                                <TextBlock Margin="6,-1,-6,-1" Text="{Binding AddressToString }" FlowDirection="RightToLeft"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
