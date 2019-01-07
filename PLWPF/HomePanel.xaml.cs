@@ -12,6 +12,19 @@ namespace PLWPF.UC
         {
             InitializeComponent();
             Data.BackPage = 0;
+            if(Data.UserType== Data.Usertype.בוחן)
+            {
+                delTesterButton.Visibility = Visibility.Collapsed;
+            }
+
+            if(Data.UserType == Data.Usertype.תלמיד)
+            {
+                delTesterButton.Visibility = Visibility.Collapsed;
+                testerButton.Visibility = Visibility.Collapsed;
+                UpTesterButton.Visibility = Visibility.Collapsed;
+                UpTestButton.Visibility = Visibility.Collapsed;
+            }
+
         }
 
         private void TraineeButton_Click(object sender, RoutedEventArgs e)
@@ -52,15 +65,13 @@ namespace PLWPF.UC
 
         private void DelTesterButton_Click(object sender, RoutedEventArgs e)
         {
-
-            Data.MainUserControl = new DeleteTrainee();
+            Data.MainUserControl = new DeleteTester();
             Data.Change = 1;
         }
 
         private void DelTraineeButton_Click(object sender, RoutedEventArgs e)
         {
-
-            Data.MainUserControl = new DeleteTester();
+            Data.MainUserControl = new DeleteTrainee();
             Data.Change = 1;
         }
 

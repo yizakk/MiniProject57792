@@ -43,7 +43,6 @@ namespace PLWPF
             {
                 MessageBox.Show("גישתך נחסמה");
                 return;
-
             }
 
             if (textBox.GetLineText(0) == BE.Configuration.TesterPassword)
@@ -52,6 +51,7 @@ namespace PLWPF
                 Data.UserType = Data.Usertype.בוחן;
                 Data.Change = 1;
             }
+
             else
             {
                 count++;

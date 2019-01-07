@@ -31,7 +31,6 @@ namespace PLWPF
         {
                 GridMain.Children.Clear();
                 GridMain.Children.Add(Data.MainUserControl);
-
         }
         
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
