@@ -20,7 +20,7 @@
 
             </Grid.RowDefinitions>
             <Label Name="Label1" Content="  ברוכים הבאים  אנא הזינו ת.ז "   Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Guttman Haim" Height="27" Grid.ColumnSpan="2" Margin="-1,37,127.8,36.8" Width="214"  />
-            <TextBox Name="IdTextBox" Grid.ColumnSpan="1" Grid.Column="1" BorderThickness="4,4,4,4" Margin="12.8,33,9.8,32.8" />
+            <TextBox Name="IdTextBox" KeyDown="IdTextBox_KeyDown" Grid.ColumnSpan="1" Grid.Column="1" BorderThickness="4,4,4,4" Margin="12.8,33,9.8,32.8" />
             <Button Name="button1"  Grid.Column="2" Content="לחץ לאישור" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26"  Width="94" FontSize="10" FontFamily="Guttman Hatzvi" Click="Button_Click" Margin="5.2,37,9.6,37.8" Background="#FF21F33A" />
 
         </Grid>

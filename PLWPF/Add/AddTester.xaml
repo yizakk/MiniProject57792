@@ -59,14 +59,14 @@
             <TextBox x:Name="maxDistanceTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="7" Text="{Binding MaxDistance, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
 
             <Label Content="מקס. טסטים לשבוע" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="8" VerticalAlignment="Center"/>
-            <TextBox x:Name="maxTestsPerWeekTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="8" Text="{Binding MaxTestsPerWeek, Mode=OneWayToSource, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="maxTestsPerWeekTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="8" Text="{Binding MaxTestsPerWeek, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
 
 
             <Label Content="ותק:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="9" VerticalAlignment="Center"/>
-            <TextBox IsEnabled="False" x:Name="seniorityTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="9"  VerticalAlignment="Center" Width="120"/>
-
+            <TextBox  x:Name="seniorityTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="9"  VerticalAlignment="Center" Width="120"/>
             <ScrollBar x:Name="SeniorityScrollBar" Value="{Binding Seniority , Mode=OneWayToSource}" Grid.Column="1" Grid.Row="9" HorizontalAlignment="Right"  VerticalAlignment="Top" Maximum="100" Margin="5,5,5,5" SmallChange="1" Orientation="Horizontal" ValueChanged="ScrollBar_ValueChanged" />
         </Grid>
+        
         <Grid x:Name="grid2" HorizontalAlignment="Left" Margin="368,328.4,0,0" VerticalAlignment="Top" Height="154" Width="319" Grid.Row="1" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
