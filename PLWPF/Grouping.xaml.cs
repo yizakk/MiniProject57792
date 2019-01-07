@@ -31,21 +31,24 @@ namespace PLWPF
 
         private void TraineeButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Testers grouped by car type list:");
-            foreach (var item in bl.TestersGroupedByCarType(true))
-            {
-                Console.WriteLine();
-                MessageBox.Show("Car type " + item.First().Car_type + " testers:");
+            //Data.MainUserControl = new stam();
+            //Data.Change = 1;
 
-                foreach (var tester1 in item)
-                {
-                   MessageBox.Show(tester1.ToString());
+            //MessageBox.Show("Testers grouped by car type list:");
+            //foreach (var item in bl.TestersGroupedByCarType(true))
+            //{
+            //    Console.WriteLine();
+            //    MessageBox.Show("Car type " + item.First().Car_type + " testers:");
 
-                }
-                Console.WriteLine();
+            //    foreach (var tester1 in item)
+            //    {
+            //       MessageBox.Show(tester1.ToString());
 
-            }
-            Console.WriteLine();
+            //    }
+            //    Console.WriteLine();
+
+            //}
+            //Console.WriteLine();
             
         }
     }
