@@ -33,14 +33,14 @@ namespace PLWPF
                 MessageBox.Show(a.Message);
             }
 
-            try
-            {
-                grid2.DataContext = TempTrainee.Address;
-            }
-            catch (Exception a)
-            {
-                MessageBox.Show(a.Message);
-            }
+            //try
+            //{
+            //  //  grid2.DataContext = TempTrainee.Address;
+            //}
+            //catch (Exception a)
+            //{
+            //    MessageBox.Show(a.Message);
+            //}
 
             TempTrainee.Id = Data.UserID;
             
@@ -59,9 +59,9 @@ namespace PLWPF
 
         private void CheckAndAdd()
         {
-            if (TempTrainee.Id.Length < 7)
+            if (TempTrainee.Id.Length !=9)
             {
-                MessageBox.Show("תעודת זהות לא יכולה להכיל פחות מ7 ספרות","",MessageBoxButton.OK,MessageBoxImage.None,
+                MessageBox.Show("תעודת זהות צריכה  להכיל  9 ספרות","",MessageBoxButton.OK,MessageBoxImage.None,
                     MessageBoxResult.OK,MessageBoxOptions.RtlReading);
                 idTextBox.Clear();
                 return;
