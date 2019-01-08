@@ -26,11 +26,10 @@ namespace DS
 
             tests = new List<Test>
               {
-                  new Test (Convert.ToString(111111111) , new DateTime(2018,12,12,9,0,0)) { Passed=false },
-                  new Test (Convert.ToString(123412344) , new DateTime(2018,12,12,10,0,0)) { Passed=false },
-                 // new Test (Convert.ToString(029985090) , new DateTime(2018,12,12,11,0,0)){ Passed=true },
-                  new Test (Convert.ToString(444433332) , new DateTime(2018,12,12,12,0,0)) { Passed=false },
-                  new Test (Convert.ToString(202020101) , new DateTime(2018,12,12,13,0,0)) { Passed=false },
+                  new Test (Convert.ToString(111111111) , new DateTime(2018,12,12,9,0,0)) { Passed=false, Id=1234},
+                  new Test (Convert.ToString(123412344) , new DateTime(2018,12,12,10,0,0)) { Passed=false, Id=1235 },
+                  new Test (Convert.ToString(444433332) , new DateTime(2018,12,12,12,0,0)) { Passed=false, Id=1236 },
+                  new Test (Convert.ToString(202020101) , new DateTime(2018,12,12,13,0,0)) { Passed=false, Id=1237 },
 
               };
             testers = new List<Tester>

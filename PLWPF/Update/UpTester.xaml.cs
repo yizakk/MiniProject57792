@@ -26,7 +26,6 @@ namespace PLWPF
         DependencyProperty.Register("Cheked", typeof(Boolean), typeof(UpTester));
 
 
-
         BL.IBL bl = BL.BlFactory.GetBL();
         Tester TempTester;
         public UpTester()
@@ -63,7 +62,6 @@ namespace PLWPF
             TempTester = bl.FindTester(a);
             grid1.DataContext = TempTester;
             AddressGrid.DataContext = TempTester.Address;
-
 
 
             int i = 0, j = 0, k = 1;

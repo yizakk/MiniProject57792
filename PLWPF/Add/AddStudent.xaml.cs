@@ -106,8 +106,8 @@ namespace PLWPF
             {
                 MessageBox.Show("התלמיד נוסף בהצלחה!", "", MessageBoxButton.OK, MessageBoxImage.Asterisk, MessageBoxResult.OK,
                     MessageBoxOptions.RtlReading);
-                Data.MainUserControl = new UC.HomePanel();
-                Data.Change = 1;
+                Data.MainUserControl = new  HomePanel();
+                 
                 return;
             }
 
@@ -116,8 +116,12 @@ namespace PLWPF
             if(choice == 6)
             {
                 Data.MainUserControl = new AddStudent();
-                Data.UserID = "";
-                Data.Change = 1;
+                 
+            }
+            else
+            {
+                Data.MainUserControl = new HomePanel();
+                 
             }
         }
 

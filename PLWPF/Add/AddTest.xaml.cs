@@ -2,7 +2,6 @@
 using System.Windows;
 using System.Windows.Controls;
 using BE;
-using PLWPF.UC;
 
 namespace PLWPF
 {
@@ -79,7 +78,7 @@ namespace PLWPF
             }
 
                 Data.MainUserControl = new HomePanel();
-                Data.Change = 1;
+                 
         }
 
     }

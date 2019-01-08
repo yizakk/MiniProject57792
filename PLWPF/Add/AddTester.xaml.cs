@@ -112,7 +112,7 @@ namespace PLWPF
             if (choice == 6)
             {
                 Data.MainUserControl = new AddTester();
-                Data.Change = 1;
+                 
             }
         }
 

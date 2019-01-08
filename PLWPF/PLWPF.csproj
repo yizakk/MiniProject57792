@@ -123,6 +123,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Settings.cs" />
+    <Compile Include="Update\UpdateTest.xaml.cs">
+      <DependentUpon>UpdateTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Update\UpStudent.xaml.cs">
       <DependentUpon>UpStudent.xaml</DependentUpon>
     </Compile>
@@ -232,6 +235,10 @@
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Update\UpdateTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Update\UpStudent.xaml">
       <Generator>MSBuild:Compile</Generator>

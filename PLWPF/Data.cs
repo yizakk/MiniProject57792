@@ -11,22 +11,30 @@ namespace PLWPF
     public static class Data
     {
 
-        public static event UserTypeChanged TypeChanged;
+        public static event UserTypeChanged UserControlChanged;
 
         static string _userId = "";
         public static string UserID { get { return _userId; } set { _userId = value; } }
 
-        public static System.Windows.Controls.UserControl MainUserControl = null;
+        public static System.Windows.Controls.UserControl _MainUserControl = null;
+        public static System.Windows.Controls.UserControl MainUserControl
+        {
+            get
+            { return _MainUserControl; }
+
+            set
+            {
+                _MainUserControl = value;
+                UserControlChanged?.Invoke();
+            }
+        }
 
         public static bool logged = false;
 
         public static int BackPage { get; set; }
 
         static Usertype _userType = Usertype.אורח;
-        public static Usertype UserType { get { return _userType; } set { _userType = value; TypeChanged?.Invoke(); } }
-
-        static int _change;
-        public static int Change { get { return _change; } set { TypeChanged?.Invoke(); } }
+        public static Usertype UserType { get { return _userType; } set { _userType = value; UserControlChanged?.Invoke(); } }
 
         public enum Usertype
         {

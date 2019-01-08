@@ -19,8 +19,8 @@ namespace PLWPF
         private void TraineeButton_Click(object sender, RoutedEventArgs e)
         {
             Data.MainUserControl = new AddStudent();
-            Data.Change = 1;
             Data.UserType = Data.Usertype.תלמיד;
+             
         }
 
         private void TesterButton_Click(object sender, RoutedEventArgs e)
@@ -33,8 +33,6 @@ namespace PLWPF
             testerButton.Visibility = Visibility.Hidden;
 
             textBox.Focus();
-
-
         }
 
         private void ButtonIfIsTester_Click(object sender, RoutedEventArgs e)
@@ -49,7 +47,7 @@ namespace PLWPF
             {
                 Data.MainUserControl = new AddTester();
                 Data.UserType = Data.Usertype.בוחן;
-                Data.Change = 1;
+                 
             }
 
             else
