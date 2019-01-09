@@ -3,29 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:BE="clr-namespace:BE;assembly=BE" 
              x:Class="PLWPF.UpStudent"
              mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="800" FlowDirection="RightToLeft" >
+
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="addressViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Address}, CreateList=True}"/>
+    </UserControl.Resources>
 
     <Grid Height="800" VerticalAlignment="Top" RenderTransformOrigin="0.468,0.558">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" MinHeight="88"/>
             <RowDefinition Height="auto" MinHeight="395.2"/>
         </Grid.RowDefinitions>
-        <Grid Name="TitleGrid" >
+        <Grid x:Name="TitleGrid" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="41*"/>
                 <RowDefinition Height="184*"/>
             </Grid.RowDefinitions>
-            <Label Name="Label" FontSize="18" Grid.Row="0" HorizontalAlignment="Center" Content="בחר תלמיד לעדכון" />
+            <Label x:Name="Label" Content="בחר תלמיד לעדכון (ניתן לבצע חיפוש במספר ת.ז)"  FontSize="18" Grid.Row="0" HorizontalAlignment="Center" />
             <ComboBox x:Name="comboBox" Grid.Row="1" HorizontalAlignment="Center" IsEditable="True"  VerticalAlignment="Center" Width="190" Height="36" SelectionChanged="ComboBox_SelectionChanged"/>
         </Grid>
-        
+
         <Grid x:Name="grid1"  HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Center" Height="auto" Width="auto">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -41,43 +50,67 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Label Content="תעודת זהות" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="idTextBlock" IsEnabled="False" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" Text="{Binding Id}" VerticalAlignment="Center"/>
+            <Label Content="תעודת זהות" Grid.Column="0" HorizontalAlignment="Left" Margin="3,1.933,0,3" Grid.Row="1" VerticalAlignment="Center"/>
+            <TextBox x:Name="idTextBlock" IsEnabled="False" Grid.Column="1" HorizontalAlignment="Left" Margin="2.8,2.933,0,4" Grid.Row="1" Text="{Binding Id}" VerticalAlignment="Center"/>
 
-            <Label Content="תאריך לידה" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-            <TextBox IsEnabled="False" x:Name="birthDateTextBlock" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="1" Text="{Binding BirthDate}" VerticalAlignment="Center"/>
+            <Label Content="תאריך לידה" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="2" VerticalAlignment="Center"/>
+            <TextBox IsEnabled="False" x:Name="birthDateTextBlock" Grid.Column="1" HorizontalAlignment="Left" Margin="2.8,4,0,4" Grid.Row="2" Text="{Binding BirthDate}" VerticalAlignment="Center"/>
 
-            <Label Content="שם פרטי:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
-            <TextBox x:Name="firstNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="שם פרטי:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="3" VerticalAlignment="Center"/>
+            <TextBox x:Name="firstNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="2.8,4,0,4" Grid.Row="3" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
 
-            <Label Content="שם משפחה:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
-            <TextBox x:Name="lastNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="שם משפחה:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="4" VerticalAlignment="Center"/>
+            <TextBox x:Name="lastNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="2.8,4,0,4" Grid.Row="4" Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
 
-            <Label Content="מין:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
-            <ComboBox x:Name="genderComboBox" Grid.Column="1" SelectedValue="{Binding gender}" HorizontalAlignment="Left" Height="Auto" Margin="3" Grid.Row="4" VerticalAlignment="Center" Width="120" />
+            <Label Content="מין:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,3.6" Grid.Row="5" VerticalAlignment="Center"/>
+            <ComboBox x:Name="genderComboBox" Grid.Column="1" SelectedValue="{Binding gender}" HorizontalAlignment="Left" Height="Auto" Margin="2.8,3,0,3.6" Grid.Row="5" VerticalAlignment="Center" Width="120" />
 
-            <Label Content="סוג הרכב:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
-            <ComboBox x:Name="car_typeComboBox" Grid.Column="1" SelectedValue="{Binding Car_type}" HorizontalAlignment="Left" Height="Auto"  Margin="3" Grid.Row="5" VerticalAlignment="Center" Width="120" />
+            <Label Content="סוג הרכב:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4.4,0,4.2" Grid.Row="6" VerticalAlignment="Center"/>
+            <ComboBox x:Name="car_typeComboBox" Grid.Column="1" SelectedValue="{Binding Car_type}" HorizontalAlignment="Left" Height="Auto"  Margin="2.8,3.4,0,3.2" Grid.Row="6" VerticalAlignment="Center" Width="120" />
 
-            <Label Content="סוג ההילוך" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
-            <ComboBox x:Name="gearTypeComboBox" SelectedValue="{Binding GearType}" Grid.Column="1" HorizontalAlignment="Left" Height="Auto"  Margin="3" Grid.Row="6" VerticalAlignment="Center" Width="120" />
+            <Label Content="סוג ההילוך" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3.8,0,3.8" Grid.Row="7" VerticalAlignment="Center"/>
+            <ComboBox x:Name="gearTypeComboBox" SelectedValue="{Binding GearType}" Grid.Column="1" HorizontalAlignment="Left" Height="Auto"  Margin="2.8,2.8,0,2.8" Grid.Row="7" VerticalAlignment="Center" Width="120" />
 
-            <Label Content="טסט אחרון" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="7" VerticalAlignment="Center"/>
-            <TextBlock x:Name="lastTestTextBlock" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="7" Text="{Binding LastTest}" VerticalAlignment="Center"/>
+            <Label Content="טסט אחרון" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3.2,0,2.8" Grid.Row="8" VerticalAlignment="Center"/>
+            <TextBlock x:Name="lastTestTextBlock" Grid.Column="1" HorizontalAlignment="Left" Margin="2.8,8.2,0,7.8" Grid.Row="8" Text="{Binding LastTest}" VerticalAlignment="Center"/>
 
-            <Label Content="מספר השיעורים" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="8" VerticalAlignment="Center"/>
-            <TextBox x:Name="numLessonsTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="8" Text="{Binding NumLessons, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="מספר השיעורים" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3.2,0,2.8" Grid.Row="9" VerticalAlignment="Center"/>
+            <TextBox x:Name="numLessonsTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="2.8,4.2,0,4.8" Grid.Row="9" Text="{Binding NumLessons, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
 
-            <Label Content="טלפון:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="9" VerticalAlignment="Center"/>
-            <TextBox x:Name="phoneNumberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="9" Text="{Binding PhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="טלפון:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3.2,0,2.8" Grid.Row="10" VerticalAlignment="Center"/>
+            <TextBox x:Name="phoneNumberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="2.8,4.2,0,4.8" Grid.Row="10" Text="{Binding PhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
 
-            <Label Content="שם בית הספר" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="10" VerticalAlignment="Center"/>
-            <TextBox x:Name="schoolNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="10" Text="{Binding SchoolName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="שם בית הספר" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3.2,0,2.8" Grid.Row="11" VerticalAlignment="Center"/>
+            <TextBox x:Name="schoolNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="2.8,4.2,0,4.8" Grid.Row="11" Text="{Binding SchoolName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
 
-            <Label Content="שם המורה:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="11" VerticalAlignment="Center"/>
-            <TextBox x:Name="teacherNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="11" Text="{Binding TeacherName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="שם המורה:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3.2,0,2.8" Grid.Row="12" VerticalAlignment="Center"/>
+            <TextBox x:Name="teacherNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="2.8,4.2,0,4.8" Grid.Row="12" Text="{Binding TeacherName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+
+            <GridSplitter Grid.RowSpan="13" Grid.Column="2" Width="20"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+            <Label Content="כתובת:" FontSize="14" Grid.Column="3" Grid.ColumnSpan="2"  HorizontalAlignment="Center"  Grid.Row="6" VerticalAlignment="Center"/>
+            <Grid x:Name="AddressGrid" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Row="7" Grid.Column="3" DataContext="{StaticResource addressViewSource}" HorizontalAlignment="Center"   VerticalAlignment="Bottom">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Content="Building Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                <TextBox x:Name="buildingNumberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding BuildingNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                <Label Content="city:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+                <TextBox x:Name="cityTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding city, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                <Label Content="Street:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+                <TextBox x:Name="streetTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding Street, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            </Grid>
+        <Button x:Name="button" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="12" Content="עדכן" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="75" Click="Button_Click" RenderTransformOrigin="0.104,1.159" />
         </Grid>
-        <Button x:Name="button" Content="עדכן" HorizontalAlignment="Left" Margin="625,201.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
+
+
 
     </Grid>
 </UserControl>

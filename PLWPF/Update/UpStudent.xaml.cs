@@ -30,26 +30,32 @@ namespace PLWPF
             var sourceList = bl.GetTraineesIdList();
             if (!sourceList.Any())
             {
-                MessageBox.Show("אין תלמידים במאגר", "", MessageBoxButton.OK, MessageBoxImage.None,
-                    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                ExitFromUC();
+                MessageBox.Show("אין תלמידים במאגר");
                 button.IsEnabled = false;
                 comboBox.IsEnabled = false;
             }
-            comboBox.ItemsSource = sourceList;
 
+
+            comboBox.ItemsSource = sourceList;
+            comboBox.SelectedIndex = 0;
             car_typeComboBox.ItemsSource = Enum.GetValues(typeof(CarType));
             genderComboBox.ItemsSource = Enum.GetValues(typeof(Gender));
             gearTypeComboBox.ItemsSource = Enum.GetValues(typeof(Gear));
 
         }
 
+        private void ExitFromUC()
+        {
+            Data.MainUserControl = new HomePanel();
+        }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string a = comboBox.SelectedValue.ToString().Split(' ')[0];
             tempTrainee = bl.FindTrainee(a);
             grid1.DataContext = tempTrainee;
-
+            AddressGrid.DataContext = tempTrainee.Address;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -66,6 +72,7 @@ namespace PLWPF
             MessageBox.Show("העידכון הסתיים בהצלחה");
 
         }
+
     }
 }
 ;
