@@ -49,7 +49,7 @@
                 <DataGridTemplateColumn x:Name="carTypeColumn" Header="סוג רכב" Width="AUTO">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding CarType}"/>
+                            <TextBlock Text="{Binding CarType, Mode=OneWay}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

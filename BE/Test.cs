@@ -8,6 +8,7 @@ namespace BE
 {
     public class Test
     {
+        #region C-tors
         // ******************************    c-tors     ****************
         public Test(string TraineeId, DateTime dateTime)
         {
@@ -38,6 +39,7 @@ namespace BE
         }
 
         //*************************************************************************
+        #endregion
         public int Id { get; set; }
 
         public CarType CarType { get; set; }
