@@ -16,19 +16,15 @@ using BE;
 
 namespace PLWPF
 {
-    /// <summary>
-    /// Interaction logic for DeletTeste.xaml
-    /// </summary>
     public partial class DeleteTester : UserControl
     {
 
         BL.IBL bl = BL.BlFactory.GetBL();
 
-
         public DeleteTester()
         {
             InitializeComponent();
-            if(Data.UserType == Data.Usertype.בוחן)
+            if (Data.UserType == Data.Usertype.בוחן)
             {
                 var item = new ComboBoxItem();
                 item.Content = Data.UserID;
@@ -37,18 +33,20 @@ namespace PLWPF
                 return;
             }
 
-            var sourceList = bl.GetTesterIdList();
-            if (!sourceList.Any())
+            else
             {
-                MessageBox.Show("אין בוחנים במאגר", "", MessageBoxButton.OK, MessageBoxImage.None,
-                                    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-                button.IsEnabled = false;
-                comboBox.IsEnabled = false;
+                var sourceList = bl.GetTesterIdList();
+                if (!sourceList.Any())
+                {
+                    MessageBox.Show("אין בוחנים במאגר", "", MessageBoxButton.OK, MessageBoxImage.None,
+                                        MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                    button.IsEnabled = false;
+                    comboBox.IsEnabled = false;
+                }
+
+                comboBox.ItemsSource = sourceList;
+                comboBox.SelectedIndex = 0;
             }
-
-            comboBox.ItemsSource = sourceList;
-            comboBox.SelectedIndex = 0;
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
