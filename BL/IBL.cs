@@ -44,14 +44,16 @@ namespace BL
         Trainee FindTrainee(string id);
 
         IEnumerable<Trainee> GetTraineeList();
-
+        void UpdateTest(Test testItem);
         IEnumerable<Test> GetTests();
 
         IEnumerable<Tester> GetTesters();
 
+        IEnumerable<string> GetTestsIdList();
         IEnumerable<string> GetTraineesIdList();
         IEnumerable<string> GetTesterIdList();
 
+        Test FindTest(int id);
 
         /// <summary>
         /// Finding every available testers in specific DateTime instance

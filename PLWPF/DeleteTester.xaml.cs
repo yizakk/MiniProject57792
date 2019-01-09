@@ -30,7 +30,11 @@ namespace PLWPF
             InitializeComponent();
             if(Data.UserType == Data.Usertype.בוחן)
             {
-
+                var item = new ComboBoxItem();
+                item.Content = Data.UserID;
+                comboBox.Items.Add(item);
+                comboBox.SelectedIndex = 0;
+                return;
             }
 
             var sourceList = bl.GetTesterIdList();
@@ -58,18 +62,18 @@ namespace PLWPF
                 MessageBox.Show(a._message);
             }
 
-            int choice;
 
-            choice = (int)MessageBox.Show("המחיקה בוצעה בהצלחה, האם ברצונך לבצע עוד מחיקה?", "", MessageBoxButton.YesNo,
+            int choice = (int)MessageBox.Show("המחיקה בוצעה בהצלחה, האם ברצונך לבצע עוד מחיקה?", "", MessageBoxButton.YesNo,
               MessageBoxImage.Asterisk, MessageBoxResult.Yes, MessageBoxOptions.RtlReading);
+
             if (choice == 6)
             {
                 Data.MainUserControl = new DeleteTester();
-                Data.Change = 1;
             }
+
             else
             {
-                Data.MainUserControl = new UC.HomePanel();
+                Data.MainUserControl = new  HomePanel();
             }
         }
     }

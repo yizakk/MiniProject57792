@@ -157,25 +157,15 @@ namespace Dal
 
         public void UpdateTester(Tester tester)
         {
-
             Ds.Testers2.Remove( Ds.Testers2.First(t => t.Id == tester.Id));
             Ds.Testers2.Add(tester);
-            //foreach (Tester item in Ds.Testers2)
-            //{
-            //    if ((item.Id) == tester.Id)
-            //    {
-            //        Ds.Testers2.Remove(item);
-            //        break;
-            //    }
-            //}
-            //Ds.Testers2.Add(tester);
         }
 
         public void UpdateTrainee(Trainee trainee)
         {
             foreach (Trainee item in Ds.Trainees)
             {
-                if ((item.Id) == trainee.Id)
+                if (item.Id == trainee.Id)
                 {
                     Ds.Trainees.Remove(item);
                     break;
@@ -202,6 +192,11 @@ namespace Dal
                     return item;
             }
             return null;
+        }
+
+        public Test FindTest(int id)
+        {
+            return Ds.Tests2.First(t => t.Id == id);
         }
     }
 }

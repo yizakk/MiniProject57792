@@ -21,13 +21,24 @@ namespace BE
         פול_טריילר
     }
 
-    public struct Parameters
+
+    public class Parameters
     {
-        public bool distance;
-        public bool ReversePark;
-        public bool usingMirrors;
-        public bool speed;
-        public bool usingVinkers;
+        public Parameters() { }
+        public Parameters(Parameters other)
+        {
+            distance = other.distance;
+            ReversePark = other.ReversePark;
+            usingMirrors = other.usingMirrors;
+            speed = other.speed;
+            usingVinkers = other.usingVinkers;
+        }
+
+        public bool distance { get; set; }
+        public bool ReversePark { get; set; }
+        public bool usingMirrors { get; set; }
+        public bool speed { get; set; }
+        public bool usingVinkers { get; set; }
     }
 
     public class Address

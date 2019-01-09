@@ -321,9 +321,6 @@ namespace BL
 
         public IEnumerable<Test> TesterTestsList(Tester tester)
         {
-            //var temp =  from item in dal.GetTests()
-            //            where item.TesterId == tester.Id
-            //            select item;
 
             return dal.GetTestsForSpecTester(tester.Id);
         }
@@ -396,15 +393,6 @@ namespace BL
 
         }
 
-        public IEnumerable <string> getlistTreneOnlyId()
-        {
-            var listId = from item in dal.GetTrainees()
-                    select item.Id;
-
-
-            return listId;
-
-        }
         public void UpdateTest(int idtest, bool _distance , bool _ReversePark, bool _usingMirrors, bool _speed, bool _usingVinkers)
         {        Test test = null;
             foreach (Test item in dal.GetTests())
@@ -529,6 +517,23 @@ namespace BL
             return Group;
         }
 
+        public IEnumerable<string> GetTestsIdList()
+        {
+            var listId = from item in dal.GetTests()
+                         select item.Id.ToString() ;
+
+            return listId;
+        }
+
+        public Test FindTest(int id)
+        {
+            return dal.FindTest(id);
+        }
+
+        public void UpdateTest(Test testItem)
+        {
+            dal.UpdateTest(testItem);
+        }
     }
 }
 

@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using PLWPF.UC;
 
 namespace PLWPF
 {
@@ -34,7 +33,7 @@ namespace PLWPF
 
                 Data.logged = true;
                 Data.MainUserControl = new HomePanel();
-                Data.Change = 1;
+                 
                 Data.UserType = Data.Usertype.מנהל;
                 return;
             }
@@ -51,15 +50,16 @@ namespace PLWPF
                 return;
             }
 
+                Data.logged = true;
+                Data.MainUserControl = new HomePanel();
+                 
+
             if(TesterFound!=null)
             {
                 MessageBox.Show("שלום  " + TesterFound.FullName,"",MessageBoxButton.OK,MessageBoxImage.None,
                     MessageBoxResult.OK,MessageBoxOptions.RtlReading);
 
                 Data.UserType = Data.Usertype.בוחן;
-                Data.logged = true;
-                Data.MainUserControl = new HomePanel();
-                Data.Change = 1;
             }
 
             if(TraineeFound!=null)
@@ -67,9 +67,6 @@ namespace PLWPF
                 MessageBox.Show("שלום  " + TraineeFound.FullName, "", MessageBoxButton.OK, MessageBoxImage.None,
                     MessageBoxResult.OK, MessageBoxOptions.RtlReading);
                 Data.UserType = Data.Usertype.תלמיד;
-                Data.logged = true;
-                Data.MainUserControl = new HomePanel();
-                Data.Change = 1;
             }
 
         }
@@ -86,8 +83,7 @@ namespace PLWPF
             if(x==6)
             {
                 Data.MainUserControl = new AddPerson();
-                Data.logged = true;
-                Data.Change = 1;
+                 
             }
 
             else
@@ -95,14 +91,8 @@ namespace PLWPF
                 MessageBox.Show("שלום ולהתראות", "GB", MessageBoxButton.OK, MessageBoxImage.Hand,
                     MessageBoxResult.OK, MessageBoxOptions.RtlReading);
             }
-
         }
 
-        private void AddPerson()
-        {
-            Data.MainUserControl = new AddPerson();
-            Data.Change = 1;
-        }
 
         private void IdTextBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {

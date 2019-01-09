@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using PLWPF.UC;
 
 namespace PLWPF
 {
@@ -24,7 +23,7 @@ namespace PLWPF
             InitializeComponent();
             Data.MainUserControl = new Login();
             GridMain.Children.Add(Data.MainUserControl);
-            Data.TypeChanged += UserTypeChanged; // adding local func. "userTypeChanged" to handle the change of user type
+            Data.UserControlChanged += UserTypeChanged; // adding local func. "userTypeChanged" to handle the change of user type
         }
 
         private void UserTypeChanged()
@@ -37,8 +36,6 @@ namespace PLWPF
         {
             ButtonCloseMenu.Visibility = Visibility.Visible;
             ButtonOpenMenu.Visibility = Visibility.Collapsed;
-
-            Data.Change = 0;
         }
 
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
@@ -96,7 +93,7 @@ namespace PLWPF
             {
                 case 0:
                     Data.MainUserControl = new HomePanel();
-                    Data.Change = 1;
+                     
                     break;
             }
         }

@@ -81,7 +81,7 @@ namespace PLWPF
             if (choice == 6)
             {
                 Data.MainUserControl = new DeleteTrainee();
-                Data.Change = 1;
+                 
             }
         }
 
@@ -99,7 +99,7 @@ namespace PLWPF
             Data.logged = false;
             Data.UserType = Data.Usertype.אורח;
             Data.MainUserControl = new Login();
-            Data.Change = 1;
+             
 
         }
     }

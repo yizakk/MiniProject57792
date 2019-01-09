@@ -29,5 +29,6 @@ namespace Dal
         IEnumerable<Test> GetTestsForSpecTester(string id);
         IEnumerable<Test> GetTestsForSpecTrainee(string id);
         IEnumerable<Tester> GetTestersWithCarType(CarType type);
+        Test FindTest(int id);
     }
 }

@@ -31,12 +31,9 @@ namespace BE
             Date = Other.Date;
             Passed = Other.Passed;
             TesterComment = Other.TesterComment;
-            Parameters.distance = Other.Parameters.distance;
-            Parameters.speed = Other.Parameters.speed;
-            Parameters.ReversePark = Other.Parameters.ReversePark;
-            Parameters.usingMirrors = Other.Parameters.usingMirrors;
-            Parameters.usingVinkers = Other.Parameters.usingVinkers;
+            Parameters = new Parameters(Other.Parameters);
             BeginAddress = new Address(Other.BeginAddress);
+
 
         }
 
