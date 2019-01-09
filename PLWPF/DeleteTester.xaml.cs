@@ -20,16 +20,22 @@ namespace PLWPF
     {
 
         BL.IBL bl = BL.BlFactory.GetBL();
-
+        public static string Id;
         public DeleteTester()
         {
             InitializeComponent();
             if (Data.UserType == Data.Usertype.בוחן)
             {
-                var item = new ComboBoxItem();
-                item.Content = Data.UserID;
-                comboBox.Items.Add(item);
-                comboBox.SelectedIndex = 0;
+                Id = Data.UserID;
+                comboBox.Visibility = Visibility.Collapsed;
+                TesterId.Text = Id;
+                TesterId.Visibility = Visibility.Visible;
+
+                //var item = new ComboBoxItem();
+                //item.Content = Data.UserID;
+                //comboBox.Items.Add(item);
+                //comboBox.SelectedIndex = 0;
+                //comboBox.IsEnabled = false;
                 return;
             }
 
@@ -51,13 +57,20 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
             try
             {
+                if (Data.UserType == Data.Usertype.בוחן)
+                {
+                    bl.DelTester(Data.UserID);
+                }
+                else
                 bl.DelTester(comboBox.SelectedValue.ToString().Split(' ')[0]);
             }
-            catch ( Exceptions a)
+            catch (Exceptions a)
             {
                 MessageBox.Show(a._message);
+                return;
             }
 
 

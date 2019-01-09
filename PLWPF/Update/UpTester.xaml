@@ -7,18 +7,26 @@
              mc:Ignorable="d" 
              d:DesignHeight="550" d:DesignWidth="600" FlowDirection="RightToLeft" >
 
-    <UserControl.Resources>
-    </UserControl.Resources>
     <Grid Name="MainGrid">
-        <ComboBox x:Name="comboBox" IsEditable="True" HorizontalAlignment="Center" VerticalAlignment="Top" Width="246" SelectionChanged="ComboBox_SelectionChanged"/>
-
-        <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="16,61,0,143.4" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="80*"/>
+        </Grid.RowDefinitions>
+        <Grid Name="TitleGrid" Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="בחר בוחן לעדכון (ניתן לבצע חיפוש במספר ת.ז)" Grid.Row="0" x:Name="textBlock" FontSize="18" HorizontalAlignment="Center" TextWrapping="Wrap"  VerticalAlignment="Top"/>
+            <ComboBox Grid.Row="1" x:Name="comboBox" IsEditable="True" HorizontalAlignment="Center" VerticalAlignment="Top" Width="246" SelectionChanged="ComboBox_SelectionChanged"/>
+        </Grid>
+
+        <Grid x:Name="grid1" Grid.Row="1" HorizontalAlignment="Left"  >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Name="Column1DataGrid" Width="Auto"/>
+                <ColumnDefinition Name="Column2DataGrid" Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -62,120 +70,122 @@
 
             <Label Content="ותק:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="9" VerticalAlignment="Center"/>
             <TextBox x:Name="seniorityTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="9" Text="{Binding Seniority, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-        </Grid>
-        <Button x:Name="button" Content="עדכן" HorizontalAlignment="Left" Margin="544,488,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
-        <Grid x:Name="AddressGrid" HorizontalAlignment="Left" Margin="25,416,0,0" VerticalAlignment="Top">
+
+            <Grid x:Name="AddressGrid" Grid.Row="11" Grid.ColumnSpan="2" HorizontalAlignment="Left"  VerticalAlignment="Bottom">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="{Binding ElementName=Column1DataGrid, Path=Width}"/>
+                    <ColumnDefinition Width="{Binding ElementName=Column2DataGrid, Path=Width}"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Content="מספר בית" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                <TextBox x:Name="buildingNumberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding BuildingNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+
+                <Label Content="רחוב" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+                <TextBox x:Name="streetTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding Street, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+
+                <Label Content="עיר:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+                <TextBox x:Name="cityTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding city, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+
+            </Grid>
+        </Grid>
+        <Button x:Name="button" Content="עדכן"  VerticalAlignment="Bottom" Width="75" Click="Button_Click" HorizontalAlignment="Right" Grid.Row="1"/>
+
+        <Grid Name="ScheduleGrid" Grid.Row="1" HorizontalAlignment="Right" Height="350" VerticalAlignment="Top" Width="458">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="19*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="30*"/>
             </Grid.RowDefinitions>
-            <Label Content="מספר בית" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="buildingNumberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding BuildingNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label x:Name="label" FontSize="16" Content="לוז עבודה שבועי" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="auto" Height="31" Grid.ColumnSpan="6"/>
+            <CheckBox x:Name="checkBox1" IsChecked="{Binding ElementName=checkBoxMain1, Path=IsChecked, Mode=OneWay}"  Grid.Column="1" Grid.Row="2" Width=" auto" Margin="0,4.4,0,0"/>
+            <CheckBox x:Name="checkBox2" IsChecked="{Binding ElementName=checkBoxMain1, Path=IsChecked, Mode=OneWay}" Grid.Column="1" Grid.Row="3" Width=" auto" Margin="0,0,0,0.4"/>
+            <CheckBox x:Name="checkBox3" IsChecked="{Binding ElementName=checkBoxMain1, Path=IsChecked, Mode=OneWay}" Grid.Column="1" Grid.Row="4" Width=" auto" Margin="0,0.6,0,29.4" Grid.RowSpan="2"/>
+            <CheckBox x:Name="checkBox4" IsChecked="{Binding ElementName=checkBoxMain1, Path=IsChecked, Mode=OneWay}" Grid.Column="1" Grid.Row="5" Width=" auto" Margin="0,0.2,0,0.4"/>
+            <CheckBox x:Name="checkBox5" IsChecked="{Binding ElementName=checkBoxMain1, Path=IsChecked, Mode=OneWay}" Grid.Column="1" Grid.Row="6" Width=" auto" Margin="0,0.6,0,29.4" Grid.RowSpan="2"/>
+            <CheckBox x:Name="checkBox6" IsChecked="{Binding ElementName=checkBoxMain1, Path=IsChecked, Mode=OneWay}" Grid.Column="1" Grid.Row="7" Width=" auto" Margin="0,0.2,0,0.4"/>
+            <CheckBox x:Name="checkBox7" IsChecked="{Binding ElementName=checkBoxMain1, Path=IsChecked, Mode=OneWay}" Grid.Column="1" Grid.Row="8" Width=" auto" Margin="0,0.6,0,0"/>
 
-            <Label Content="רחוב" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-            <TextBox x:Name="streetTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding Street, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <CheckBox x:Name="checkBox8" IsChecked="{Binding ElementName=checkBoxMain2, Path=IsChecked, Mode=OneWay}" Grid.Column="2" Grid.Row="2" Width=" auto" Grid.ColumnSpan="2" Margin="0,4.4,75.8,0"/>
+            <CheckBox x:Name="checkBox9" IsChecked="{Binding ElementName=checkBoxMain2, Path=IsChecked, Mode=OneWay}" Grid.Column="2" Grid.Row="3" Width=" auto" Grid.ColumnSpan="2" Margin="0,0,75.8,0.4"/>
+            <CheckBox x:Name="checkBox10" IsChecked="{Binding ElementName=checkBoxMain2, Path=IsChecked, Mode=OneWay}" Grid.Column="2" Grid.Row="4" Width=" auto" Grid.ColumnSpan="2" Margin="0,0.6,75.8,29.4" Grid.RowSpan="2"/>
+            <CheckBox x:Name="checkBox11" IsChecked="{Binding ElementName=checkBoxMain2, Path=IsChecked, Mode=OneWay}" Grid.Column="2" Grid.Row="5" Width=" auto" Grid.ColumnSpan="2" Margin="0,0.2,75.8,0.4"/>
+            <CheckBox x:Name="checkBox12" IsChecked="{Binding ElementName=checkBoxMain2, Path=IsChecked, Mode=OneWay}" Grid.Column="2" Grid.Row="6" Width=" auto" Grid.ColumnSpan="2" Margin="0,0.6,75.8,29.4" Grid.RowSpan="2"/>
+            <CheckBox x:Name="checkBox13" IsChecked="{Binding ElementName=checkBoxMain2, Path=IsChecked, Mode=OneWay}" Grid.Column="2" Grid.Row="7" Width=" auto" Grid.ColumnSpan="2" Margin="0,0.2,75.8,0.4"/>
+            <CheckBox x:Name="checkBox14" IsChecked="{Binding ElementName=checkBoxMain2, Path=IsChecked, Mode=OneWay}" Grid.Column="2" Grid.Row="8" Width=" auto" Grid.ColumnSpan="2" Margin="0,0.6,75.8,0"/>
 
-            <Label Content="עיר:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
-            <TextBox x:Name="cityTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding city, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <CheckBox x:Name="checkBox15" IsChecked="{Binding ElementName=checkBoxMain3, Path=IsChecked, Mode=OneWay}" Grid.Column="3" Grid.Row="2" Width=" auto" Grid.ColumnSpan="2" Margin="0.2,4.4,76.6,0"/>
+            <CheckBox x:Name="checkBox16" IsChecked="{Binding ElementName=checkBoxMain3, Path=IsChecked, Mode=OneWay}" Grid.Column="3" Grid.Row="3" Width=" auto" Grid.ColumnSpan="2" Margin="0.2,0,76.6,0.4"/>
+            <CheckBox x:Name="checkBox17" IsChecked="{Binding ElementName=checkBoxMain3, Path=IsChecked, Mode=OneWay}" Grid.Column="3" Grid.Row="4" Width=" auto" Grid.ColumnSpan="2" Margin="0.2,0.6,76.6,29.4" Grid.RowSpan="2"/>
+            <CheckBox x:Name="checkBox18" IsChecked="{Binding ElementName=checkBoxMain3, Path=IsChecked, Mode=OneWay}" Grid.Column="3" Grid.Row="5" Width=" auto" Grid.ColumnSpan="2" Margin="0.2,0.2,76.6,0.4"/>
+            <CheckBox x:Name="checkBox19" IsChecked="{Binding ElementName=checkBoxMain3, Path=IsChecked, Mode=OneWay}" Grid.Column="3" Grid.Row="6" Width=" auto" Grid.ColumnSpan="2" Margin="0.2,0.6,76.6,29.4" Grid.RowSpan="2"/>
+            <CheckBox x:Name="checkBox20" IsChecked="{Binding ElementName=checkBoxMain3, Path=IsChecked, Mode=OneWay}" Grid.Column="3" Grid.Row="7" Width=" auto" Grid.ColumnSpan="2" Margin="0.2,0.2,76.6,0.4"/>
+            <CheckBox x:Name="checkBox21" IsChecked="{Binding ElementName=checkBoxMain3, Path=IsChecked, Mode=OneWay}" Grid.Column="3" Grid.Row="8" Width=" auto" Grid.ColumnSpan="2" Margin="0.2,0.6,76.6,0"/>
 
-        </Grid>
+            <CheckBox x:Name="checkBox22" IsChecked="{Binding ElementName=checkBoxMain4, Path=IsChecked, Mode=OneWay}" Grid.Column="4" Grid.Row="2" Width=" auto" Grid.ColumnSpan="2" Margin="0.2,4.4,75.6,0"/>
+            <CheckBox x:Name="checkBox23" IsChecked="{Binding ElementName=checkBoxMain4, Path=IsChecked, Mode=OneWay}" Grid.Column="4" Grid.Row="3" Width=" auto" Grid.ColumnSpan="2" Margin="0.2,0,75.6,0.4"/>
+            <CheckBox x:Name="checkBox24" IsChecked="{Binding ElementName=checkBoxMain4, Path=IsChecked, Mode=OneWay}" Grid.Column="4" Grid.Row="4" Width=" auto" Grid.ColumnSpan="2" Margin="0.2,0.6,75.6,29.4" Grid.RowSpan="2"/>
+            <CheckBox x:Name="checkBox25" IsChecked="{Binding ElementName=checkBoxMain4, Path=IsChecked, Mode=OneWay}" Grid.Column="4" Grid.Row="5" Width=" auto" Grid.ColumnSpan="2" Margin="0.2,0.2,75.6,0.4"/>
+            <CheckBox x:Name="checkBox26" IsChecked="{Binding ElementName=checkBoxMain4, Path=IsChecked, Mode=OneWay}" Grid.Column="4" Grid.Row="6" Width=" auto" Grid.ColumnSpan="2" Margin="0.2,0.6,75.6,29.4" Grid.RowSpan="2"/>
+            <CheckBox x:Name="checkBox27" IsChecked="{Binding ElementName=checkBoxMain4, Path=IsChecked, Mode=OneWay}" Grid.Column="4" Grid.Row="7" Width=" auto" Grid.ColumnSpan="2" Margin="0.2,0.2,75.6,0.4"/>
+            <CheckBox x:Name="checkBox28" IsChecked="{Binding ElementName=checkBoxMain4, Path=IsChecked, Mode=OneWay}" Grid.Column="4" Grid.Row="8" Width=" auto" Grid.ColumnSpan="2" Margin="0.2,0.6,75.6,0"/>
 
-        <Grid Name="ScheduleGrid" HorizontalAlignment="Left" Height="300" Margin="332,78,0,0" VerticalAlignment="Top" Width="458">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <CheckBox x:Name="checkBox1" IsChecked="{Binding ElementName=checkBoxMain1, Path=IsChecked, Mode=OneWay}"  Grid.Column="1" Grid.Row="1" Width=" auto"/>
-            <CheckBox x:Name="checkBox2" IsChecked="{Binding ElementName=checkBoxMain1, Path=IsChecked, Mode=OneWay}" Grid.Column="1" Grid.Row="2" Width=" auto"/>
-            <CheckBox x:Name="checkBox3" IsChecked="{Binding ElementName=checkBoxMain1, Path=IsChecked, Mode=OneWay}" Grid.Column="1" Grid.Row="3" Width=" auto"/>
-            <CheckBox x:Name="checkBox4" IsChecked="{Binding ElementName=checkBoxMain1, Path=IsChecked, Mode=OneWay}" Grid.Column="1" Grid.Row="4" Width=" auto"/>
-            <CheckBox x:Name="checkBox5" IsChecked="{Binding ElementName=checkBoxMain1, Path=IsChecked, Mode=OneWay}" Grid.Column="1" Grid.Row="5" Width=" auto"/>
-            <CheckBox x:Name="checkBox6" IsChecked="{Binding ElementName=checkBoxMain1, Path=IsChecked, Mode=OneWay}" Grid.Column="1" Grid.Row="6" Width=" auto"/>
-            <CheckBox x:Name="checkBox7" IsChecked="{Binding ElementName=checkBoxMain1, Path=IsChecked, Mode=OneWay}" Grid.Column="1" Grid.Row="7" Width=" auto"/>
+            <CheckBox x:Name="checkBox29" IsChecked="{Binding ElementName=checkBoxMain5, Path=IsChecked, Mode=OneWay}" Grid.Column="5" Grid.Row="2" Width=" auto" Margin="0.4,4.4,-0.4,0"/>
+            <CheckBox x:Name="checkBox30" IsChecked="{Binding ElementName=checkBoxMain5, Path=IsChecked, Mode=OneWay}" Grid.Column="5" Grid.Row="3" Width=" auto" Margin="0.4,0,-0.4,0.4"/>
+            <CheckBox x:Name="checkBox31" IsChecked="{Binding ElementName=checkBoxMain5, Path=IsChecked, Mode=OneWay}" Grid.Column="5" Grid.Row="4" Width=" auto" Margin="0.4,0.6,-0.4,29.4" Grid.RowSpan="2"/>
+            <CheckBox x:Name="checkBox32" IsChecked="{Binding ElementName=checkBoxMain5, Path=IsChecked, Mode=OneWay}" Grid.Column="5" Grid.Row="5" Width=" auto" Margin="0.4,0.2,-0.4,0.4"/>
+            <CheckBox x:Name="checkBox33" IsChecked="{Binding ElementName=checkBoxMain5, Path=IsChecked, Mode=OneWay}" Grid.Column="5" Grid.Row="6" Width=" auto" Margin="0.4,0.6,-0.4,29.4" Grid.RowSpan="2"/>
+            <CheckBox x:Name="checkBox34" IsChecked="{Binding ElementName=checkBoxMain5, Path=IsChecked, Mode=OneWay}" Grid.Column="5" Grid.Row="7" Width=" auto" Margin="0.4,0.2,-0.4,0.4"/>
+            <CheckBox x:Name="checkBox35" IsChecked="{Binding ElementName=checkBoxMain5, Path=IsChecked, Mode=OneWay}" Grid.Column="5" Grid.Row="8" Width=" auto" Margin="0.4,0.6,-0.4,0"/>
 
-            <CheckBox x:Name="checkBox8" IsChecked="{Binding ElementName=checkBoxMain2, Path=IsChecked, Mode=OneWay}" Grid.Column="2" Grid.Row="1" Width=" auto"/>
-            <CheckBox x:Name="checkBox9" IsChecked="{Binding ElementName=checkBoxMain2, Path=IsChecked, Mode=OneWay}" Grid.Column="2" Grid.Row="2" Width=" auto"/>
-            <CheckBox x:Name="checkBox10" IsChecked="{Binding ElementName=checkBoxMain2, Path=IsChecked, Mode=OneWay}" Grid.Column="2" Grid.Row="3" Width=" auto"/>
-            <CheckBox x:Name="checkBox11" IsChecked="{Binding ElementName=checkBoxMain2, Path=IsChecked, Mode=OneWay}" Grid.Column="2" Grid.Row="4" Width=" auto"/>
-            <CheckBox x:Name="checkBox12" IsChecked="{Binding ElementName=checkBoxMain2, Path=IsChecked, Mode=OneWay}" Grid.Column="2" Grid.Row="5" Width=" auto"/>
-            <CheckBox x:Name="checkBox13" IsChecked="{Binding ElementName=checkBoxMain2, Path=IsChecked, Mode=OneWay}" Grid.Column="2" Grid.Row="6" Width=" auto"/>
-            <CheckBox x:Name="checkBox14" IsChecked="{Binding ElementName=checkBoxMain2, Path=IsChecked, Mode=OneWay}" Grid.Column="2" Grid.Row="7" Width=" auto"/>
-
-            <CheckBox x:Name="checkBox15" IsChecked="{Binding ElementName=checkBoxMain3, Path=IsChecked, Mode=OneWay}" Grid.Column="3" Grid.Row="1" Width=" auto"/>
-            <CheckBox x:Name="checkBox16" IsChecked="{Binding ElementName=checkBoxMain3, Path=IsChecked, Mode=OneWay}" Grid.Column="3" Grid.Row="2" Width=" auto"/>
-            <CheckBox x:Name="checkBox17" IsChecked="{Binding ElementName=checkBoxMain3, Path=IsChecked, Mode=OneWay}" Grid.Column="3" Grid.Row="3" Width=" auto"/>
-            <CheckBox x:Name="checkBox18" IsChecked="{Binding ElementName=checkBoxMain3, Path=IsChecked, Mode=OneWay}" Grid.Column="3" Grid.Row="4" Width=" auto"/>
-            <CheckBox x:Name="checkBox19" IsChecked="{Binding ElementName=checkBoxMain3, Path=IsChecked, Mode=OneWay}" Grid.Column="3" Grid.Row="5" Width=" auto"/>
-            <CheckBox x:Name="checkBox20" IsChecked="{Binding ElementName=checkBoxMain3, Path=IsChecked, Mode=OneWay}" Grid.Column="3" Grid.Row="6" Width=" auto"/>
-            <CheckBox x:Name="checkBox21" IsChecked="{Binding ElementName=checkBoxMain3, Path=IsChecked, Mode=OneWay}" Grid.Column="3" Grid.Row="7" Width=" auto"/>
-
-            <CheckBox x:Name="checkBox22" IsChecked="{Binding ElementName=checkBoxMain4, Path=IsChecked, Mode=OneWay}" Grid.Column="4" Grid.Row="1" Width=" auto"/>
-            <CheckBox x:Name="checkBox23" IsChecked="{Binding ElementName=checkBoxMain4, Path=IsChecked, Mode=OneWay}" Grid.Column="4" Grid.Row="2" Width=" auto"/>
-            <CheckBox x:Name="checkBox24" IsChecked="{Binding ElementName=checkBoxMain4, Path=IsChecked, Mode=OneWay}" Grid.Column="4" Grid.Row="3" Width=" auto"/>
-            <CheckBox x:Name="checkBox25" IsChecked="{Binding ElementName=checkBoxMain4, Path=IsChecked, Mode=OneWay}" Grid.Column="4" Grid.Row="4" Width=" auto"/>
-            <CheckBox x:Name="checkBox26" IsChecked="{Binding ElementName=checkBoxMain4, Path=IsChecked, Mode=OneWay}" Grid.Column="4" Grid.Row="5" Width=" auto"/>
-            <CheckBox x:Name="checkBox27" IsChecked="{Binding ElementName=checkBoxMain4, Path=IsChecked, Mode=OneWay}" Grid.Column="4" Grid.Row="6" Width=" auto"/>
-            <CheckBox x:Name="checkBox28" IsChecked="{Binding ElementName=checkBoxMain4, Path=IsChecked, Mode=OneWay}" Grid.Column="4" Grid.Row="7" Width=" auto"/>
-
-            <CheckBox x:Name="checkBox29" IsChecked="{Binding ElementName=checkBoxMain5, Path=IsChecked, Mode=OneWay}" Grid.Column="5" Grid.Row="1" Width=" auto"/>
-            <CheckBox x:Name="checkBox30" IsChecked="{Binding ElementName=checkBoxMain5, Path=IsChecked, Mode=OneWay}" Grid.Column="5" Grid.Row="2" Width=" auto"/>
-            <CheckBox x:Name="checkBox31" IsChecked="{Binding ElementName=checkBoxMain5, Path=IsChecked, Mode=OneWay}" Grid.Column="5" Grid.Row="3" Width=" auto"/>
-            <CheckBox x:Name="checkBox32" IsChecked="{Binding ElementName=checkBoxMain5, Path=IsChecked, Mode=OneWay}" Grid.Column="5" Grid.Row="4" Width=" auto"/>
-            <CheckBox x:Name="checkBox33" IsChecked="{Binding ElementName=checkBoxMain5, Path=IsChecked, Mode=OneWay}" Grid.Column="5" Grid.Row="5" Width=" auto"/>
-            <CheckBox x:Name="checkBox34" IsChecked="{Binding ElementName=checkBoxMain5, Path=IsChecked, Mode=OneWay}" Grid.Column="5" Grid.Row="6" Width=" auto"/>
-            <CheckBox x:Name="checkBox35" IsChecked="{Binding ElementName=checkBoxMain5, Path=IsChecked, Mode=OneWay}" Grid.Column="5" Grid.Row="7" Width=" auto"/>
-
-            <Label x:Name="label1" Content="ראשון"  Grid.Column="1" Grid.Row="0" Width=" auto"/>
-            <Label x:Name="label2" Content="שני"  Grid.Column="2" Grid.Row="0" Width=" auto"/>
-            <Label x:Name="label3" Content="שלישי"  Grid.Column="3" Grid.Row="0" Width=" auto"/>
-            <Label x:Name="label4" Content="רביעי"  Grid.Column="4" Grid.Row="0" Width=" auto"/>
-            <Label x:Name="label5" Content="חמישי"  Grid.Column="5" Grid.Row="0" Width=" auto"/>
+            <Label x:Name="label1" Content="ראשון"  Grid.Column="1" Grid.Row="1" Width=" auto" Margin="0,0,0,0.6" Grid.RowSpan="2"/>
+            <Label x:Name="label2" Content="שני"  Grid.Column="2" Grid.Row="1" Width=" auto" Grid.ColumnSpan="2" Margin="0,0,75.8,0.6" Grid.RowSpan="2"/>
+            <Label x:Name="label3" Content="שלישי"  Grid.Column="3" Grid.Row="1" Width=" auto" Grid.ColumnSpan="2" Margin="0.2,0,76.6,0.6" Grid.RowSpan="2"/>
+            <Label x:Name="label4" Content="רביעי"  Grid.Column="4" Grid.Row="1" Width=" auto" Grid.ColumnSpan="2" Margin="0.2,0,75.6,0.6" Grid.RowSpan="2"/>
+            <Label x:Name="label5" Content="חמישי"  Grid.Column="5" Grid.Row="1" Width=" auto" Margin="0.4,0,-0.4,0.6" Grid.RowSpan="2"/>
 
 
-            <Label x:Name="label6" Content="9"  Grid.Column="0" Grid.Row="1" Width=" auto"/>
-            <Label x:Name="label7" Content="10"  Grid.Column="0" Grid.Row="2" Width=" auto"/>
-            <Label x:Name="label8" Content="11"  Grid.Column="0" Grid.Row="3" Width=" auto"/>
-            <Label x:Name="label9" Content="12"  Grid.Column="0" Grid.Row="4" Width=" auto"/>
-            <Label x:Name="label10" Content="13"  Grid.Column="0" Grid.Row="5" Width=" auto"/>
-            <Label x:Name="label11" Content="14"  Grid.Column="0" Grid.Row="6" Width=" auto"/>
-            <Label x:Name="label12" Content="15"  Grid.Column="0" Grid.Row="7" Width=" auto"/>
-            <Label x:Name="label13" Content="סמן כל היום"  Grid.Column="0" Grid.Row="8" Width=" auto"/>
+            <Label x:Name="label6" Content="9"  Grid.Column="0" Grid.Row="2" Width=" auto" Margin="0,4.4,0,0"/>
+            <Label x:Name="label7" Content="10"  Grid.Column="0" Grid.Row="3" Width=" auto" Margin="0,0,0,0.4"/>
+            <Label x:Name="label8" Content="11"  Grid.Column="0" Grid.Row="4" Width=" auto" Margin="0,0.6,0,29.4" Grid.RowSpan="2"/>
+            <Label x:Name="label9" Content="12"  Grid.Column="0" Grid.Row="5" Width=" auto" Margin="0,0.2,0,0.4"/>
+            <Label x:Name="label10" Content="13"  Grid.Column="0" Grid.Row="6" Width=" auto" Margin="0,0.6,0,29.4" Grid.RowSpan="2"/>
+            <Label x:Name="label11" Content="14"  Grid.Column="0" Grid.Row="7" Width=" auto" Margin="0,0.2,0,0.4"/>
+            <Label x:Name="label12" Content="15"  Grid.Column="0" Grid.Row="8" Width=" auto" Margin="0,0.6,0,0"/>
+            <Label x:Name="label13" Content="סמן כל היום"  Grid.Column="0" Grid.Row="9" Width=" auto" Margin="0,0,0,0.4"/>
 
-            <Label x:Name="label14" Content="סמן הכל"  Grid.Column="0" Grid.Row="9" Width=" auto"/>
+            <Label x:Name="label14" Content="סמן הכל"  Grid.Column="0" Grid.Row="9" Width=" auto" Margin="0,30,0,0" Grid.RowSpan="2"/>
 
-            <CheckBox x:Name="checkBoxMain1" IsChecked="{Binding ElementName=checkBoxMain, Path=IsChecked, Mode=OneWay}" Checked="CheckBoxMain1_Checked" Unchecked="CheckBoxMain1_Checked" Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="8" VerticalAlignment="Center"/>
-            <CheckBox x:Name="checkBoxMain2" IsChecked="{Binding ElementName=checkBoxMain, Path=IsChecked, Mode=OneWay}" Checked="CheckBoxMain1_Checked" Unchecked="CheckBoxMain1_Checked" Grid.Column="2" HorizontalAlignment="Left"  Grid.Row="8" VerticalAlignment="Center"/>
-            <CheckBox x:Name="checkBoxMain3" IsChecked="{Binding ElementName=checkBoxMain, Path=IsChecked, Mode=OneWay}" Checked="CheckBoxMain1_Checked" Unchecked="CheckBoxMain1_Checked" Grid.Column="3" HorizontalAlignment="Left"  Grid.Row="8" VerticalAlignment="Center"/>
-            <CheckBox x:Name="checkBoxMain4" IsChecked="{Binding ElementName=checkBoxMain, Path=IsChecked, Mode=OneWay}" Checked="CheckBoxMain1_Checked" Unchecked="CheckBoxMain1_Checked" Grid.Column="4" HorizontalAlignment="Left"  Grid.Row="8" VerticalAlignment="Center"/>
-            <CheckBox x:Name="checkBoxMain5" IsChecked="{Binding ElementName=checkBoxMain, Path=IsChecked, Mode=OneWay}" Checked="CheckBoxMain1_Checked" Unchecked="CheckBoxMain1_Checked" Grid.Column="5" HorizontalAlignment="Left"  Grid.Row="8" VerticalAlignment="Center"/>
-            <CheckBox x:Name="checkBoxMain" Grid.ColumnSpan="5" Grid.Column="0" HorizontalAlignment="Center" Unchecked="CheckBoxMain_Checked" Checked="CheckBoxMain_Checked" Grid.Row="9" VerticalAlignment="Center"/>
+            <CheckBox x:Name="checkBoxMain1" IsChecked="{Binding ElementName=checkBoxMain, Path=IsChecked, Mode=OneWay}" Checked="CheckBoxMain1_Checked" Unchecked="CheckBoxMain1_Checked" Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="9" VerticalAlignment="Center" Margin="0,6,0,6.4" Height="18" Width="18"/>
+            <CheckBox x:Name="checkBoxMain2" IsChecked="{Binding ElementName=checkBoxMain, Path=IsChecked, Mode=OneWay}" Checked="CheckBoxMain1_Checked" Unchecked="CheckBoxMain1_Checked" Grid.Column="2" HorizontalAlignment="Left"  Grid.Row="9" VerticalAlignment="Center" Margin="0,6,0,6.4" Height="18" Width="18"/>
+            <CheckBox x:Name="checkBoxMain3" IsChecked="{Binding ElementName=checkBoxMain, Path=IsChecked, Mode=OneWay}" Checked="CheckBoxMain1_Checked" Unchecked="CheckBoxMain1_Checked" Grid.Column="3" HorizontalAlignment="Left"  Grid.Row="9" VerticalAlignment="Center" Margin="0.2,6,0,6.4" Height="18" Width="18"/>
+            <CheckBox x:Name="checkBoxMain4" IsChecked="{Binding ElementName=checkBoxMain, Path=IsChecked, Mode=OneWay}" Checked="CheckBoxMain1_Checked" Unchecked="CheckBoxMain1_Checked" Grid.Column="4" HorizontalAlignment="Left"  Grid.Row="9" VerticalAlignment="Center" Margin="0.2,6,0,6.4" Height="18" Width="18"/>
+            <CheckBox x:Name="checkBoxMain5" IsChecked="{Binding ElementName=checkBoxMain, Path=IsChecked, Mode=OneWay}" Checked="CheckBoxMain1_Checked" Unchecked="CheckBoxMain1_Checked" Grid.Column="5" HorizontalAlignment="Left"  Grid.Row="9" VerticalAlignment="Center" Margin="0.4,6,0,6.4" Height="18" Width="18"/>
+            <CheckBox x:Name="checkBoxMain" Grid.Column="2" HorizontalAlignment="Center" Unchecked="CheckBoxMain_Checked" Checked="CheckBoxMain_Checked" Grid.Row="10" VerticalAlignment="Center" Margin="30,5.6,28.8,6" Height="18" Width="18"/>
 
 
         </Grid>
-        <Label x:Name="label" Content="לוז עבודה שבועי" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95" Height="31" Margin="500,45,0,0"/>
-        <TextBlock x:Name="textBlock" FontSize="18" HorizontalAlignment="Left" Margin="79,6,0,0" TextWrapping="Wrap" Text="בחר בוחן לעדכון" VerticalAlignment="Top"/>
 
     </Grid>
 </UserControl>
