@@ -83,18 +83,8 @@
 
         </Grid>
 
-        <Grid x:Name="grid2" HorizontalAlignment="Left" Margin="5,420.8,0,0" Grid.Row="1" VerticalAlignment="Top" Height="0" Width="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-
-        </Grid>
+       
+        
 
     </Grid>
 </UserControl>

@@ -11,7 +11,7 @@
             <RowDefinition Height="41*"/>
             <RowDefinition Height="184*"/>
         </Grid.RowDefinitions>
-        <ComboBox x:Name="comboBox"  HorizontalAlignment="Left" Margin="294,28,0,0" VerticalAlignment="Top" Width="190" Height="36" SelectionChanged="ComboBox_SelectionChanged"/>
+        <ComboBox x:Name="comboBox"  HorizontalAlignment="Left" IsEditable="True" Margin="294,28,0,0" VerticalAlignment="Top" Width="190" Height="36" SelectionChanged="ComboBox_SelectionChanged"/>
 
         <Grid x:Name="grid1"  HorizontalAlignment="Left" Margin="289,4.4,0,0" Grid.Row="1" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>

@@ -159,10 +159,16 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Properties\DataSources\BE.Address.datasource" />
+    <None Include="Properties\DataSources\BE.Configuration.datasource" />
+    <None Include="Properties\DataSources\BE.Exceptions.datasource" />
     <None Include="Properties\DataSources\BE.Parameters.datasource" />
+    <None Include="Properties\DataSources\BE.Person.datasource" />
     <None Include="Properties\DataSources\BE.Test.datasource" />
     <None Include="Properties\DataSources\BE.Tester.datasource" />
     <None Include="Properties\DataSources\BE.Trainee.datasource" />
+    <None Include="Properties\DataSources\BL.BL.datasource" />
+    <None Include="Properties\DataSources\BL.BlFactory.datasource" />
+    <None Include="Properties\DataSources\BL.IBL.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

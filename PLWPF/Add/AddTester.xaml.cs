@@ -55,6 +55,7 @@ namespace PLWPF
 
         private void CheckAndAdd()
         {
+
             if (TempTester.Id.Length == 0)
             {
                 MessageBox.Show("נא להכניס תעודת זהות", "", MessageBoxButton.OK, MessageBoxImage.Stop, MessageBoxResult.OK
