@@ -3,9 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:BE="clr-namespace:BE;assembly=BE" 
              x:Class="PLWPF.AddTest"
              mc:Ignorable="d" d:DesignHeight="350" d:DesignWidth="400"
-             FlowDirection="RightToLeft">
+             FlowDirection="RightToLeft" Loaded="UserControl_Loaded">
+
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="traineeViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Trainee}, CreateList=True}"/>
+    </UserControl.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -14,7 +19,7 @@
         </Grid.RowDefinitions>
 
 
-        <Grid x:Name="FormGrid" Grid.Row="1" >
+        <Grid x:Name="FormGrid" Grid.Row="1" DataContext="{StaticResource traineeViewSource}" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -35,8 +40,35 @@
             <ComboBox Width="50" x:Name="TimeComboBox" VerticalAlignment="Center"  Grid.Row="2" Margin="5,4.2,75.4,3.8" HorizontalAlignment="Center" Grid.Column="1" RenderTransformOrigin="-0.235,0.512" />
 
             <Label  Content="Trainee Id:" VerticalAlignment="Center" Grid.Row="3" Margin="3,22,0,18.4" HorizontalAlignment="Left" Grid.Column="0" />
-            <TextBox x:Name="traineeIdTextBox" Width="120" VerticalAlignment="Center" Text="{Binding TraineeId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="2.8,24,0,19.4" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <TextBox x:Name="traineeIdTextBox" Width="120" VerticalAlignment="Center" Grid.Row="3" Margin="2.8,24,0,19.4" Height="23" HorizontalAlignment="Left" Grid.Column="1" Text="{Binding Mode=OneWay}"/>
             <Button x:Name="button" Content="קבע טסט" Grid.Column="1" HorizontalAlignment="Left" Margin="93.8,40.019,-39.2,0" Grid.Row="5" VerticalAlignment="Top" Width="95" Click="Button_Click"/>
+            
+            
+            <DataGrid x:Name="traineeDataGrid" Grid.Row="3" Grid.Column="1" AutoGenerateColumns="False" Grid.ColumnSpan="1" EnableRowVirtualization="True" ItemsSource="{Binding}" Grid.RowSpan="1" RowDetailsVisibilityMode="VisibleWhenSelected">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn x:Name="idColumn" Header="Id" Width="auto">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Id}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn x:Name="fullNameColumn" Header="Full Name" IsReadOnly="True" Width="auto">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding FullName}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn x:Name="lastTestColumn" Header="Last Test" Width="SizeToHeader">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding LastTest}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
 
 

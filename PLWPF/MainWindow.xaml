@@ -19,6 +19,10 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="70"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="FontSize"
+                    Value="15" />
+        </Style>
     </Window.Resources>
     <Window.Triggers>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">

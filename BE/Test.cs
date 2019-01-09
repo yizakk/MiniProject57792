@@ -15,10 +15,15 @@ namespace BE
             this.TraineeId = TraineeId;
             Date = dateTime;
             BeginAddress = new Address();
+            Parameters = new Parameters();
+
+
         }
         public Test() // default
         {
             BeginAddress = new Address();
+            Parameters = new Parameters();
+
         }
 
         // copy c-tor for deep copying
@@ -33,6 +38,8 @@ namespace BE
             TesterComment = Other.TesterComment;
             Parameters = new Parameters(Other.Parameters);
             BeginAddress = new Address(Other.BeginAddress);
+            Parameters = new Parameters();
+
 
 
         }

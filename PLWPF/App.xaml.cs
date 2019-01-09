@@ -13,5 +13,9 @@ namespace PLWPF
     /// </summary>
     public partial class App : Application
     {
+        private void TextBox_AccessKeyPressed(object sender, System.Windows.Input.AccessKeyPressedEventArgs e)
+        {
+
+        }
     }
 }

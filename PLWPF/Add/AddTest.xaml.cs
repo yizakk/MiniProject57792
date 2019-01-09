@@ -29,6 +29,7 @@ namespace PLWPF
                 array[i] = i + 9;
             }
             TimeComboBox.ItemsSource = array;
+            TimeComboBox.SelectedIndex = 0;
 
             try
             {
@@ -39,12 +40,32 @@ namespace PLWPF
             {
                 MessageBox.Show(a.Message);
             }
+
+            if(Data.UserType == Data.Usertype.תלמיד)
+            {
+                traineeDataGrid.Visibility = Visibility.Collapsed;
+                traineeIdTextBox.Text  = Data.UserID;
+                //traineeDataGrid.DataContext = bl.FindTrainee(Data.UserID);
+                TempTest.CarType = bl.FindTrainee(Data.UserID).Car_type;
+                TempTest.TraineeId = Data.UserID;
+            }
+            else
+            {
+                traineeDataGrid.DataContext = bl.GetTraineeList();
+            }
+           
         }
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             TempTest.Date = new DateTime(TempTest.Date.Year, TempTest.Date.Month, TempTest.Date.Day, (int)TimeComboBox.SelectedValue, 0, 0);
+            if(Data.UserType != Data.Usertype.תלמיד)
+            {
+                var Trainee = (BE.Trainee)traineeDataGrid.SelectedValue;
+                TempTest.CarType = Trainee.Car_type;
+                TempTest.TraineeId = Trainee.Id;
+            }
             try
             {
                 bl.AddTest(TempTest);
@@ -81,5 +102,16 @@ namespace PLWPF
                  
         }
 
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            // Do not load your data at design time.
+            // if (!System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
+            // {
+            // 	//Load your data here and assign the result to the CollectionViewSource.
+            // 	System.Windows.Data.CollectionViewSource myCollectionViewSource = (System.Windows.Data.CollectionViewSource)this.Resources["Resource Key for CollectionViewSource"];
+            // 	myCollectionViewSource.Source = your data
+            // }
+        }
     }
 }

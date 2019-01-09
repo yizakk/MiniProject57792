@@ -27,11 +27,15 @@ namespace BE
         public Parameters() { }
         public Parameters(Parameters other)
         {
-            distance = other.distance;
-            ReversePark = other.ReversePark;
-            usingMirrors = other.usingMirrors;
-            speed = other.speed;
-            usingVinkers = other.usingVinkers;
+            if (other!=null)
+            {
+                distance = other.distance;
+                ReversePark = other.ReversePark;
+                usingMirrors = other.usingMirrors;
+                speed = other.speed;
+                usingVinkers = other.usingVinkers;
+            }
+            
         }
 
         public bool distance { get; set; }
