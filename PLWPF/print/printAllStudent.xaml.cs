@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -77,6 +78,17 @@ namespace PLWPF
                     traineeListView.Items.Add(new GridSplitter());
                 }
             }
+        }
+
+        private void TraineeListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            PopJump.IsOpen = true;
+            
+        }
+
+        private void PopJump_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            PopJump.IsOpen = false;
         }
     }
 }

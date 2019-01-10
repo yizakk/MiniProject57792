@@ -8,9 +8,19 @@
              d:DesignHeight="450" d:DesignWidth="1000" Foreground="DimGray" Background="Beige">
 
 
-
     <Grid x:Name="MainGrid" >
-        <ListView FrameworkElement.FlowDirection="RightToLeft" x:Name="traineeListView" ItemsSource="{Binding}"  SelectionMode="Extended">
+
+        <Popup Name="PopJump" Placement="MousePoint" Mouse.MouseDown="PopJump_MouseDown">
+            <Grid Width="50" Height="60">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Name="Edit" Text="עדכן" Foreground="White"/>
+                <TextBlock Name="Delete" Text="מחק" Grid.Row="1" Foreground="White"/>
+            </Grid>
+        </Popup>
+        <ListView FrameworkElement.FlowDirection="RightToLeft" Mouse.MouseDown="PopJump_MouseDown" MouseDoubleClick="TraineeListView_MouseDoubleClick" x:Name="traineeListView" ItemsSource="{Binding}"  SelectionMode="Extended">
             <ListView.ItemContainerStyle>
                 <Style>
                     <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
