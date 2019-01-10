@@ -23,6 +23,8 @@ namespace PLWPF
     {
 
         Tester TempTester;
+        BE.Address address = new Address();
+
         BL.IBL bl;
         public AddTester()
         {
@@ -43,6 +45,10 @@ namespace PLWPF
                 MessageBox.Show(a.Message);
             }
 
+            
+
+            grid2.DataContext = address;
+
             TempTester.Id = Data.UserID;
             car_typeComboBox.ItemsSource = Enum.GetValues(typeof(CarType));
             genderComboBox.ItemsSource = Enum.GetValues(typeof(Gender));
@@ -50,7 +56,9 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            TempTester.Address = address;
             CheckAndAdd();
+            
         }
 
         private void CheckAndAdd()

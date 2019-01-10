@@ -3,9 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:BE="clr-namespace:BE;assembly=BE" 
              x:Class="PLWPF.AddStudent" mc:Ignorable="d"  FlowDirection="RightToLeft"
-             d:DesignHeight="600" d:DesignWidth="600" BorderThickness="2">
-    
+             d:DesignHeight="600" d:DesignWidth="600" BorderThickness="2" Loaded="UserControl_Loaded_2">
+
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="addressViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Address}, CreateList=True}"/>
+    </UserControl.Resources>
+
     <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="59*"/>
@@ -14,7 +19,7 @@
             <RowDefinition Height="11*"/>
             <RowDefinition Height="109*"/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Center"  Text="אנא הכנס פרטים"   FontSize="35" Grid.ColumnSpan="1" Width="274" Grid.RowSpan="2"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Center"  Text="אנא הכנס פרטים"   FontSize="35" Grid.ColumnSpan="1" Width="auto" Grid.RowSpan="2" Margin="165,-10,173,10"/>
         <Grid x:Name="grid1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="485"  Width="226" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -70,20 +75,33 @@
             <Label Content="מספר שיעורים" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="10" VerticalAlignment="Center"/>
             <TextBox x:Name="numLessonsTextBox" KeyDown="KeyDownCheckIfNotNumber" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="10" Text="{Binding NumLessons, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
 
-            <Label Content="רחוב:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="11" VerticalAlignment="Center"/>
-            <TextBox x:Name="streetTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="11" Text="{Binding Street, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-
-            <Label Content="מספר:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="12" VerticalAlignment="Center"/>
-            <TextBox x:Name="buildingNumberTextBox" KeyDown="KeyDownCheckIfNotNumber" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="12" Text="{Binding BuildingNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120 " BorderThickness=" 2"/>
-
-            <Label Content="עיר" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="13" VerticalAlignment="Center"/>
-            <TextBox x:Name="cityTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="13" Text="{Binding city, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
             <Button x:Name="button" Content="הוסף" HorizontalAlignment="Left"  Grid.Row="3" VerticalAlignment="Top" Width="75" Click="Button_Click_1" Grid.Column="1" Margin="330,8,-277.8,0" Grid.RowSpan="2"/>
 
         </Grid>
 
-       
-        
+
+
+
+        <Grid x:Name="grid2" DataContext="{StaticResource addressViewSource}" HorizontalAlignment="Left" Margin="-6,367.333,0,0" Grid.Row="1" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Building Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,0" Grid.Row="0" VerticalAlignment="Top"/>
+            <TextBox x:Name="buildingNumberTextBox1" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding BuildingNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="city:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+            <TextBox x:Name="cityTextBox1" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding city, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Street:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+            <TextBox x:Name="streetTextBox1" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding Street, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+        </Grid>
+
+
+
 
     </Grid>
 </UserControl>

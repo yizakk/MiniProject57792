@@ -62,7 +62,7 @@
 
 
             <Label Content="ותק:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="9" VerticalAlignment="Center"/>
-            <TextBox  x:Name="seniorityTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="9"  VerticalAlignment="Center" Width="120"/>
+            <TextBox  x:Name="seniorityTextBox" Text="0" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="9"  VerticalAlignment="Center" Width="120"/>
             <ScrollBar x:Name="SeniorityScrollBar" Value="{Binding Seniority , Mode=OneWayToSource}" Grid.Column="1" Grid.Row="9" HorizontalAlignment="Right"  VerticalAlignment="Top" Maximum="100" Margin="5,5,5,5" SmallChange="1" Orientation="Horizontal" ValueChanged="ScrollBar_ValueChanged" />
         </Grid>
         

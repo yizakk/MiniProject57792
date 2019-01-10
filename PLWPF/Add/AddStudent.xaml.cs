@@ -14,6 +14,8 @@ namespace PLWPF
 
         Trainee TempTrainee;
         BL.IBL bl;
+        BE.Address address = new Address();
+
 
         public AddStudent()
         {
@@ -33,14 +35,14 @@ namespace PLWPF
                 MessageBox.Show(a.Message);
             }
 
-            //try
-            //{
-            //  //  grid2.DataContext = TempTrainee.Address;
-            //}
-            //catch (Exception a)
-            //{
-            //    MessageBox.Show(a.Message);
-            //}
+            try
+            {
+                grid2.DataContext = address;
+            }
+            catch (Exception a)
+            {
+                MessageBox.Show(a.Message);
+            }
 
             TempTrainee.Id = Data.UserID;
             
@@ -87,6 +89,7 @@ namespace PLWPF
 
             try
             {
+                TempTrainee.Address = address;
                 bl.AddTrainee(TempTrainee);
             }
             catch (Exception c)
@@ -138,6 +141,35 @@ namespace PLWPF
                 MessageBox.Show("השדה " +  " יכול להכיל רק מספרים!","",MessageBoxButton.OK,MessageBoxImage.None,
                                     MessageBoxResult.OK,MessageBoxOptions.RtlReading);
             }
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UserControl_Loaded_1(object sender, RoutedEventArgs e)
+        {
+
+            // Do not load your data at design time.
+            // if (!System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
+            // {
+            // 	//Load your data here and assign the result to the CollectionViewSource.
+            // 	System.Windows.Data.CollectionViewSource myCollectionViewSource = (System.Windows.Data.CollectionViewSource)this.Resources["Resource Key for CollectionViewSource"];
+            // 	myCollectionViewSource.Source = your data
+            // }
+        }
+
+        private void UserControl_Loaded_2(object sender, RoutedEventArgs e)
+        {
+
+            // Do not load your data at design time.
+            // if (!System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
+            // {
+            // 	//Load your data here and assign the result to the CollectionViewSource.
+            // 	System.Windows.Data.CollectionViewSource myCollectionViewSource = (System.Windows.Data.CollectionViewSource)this.Resources["Resource Key for CollectionViewSource"];
+            // 	myCollectionViewSource.Source = your data
+            // }
         }
     }
 }
