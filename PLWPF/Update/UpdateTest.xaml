@@ -63,7 +63,7 @@
                 <TextBlock x:Name="dateTextBlock" VerticalAlignment="Center" Text="{Binding Date}" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="1"/>
 
                 <Label Content="כתובת התחלה:" VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="0" />
-                <TextBlock x:Name="beginAddressTextBlock" VerticalAlignment="Center" Text="{Binding BeginAddress}" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="1"/>
+                <TextBox x:Name="beginAddressTextBlock" VerticalAlignment="Center" Text="{Binding BeginAddressString, Mode=OneTime}" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="1"/>
 
                 <Label Content="נכשל/עובר:" VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" />
                 <CheckBox x:Name="passedCheckBox" VerticalAlignment="Center" Grid.Row="6" Margin="3" IsChecked="{Binding Passed, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
