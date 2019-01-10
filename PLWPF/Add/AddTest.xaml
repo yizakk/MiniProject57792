@@ -38,7 +38,7 @@
         <TextBlock Name="SearchTextBlock" Grid.Row="2" FontSize="14" Text="בחר תלמיד מהרשימה למטה או לחילופין חפש לפי מספר ת.ז" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
      
 
-        <ComboBox Name="SearchComboBox" IsEditable="True" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" Width="auto" SelectionChanged="SearchComboBox_SelectionChanged" Margin="37,16,37.667,0"/>
+        <ComboBox Name="SearchComboBox" IsEditable="True" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" Width="auto" SelectedIndex="0" SelectionChanged="SearchComboBox_SelectionChanged" Margin="37,16,37.667,0"/>
 
         <ListView x:Name="traineeListView" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding}"  Grid.Row="3" Grid.RowSpan="1" SelectionMode="Single" >
             <ListView.ItemContainerStyle>

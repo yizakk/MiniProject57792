@@ -18,56 +18,56 @@
         <ListView x:Name="testListView" SelectionMode="Single" ItemsSource="{Binding}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn x:Name="beginAddressColumn" Width="auto" Header="Begin Address">
+                    <GridViewColumn x:Name="beginAddressColumn" Width="auto" Header="כתובת התחלה">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="6,-1,-6,-1" Text="{Binding BeginAddress}"/>
+                                <TextBlock Margin="6,-1,-6,-1" Text="{Binding adress}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="carTypeColumn" Width="auto" Header="Car Type">
+                    <GridViewColumn x:Name="carTypeColumn" Width="auto" Header="סוג רכב">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Margin="-6,-1" Text="{Binding CarType}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="dateColumn" Width="auto" Header="Date">
+                    <GridViewColumn x:Name="dateColumn" Width="auto" Header="תאריך">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Margin="-6,-1" Text="{Binding Date}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="idColumn" Width="auto" Header="Id">
+                    <GridViewColumn x:Name="idColumn" Width="auto" Header="מספר מבחן">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Margin="-6,-1" Text="{Binding Id}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="passedColumn" Width="auto" Header="Passed">
+                    <GridViewColumn x:Name="passedColumn" Width="auto" Header="עבר">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <CheckBox IsEnabled="False" IsChecked="{Binding Passed}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="testerCommentColumn" Width="auto" Header="Tester Comment">
+                    <GridViewColumn x:Name="testerCommentColumn" Width="auto" Header="הערת בוחן">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Margin="-6,-1" Text="{Binding TesterComment}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="testerIdColumn" Width="auto" Header="Tester Id">
+                    <GridViewColumn x:Name="testerIdColumn" Width="auto" Header=" ת.ז בוחן">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Margin="-6,-1" Text="{Binding TesterId}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="traineeIdColumn" Width="auto" Header="Trainee Id">
+                    <GridViewColumn x:Name="traineeIdColumn" Width="auto" Header=" ת.ז תלמיד">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Margin="-6,-1" Text="{Binding TraineeId}"/>
