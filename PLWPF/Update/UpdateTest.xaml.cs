@@ -20,6 +20,7 @@ namespace PLWPF
     /// </summary>
     public partial class UpdateTest : UserControl
     {
+        BE.Address Address = new BE.Address();
         BE.Test TestItem;
         BL.IBL bl = BL.BlFactory.GetBL();
         public UpdateTest()
@@ -35,6 +36,7 @@ namespace PLWPF
                 comboBox.IsEnabled = false;
             }
             comboBox.ItemsSource = sourceList;
+            grid2.DataContext = Address;
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -51,6 +53,12 @@ namespace PLWPF
         {
             try
             {
+
+                TestItem.BeginAddress = Address;
+
+
+                string temp = cityTextBox.Text + " " + streetTextBox.Text + " " + buildingNumberTextBox;
+               TestItem.adress = temp;
                 bl.UpdateTest(TestItem);
             }
             catch (BE.Exceptions cat)

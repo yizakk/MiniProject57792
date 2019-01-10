@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class Test
+    public class Test : Address
     {
         #region C-tors
         // ******************************    c-tors     ****************
@@ -59,13 +59,13 @@ namespace BE
         /// Marks if a test is one that was offered to the trainee by the system , or not
         /// </summary>
         public bool IsReturning  { get; set; }
-
+        public string adress { get; set; }
         public Address BeginAddress { get; set; }
         public string BeginAddressString
         {
             get
             {
-                if (BeginAddress==null)
+                if (BeginAddress == null)
                     return BeginAddress.city + ", " + BeginAddress.Street + ", " + BeginAddress.BuildingNumber;
                 else
                     return "";

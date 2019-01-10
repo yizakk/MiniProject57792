@@ -11,6 +11,7 @@
     <UserControl.Resources>
         <CollectionViewSource x:Key="testViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Test}, CreateList=True}"/>
         <CollectionViewSource x:Key="parametersViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Parameters}, CreateList=True}"/>
+        <CollectionViewSource x:Key="addressViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Address}, CreateList=True}"/>
     </UserControl.Resources>
 
     <Grid>
@@ -62,16 +63,31 @@
                 <Label Content="תאריך:" VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" />
                 <TextBlock x:Name="dateTextBlock" VerticalAlignment="Center" Text="{Binding Date}" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="1"/>
 
-                <Label Content="כתובת התחלה:" VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="0" />
-                <TextBlock x:Name="beginAddressTextBlock" VerticalAlignment="Center" Text="{Binding BeginAddress}" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="1"/>
 
                 <Label Content="נכשל/עובר:" VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" />
                 <CheckBox x:Name="passedCheckBox" VerticalAlignment="Center" Grid.Row="6" Margin="3" IsChecked="{Binding Passed, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
 
                 <Label Content="הערת הבוחן:" VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="0" />
                 <TextBox x:Name="testerCommentTextBox" Width="120" VerticalAlignment="Center" Text="{Binding TesterComment, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Grid x:Name="grid2" Grid.Column="1" DataContext="{StaticResource addressViewSource}" HorizontalAlignment="Left" Margin="205.333,22,-99,0" VerticalAlignment="Top" Grid.RowSpan="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Building Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                    <TextBox x:Name="buildingNumberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding BuildingNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                    <Label Content="city:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+                    <TextBox x:Name="cityTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding city, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                    <Label Content="Street:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+                    <TextBox x:Name="streetTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding Street, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                </Grid>
             </Grid>
-            <Grid x:Name="ParametersGrid" Grid.Column="1" DataContext="{StaticResource parametersViewSource}" HorizontalAlignment="Center"  VerticalAlignment="Center">
+            <Grid x:Name="ParametersGrid" Grid.Column="1" DataContext="{StaticResource parametersViewSource}" HorizontalAlignment="Center"  VerticalAlignment="Center" Margin="235,24,32,130.133">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
@@ -94,6 +110,7 @@
                 <Label Content="שימוש בוינקרים:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
                 <CheckBox x:Name="usingVinkersCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding usingVinkers, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
             </Grid>
+            <Label x:Name="label" Content="הכנס כתובת התחלתית של הטסט" HorizontalAlignment="Left" Margin="319,27,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
 
         </Grid>
         <Button x:Name="button" Content="עדכן" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center" Width="76" Click="Button_Click" Margin="362,11.6"/>
