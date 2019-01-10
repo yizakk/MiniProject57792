@@ -1,4 +1,7 @@
 ﻿
+using System.Collections;
+using System.Reflection;
+
 namespace BE
 {
     public enum Gender
@@ -22,7 +25,7 @@ namespace BE
     }
 
 
-    public class Parameters
+    public class Parameters 
     {
         public Parameters() { }
         public Parameters(Parameters other)
@@ -37,12 +40,35 @@ namespace BE
             }
             
         }
-
         public bool distance { get; set; }
         public bool ReversePark { get; set; }
         public bool usingMirrors { get; set; }
         public bool speed { get; set; }
         public bool usingVinkers { get; set; }
+        public int count_parameters = 5;
+
+        //public static int Count {
+        //    get
+        //    {
+        //        foreach(PropertyInfo item in Parameters )
+        //    }
+        //}
+
+        //public static string ToStringProperty<T>(this T t)
+        //{
+        //    string str = "";
+        //    foreach (PropertyInfo item in t.GetType().GetProperties())
+        //        str += "\n" + item.Name + ": " + item.GetValue(t, null);
+        //    return str;
+        //}
+
+        //public IEnumerator GetEnumerator()
+        //{
+        //    foreach (var item in Yomit)
+        //    {
+        //        yield return item;
+        //    }
+        //}
     }
 
     public class Address

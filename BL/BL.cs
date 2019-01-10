@@ -532,7 +532,16 @@ namespace BL
 
         public void UpdateTest(Test testItem)
         {
-            dal.UpdateTest(testItem);
+            if (testItem.Passed)
+            {
+                int count = 0;
+                for (int i = 0; i < testItem.Parameters.count_parameters; i++)
+                {
+                  
+                }
+            }
+            else { dal.UpdateTest(testItem); }
+                
         }
     }
 }
