@@ -48,7 +48,7 @@
                   Grid.Column="0"
                   CornerRadius="0" 
                   Margin="1" 
-                  Background="#FF3F3F3F" 
+                  Background="Bisque" 
                   BorderBrush="#FF97A0A5"
                   BorderThickness="0,0,1,0" />
                 <Path 
