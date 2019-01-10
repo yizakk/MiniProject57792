@@ -109,6 +109,7 @@ namespace PLWPF
             {
                 MessageBox.Show("התלמיד נוסף בהצלחה!", "", MessageBoxButton.OK, MessageBoxImage.Asterisk, MessageBoxResult.OK,
                     MessageBoxOptions.RtlReading);
+                Data.UserID = TempTrainee.Id;
                 Data.MainUserControl = new  HomePanel();
                  
                 return;

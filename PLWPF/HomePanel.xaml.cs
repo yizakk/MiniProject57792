@@ -13,14 +13,18 @@ namespace PLWPF
 
             InitializeComponent();
 
-            if(Data.UserType == Data.Usertype.תלמיד)
+            if (Data.UserType == Data.Usertype.תלמיד)
             {
                 delTesterButton.Visibility = Visibility.Collapsed;
                 testerButton.Visibility = Visibility.Collapsed;
                 UpTesterButton.Visibility = Visibility.Collapsed;
                 UpTestButton.Visibility = Visibility.Collapsed;
+                UpTraineeButton.Content = "עדכון פרטים";
             }
-
+            if (Data.UserType == Data.Usertype.בוחן)
+            {
+                UpTesterButton.Content = "עדכון פרטים";
+            }
         }
 
         private void TraineeButton_Click(object sender, RoutedEventArgs e)

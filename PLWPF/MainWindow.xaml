@@ -6,6 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d" Height="600" Width="1080"  Foreground="Black" ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"  WindowState="Normal" WindowStyle="None" FlowDirection="RightToLeft" >
+    
     <Window.Resources>
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
@@ -28,8 +29,8 @@
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="15"  />
             <Setter Property="Foreground" Value="Black" />
-
         </Style>
+
 
         <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
             <Grid>

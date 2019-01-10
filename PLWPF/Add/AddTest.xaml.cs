@@ -98,7 +98,6 @@ namespace PLWPF
 
             TempTest = new Test();
             TempTest.Date = DateTime.Now;
-
                  
         }
 
@@ -111,7 +110,7 @@ namespace PLWPF
 
                 if (trainee != null)
                 {
-                    traineeListView.Visibility = Visibility.Collapsed;
+                    //traineeListView.Visibility = Visibility.Collapsed;
                     traineeListView.SelectedValue = trainee;
                 }
             }

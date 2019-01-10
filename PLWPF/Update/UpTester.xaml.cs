@@ -40,11 +40,19 @@ namespace PLWPF
                 button.IsEnabled = false;
                 comboBox.IsEnabled = false;
             }
-            comboBox.ItemsSource = sourceList;
-            button.IsEnabled = false;
             car_typeComboBox.ItemsSource = Enum.GetValues(typeof(CarType));
             genderComboBox.ItemsSource = Enum.GetValues(typeof(Gender));
 
+            if(Data.UserType == Data.Usertype.בוחן)
+            {
+                TempTester = bl.FindTester(Data.UserID);
+                grid1.DataContext = TempTester;
+                comboBox.Visibility = Visibility.Collapsed;
+                textBlock.Visibility = Visibility.Collapsed;
+                return;
+            }
+            comboBox.ItemsSource = sourceList;
+            button.IsEnabled = false;
 
         }
 
