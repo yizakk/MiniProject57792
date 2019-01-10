@@ -58,7 +58,7 @@ namespace PLWPF
                 TestItem.BeginAddress = Address;
             
 
-                string temp = cityTextBox.Text + " " + streetTextBox.Text + " " + buildingNumberTextBox;
+                string temp = cityTextBox.Text + " " + streetTextBox.Text + " " + buildingNumberTextBox.Text;
                TestItem.adress = temp;
                 bl.UpdateTest(TestItem);
             }
