@@ -18,7 +18,7 @@ namespace PLWPF
         static string _userId = "";
         public static string UserID { get { return _userId; } set { _userId = value; } }
 
-        public static System.Windows.Controls.UserControl _MainUserControl = null;
+        static System.Windows.Controls.UserControl _MainUserControl = null;
         public static System.Windows.Controls.UserControl MainUserControl
         {
             get
