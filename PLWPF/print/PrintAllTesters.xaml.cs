@@ -36,7 +36,7 @@ namespace PLWPF
             {
                 testerListView.DataContext = bl.GetTesters();
             }
-            else if(index ==1)
+            else if(index == 1)
             {
                 foreach (var item in bl.TestersGroupedByCarType(true))
                 {
