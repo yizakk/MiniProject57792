@@ -38,7 +38,7 @@ namespace PLWPF
                 traineeListView.Visibility = Visibility.Collapsed;
                 SearchComboBox.Visibility = Visibility.Collapsed;
                 SearchTextBlock.Visibility = Visibility.Collapsed;
-                SearchTextBox.Visibility = Visibility.Collapsed;
+               // SearchTextBox.Visibility = Visibility.Collapsed;
                 traineeIdTextBox.Text  = Data.UserID;
                 //traineeIdTextBox.Visibility = Visibility.Visible;
                 TempTest.CarType = bl.FindTrainee(Data.UserID).Car_type;
