@@ -20,7 +20,7 @@
                 <ComboBoxItem TabIndex="4">הדפסת כל הבוחנים</ComboBoxItem>
                 <ComboBoxItem TabIndex="5">הדפסת כל הבוחנים שגילם מעל 60</ComboBoxItem>
                 <ComboBoxItem TabIndex="6">בוחנים לפי סוג הרכב</ComboBoxItem>
-                <ComboBoxItem>הדפסת כל הטסטים</ComboBoxItem>
+                <ComboBoxItem TabIndex="7">הדפסת כל הטסטים</ComboBoxItem>
             </ComboBox>
         </Grid>
 

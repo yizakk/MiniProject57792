@@ -35,14 +35,25 @@ namespace PLWPF
                     Grid2.Children.Add(new printAllStudent());
                     break;
                 case 1:
+                    Grid2.Children.Add(new printAllStudent(1));
                     break;
                 case 2:
-                    Grid2.Children.Add(new PrintAllTesters(0));
-
-                    //Grid2.Children.Add(new PrintAllTests());
+                    Grid2.Children.Add(new printAllStudent(2));
                     break;
                 case 3:
+                    Grid2.Children.Add(new printAllStudent(3));
+                    break;
+                case 4:
+                    Grid2.Children.Add(new PrintAllTesters(0));
+                    break;
+                case 5:
+                    Grid2.Children.Add(new PrintAllTesters(2));
+                    break;
+                case 6:
                     Grid2.Children.Add(new PrintAllTesters(1));
+                    break;
+                case 7:
+                    Grid2.Children.Add(new PrintAllTests());
                     break;
             }
         }

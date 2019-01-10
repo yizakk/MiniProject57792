@@ -78,7 +78,7 @@ namespace PLWPF
 
         private void KeyDownCheckIfNotNumber(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            NumericCheck(sender, e);
+            Data.NumericCheck(sender, e);
         }
 
 

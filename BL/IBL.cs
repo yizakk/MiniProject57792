@@ -48,6 +48,7 @@ namespace BL
         IEnumerable<Test> GetTests();
 
         IEnumerable<Tester> GetTesters();
+        IEnumerable<Tester> TestersOver60YO();
 
         IEnumerable<string> GetTestsIdList();
         IEnumerable<string> GetTraineesIdList();

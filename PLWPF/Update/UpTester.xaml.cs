@@ -58,28 +58,29 @@ namespace PLWPF
             checkBoxMain4.IsChecked = false;
             checkBoxMain5.IsChecked = false;
 
-            string a = comboBox.SelectedValue.ToString().Split(' ')[0];
-            TempTester = bl.FindTester(a);
-            grid1.DataContext = TempTester;
-            AddressGrid.DataContext = TempTester.Address;
-
-
-            int i = 0, j = 0, k = 1;
-            foreach (var item in ScheduleGrid.Children)
+            if (comboBox.SelectedIndex != -1)
             {
-                if (item is CheckBox)
+                string a = comboBox.SelectedValue.ToString().Split(' ')[0];
+                TempTester = bl.FindTester(a);
+                grid1.DataContext = TempTester;
+
+                int i = 0, j = 0, k = 1;
+                foreach (var item in ScheduleGrid.Children)
                 {
-                    var value = item as CheckBox;
-                    if (value.Name == "checkBox" + k++)
+                    if (item is CheckBox)
                     {
-                        Binding binding = new Binding();
-                        binding.Source = TempTester.WorkSchedule(i, j++);
-                        binding.Mode = BindingMode.OneTime;
-                        value.SetBinding(ToggleButton.IsCheckedProperty, binding);
-                        if (j == 7)
+                        var value = item as CheckBox;
+                        if (value.Name == "checkBox" + k++)
                         {
-                            j = 0;
-                            i++;
+                            Binding binding = new Binding();
+                            binding.Source = TempTester.WorkSchedule(i, j++);
+                            binding.Mode = BindingMode.OneTime;
+                            value.SetBinding(ToggleButton.IsCheckedProperty, binding);
+                            if (j == 7)
+                            {
+                                j = 0;
+                                i++;
+                            }
                         }
                     }
                 }

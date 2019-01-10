@@ -20,13 +20,63 @@ namespace PLWPF
     /// </summary>
     public partial class printAllStudent : UserControl
     {
+            BL.IBL bl = BL.BlFactory.GetBL();
         public printAllStudent()
         {
             InitializeComponent();
-            BL.IBL bl = BL.BlFactory.GetBL();
             traineeListView.DataContext = bl.GetTraineeList();
-            
         }
 
+        public printAllStudent(int index)
+        {
+            InitializeComponent();
+
+            if (index==1) // Getting all Trainees Grouped by teacher name
+            {
+                foreach (var item in bl.TraineesGroupedByTeacherName(true))
+                {
+                    //var split = new TextBlock();
+                    //split.HorizontalAlignment = HorizontalAlignment.Center;
+                    //split.VerticalAlignment = VerticalAlignment.Center;
+                    //split.Width = 200;
+                    //split.FontSize = 20;
+                    //split.Text = item.First().Car_type.ToString();
+
+
+                    foreach (var tester in item)
+                    {
+                        traineeListView.Items.Add(tester);
+                    }
+                    traineeListView.Items.Add(new { ItemName = item.First().Car_type.ToString() });
+                   
+                }
+            }
+            else if( index ==2)
+            {
+                foreach (var item in bl.TraineesGroupedBySchoolName(true))
+                {
+                    foreach (var tester in item)
+                    {
+                        traineeListView.Items.Add(tester);
+                    }
+
+                    traineeListView.Items.Add(new GridSplitter());
+                }
+            }
+
+            else if (index == 3)
+            {
+                foreach (var item in bl.TraineesGroupedByNumOfTestsDone(true))
+                {
+                    foreach (var tester in item)
+                    {
+                        traineeListView.Items.Add(tester);
+                    }
+                    var split = new GridSplitter();
+
+                    traineeListView.Items.Add(new GridSplitter());
+                }
+            }
+        }
     }
 }

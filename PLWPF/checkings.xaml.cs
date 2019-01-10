@@ -24,10 +24,8 @@ namespace PLWPF
         public checkings()
         {
             InitializeComponent();
-            DataGridMain.DataContext = bl.TestersGroupedByCarType(true);
-
+            //DataGridMain.DataContext = bl.TestersGroupedByCarType(true);
         }
-
     }
 }
 

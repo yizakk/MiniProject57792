@@ -20,6 +20,9 @@ namespace PLWPF
     /// </summary>
     public partial class PrintAllTesters : UserControl
     {
+        /// <summary>
+        /// C-tor for printing without grouping
+        /// </summary>
         public PrintAllTesters()
         {
             InitializeComponent();
@@ -27,6 +30,11 @@ namespace PLWPF
             BL.IBL bl = BL.BlFactory.GetBL();
             testerListView.DataContext = bl.GetTesters();
         }
+
+        /// <summary>
+        /// C-tor switching which grouping to create in the list...
+        /// </summary>
+        /// <param name="index"></param>
         public PrintAllTesters(int index)
         {
             InitializeComponent();
@@ -36,7 +44,20 @@ namespace PLWPF
             {
                 testerListView.DataContext = bl.GetTesters();
             }
-            else if(index == 1)
+            else if (index == 2)
+            {
+                var DataSource = bl.TestersOver60YO(); ;
+                if(!DataSource.Any())
+                {
+                    MessageBox.Show("אין בוחנים מתאימים לתנאי זה", "", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK
+                                        , MessageBoxOptions.RtlReading);
+                    return;
+                }
+                testerListView.DataContext = DataSource;
+            }
+
+
+            else if (index == 1)
             {
                 foreach (var item in bl.TestersGroupedByCarType(true))
                 {
@@ -47,11 +68,8 @@ namespace PLWPF
                     var split = new GridSplitter();
 
                     testerListView.Items.Add(new GridSplitter());
-
                 }
             }
         }
-
-
     }
 }
