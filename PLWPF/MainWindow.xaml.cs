@@ -21,7 +21,8 @@ namespace PLWPF
         public MainWindow()
         {
             InitializeComponent();
-            Data.MainUserControl = new Login();
+            Data.MainUserControl = new checkings(); //new Login();
+
             GridMain.Children.Add(Data.MainUserControl);
             Data.UserControlChanged += UserTypeChanged; // adding local func. "userTypeChanged" to handle the change of user type
         }

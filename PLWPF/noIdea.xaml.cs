@@ -16,26 +16,13 @@ using System.Windows.Shapes;
 namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for Grouping.xaml
+    /// Interaction logic for noIdea.xaml
     /// </summary>
-    public partial class Grouping : UserControl
+    public partial class noIdea : UserControl
     {
-       
-        BL.IBL bl = BL.BlFactory.GetBL();
-
-
-        public Grouping()
+        public noIdea()
         {
             InitializeComponent();
-        }
-
-        private void TraineeButton_Click(object sender, RoutedEventArgs e)
-        {
-            Data.MainUserControl = new stam();
-            
-
-           
-
         }
     }
 }

@@ -128,19 +128,29 @@ namespace PLWPF
 
         private void KeyDownCheckIfNotNumber(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            string key = e.Key.ToString().TrimStart('D');
-            int value = -1;
-            bool convert = int.TryParse(key, out value);
 
+            Data.NumericCheck(sender,e);
+            //if (e.Key == System.Windows.Input.Key.Tab )
+            //{ return; }
+            //if(e.Key == System.Windows.Input.Key.Enter)
+            //{
+            //    return;
+            //}
 
-            if (!convert)
-            {
-                e.Handled = true;
-                var item = (TextBox)sender;
+            //string key = e.Key.ToString().TrimStart('D');
+            //int value = -1;
+            //bool convert = int.TryParse(key, out value);
 
-                MessageBox.Show("השדה " +  " יכול להכיל רק מספרים!","",MessageBoxButton.OK,MessageBoxImage.None,
-                                    MessageBoxResult.OK,MessageBoxOptions.RtlReading);
-            }
+            
+            //if (!convert)
+            //{
+                
+            //    e.Handled = true;
+            //    var item = (TextBox)sender;
+
+            //    MessageBox.Show("השדה " +  " יכול להכיל רק מספרים!","",MessageBoxButton.OK,MessageBoxImage.None,
+            //                        MessageBoxResult.OK,MessageBoxOptions.RtlReading);
+            //}
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -170,6 +180,10 @@ namespace PLWPF
             // 	System.Windows.Data.CollectionViewSource myCollectionViewSource = (System.Windows.Data.CollectionViewSource)this.Resources["Resource Key for CollectionViewSource"];
             // 	myCollectionViewSource.Source = your data
             // }
+        }
+
+        private void IdTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
         }
     }
 }
