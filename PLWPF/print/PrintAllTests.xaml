@@ -41,7 +41,7 @@
                 <DataGridTemplateColumn x:Name="beginAddressStringColumn" Header="כתובת התחלה" IsReadOnly="True" Width="SizeToHeader">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding BeginAddressString}"/>
+                            <TextBlock Text="{Binding adress}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

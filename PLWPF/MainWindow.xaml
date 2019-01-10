@@ -26,7 +26,10 @@
         </Style>
         
         <Style TargetType="{x:Type TextBlock}">
-            
+            <Setter Property="FontSize" Value="15"  />
+            <Setter Property="Foreground" Value="Black" />
+
+
         </Style>
 
         <Style x:Key="CanvasStyle" TargetType="{x:Type Canvas}" >
