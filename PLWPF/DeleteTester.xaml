@@ -12,7 +12,7 @@
             <RowDefinition Height="223*" />
         </Grid.RowDefinitions>
         <TextBlock Name="TesterId" Text="{Binding Id}" Grid.Row="1" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <ComboBox x:Name="comboBox" Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="16" Height="28" Margin="392,48.8,392,42.4" />
+        <ComboBox x:Name="comboBox" IsEditable="True" Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="auto" Height="28" />
         <Button x:Name="button" Content="מחק" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="76" Click="Button_Click" Margin="362,98.6,362,92.6"/>
         <TextBlock Text="בחר בוחן למחיקה (ניתן לבצע חיפוש במספר ת.ז)" FontSize="20" x:Name="textBlock" HorizontalAlignment="Center"  TextWrapping="Wrap"  VerticalAlignment="Center" Height="26"  Width="auto"/>
 

@@ -32,9 +32,9 @@ namespace PLWPF
                     MessageBoxResult.OK, MessageBoxOptions.RtlReading);
 
                 Data.logged = true;
+                Data.UserType = Data.Usertype.מנהל;
                 Data.MainUserControl = new HomePanel();
                  
-                Data.UserType = Data.Usertype.מנהל;
                 return;
             }
 
@@ -50,8 +50,6 @@ namespace PLWPF
                 return;
             }
 
-                Data.logged = true;
-                Data.MainUserControl = new HomePanel();
                  
 
             if(TesterFound!=null)
@@ -60,6 +58,9 @@ namespace PLWPF
                     MessageBoxResult.OK,MessageBoxOptions.RtlReading);
 
                 Data.UserType = Data.Usertype.בוחן;
+
+                Data.logged = true;
+                Data.MainUserControl = new HomePanel();
             }
 
             if(TraineeFound!=null)
@@ -67,6 +68,8 @@ namespace PLWPF
                 MessageBox.Show("שלום  " + TraineeFound.FullName, "", MessageBoxButton.OK, MessageBoxImage.None,
                     MessageBoxResult.OK, MessageBoxOptions.RtlReading);
                 Data.UserType = Data.Usertype.תלמיד;
+                Data.logged = true;
+                Data.MainUserControl = new HomePanel();
             }
 
         }

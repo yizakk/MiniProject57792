@@ -31,27 +31,23 @@ namespace PLWPF
             TimeComboBox.ItemsSource = array;
             TimeComboBox.SelectedIndex = 0;
 
-            try
-            {
-                FormGrid.DataContext = TempTest;
-            }
-
-            catch (Exception a)
-            {
-                MessageBox.Show(a.Message);
-            }
+            dateDatePicker.DataContext = TempTest;
 
             if(Data.UserType == Data.Usertype.תלמיד)
             {
-                traineeDataGrid.Visibility = Visibility.Collapsed;
+                traineeListView.Visibility = Visibility.Collapsed;
+                SearchComboBox.Visibility = Visibility.Collapsed;
+                SearchTextBlock.Visibility = Visibility.Collapsed;
+                SearchTextBox.Visibility = Visibility.Collapsed;
                 traineeIdTextBox.Text  = Data.UserID;
-                //traineeDataGrid.DataContext = bl.FindTrainee(Data.UserID);
+                //traineeIdTextBox.Visibility = Visibility.Visible;
                 TempTest.CarType = bl.FindTrainee(Data.UserID).Car_type;
                 TempTest.TraineeId = Data.UserID;
             }
             else
             {
-                traineeDataGrid.DataContext = bl.GetTraineeList();
+                traineeListView.DataContext = bl.GetTraineeList();
+                SearchComboBox.ItemsSource = bl.GetTraineesIdList();
             }
            
         }
@@ -60,12 +56,14 @@ namespace PLWPF
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             TempTest.Date = new DateTime(TempTest.Date.Year, TempTest.Date.Month, TempTest.Date.Day, (int)TimeComboBox.SelectedValue, 0, 0);
-            if(Data.UserType != Data.Usertype.תלמיד)
+
+            if (Data.UserType != Data.Usertype.תלמיד)
             {
-                var Trainee = (BE.Trainee)traineeDataGrid.SelectedValue;
+                var Trainee = (Trainee)traineeListView.SelectedValue;
                 TempTest.CarType = Trainee.Car_type;
                 TempTest.TraineeId = Trainee.Id;
             }
+
             try
             {
                 bl.AddTest(TempTest);
@@ -98,20 +96,24 @@ namespace PLWPF
                     MessageBox.Show(a._message);
             }
 
-                Data.MainUserControl = new HomePanel();
+            TempTest = new Test();
+            TempTest.Date = DateTime.Now;
+
                  
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
 
-            // Do not load your data at design time.
-            // if (!System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
-            // {
-            // 	//Load your data here and assign the result to the CollectionViewSource.
-            // 	System.Windows.Data.CollectionViewSource myCollectionViewSource = (System.Windows.Data.CollectionViewSource)this.Resources["Resource Key for CollectionViewSource"];
-            // 	myCollectionViewSource.Source = your data
-            // }
+        private void SearchComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (SearchComboBox.SelectedIndex != -1)
+            {
+                var trainee = bl.FindTrainee( SearchComboBox.SelectedValue.ToString().Split(' ')[0]);
+
+                if (trainee != null)
+                {
+                    traineeListView.SelectedValue = trainee;
+                }
+            }
         }
     }
 }

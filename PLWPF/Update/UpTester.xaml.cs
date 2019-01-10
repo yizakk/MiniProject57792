@@ -151,5 +151,22 @@ namespace PLWPF
             checkBoxMain4.IsChecked = checkBoxMain.IsChecked;
             checkBoxMain5.IsChecked = checkBoxMain.IsChecked;
         }
+
+        private void KeyDownCheckIfNotNumber(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            string key = e.Key.ToString().TrimStart('D');
+            int value = -1;
+            bool convert = int.TryParse(key, out value);
+
+
+            if (!convert)
+            {
+                e.Handled = true;
+                var item = (TextBox)sender;
+
+                MessageBox.Show("השדה " + " יכול להכיל רק מספרים!", "", MessageBoxButton.OK, MessageBoxImage.None,
+                                    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+            }
+        }
     }
 }

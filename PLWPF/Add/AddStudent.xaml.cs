@@ -116,15 +116,29 @@ namespace PLWPF
             if(choice == 6)
             {
                 Data.MainUserControl = new AddStudent();
-                 
             }
             else
             {
                 Data.MainUserControl = new HomePanel();
-                 
             }
         }
 
+        private void KeyDownCheckIfNotNumber(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            string key = e.Key.ToString().TrimStart('D');
+            int value = -1;
+            bool convert = int.TryParse(key, out value);
+
+
+            if (!convert)
+            {
+                e.Handled = true;
+                var item = (TextBox)sender;
+
+                MessageBox.Show("השדה " +  " יכול להכיל רק מספרים!","",MessageBoxButton.OK,MessageBoxImage.None,
+                                    MessageBoxResult.OK,MessageBoxOptions.RtlReading);
+            }
+        }
     }
 }
     

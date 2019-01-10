@@ -20,22 +20,17 @@ namespace PLWPF
     {
 
         BL.IBL bl = BL.BlFactory.GetBL();
-        public static string Id;
+
         public DeleteTester()
         {
             InitializeComponent();
             if (Data.UserType == Data.Usertype.בוחן)
             {
-                Id = Data.UserID;
                 comboBox.Visibility = Visibility.Collapsed;
-                TesterId.Text = Id;
-                TesterId.Visibility = Visibility.Visible;
 
-                //var item = new ComboBoxItem();
-                //item.Content = Data.UserID;
-                //comboBox.Items.Add(item);
-                //comboBox.SelectedIndex = 0;
-                //comboBox.IsEnabled = false;
+                TesterId.Text = Data.UserID;
+                TesterId.Visibility = Visibility.Visible;
+                textBlock.Text = "באפשרותך להסיר רק את עצמך";
                 return;
             }
 
@@ -57,34 +52,66 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-            try
+            if (Data.UserType == Data.Usertype.בוחן)
             {
-                if (Data.UserType == Data.Usertype.בוחן)
-                {
-                    bl.DelTester(Data.UserID);
-                }
-                else
-                bl.DelTester(comboBox.SelectedValue.ToString().Split(' ')[0]);
-            }
-            catch (Exceptions a)
-            {
-                MessageBox.Show(a._message);
+                SpecTesterDel();
                 return;
             }
 
+            if (comboBox.SelectedIndex != -1)
+            {
+                try
+                {
+                    bl.DelTester(comboBox.SelectedValue.ToString().Split(' ')[0]);
+                }
+                catch (Exceptions a)
+                {
+                    MessageBox.Show(a._message);
+                    return;
+                }
 
-            int choice = (int)MessageBox.Show("המחיקה בוצעה בהצלחה, האם ברצונך לבצע עוד מחיקה?", "", MessageBoxButton.YesNo,
-              MessageBoxImage.Asterisk, MessageBoxResult.Yes, MessageBoxOptions.RtlReading);
+
+                int choice = (int)MessageBox.Show("המחיקה בוצעה בהצלחה, האם ברצונך לבצע עוד מחיקה?", "", MessageBoxButton.YesNo,
+                  MessageBoxImage.Asterisk, MessageBoxResult.Yes, MessageBoxOptions.RtlReading);
+
+                if (choice == 6)
+                {
+                    Data.MainUserControl = new DeleteTester();
+                }
+
+                else
+                {
+                    Data.MainUserControl = new HomePanel();
+                }
+            }
+        }
+
+        private void SpecTesterDel()
+        {
+            int choice = (int)MessageBox.Show("אתה עומד להסיר את עצמך מהמערכת, האם אתה בטוח שברצונך להמשיך?", "", MessageBoxButton.YesNo,
+                                                MessageBoxImage.Asterisk, MessageBoxResult.Yes, MessageBoxOptions.RtlReading);
 
             if (choice == 6)
             {
-                Data.MainUserControl = new DeleteTester();
-            }
+                try
+                {
+                    bl.DelTester(Data.UserID);
+                }
+                catch (Exceptions a)
+                {
+                    MessageBox.Show(a._message);
+                    return;
+                }
+                Data.UserType = Data.Usertype.אורח;
+                Data.logged = false;
+                MessageBox.Show("מחקת את עצמך ולכן גם נותקת מהמערכת!", "", MessageBoxButton.OK,
+                                    MessageBoxImage.Asterisk, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
 
+                Data.MainUserControl = new Login();
+            }
             else
             {
-                Data.MainUserControl = new  HomePanel();
+                // not doing any thing...
             }
         }
     }

@@ -28,17 +28,16 @@ namespace PLWPF
         {
             InitializeComponent();
 
-
             if (Data.UserType == Data.Usertype.תלמיד)
             {
-                ComboBoxItem sourceList = new ComboBoxItem();
-                sourceList.Content = Data.UserID;
-                comboBox.Items.Add(sourceList);
+                textBlock.Text = "באפשרותך להסיר רק את עצמך";
+                comboBox.Visibility = Visibility.Collapsed;
+                TesterId.Text = Data.UserID;
+                TesterId.Visibility = Visibility.Visible;
             }
 
             else
             {
-                comboBox.Items.Clear();
                 var sourceList = bl.GetTraineesIdList();
                 if (!sourceList.Any())
                 {
@@ -48,9 +47,9 @@ namespace PLWPF
                     comboBox.IsEnabled = false;
                 }
                 comboBox.ItemsSource = sourceList;
+                comboBox.SelectedIndex = 0;
             }
 
-            comboBox.SelectedIndex = 0;
         }
 
 
@@ -59,48 +58,74 @@ namespace PLWPF
             if (Data.UserType == Data.Usertype.תלמיד)
             {
                 TraineeDeletion();
-            }
-
-            string IdString = comboBox.SelectedValue.ToString();
-            IdString = IdString.Split(' ')[0];
-
-            try
-            {
-              bl.DelTrainee(IdString);
-            }
-            catch (Exceptions a)
-            {
-                MessageBox.Show(a._message);
                 return;
             }
 
-            int choice;
-
-            choice = (int)MessageBox.Show("המחיקה בוצעה בהצלחה, האם ברצונך לבצע עוד מחיקה?", "", MessageBoxButton.YesNo,
-              MessageBoxImage.Asterisk, MessageBoxResult.Yes, MessageBoxOptions.RtlReading);
-            if (choice == 6)
+            if (comboBox.SelectedIndex != -1)
             {
-                Data.MainUserControl = new DeleteTrainee();
-                 
+                string IdString = comboBox.SelectedValue.ToString();
+                IdString = IdString.Split(' ')[0];
+
+                try
+                {
+                    bl.DelTrainee(IdString);
+                }
+                catch (Exceptions a)
+                {
+                    MessageBox.Show(a._message);
+                    return;
+                }
+
+                int choice = (int)MessageBox.Show("המחיקה בוצעה בהצלחה, האם ברצונך לבצע עוד מחיקה?", "", MessageBoxButton.YesNo,
+                                                    MessageBoxImage.Asterisk, MessageBoxResult.Yes, MessageBoxOptions.RtlReading);
+                if (choice == 6)
+                {
+                    Data.MainUserControl = new DeleteTrainee();
+                }
+                else
+                    Data.MainUserControl = new HomePanel();
             }
         }
 
         private void TraineeDeletion()
         {
-            try
-            {
-                bl.DelTrainee(Data.UserID);
-            }
-            catch (Exceptions a)
-            {
-                MessageBox.Show(a._message);
-                return;
-            }
-            Data.logged = false;
-            Data.UserType = Data.Usertype.אורח;
-            Data.MainUserControl = new Login();
-             
+            int choice = (int)MessageBox.Show("אתה עומד להסיר את עצמך מהמערכת, האם אתה בטוח שברצונך להמשיך?", "", MessageBoxButton.YesNo,
+                                    MessageBoxImage.Asterisk, MessageBoxResult.Yes, MessageBoxOptions.RtlReading);
 
+            if (choice == 6)
+            {
+                try
+                {
+                    bl.DelTrainee(Data.UserID);
+                }
+                catch (Exceptions a)
+                {
+                    MessageBox.Show(a._message);
+                    return;
+                }
+                Data.UserType = Data.Usertype.אורח;
+                Data.logged = false;
+                MessageBox.Show("מחקת את עצמך ולכן גם נותקת מהמערכת!", "", MessageBoxButton.OK,
+                                    MessageBoxImage.Asterisk, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+
+                Data.MainUserControl = new Login();
+            }
+            else
+            {
+                // not doing any thing...
+            }
+            //try
+            //{
+            //    bl.DelTrainee(Data.UserID);
+            //}
+            //catch (Exceptions a)
+            //{
+            //    MessageBox.Show(a._message);
+            //    return;
+            //}
+            //Data.logged = false;
+            //Data.UserType = Data.Usertype.אורח;
+            //Data.MainUserControl = new Login();
         }
     }
 }

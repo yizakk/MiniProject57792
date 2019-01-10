@@ -88,7 +88,6 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            GridMain.Children.Clear();
             switch(Data.BackPage)
             {
                 case 0:
@@ -97,5 +96,6 @@ namespace PLWPF
                     break;
             }
         }
+
     }
 }

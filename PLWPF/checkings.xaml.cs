@@ -38,3 +38,63 @@ namespace PLWPF
         }
     }
 }
+
+
+
+/*
+     <Style TargetType="{x:Type ComboBox}">
+        <Setter>
+            <Setter.Property>
+                ItemsPanel
+            </Setter.Property>
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <ItemsPanelTemplate.Resources>
+                        <StackPanel x:Key="Sta">
+
+                        </StackPanel>
+                    </ItemsPanelTemplate.Resources>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+     
+     
+
+
+
+
+
+חלונית הוספת טסט - 
+DATA GRID 
+שלא גולל , 
+ניסיון לשנות אותו ל
+LIST VIEW
+            <DataGrid x:Name="traineeDataGrid" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Grid.RowSpan="1" RowDetailsVisibilityMode="VisibleWhenSelected">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn x:Name="idColumn" Header="Id" Width="auto">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Id}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn x:Name="fullNameColumn" Header="Full Name" IsReadOnly="True" Width="auto">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding FullName}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn x:Name="lastTestColumn" Header="Last Test" Width="SizeToHeader">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding LastTest}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+     */
