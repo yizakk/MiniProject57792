@@ -3,14 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:PLWPF"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" FlowDirection="RightToLeft">
     <Grid>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="378,39,0,0" VerticalAlignment="Top" Width="auto" >
-        </ComboBox>
-        <Button x:Name="button" Content="מחק" HorizontalAlignment="Left" Margin="290,355,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="140,39,0,0" TextWrapping="Wrap" Text="בחר תלמיד למחיקה" VerticalAlignment="Top"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="107*" />
+            <RowDefinition Height="119*" />
+            <RowDefinition Height="223*" />
+        </Grid.RowDefinitions>
+        <TextBlock Name="TesterId" Text="{Binding Id}" Grid.Row="1" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <ComboBox x:Name="comboBox" IsEditable="True" Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="auto" Height="28" />
+        <Button x:Name="button" Content="מחק" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="76" Click="Button_Click" Margin="362,98.6,362,92.6"/>
+        <TextBlock Text="בחר תלמיד למחיקה (ניתן לבצע חיפוש במספר ת.ז)" FontSize="20" x:Name="textBlock" HorizontalAlignment="Center"  TextWrapping="Wrap"  VerticalAlignment="Center" Height="26"  Width="auto"/>
 
     </Grid>
 </UserControl>

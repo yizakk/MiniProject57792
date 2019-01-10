@@ -15,9 +15,11 @@
             </CollectionViewSource.GroupDescriptions>
         </CollectionViewSource>
         <CollectionViewSource x:Key="parametersViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Parameters}, CreateList=True}"/>
+        <CollectionViewSource x:Key="personViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Person}, CreateList=True}"/>
     </UserControl.Resources>
 
-    <Grid DataContext="{StaticResource parametersViewSource}">
+
+    <Grid DataContext="{StaticResource parametersViewSource}" Margin="330,176,0,-0.4">
         <DataGrid ItemsSource="{Binding}">
             <DataGrid.GroupStyle>
                 <GroupStyle>
@@ -56,5 +58,22 @@
             </DataGrid.GroupStyle>
 
         </DataGrid>
+        <Grid x:Name="grid1" DataContext="{StaticResource personViewSource}" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Car type:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <ComboBox x:Name="car_typeComboBox" Grid.Column="1" DisplayMemberPath="Car_type" HorizontalAlignment="Left" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120">
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel/>
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </ComboBox>
+        </Grid>
     </Grid>
 </UserControl>

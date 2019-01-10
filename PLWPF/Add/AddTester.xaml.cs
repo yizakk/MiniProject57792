@@ -119,6 +119,10 @@ namespace PLWPF
 
         private void ScrollBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            if(e.NewValue == -1)
+            {
+                SeniorityScrollBar.Value += 1;
+            }
             if (seniorityTextBox.Text.Any())
             {
                 int Tempsum = 0;
@@ -128,6 +132,23 @@ namespace PLWPF
             }
             else
                 seniorityTextBox.Text = SeniorityScrollBar.Value.ToString();
+        }
+
+        private void KeyDownCheckIfNotNumber(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            string key = e.Key.ToString().TrimStart('D');
+            int value = -1;
+            bool convert = int.TryParse(key, out value);
+
+
+            if (!convert)
+            {
+                e.Handled = true;
+                var item = (TextBox)sender;
+
+                MessageBox.Show("השדה " + " יכול להכיל רק מספרים!", "", MessageBoxButton.OK, MessageBoxImage.None,
+                                    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+            }
         }
     }
 }

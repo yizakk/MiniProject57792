@@ -19,10 +19,47 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="70"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+       
         <Style TargetType="{x:Type TextBox}">
-            <Setter Property="FontSize"
-                    Value="15" />
+            <Setter Property="FontSize" Value="15"  />
+            <Setter Property="Foreground" Value="Black" />
         </Style>
+        
+        <Style TargetType="{x:Type TextBlock}">
+            
+        </Style>
+
+        <Style x:Key="CanvasStyle" TargetType="{x:Type Canvas}" >
+            <Setter Property="Background" Value="Black" />
+            
+        </Style>
+        
+        <Style x:Key="DockPanelStyle" TargetType="{x:Type DockPanel}">
+            <Setter Property="Block.BorderBrush" Value="Black" />
+            <Setter Property="Background" Value="Black" />
+        </Style>
+
+
+
+        <Style TargetType="{x:Type materialDesign:ComboBoxPopup}">
+            <Setter Property="DockPanel.Style" Value="{StaticResource ResourceKey=DockPanelStyle}" />
+            <Setter Property="Canvas.Style" Value="{StaticResource ResourceKey=CanvasStyle}" />
+            <Setter Property="Grid.Background" Value="Black"  />
+            <Setter Property="Block.Background" Value="Black"  />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display"  />
+            <Setter Property="ScrollViewer.Background" Value="Black"  />
+            <Setter Property="VirtualizingPanel.Background" Value="Black"  />
+
+            <Setter Property="Panel.Background" Value="Black"  />
+            <Setter Property="InkCanvas.Background" Value="Black"  />
+            <Setter Property="SelectiveScrollingGrid.Background" Value="Black" />
+            <Setter Property="Selector.Background" Value="Black" />
+            <Setter Property="Selector.Margin" Value="0,0,0,0" />
+            <Setter Property="Margin" Value="0,0,0,0" />
+            <Setter Property="TextBlock.Background" Value="Black" />
+        </Style>
+
+
     </Window.Resources>
     <Window.Triggers>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">

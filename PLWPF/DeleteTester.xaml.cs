@@ -58,28 +58,31 @@ namespace PLWPF
                 return;
             }
 
-            try
+            if (comboBox.SelectedIndex != -1)
             {
-                bl.DelTester(comboBox.SelectedValue.ToString().Split(' ')[0]);
-            }
-            catch (Exceptions a)
-            {
-                MessageBox.Show(a._message);
-                return;
-            }
+                try
+                {
+                    bl.DelTester(comboBox.SelectedValue.ToString().Split(' ')[0]);
+                }
+                catch (Exceptions a)
+                {
+                    MessageBox.Show(a._message);
+                    return;
+                }
 
 
-            int choice = (int)MessageBox.Show("המחיקה בוצעה בהצלחה, האם ברצונך לבצע עוד מחיקה?", "", MessageBoxButton.YesNo,
-              MessageBoxImage.Asterisk, MessageBoxResult.Yes, MessageBoxOptions.RtlReading);
+                int choice = (int)MessageBox.Show("המחיקה בוצעה בהצלחה, האם ברצונך לבצע עוד מחיקה?", "", MessageBoxButton.YesNo,
+                  MessageBoxImage.Asterisk, MessageBoxResult.Yes, MessageBoxOptions.RtlReading);
 
-            if (choice == 6)
-            {
-                Data.MainUserControl = new DeleteTester();
-            }
+                if (choice == 6)
+                {
+                    Data.MainUserControl = new DeleteTester();
+                }
 
-            else
-            {
-                Data.MainUserControl = new  HomePanel();
+                else
+                {
+                    Data.MainUserControl = new HomePanel();
+                }
             }
         }
 
