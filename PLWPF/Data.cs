@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace PLWPF
 {
@@ -42,6 +44,29 @@ namespace PLWPF
             בוחן,
             תלמיד,
             מנהל
+        }
+
+
+        public static void NumericCheck(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Tab)
+            { return; }
+            if (e.Key == Key.Enter)
+            {
+                return;
+            }
+
+            string key = e.Key.ToString().TrimStart('D');
+            int value = -1;
+            bool convert = int.TryParse(key, out value);
+
+
+            if (!convert)
+            {
+                e.Handled = true;
+                MessageBox.Show("השדה " + " יכול להכיל רק מספרים!", "", MessageBoxButton.OK, MessageBoxImage.None,
+                                    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+            }
         }
     }
 }
