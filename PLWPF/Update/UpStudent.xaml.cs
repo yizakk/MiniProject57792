@@ -36,12 +36,20 @@ namespace PLWPF
                 comboBox.IsEnabled = false;
             }
 
-
-            comboBox.ItemsSource = sourceList;
-            comboBox.SelectedIndex = 0;
             car_typeComboBox.ItemsSource = Enum.GetValues(typeof(CarType));
             genderComboBox.ItemsSource = Enum.GetValues(typeof(Gender));
             gearTypeComboBox.ItemsSource = Enum.GetValues(typeof(Gear));
+
+            if (Data.UserType == Data.Usertype.תלמיד)
+            {
+                Label.Visibility = Visibility.Collapsed;
+                comboBox.Visibility = Visibility.Collapsed;
+                tempTrainee = bl.FindTrainee(Data.UserID);
+                grid1.DataContext = tempTrainee;
+                return;
+            }
+            comboBox.ItemsSource = sourceList;
+            comboBox.SelectedIndex = 0;
 
         }
 
