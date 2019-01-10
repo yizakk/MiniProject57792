@@ -37,6 +37,7 @@ namespace PLWPF
             }
             comboBox.ItemsSource = sourceList;
             grid2.DataContext = Address;
+            
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

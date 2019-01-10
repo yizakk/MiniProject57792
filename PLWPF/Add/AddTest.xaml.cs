@@ -111,6 +111,7 @@ namespace PLWPF
 
                 if (trainee != null)
                 {
+                    traineeListView.Visibility = Visibility.Collapsed;
                     traineeListView.SelectedValue = trainee;
                 }
             }
