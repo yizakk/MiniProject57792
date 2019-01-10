@@ -100,9 +100,6 @@
     <Compile Include="DeleteTrainee.xaml.cs">
       <DependentUpon>DeleteTrainee.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Grouping.xaml.cs">
-      <DependentUpon>Grouping.xaml</DependentUpon>
-    </Compile>
     <Compile Include="HomePanel.xaml.cs">
       <DependentUpon>HomePanel.xaml</DependentUpon>
     </Compile>
@@ -121,9 +118,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="print\TestersByCarType.xaml.cs">
-      <DependentUpon>TestersByCarType.xaml</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="Update\UpdateTest.xaml.cs">
@@ -210,10 +204,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Grouping.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="HomePanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -241,10 +231,6 @@
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="print\TestersByCarType.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Update\UpdateTest.xaml">
       <SubType>Designer</SubType>
