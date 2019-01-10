@@ -12,9 +12,11 @@
             <RowDefinition Height="64*"/>
         </Grid.RowDefinitions>
         <Grid Name="Grid1"  Grid.RowSpan="1" >
-            <ComboBox x:Name="comboBox" HorizontalAlignment="Center" VerticalAlignment="Center" Width="180" FlowDirection="RightToLeft" VerticalContentAlignment="Center" SelectionChanged="ComboBox_SelectionChanged" FontSize="16" FontFamily="Guttman Hatzvi">
-                <ComboBoxItem>הדפסת כל התלמידים</ComboBoxItem>
-                <ComboBoxItem>הדפסת כל הבוחנים</ComboBoxItem>
+            <ComboBox x:Name="comboBox" HorizontalAlignment="Center" VerticalAlignment="Center" Width="220" FlowDirection="RightToLeft" VerticalContentAlignment="Center" SelectionChanged="ComboBox_SelectionChanged" FontSize="16" FontFamily="Guttman Hatzvi">
+                <ComboBoxItem TabIndex="0">הדפסת כל התלמידים</ComboBoxItem>
+                <ComboBoxItem TabIndex="1">תלמידים מסודרים לפי מורה</ComboBoxItem>
+                <ComboBoxItem TabIndex="2">הדפסת כל הבוחנים</ComboBoxItem>
+                <ComboBoxItem TabIndex="3">טסטרים לפי סוג הרכב</ComboBoxItem>
                 <ComboBoxItem>הדפסת כל הטסטים</ComboBoxItem>
             </ComboBox>
         </Grid>

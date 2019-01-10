@@ -26,9 +26,32 @@ namespace PLWPF
 
             BL.IBL bl = BL.BlFactory.GetBL();
             testerListView.DataContext = bl.GetTesters();
+        }
+        public PrintAllTesters(int index)
+        {
+            InitializeComponent();
 
+            BL.IBL bl = BL.BlFactory.GetBL();
+            if (index == 0)
+            {
+                testerListView.DataContext = bl.GetTesters();
+            }
+            else if(index ==1)
+            {
+                foreach (var item in bl.TestersGroupedByCarType(true))
+                {
+                    foreach (var tester in item)
+                    {
+                        testerListView.Items.Add(tester);
+                    }
+                    var split = new GridSplitter();
+
+                    testerListView.Items.Add(new GridSplitter());
+
+                }
+            }
         }
 
-      
+
     }
 }

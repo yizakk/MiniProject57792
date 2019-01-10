@@ -31,7 +31,7 @@ namespace PLWPF
 
         private void TraineeButton_Click(object sender, RoutedEventArgs e)
         {
-            Data.MainUserControl = new stam();
+           // Data.MainUserControl = new stam();
             
 
            

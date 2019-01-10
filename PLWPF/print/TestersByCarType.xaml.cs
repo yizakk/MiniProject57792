@@ -12,37 +12,35 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BE;
 
 namespace PLWPF
 {
-    
     /// <summary>
-    /// Interaction logic for stam.xaml
+    /// Interaction logic for TestersByCarType.xaml
     /// </summary>
-    public partial class stam : UserControl
+    public partial class TestersByCarType : UserControl
     {
         BL.IBL bl = BL.BlFactory.GetBL();
-        Trainee tempTrainee;
-        public stam()
+
+        public TestersByCarType()
         {
             InitializeComponent();
-            MessageBox.Show("Testers grouped by car type list:");
+
+            //testerDataGrid.DataContext = bl.TestersGroupedByCarType(true);
             foreach (var item in bl.TestersGroupedByCarType(true))
             {
-                ////Console.WriteLine();
-                ////MessageBox.Show("Car type " + item.First().Car_type + " testers:");
-                Data.MainUserControl = new noIdea();
-
-                foreach (var tester1 in item)
+                foreach( var tester in item)
                 {
-                    MessageBox.Show(tester1.ToString());
-
+                    testerDataGrid.Items.Add(tester);
                 }
-                Console.WriteLine();
-
+                var split = new GridSplitter();
+                
+                testerDataGrid.Items.Add(new GridSplitter());
+                
             }
-            Console.WriteLine();
+
         }
+
+ 
     }
 }

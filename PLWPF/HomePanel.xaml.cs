@@ -79,7 +79,7 @@ namespace PLWPF
 
         private void GroupingButton_Click(object sender, RoutedEventArgs e)
         {
-            Data.MainUserControl = new Grouping();
+            
         }
     }
 }

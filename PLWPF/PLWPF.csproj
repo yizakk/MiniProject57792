@@ -106,9 +106,6 @@
     <Compile Include="HomePanel.xaml.cs">
       <DependentUpon>HomePanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="noIdea.xaml.cs">
-      <DependentUpon>noIdea.xaml</DependentUpon>
-    </Compile>
     <Compile Include="print\printAllStudent.xaml.cs">
       <DependentUpon>printAllStudent.xaml</DependentUpon>
     </Compile>
@@ -125,10 +122,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Settings.cs" />
-    <Compile Include="stam.xaml.cs">
-      <DependentUpon>stam.xaml</DependentUpon>
+    <Compile Include="print\TestersByCarType.xaml.cs">
+      <DependentUpon>TestersByCarType.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="Update\UpdateTest.xaml.cs">
       <DependentUpon>UpdateTest.xaml</DependentUpon>
     </Compile>
@@ -221,10 +218,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="noIdea.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="print\printAllStudent.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -249,7 +242,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="stam.xaml">
+    <Page Include="print\TestersByCarType.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
