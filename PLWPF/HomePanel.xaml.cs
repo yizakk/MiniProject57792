@@ -19,11 +19,11 @@ namespace PLWPF
                 testerButton.Visibility = Visibility.Collapsed;
                 UpTesterButton.Visibility = Visibility.Collapsed;
                 UpTestButton.Visibility = Visibility.Collapsed;
-                UpTraineeButton.Content = "עדכון פרטים";
+                UpTraineeButton.Content = "עדכון פרטים אישיים";
             }
             if (Data.UserType == Data.Usertype.בוחן)
             {
-                UpTesterButton.Content = "עדכון פרטים";
+                UpTesterButton.Content = "עדכון פרטים אישיים";
             }
         }
 

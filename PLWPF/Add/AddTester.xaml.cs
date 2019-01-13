@@ -81,9 +81,9 @@ namespace PLWPF
                 return;
             }
 
-            if (phoneNumberTextBox.GetLineLength(0) > 0 && phoneNumberTextBox.GetLineLength(0) < 10)
+            if (phoneNumberTextBox.GetLineLength(0) > 0 && phoneNumberTextBox.GetLineLength(0) < 9)
             {
-                MessageBox.Show("מספר טלפון לא יכול להכיל פחות מ10 ספרות");
+                MessageBox.Show("מספר טלפון לא יכול להכיל פחות מ9 ספרות");
                 return;
             }
 
@@ -121,8 +121,9 @@ namespace PLWPF
             if (choice == 6)
             {
                 Data.MainUserControl = new AddTester();
-                 
             }
+            else
+                Data.MainUserControl = new HomePanel();
         }
 
         private void ScrollBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -144,19 +145,8 @@ namespace PLWPF
 
         private void KeyDownCheckIfNotNumber(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            string key = e.Key.ToString().TrimStart('D');
-            int value = -1;
-            bool convert = int.TryParse(key, out value);
+            Data.NumericCheck(sender,e);
 
-
-            if (!convert)
-            {
-                e.Handled = true;
-                var item = (TextBox)sender;
-
-                MessageBox.Show("השדה " + " יכול להכיל רק מספרים!", "", MessageBoxButton.OK, MessageBoxImage.None,
-                                    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-            }
         }
     }
 }

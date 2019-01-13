@@ -19,9 +19,9 @@ namespace BE
         {
             get
             {
-                if (Address.city != "")
+                if (Address.City != "")
                 {
-                    return Address.city + "," + Address.Street + " " + Address.BuildingNumber.ToString();
+                    return Address.City + "," + Address.Street + " " + Address.BuildingNumber.ToString();
 
                 }
                 else
@@ -36,10 +36,9 @@ namespace BE
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string FullName { get { return FirstName + " " + LastName; } }
-        public Gender gender { get; set; }
+        public Gender Gender { get; set; }
 
         public int Age { get { return age(); } }
-        TimeSpan _age;
         int age()
         {
             TimeSpan age = DateTime.Now - BirthDate;

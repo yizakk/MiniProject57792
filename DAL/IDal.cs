@@ -20,15 +20,16 @@ namespace Dal
         void UpdateTester(Tester tester);
         void UpdateTrainee(Trainee trainee);
 
-        List<Tester> GetTesters();
-        List<Test> GetTests();
-        List<Trainee> GetTrainees();
+        List<Tester> GetTesters(Func<Tester, bool> p = null);
+        List<Test> GetTests(Func<Test, bool> p = null);
+        List<Trainee> GetTrainees(Func<Trainee, bool> p = null);
 
         Trainee FindTrainee(string id);
         Tester FindTester(string id);
+        Test FindTest(int id);
+
         IEnumerable<Test> GetTestsForSpecTester(string id);
         IEnumerable<Test> GetTestsForSpecTrainee(string id);
         IEnumerable<Tester> GetTestersWithCarType(CarType type);
-        Test FindTest(int id);
     }
 }

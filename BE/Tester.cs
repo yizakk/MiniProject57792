@@ -83,7 +83,7 @@ namespace BE
             Car_type = other.Car_type;
             FirstName = other.FirstName;
             LastName = other.LastName;
-            gender = other.gender;
+            Gender = other.Gender;
             _TestsList = new List<DateTime>(other.TestsList);
             Seniority = other.Seniority;
             Address = new Address(other.Address);
@@ -109,7 +109,7 @@ namespace BE
 
         // A new field we added for holding all the dates this Tester is associated to 
         private List<DateTime> _TestsList =new List<DateTime> ();
-        public List<DateTime> TestsList { get { return _TestsList; } }
+        public List<DateTime> TestsList { get { return _TestsList; } internal set { _TestsList = value; } }
 
         public bool[,] m_WorkSchedule = new bool[Configuration.WorkDays, Configuration.WorkHours];
 

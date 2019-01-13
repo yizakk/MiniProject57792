@@ -49,7 +49,6 @@ namespace PLWPF
                 comboBox.ItemsSource = sourceList;
                 comboBox.SelectedIndex = 0;
             }
-
         }
 
 
@@ -114,18 +113,7 @@ namespace PLWPF
             {
                 // not doing any thing...
             }
-            //try
-            //{
-            //    bl.DelTrainee(Data.UserID);
-            //}
-            //catch (Exceptions a)
-            //{
-            //    MessageBox.Show(a._message);
-            //    return;
-            //}
-            //Data.logged = false;
-            //Data.UserType = Data.Usertype.אורח;
-            //Data.MainUserControl = new Login();
+
         }
     }
 }

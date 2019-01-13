@@ -79,9 +79,9 @@ namespace PLWPF
                 return;
             }
 
-            if (phoneNumberTextBox.GetLineLength(0) > 0 && phoneNumberTextBox.GetLineLength(0) < 10)
+            if (phoneNumberTextBox.GetLineLength(0) > 0 && phoneNumberTextBox.GetLineLength(0) < 9)
             {
-                MessageBox.Show("מספר טלפון לא יכול להכיל פחות מ10 ספרות", "", MessageBoxButton.OK, MessageBoxImage.None,
+                MessageBox.Show("מספר טלפון לא יכול להכיל פחות מ9 ספרות", "", MessageBoxButton.OK, MessageBoxImage.None,
                     MessageBoxResult.OK, MessageBoxOptions.RtlReading);
                 return;
             }
@@ -129,58 +129,7 @@ namespace PLWPF
 
         private void KeyDownCheckIfNotNumber(object sender, System.Windows.Input.KeyEventArgs e)
         {
-
             Data.NumericCheck(sender,e);
-            //if (e.Key == System.Windows.Input.Key.Tab )
-            //{ return; }
-            //if(e.Key == System.Windows.Input.Key.Enter)
-            //{
-            //    return;
-            //}
-
-            //string key = e.Key.ToString().TrimStart('D');
-            //int value = -1;
-            //bool convert = int.TryParse(key, out value);
-
-            
-            //if (!convert)
-            //{
-                
-            //    e.Handled = true;
-            //    var item = (TextBox)sender;
-
-            //    MessageBox.Show("השדה " +  " יכול להכיל רק מספרים!","",MessageBoxButton.OK,MessageBoxImage.None,
-            //                        MessageBoxResult.OK,MessageBoxOptions.RtlReading);
-            //}
-        }
-
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void UserControl_Loaded_1(object sender, RoutedEventArgs e)
-        {
-
-            // Do not load your data at design time.
-            // if (!System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
-            // {
-            // 	//Load your data here and assign the result to the CollectionViewSource.
-            // 	System.Windows.Data.CollectionViewSource myCollectionViewSource = (System.Windows.Data.CollectionViewSource)this.Resources["Resource Key for CollectionViewSource"];
-            // 	myCollectionViewSource.Source = your data
-            // }
-        }
-
-        private void UserControl_Loaded_2(object sender, RoutedEventArgs e)
-        {
-
-            // Do not load your data at design time.
-            // if (!System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
-            // {
-            // 	//Load your data here and assign the result to the CollectionViewSource.
-            // 	System.Windows.Data.CollectionViewSource myCollectionViewSource = (System.Windows.Data.CollectionViewSource)this.Resources["Resource Key for CollectionViewSource"];
-            // 	myCollectionViewSource.Source = your data
-            // }
         }
 
         private void IdTextBox_TextChanged(object sender, TextChangedEventArgs e)

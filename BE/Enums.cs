@@ -28,24 +28,24 @@ namespace BE
     public class Parameters 
     {
         public Parameters() { }
+
         public Parameters(Parameters other)
         {
             if (other!=null)
             {
-                distance = other.distance;
+                Distance = other.Distance;
                 ReversePark = other.ReversePark;
-                usingMirrors = other.usingMirrors;
-                speed = other.speed;
-                usingVinkers = other.usingVinkers;
+                UsingMirrors = other.UsingMirrors;
+                Speed = other.Speed;
+                UsingVinkers = other.UsingVinkers;
             }
-            
         }
-        public bool distance { get; set; }
+        public bool Distance { get; set; }
         public bool ReversePark { get; set; }
-        public bool usingMirrors { get; set; }
-        public bool speed { get; set; }
-        public bool usingVinkers { get; set; }
-        public int count_parameters = 5;
+        public bool UsingMirrors { get; set; }
+        public bool Speed { get; set; }
+        public bool UsingVinkers { get; set; }
+        public int  count_parameters = 5;
 
         //public static int Count {
         //    get
@@ -73,20 +73,19 @@ namespace BE
 
     public class Address
     {
-
-        public string city { get; set; }
+        public string City { get; set; }
         public string Street { get; set; }
         public int BuildingNumber { get; set; }
 
         public Address()
         {
-            city = "";
+            City = "";
             Street = "";
         }
 
         public Address(Address other)
         {
-            city = other.city;
+            City = other.City;
             Street = other.Street;
             BuildingNumber = other.BuildingNumber;
         }

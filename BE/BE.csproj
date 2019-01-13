@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BE_Extensions.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Exceptions.cs" />

@@ -13,18 +13,28 @@ namespace Dal
         internal Dal_imp()
         { }
 
-        public List<Trainee> GetTrainees()
+        public List<Trainee> GetTrainees(Func<Trainee, bool> p = null)
         {
+            if (p != null)
+                return new List<Trainee>(Ds.Trainees.Where(p));
+
             return new List<Trainee>(Ds.Trainees);
         }
 
-        public List<Tester> GetTesters()
+        public List<Tester> GetTesters(Func<Tester, bool> p = null)
         {
+            if (p != null)
+                return new List<Tester>(Ds.Testers2.Where(p));
+
             return new List<Tester>(Ds.Testers2);
         }
 
-        public List<Test> GetTests()
+        public List<Test> GetTests(Func<Test,bool> p=null)
         {
+            if(p!=null)
+            {
+                return new List<Test>(Ds.Tests2.Where(p));
+            }
             return new List<Test>(Ds.Tests2);
         }
 

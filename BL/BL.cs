@@ -368,23 +368,23 @@ namespace BL
         {
             int count = 0;
 
-            if (test.Parameters.distance == true)
+            if (test.Paramet.Distance == true)
             {
                 count++;
             }
-            if (test.Parameters.ReversePark == true)
+            if (test.Paramet.ReversePark == true)
             {
                 count++;
             }
-            if (test.Parameters.speed == true)
+            if (test.Paramet.Speed == true)
             {
                 count++;
             }
-            if (test.Parameters.usingMirrors == true)
+            if (test.Paramet.UsingMirrors == true)
             {
                 count++;
             }
-            if (test.Parameters.usingVinkers == true)
+            if (test.Paramet.UsingVinkers == true)
             {
                 count++;
             }
@@ -401,11 +401,11 @@ namespace BL
                     test = item;
                     break;
                 }
-            test.Parameters.distance = _distance;
-            test.Parameters.ReversePark = _ReversePark;
-            test.Parameters.usingMirrors = _usingMirrors;
-            test.Parameters.speed = _speed;
-            test.Parameters.usingVinkers = _usingVinkers;
+            test.Paramet.Distance = _distance;
+            test.Paramet.ReversePark = _ReversePark;
+            test.Paramet.UsingMirrors = _usingMirrors;
+            test.Paramet.Speed = _speed;
+            test.Paramet.UsingVinkers = _usingVinkers;
             if (Passchek(test))
                 test.Passed = true;
             dal.UpdateTest(test);
@@ -535,7 +535,7 @@ namespace BL
             if (testItem.Passed)
             {
                 int count = 0;
-                for (int i = 0; i < testItem.Parameters.count_parameters; i++)
+                for (int i = 0; i < testItem.Paramet.count_parameters; i++)
                 {
                   
                 }
