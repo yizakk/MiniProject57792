@@ -293,6 +293,10 @@ namespace BL
 
         public void AddTester(Tester tester)
         {
+            if (dal.FindTester(tester.Id) != null || dal.FindTrainee(tester.Id)!= null) 
+                throw new Exception("תעודת זהות זו כבר קיימת במערכת");
+            if (!CheckIdValidity(tester.Id))
+                throw new Exception("תעודת זהות לא תקינה");
                 // if tester age < 40 - deny 
                 if (tester.Age < Configuration.TesterMinAge)
                 {
@@ -306,8 +310,12 @@ namespace BL
 
         public void AddTrainee(Trainee trainee)
         {
-                // if age < 18 deny
-                if (trainee.Age < Configuration.TraineeMinAge)
+            if (dal.FindTester(trainee.Id) != null || dal.FindTrainee(trainee.Id) != null)
+                throw new Exception("תעודת זהות זו כבר קיימת במערכת");
+            if (!CheckIdValidity(trainee.Id))
+                throw new Exception("תעודת זהות לא תקינה");
+            // if age < 18 deny
+            if (trainee.Age < Configuration.TraineeMinAge)
                 {
                     throw new MyExceptions("Trainee:" + trainee.FullName + " is under 18 YO!");
                 }

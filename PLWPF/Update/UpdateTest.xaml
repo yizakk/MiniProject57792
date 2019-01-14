@@ -82,7 +82,7 @@
                     <Label Content="Building Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
                     <TextBox x:Name="buildingNumberTextBox" KeyDown="KeyDownCheckIfNotNumber" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding BuildingNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                     <Label Content="city:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-                    <TextBox x:Name="cityTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding city, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                    <TextBox x:Name="CityTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding City, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                     <Label Content="Street:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
                     <TextBox x:Name="streetTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding Street, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                 </Grid>
@@ -100,15 +100,15 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Label Content="שמירה על מרחק:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-                <CheckBox x:Name="distanceCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding distance, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                <CheckBox x:Name="distanceCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding Distance, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
                 <Label Content="חנייה לאחור:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
                 <CheckBox x:Name="reverseParkCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding ReversePark, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
                 <Label Content="מהירות:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
-                <CheckBox x:Name="speedCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding speed, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+                <CheckBox x:Name="speedCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding Speed, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
                 <Label Content="שימוש במראות:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
-                <CheckBox x:Name="usingMirrorsCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding usingMirrors, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+                <CheckBox x:Name="usingMirrorsCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding UsingMirrors, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
                 <Label Content="שימוש בוינקרים:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
-                <CheckBox x:Name="usingVinkersCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding usingVinkers, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+                <CheckBox x:Name="usingVinkersCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding UsingVinkers, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
             </Grid>
             <Label x:Name="label" Content="הכנס כתובת התחלתית של הטסט" HorizontalAlignment="Left" Margin="319,27,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
 
