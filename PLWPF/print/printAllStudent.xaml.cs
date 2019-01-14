@@ -83,7 +83,6 @@ namespace PLWPF
         private void TraineeListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             PopJump.IsOpen = true;
-            
         }
 
         private void PopJump_MouseDown(object sender, MouseButtonEventArgs e)

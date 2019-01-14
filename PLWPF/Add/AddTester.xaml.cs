@@ -110,7 +110,7 @@ namespace PLWPF
             {
                 bl.AddTester(TempTester);
             }
-            catch (Exceptions c)
+            catch (MyExceptions c)
             {
                 MessageBox.Show(c._message);
                 return;

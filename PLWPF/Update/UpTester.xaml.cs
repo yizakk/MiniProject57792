@@ -70,11 +70,13 @@ namespace PLWPF
             {
                 try
                 {
-
                     string a = comboBox.SelectedValue.ToString().Split(' ')[0];
                     TempTester = bl.FindTester(a);
                     if (TempTester != null)
+                    {
                         grid1.DataContext = TempTester;
+                        AddressGrid.DataContext = TempTester.Address;
+                    }
                     else
                         throw new Exception("בוחן לא נמצא");
 
@@ -130,7 +132,7 @@ namespace PLWPF
             {
                 bl.UpdateTester(TempTester);
             }
-            catch (Exceptions a)
+            catch (MyExceptions a)
             {
                 MessageBox.Show(a._message);
                 return;

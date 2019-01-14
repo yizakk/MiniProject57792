@@ -94,9 +94,9 @@ namespace PLWPF
             }
             catch (Exception c)
             {
-                if (c is Exceptions)
+                if (c is MyExceptions)
                 {
-                    var b = (Exceptions)c;
+                    var b = (MyExceptions)c;
                     MessageBox.Show(b._message);
 
                     return;

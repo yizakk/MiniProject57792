@@ -13,75 +13,75 @@ namespace Dal
     {
         static DS.XmlDs Ds = DS.DSFactory.GetXmlDS();
 
-        public Xml_Dal_imp()
-        {
-            int index = 1;
-            AddTester(
-                new Tester
-                {
-                    Id = "0000",
-                    FirstName = "ג'וג'ו",
-                    LastName = "חלאסטרה",
-                    PhoneNumber = "0522222222",
-                    Gender = Gender.זכר,
-                    CarType = CarType.פרטי,
-                    BirthDate = DateTime.Now.AddYears(-41),
-                    Address = new Address { City = "חיפה", Street = "שער הגיא", BuildingNumber = index + 14 },
-                    Seniority = index++,
-                    MaxDistance = 20 * index,
-                    MaxTestsPerWeek = index + 5,
+        //public Xml_Dal_imp()
+        //{
+        //    int index = 1;
+        //    AddTester(
+        //        new Tester
+        //        {
+        //            Id = "0000",
+        //            FirstName = "ג'וג'ו",
+        //            LastName = "חלאסטרה",
+        //            PhoneNumber = "0522222222",
+        //            Gender = Gender.זכר,
+        //            CarType = CarType.פרטי,
+        //            BirthDate = DateTime.Now.AddYears(-41),
+        //            Address = new Address { City = "חיפה", Street = "שער הגיא", BuildingNumber = index + 14 },
+        //            Seniority = index++,
+        //            MaxDistance = 20 * index,
+        //            MaxTestsPerWeek = index + 5,
 
-                });
+        //        });
 
-            AddTester(new Tester
-            {
-                Id = "0011",
-                FirstName = "ג'וני",
-                LastName = "דף",
-                PhoneNumber = "0523333333",
-                Gender = Gender.זכר,
-                CarType = CarType.פרטי,
-                BirthDate = DateTime.Now.AddYears(-42),
-                Address = new Address { City = "חיפה", Street = "אליהו הנביא", BuildingNumber = index + 14 },
-                Seniority = index++,
-                MaxDistance = 50 * index,
-                MaxTestsPerWeek = index + 5,
+        //    AddTester(new Tester
+        //    {
+        //        Id = "0011",
+        //        FirstName = "ג'וני",
+        //        LastName = "דף",
+        //        PhoneNumber = "0523333333",
+        //        Gender = Gender.זכר,
+        //        CarType = CarType.פרטי,
+        //        BirthDate = DateTime.Now.AddYears(-42),
+        //        Address = new Address { City = "חיפה", Street = "אליהו הנביא", BuildingNumber = index + 14 },
+        //        Seniority = index++,
+        //        MaxDistance = 50 * index,
+        //        MaxTestsPerWeek = index + 5,
 
-            });
+        //    });
 
-            AddTrainee(new Trainee
-            {
-                Id = "1111",
-                FirstName = "מייקל",
-                LastName = "אוון",
-                PhoneNumber = "0523333444",
-                Gender = Gender.זכר,
-                CarType = CarType.פרטי,
-                BirthDate = DateTime.Now.AddYears(-18),
-                Address = new Address { City = "תל אביב", Street = "דפנה", BuildingNumber = index + 14 },
-                //Seniority = index++,
-                //MaxDistance = 50 * index,
-                //MaxTestsPerWeek = index + 5,
+        //    AddTrainee(new Trainee
+        //    {
+        //        Id = "1111",
+        //        FirstName = "מייקל",
+        //        LastName = "אוון",
+        //        PhoneNumber = "0523333444",
+        //        Gender = Gender.זכר,
+        //        CarType = CarType.פרטי,
+        //        BirthDate = DateTime.Now.AddYears(-18),
+        //        Address = new Address { City = "תל אביב", Street = "דפנה", BuildingNumber = index + 14 },
+        //        //Seniority = index++,
+        //        //MaxDistance = 50 * index,
+        //        //MaxTestsPerWeek = index + 5,
 
-            });
+        //    });
 
-            AddTrainee(new Trainee
-            {
-                Id = "1122",
-                FirstName = "יוהנה",
-                LastName = "ליאון",
-                PhoneNumber = "0523333555",
-                Gender = Gender.נקבה,
-                CarType = CarType.פרטי,
-                BirthDate = DateTime.Now.AddYears(-19),
-                Address = new Address { City = "ירושלים", Street = "הרב צבי יהודה", BuildingNumber = index + 14 },
-                //Seniority = index++,
-                //MaxDistance = 50 * index,
-                //MaxTestsPerWeek = index + 5,
+        //    AddTrainee(new Trainee
+        //    {
+        //        Id = "1122",
+        //        FirstName = "יוהנה",
+        //        LastName = "ליאון",
+        //        PhoneNumber = "0523333555",
+        //        Gender = Gender.נקבה,
+        //        CarType = CarType.פרטי,
+        //        BirthDate = DateTime.Now.AddYears(-19),
+        //        Address = new Address { City = "ירושלים", Street = "הרב צבי יהודה", BuildingNumber = index + 14 },
+        //        //Seniority = index++,
+        //        //MaxDistance = 50 * index,
+        //        //MaxTestsPerWeek = index + 5,
 
-            });
+        //    });
 
-        }
+        //}
 
 
         public void AddTest(Test test)
@@ -222,7 +222,15 @@ namespace Dal
         public List<Trainee> GetTrainees(Func<Trainee, bool> p=null)
         {
             var serializer = new XmlSerializer(typeof(Trainee));
-            var elements = Ds.Testers.Elements("Trainee");
+            var elements = Ds.Trainees.Elements("Trainee");
+            if (p != null)
+            {
+                return elements.Select(element => (Trainee)serializer.Deserialize(element.CreateReader())).Where(p).ToList();
+
+                //return result.Where(p).ToList();
+            }
+            return elements.Select(element => (Trainee)serializer.Deserialize(element.CreateReader())).ToList();
+
             //var result = from t in Ds.Trainees.Elements("Trainee")
             //             select new Trainee
             //             { 
@@ -248,14 +256,6 @@ namespace Dal
             //                 SchoolName = t.Element("SchoolName").Value,
             //                 NumLessons = int.Parse(t.Element("NumLessons").Value)
             //             };
-            if (p != null)
-            {
-                return elements.Select(element => (Trainee)serializer.Deserialize(element.CreateReader())).Where(p).ToList();
-
-                //return result.Where(p).ToList();
-            }
-            return elements.Select(element => (Trainee)serializer.Deserialize(element.CreateReader())).ToList();
-
             //return
             //    result.ToList();
         }

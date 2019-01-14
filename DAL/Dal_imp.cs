@@ -123,24 +123,24 @@ namespace Dal
                                   select item;
 
                     if (idcheck.Any())
-                        throw new Exceptions("Id:" + Id + " already exist!");
+                        throw new MyExceptions("Id:" + Id + " already exist!");
                 }
                 var idcheck2 = from item in Ds.Trainees
                                where item.Id == Id
                                select item;
                 if (idcheck2.Any())
-                    throw new Exceptions("Id:" + Id + " already exist!");
+                    throw new MyExceptions("Id:" + Id + " already exist!");
 
             }
             else
-                throw new Exceptions("Id isn't a valid Id!");
+                throw new MyExceptions("Id isn't a valid Id!");
         }
 
         public void DelTester(string id)
         {
             Tester TempTester = FindTester(id);
             if (TempTester == null)
-                throw new Exceptions("תעודת הזהות לא נמצאה!");
+                throw new MyExceptions("תעודת הזהות לא נמצאה!");
             Ds.Testers2.Remove(TempTester);
         }
 
@@ -148,7 +148,7 @@ namespace Dal
         {
             Trainee TempTrainee = FindTrainee(id);
             if (TempTrainee == null)
-                throw new Exceptions("תעודת הזהות לא נמצאה!");
+                throw new MyExceptions("תעודת הזהות לא נמצאה!");
             Ds.Trainees.Remove(FindTrainee(id));
         }
 

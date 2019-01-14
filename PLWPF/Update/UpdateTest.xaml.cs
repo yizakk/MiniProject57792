@@ -64,7 +64,7 @@ namespace PLWPF
                 bl.UpdateTest(TestItem);
             }
 
-            catch (BE.Exceptions cat)
+            catch (BE.MyExceptions cat)
             {
                 MessageBox.Show(cat._message);
                 return;

@@ -75,7 +75,7 @@ namespace PLWPF
             {
                 bl.UpdateTrainee(tempTrainee);
             }
-            catch (Exceptions a)
+            catch (MyExceptions a)
             {
                 MessageBox.Show(a._message);
                 return;

@@ -64,7 +64,7 @@ namespace PLWPF
                 {
                     bl.DelTester(comboBox.SelectedValue.ToString().Split(' ')[0]);
                 }
-                catch (Exceptions a)
+                catch (MyExceptions a)
                 {
                     MessageBox.Show(a._message);
                     return;
@@ -97,7 +97,7 @@ namespace PLWPF
                 {
                     bl.DelTester(Data.UserID);
                 }
-                catch (Exceptions a)
+                catch (MyExceptions a)
                 {
                     MessageBox.Show(a._message);
                     return;

@@ -1,6 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Testers>
   <Tester xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>201096260</Id>
+    <Address>
+      <City />
+      <Street />
+      <BuildingNumber>0</BuildingNumber>
+    </Address>
+    <CarType>פרטי</CarType>
+    <BirthDate>1979-01-14T17:17:24.0494923+02:00</BirthDate>
+    <Gender>זכר</Gender>
+    <Seniority>0</Seniority>
+    <MaxTestsPerWeek>0</MaxTestsPerWeek>
+    <MaxDistance>0</MaxDistance>
+    <TestsList />
+    <WorkSave>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False</WorkSave>
+  </Tester>
+  <Tester xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <Id>0000</Id>
     <PhoneNumber>0522222222</PhoneNumber>
     <Address>
@@ -17,25 +33,6 @@
     <MaxTestsPerWeek>7</MaxTestsPerWeek>
     <MaxDistance>40</MaxDistance>
     <TestsList />
-    <WorkSave>5,7,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False</WorkSave>
-  </Tester>
-  <Tester xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <Id>0011</Id>
-    <PhoneNumber>0523333333</PhoneNumber>
-    <Address>
-      <City>חיפה</City>
-      <Street>אליהו הנביא</Street>
-      <BuildingNumber>16</BuildingNumber>
-    </Address>
-    <CarType>פרטי</CarType>
-    <BirthDate>1977-01-14T15:18:25.7501699+02:00</BirthDate>
-    <LastName>דף</LastName>
-    <FirstName>ג'וני</FirstName>
-    <Gender>זכר</Gender>
-    <Seniority>2</Seniority>
-    <MaxTestsPerWeek>8</MaxTestsPerWeek>
-    <MaxDistance>150</MaxDistance>
-    <TestsList />
-    <WorkSave>5,7,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False</WorkSave>
+    <WorkSave>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True</WorkSave>
   </Tester>
 </Testers>
