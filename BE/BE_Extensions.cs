@@ -25,18 +25,19 @@ namespace BE
             return new Address
             {
                 City = a.Element("City").Value,
-                BuildingNumber = Int32.Parse(a.Element("BuildingNumber").Value),
+                BuildingNumber = int.Parse(a.Element("BuildingNumber").Value),
                 Street = a.Element("Street").Value
             };
         }
 
-        public static List<DateTime> ToTestsList(this XElement a)
+
+        private static List<DateTime> ToTestsList(this XElement a)
         {
             return (from item in a.Elements()
                     select DateTime.Parse(item.Element("TestDate").Value)).ToList();
         }
 
-        public static bool[,] ToSchedule(this XElement a)
+        private static bool[,] ToSchedule(this XElement a)
         {
             bool[,] temp = new bool[Configuration.WorkDays,Configuration.WorkHours];
             List<bool> Bools = (from item in a.Elements()
@@ -73,19 +74,18 @@ namespace BE
         {
             return new Tester
             {
-                Id = d.Element("ID").Value,
+                Id = d.Element("Id").Value,
                 FirstName = d.Element("FirstName").Value,
                 LastName = d.Element("LastName").Value,
                 Gender = (Gender) Enum.Parse(typeof(Gender), d.Element("Gender").Value),
                 BirthDate = DateTime.Parse(d.Element("BirthDate").Value),
-                Car_type = d.Element("CarType").ToCarType(),
+                CarType = d.Element("CarType").ToCarType(),
                 MaxDistance = int.Parse(d.Element("MaxDistance").Value),
                 MaxTestsPerWeek = int.Parse(d.Element("MaxTestsPerWeek").Value),
                 PhoneNumber = d.Element("Phone").Value,
                 Seniority = int.Parse(d.Element("Seniority").Value),
-                workSChedule = d.Element("Schedule").ToSchedule(),
+                WorkSChedule = d.Element("Schedule").ToSchedule(),
                 TestsList = d.Element("TestsList").ToTestsList(),
-
                
                 Address = d.Element("Address").ToAddress(),
 
@@ -95,23 +95,24 @@ namespace BE
         public static XElement ToXml(this Test test)
         {
             return new XElement("Test",
-                                  new XElement("ID", test.Id.ToString(),
+                                  new XElement("Id", test.Id.ToString(),
                                   new XElement("TesterID", test.TesterId),
                                   new XElement("TraineeID", test.TraineeId),
                                   new XElement("Date", test.Date.ToString()),
                                   new XElement("TesterComment", test.TesterComment)),
                                   new XElement("CarType", test.CarType.ToString()),
-                                  new XElement("BeginAddress",
-                                                 new XElement("City", test.BeginAddress.City),
-                                                 new XElement("Street", test.BeginAddress.Street),
-                                                 new XElement("BuildingNumber", test.BeginAddress.BuildingNumber.ToString())),
+                                  new XElement("BeginAddress", test.BeginAddress.ToXML())
+                                                 //new XElement("City", test.BeginAddress.City),
+                                                 //new XElement("Street", test.BeginAddress.Street),
+                                                 //new XElement("BuildingNumber", test.BeginAddress.BuildingNumber.ToString()))
+                                                 ,
                                   new XElement("Parameters",
                                                  new XElement("Speed", test.Paramet.Speed.ToString()),
                                                  new XElement("Distance", test.Paramet.Distance.ToString()),
                                                  new XElement("ReversePark", test.Paramet.ReversePark.ToString()),
                                                  new XElement("UsingVinkers", test.Paramet.UsingVinkers.ToString()),
                                                  new XElement("UsingMirrors", test.Paramet.UsingMirrors.ToString())),
-                                  new XElement("Passed", test.Passed));
+                                  new XElement("Passed", test.Passed.ToString()));
         }
 
         public static CarType ToCarType(this XElement d)

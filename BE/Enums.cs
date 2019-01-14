@@ -89,5 +89,60 @@ namespace BE
             Street = other.Street;
             BuildingNumber = other.BuildingNumber;
         }
+
+        public override string ToString()
+        {
+            return City + " "+ Street +" "+ BuildingNumber.ToString();
+        }
+    }
+
+    public class Schedule
+    {
+        public bool[][] Data { get; set; } = new bool[5][];
+
+        //public override string ToString()
+        //{
+        //    int starttime = 9;
+        //    bool oved = false;
+        //    string result = null;
+        //    string hayom = null;
+        //    for (int i = 0; i < 5; i++)
+        //    {
+        //        oved = false;
+        //        hayom = null;
+        //        //result += ((Day)i).ToString() + "\n";
+        //        for (int j = 0; j < 6; j++)
+        //        {
+        //            if (Data[i][j] == true)
+        //            {
+        //                oved = true;
+        //                hayom += "\t" + (starttime + j) + ":00-";
+        //                hayom += (starttime + j + 1).ToString() + ":00\n";
+        //            }
+        //        }
+        //        if (oved == true)
+        //        {
+        //            result += ((Day)i).ToString() + "\n";
+        //            result += hayom;
+        //        }
+        //    }
+        //    return result.Substring(0, result.Length - 1);
+        //}
+
+        //public Schedule()
+        //{
+        //    for (int i = 0; i < Configuration.WorkDays; i++)
+        //        for (int j = 0; j < Configuration.WorkHours; j++)
+        //            m_WorkSchedule[i, j] = false;
+        //}
+
+        //public Schedule(bool value = true)
+        //{
+        //    for (int i = 0; i < Configuration.WorkDays; i++)
+        //        for (int j = 0; j < Configuration.WorkHours; j++)
+        //            m_WorkSchedule[i, j] = value;
+        //}
+        //public bool[,] m_WorkSchedule = new bool[Configuration.WorkDays, Configuration.WorkHours];
+        // public bool [,] workSChedule { get { return m_WorkSchedule; } set { m_WorkSchedule = value; } }
     }
 }

@@ -73,7 +73,10 @@ namespace PLWPF
 
                     string a = comboBox.SelectedValue.ToString().Split(' ')[0];
                     TempTester = bl.FindTester(a);
-                    grid1.DataContext = TempTester;
+                    if (TempTester != null)
+                        grid1.DataContext = TempTester;
+                    else
+                        throw new Exception("בוחן לא נמצא");
 
                     int i = 0, j = 0, k = 1;
                     foreach (var item in ScheduleGrid.Children)

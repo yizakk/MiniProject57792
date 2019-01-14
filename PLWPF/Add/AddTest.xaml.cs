@@ -41,7 +41,7 @@ namespace PLWPF
                // SearchTextBox.Visibility = Visibility.Collapsed;
                 traineeIdTextBox.Text  = Data.UserID;
                 //traineeIdTextBox.Visibility = Visibility.Visible;
-                TempTest.CarType = bl.FindTrainee(Data.UserID).Car_type;
+                TempTest.CarType = bl.FindTrainee(Data.UserID).CarType;
                 TempTest.TraineeId = Data.UserID;
             }
             else
@@ -60,7 +60,7 @@ namespace PLWPF
             if (Data.UserType != Data.Usertype.תלמיד)
             {
                 var Trainee = (Trainee)traineeListView.SelectedValue;
-                TempTest.CarType = Trainee.Car_type;
+                TempTest.CarType = Trainee.CarType;
                 TempTest.TraineeId = Trainee.Id;
             }
 

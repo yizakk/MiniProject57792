@@ -42,7 +42,7 @@ namespace BE
             BirthDate = other.BirthDate;
             Address = other.Address;
             PhoneNumber = other.PhoneNumber;
-            Car_type = other.Car_type;
+            CarType = other.CarType;
             FirstName = other.FirstName;
             LastName = other.LastName;
             Gender = other.Gender;

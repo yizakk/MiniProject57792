@@ -56,12 +56,11 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
             try
             {
                 TestItem.BeginAddress = Address;
-                string temp = cityTextBox.Text + " " + streetTextBox.Text + " " + buildingNumberTextBox;
-                TestItem.adress = temp;
+                //string temp = cityTextBox.Text + " " + streetTextBox.Text + " " + buildingNumberTextBox;
+                //TestItem.adress = temp;
                 bl.UpdateTest(TestItem);
             }
 

@@ -57,7 +57,7 @@ namespace Dal
         public IEnumerable<Tester> GetTestersWithCarType(CarType type)
         {
             var testers = from item in Ds.Testers2
-                          where item.Car_type == type
+                          where item.CarType == type
                           select new Tester(item);
             return testers;
         }

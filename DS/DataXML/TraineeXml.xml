@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Trainees>
+  <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>1111</Id>
+    <PhoneNumber>0523333444</PhoneNumber>
+    <Address>
+      <City>תל אביב</City>
+      <Street>דפנה</Street>
+      <BuildingNumber>17</BuildingNumber>
+    </Address>
+    <CarType>פרטי</CarType>
+    <BirthDate>2001-01-14T15:18:25.7751536+02:00</BirthDate>
+    <LastName>אוון</LastName>
+    <FirstName>מייקל</FirstName>
+    <Gender>זכר</Gender>
+    <LastTest>0001-01-01T00:00:00</LastTest>
+    <GearType>אוטומטי</GearType>
+    <NumLessons>0</NumLessons>
+  </Trainee>
+  <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>1122</Id>
+    <PhoneNumber>0523333555</PhoneNumber>
+    <Address>
+      <City>ירושלים</City>
+      <Street>הרב צבי יהודה</Street>
+      <BuildingNumber>17</BuildingNumber>
+    </Address>
+    <CarType>פרטי</CarType>
+    <BirthDate>2000-01-14T15:18:25.8301203+02:00</BirthDate>
+    <LastName>ליאון</LastName>
+    <FirstName>יוהנה</FirstName>
+    <Gender>נקבה</Gender>
+    <LastTest>0001-01-01T00:00:00</LastTest>
+    <GearType>אוטומטי</GearType>
+    <NumLessons>0</NumLessons>
+  </Trainee>
+</Trainees>

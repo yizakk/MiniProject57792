@@ -12,7 +12,7 @@ namespace Dal
         public static IDal GetDal() // a singleton design pattern for one instance of dal
         {
             if (dal == null)
-                dal = new Dal_imp();
+                dal = new Xml_Dal_imp();
             return dal;
         }
     }

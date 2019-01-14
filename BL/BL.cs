@@ -45,10 +45,10 @@ namespace BL
 
             foreach (Test temp in dal.GetTestsForSpecTrainee(trainee.Id))
             {
-                if (temp.CarType == trainee.Car_type)
+                if (temp.CarType == trainee.CarType)
                 {
                     if (temp.Passed)
-                        throw new Exceptions("trainee id:" + trainee.Id + " already passed a test on car type: " + trainee.Car_type+"!");
+                        throw new Exceptions("trainee id:" + trainee.Id + " already passed a test on car type: " + trainee.CarType+"!");
                 }
             }
 
@@ -428,7 +428,7 @@ namespace BL
             {
                 IEnumerable<IGrouping<CarType, Tester>> Group = from item in dal.GetTesters()
                                                                 orderby item.FullName
-                                                                group item by item.Car_type;
+                                                                group item by item.CarType;
 
                 return Group;
             }
@@ -436,7 +436,7 @@ namespace BL
             {
                 IEnumerable<IGrouping<CarType, Tester>> Group = from item in dal.GetTesters()
                                                                 
-                                                                group item by item.Car_type;
+                                                                group item by item.CarType;
 
                 return Group;
             }

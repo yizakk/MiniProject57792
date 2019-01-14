@@ -48,7 +48,7 @@ namespace DS
 
             if (!File.Exists(TestsPath))
             {
-                CreateFile("DrivingTests", TestsPath);
+                CreateFile("Tests", TestsPath);
 
             }
             TestRoot = LoadData(TestsPath);
