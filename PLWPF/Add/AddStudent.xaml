@@ -52,7 +52,7 @@
             <TextBox x:Name="lastNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
 
             <Label Content="מין:" Grid.Column="0" HorizontalAlignment="Left"  Grid.Row="3" VerticalAlignment="Center"/>
-            <ComboBox x:Name="genderComboBox" Grid.Column="1" SelectedValue="{Binding gender}" HorizontalAlignment="Left" Height="Auto"  Grid.Row="3" VerticalAlignment="Center" Width="120"/>
+            <ComboBox x:Name="GenderComboBox" Grid.Column="1" SelectedValue="{Binding Gender}" HorizontalAlignment="Left" Height="Auto"  Grid.Row="3" VerticalAlignment="Center" Width="120"/>
 
             <Label Content="תאריך לידה" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
             <DatePicker x:Name="birthDateDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="4" SelectedDate="{Binding BirthDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
@@ -61,7 +61,7 @@
             <TextBox x:Name="phoneNumberTextBox" KeyDown="KeyDownCheckIfNotNumber" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding PhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
 
             <Label Content="סוג רכב:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
-            <ComboBox x:Name="car_typeComboBox" Grid.Column="1" SelectedValue="{Binding Car_type}" HorizontalAlignment="Left" Height="Auto" Margin="3" Grid.Row="6" VerticalAlignment="Center" Width="120" />
+            <ComboBox x:Name="car_typeComboBox" Grid.Column="1" SelectedValue="{Binding CarType}" HorizontalAlignment="Left" Height="Auto" Margin="3" Grid.Row="6" VerticalAlignment="Center" Width="120" />
 
             <Label Content="הילוך:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="7" VerticalAlignment="Center"/>
             <ComboBox x:Name="gearTypeComboBox" Grid.Column="1" SelectedValue="{Binding GearType}" HorizontalAlignment="Left" Height="Auto" Margin="3" Grid.Row="7" VerticalAlignment="Center" Width="120" />

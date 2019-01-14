@@ -67,7 +67,7 @@
                     <GridViewColumn x:Name="car_typeColumn" Header="רכב" Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="-6,-1" Text="{Binding Car_type}"/>
+                                <TextBlock Margin="-6,-1" Text="{Binding CarType}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -86,7 +86,7 @@
                     <GridViewColumn x:Name="genderColumn" Header="מין" Width="auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="-6,-1" Text="{Binding gender}"/>
+                                <TextBlock Margin="-6,-1" Text="{Binding Gender}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

@@ -26,6 +26,7 @@ namespace PLWPF
             TempTrainee = new Trainee();
             TempTrainee.BirthDate = DateTime.Parse("2000 01 01");
             birthDateDatePicker.DisplayDateEnd = DateTime.Now.AddYears(-18);
+            buildingNumberTextBox1.Text = "";
             try
             {
                 grid1.DataContext = TempTrainee;
@@ -48,7 +49,7 @@ namespace PLWPF
             
 // קשירת הקומבובוקסים
             car_typeComboBox.ItemsSource = Enum.GetValues(typeof(CarType));
-            genderComboBox.ItemsSource = Enum.GetValues(typeof(Gender));
+            GenderComboBox.ItemsSource = Enum.GetValues(typeof(Gender));
             gearTypeComboBox.ItemsSource = Enum.GetValues(typeof(Gear));
 
         } 

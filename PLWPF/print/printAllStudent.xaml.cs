@@ -41,7 +41,7 @@ namespace PLWPF
                     //split.VerticalAlignment = VerticalAlignment.Center;
                     //split.Width = 200;
                     //split.FontSize = 20;
-                    //split.Text = item.First().Car_type.ToString();
+                    //split.Text = item.First().CarType.ToString();
 
 
                     foreach (var tester in item)

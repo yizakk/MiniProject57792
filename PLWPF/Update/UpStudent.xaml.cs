@@ -40,7 +40,7 @@ namespace PLWPF
             }
 
             car_typeComboBox.ItemsSource = Enum.GetValues(typeof(CarType));
-            genderComboBox.ItemsSource = Enum.GetValues(typeof(Gender));
+            GenderComboBox.ItemsSource = Enum.GetValues(typeof(Gender));
             gearTypeComboBox.ItemsSource = Enum.GetValues(typeof(Gear));
 
             if (Data.UserType == Data.Usertype.תלמיד)

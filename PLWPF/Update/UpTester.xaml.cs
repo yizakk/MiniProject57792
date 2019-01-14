@@ -41,7 +41,7 @@ namespace PLWPF
                 comboBox.IsEnabled = false;
             }
             car_typeComboBox.ItemsSource = Enum.GetValues(typeof(CarType));
-            genderComboBox.ItemsSource = Enum.GetValues(typeof(Gender));
+            GenderComboBox.ItemsSource = Enum.GetValues(typeof(Gender));
 
             if(Data.UserType == Data.Usertype.בוחן)
             {

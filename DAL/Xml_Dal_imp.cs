@@ -238,7 +238,7 @@ namespace Dal
             //                 Id = t.Element("ID").Value,
             //                 FirstName = t.Element("FirstName").Value,
             //                 LastName = t.Element("LastName").Value,
-            //                 Car_type = (CarType) Enum.Parse(typeof(CarType), t.Element("CarType").Value),
+            //                 CarType = (CarType) Enum.Parse(typeof(CarType), t.Element("CarType").Value),
             //                 BirthDate = DateTime.Parse(t.Element("BirthDate").Value),
             //                 Gender = (Gender)Enum.Parse(typeof(Gender), t.Element("Gender").Value),
             //                 PhoneNumber = t.Element("Phone").Value ,

@@ -82,4 +82,20 @@
     <GearType>אוטומטי</GearType>
     <NumLessons>0</NumLessons>
   </Trainee>
+  <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>029985090</Id>
+    <Address>
+      <City>ירושלים</City>
+      <Street>ברגמן</Street>
+      <BuildingNumber>25</BuildingNumber>
+    </Address>
+    <CarType>משאית_קטנה</CarType>
+    <BirthDate>2000-01-01T00:00:00</BirthDate>
+    <LastName>ארביב</LastName>
+    <FirstName>אלחנן</FirstName>
+    <Gender>זכר</Gender>
+    <LastTest>0001-01-01T00:00:00</LastTest>
+    <GearType>ידני</GearType>
+    <NumLessons xsi:nil="true" />
+  </Trainee>
 </Trainees>

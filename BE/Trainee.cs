@@ -15,6 +15,7 @@ namespace BE
         {
             Id = "";
             Address = new Address();
+
         }
 
 
@@ -64,7 +65,7 @@ namespace BE
         public Gear GearType { get; set; }
         public string SchoolName { get; set; }
         public string TeacherName { get; set; }
-        public int NumLessons { get; set; }
+        public int? NumLessons { get; set; }
 
 
         public override string ToString() // not finished!!!

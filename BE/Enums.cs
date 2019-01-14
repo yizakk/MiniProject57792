@@ -75,12 +75,14 @@ namespace BE
     {
         public string City { get; set; }
         public string Street { get; set; }
-        public int BuildingNumber { get; set; }
+        public int? BuildingNumber { get; set; }
+
 
         public Address()
         {
             City = "";
             Street = "";
+            BuildingNumber = null;
         }
 
         public Address(Address other)

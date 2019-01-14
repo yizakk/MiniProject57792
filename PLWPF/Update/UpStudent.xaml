@@ -63,10 +63,10 @@
             <TextBox x:Name="lastNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="2.8,4,0,4" Grid.Row="4" Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
 
             <Label Content="מין:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,3.6" Grid.Row="5" VerticalAlignment="Center"/>
-            <ComboBox x:Name="genderComboBox" Grid.Column="1" SelectedValue="{Binding gender}" HorizontalAlignment="Left" Height="Auto" Grid.Row="5" VerticalAlignment="Center" Width="auto" />
+            <ComboBox x:Name="GenderComboBox" Grid.Column="1" SelectedValue="{Binding Gender}" HorizontalAlignment="Left" Height="Auto" Grid.Row="5" VerticalAlignment="Center" Width="auto" />
 
             <Label Content="סוג הרכב:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4.4,0,4.2" Grid.Row="6" VerticalAlignment="Center"/>
-            <ComboBox x:Name="car_typeComboBox" Grid.Column="1" SelectedValue="{Binding Car_type}" HorizontalAlignment="Left" Height="Auto"  Margin="2.8,3.4,0,3.2" Grid.Row="6" VerticalAlignment="Center" Width="120" />
+            <ComboBox x:Name="car_typeComboBox" Grid.Column="1" SelectedValue="{Binding CarType}" HorizontalAlignment="Left" Height="Auto"  Margin="2.8,3.4,0,3.2" Grid.Row="6" VerticalAlignment="Center" Width="120" />
 
             <Label Content="סוג ההילוך" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3.8,0,3.8" Grid.Row="7" VerticalAlignment="Center"/>
             <ComboBox x:Name="gearTypeComboBox" SelectedValue="{Binding GearType}" Grid.Column="1" HorizontalAlignment="Left" Height="Auto"  Margin="2.8,2.8,0,2.8" Grid.Row="7" VerticalAlignment="Center" Width="120" />
