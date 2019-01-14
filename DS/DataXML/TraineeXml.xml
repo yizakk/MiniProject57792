@@ -51,22 +51,6 @@
     <NumLessons>21</NumLessons>
   </Trainee>
   <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <Id>204412712</Id>
-    <Address>
-      <City />
-      <Street />
-      <BuildingNumber>0</BuildingNumber>
-    </Address>
-    <CarType>פרטי</CarType>
-    <BirthDate>2000-01-01T00:00:00</BirthDate>
-    <LastName>נוסבאום</LastName>
-    <FirstName>יצחק</FirstName>
-    <Gender>זכר</Gender>
-    <LastTest>0001-01-01T00:00:00</LastTest>
-    <GearType>אוטומטי</GearType>
-    <NumLessons>0</NumLessons>
-  </Trainee>
-  <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <Id>223332909</Id>
     <Address>
       <City />
@@ -77,6 +61,57 @@
     <BirthDate>2000-01-01T00:00:00</BirthDate>
     <LastName>נוסבאום</LastName>
     <FirstName>בארי </FirstName>
+    <Gender>זכר</Gender>
+    <LastTest>0001-01-01T00:00:00</LastTest>
+    <GearType>אוטומטי</GearType>
+    <NumLessons>0</NumLessons>
+  </Trainee>
+  <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>029985090</Id>
+    <PhoneNumber>0587172681</PhoneNumber>
+    <Address>
+      <City />
+      <Street>ברגמן</Street>
+      <BuildingNumber>24</BuildingNumber>
+    </Address>
+    <CarType>פרטי</CarType>
+    <BirthDate>1986-05-31T00:00:00</BirthDate>
+    <LastName>ארביב</LastName>
+    <FirstName>אלחנן</FirstName>
+    <Gender>זכר</Gender>
+    <LastTest>0001-01-01T00:00:00</LastTest>
+    <GearType>ידני</GearType>
+    <SchoolName>חביב</SchoolName>
+    <TeacherName>יענקלה</TeacherName>
+    <NumLessons>30</NumLessons>
+  </Trainee>
+  <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>335191102</Id>
+    <Address>
+      <City>ירושלים</City>
+      <Street>ברגמן</Street>
+      <BuildingNumber>30</BuildingNumber>
+    </Address>
+    <CarType>פרטי</CarType>
+    <BirthDate>2000-01-01T00:00:00</BirthDate>
+    <LastName>ארביב</LastName>
+    <FirstName>שירה</FirstName>
+    <Gender>זכר</Gender>
+    <LastTest>0001-01-01T00:00:00</LastTest>
+    <GearType>אוטומטי</GearType>
+    <NumLessons>0</NumLessons>
+  </Trainee>
+  <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>204412712</Id>
+    <Address>
+      <City />
+      <Street>מושיקו</Street>
+      <BuildingNumber>20</BuildingNumber>
+    </Address>
+    <CarType>פרטי</CarType>
+    <BirthDate>2000-01-01T00:00:00</BirthDate>
+    <LastName>נוסבאום</LastName>
+    <FirstName>יצחק</FirstName>
     <Gender>זכר</Gender>
     <LastTest>0001-01-01T00:00:00</LastTest>
     <GearType>אוטומטי</GearType>
