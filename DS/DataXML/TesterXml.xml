@@ -1,22 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Testers>
   <Tester xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <Id>029985090</Id>
-    <PhoneNumber>0587172681</PhoneNumber>
+    <Id>201096260</Id>
     <Address>
       <City />
-      <Street>ברגמן</Street>
-      <BuildingNumber>24</BuildingNumber>
+      <Street />
+      <BuildingNumber>0</BuildingNumber>
     </Address>
     <CarType>פרטי</CarType>
-    <BirthDate>1979-01-14T16:00:17.5986533+02:00</BirthDate>
-    <LastName>ארביב</LastName>
-    <FirstName>אלחנן</FirstName>
+    <BirthDate>1979-01-14T17:17:24.0494923+02:00</BirthDate>
     <Gender>זכר</Gender>
-    <Seniority>30</Seniority>
-    <MaxTestsPerWeek>110</MaxTestsPerWeek>
-    <MaxDistance>111</MaxDistance>
+    <Seniority>0</Seniority>
+    <MaxTestsPerWeek>0</MaxTestsPerWeek>
+    <MaxDistance>0</MaxDistance>
     <TestsList />
-    <WorkSave>5,7,True,True,True,True,True,False,True,False,False,False,False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True</WorkSave>
+    <WorkSave>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False</WorkSave>
+  </Tester>
+  <Tester xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>0000</Id>
+    <PhoneNumber>0522222222</PhoneNumber>
+    <Address>
+      <City>חיפה</City>
+      <Street>שער הגיא</Street>
+      <BuildingNumber>15</BuildingNumber>
+    </Address>
+    <CarType>פרטי</CarType>
+    <BirthDate>1978-01-14T15:18:25.6752148+02:00</BirthDate>
+    <LastName>חלאסטרה</LastName>
+    <FirstName>ג'וג'ו</FirstName>
+    <Gender>זכר</Gender>
+    <Seniority>1</Seniority>
+    <MaxTestsPerWeek>7</MaxTestsPerWeek>
+    <MaxDistance>40</MaxDistance>
+    <TestsList />
+    <WorkSave>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True</WorkSave>
   </Tester>
 </Testers>

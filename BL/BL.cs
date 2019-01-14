@@ -35,12 +35,12 @@ namespace BL
 
             if (trainee == null)
             {
-                throw new Exceptions("Trainee id:" + test.TraineeId + " doesn't exist!");
+                throw new MyExceptions("Trainee id:" + test.TraineeId + " doesn't exist!");
             }
 
             if (!TraineeAvailable(test))
             {
-                throw new Exceptions("You can not set this time because you already have another test at the same time");
+                throw new MyExceptions("You can not set this time because you already have another test at the same time");
             }
 
             foreach (Test temp in dal.GetTestsForSpecTrainee(trainee.Id))
@@ -48,13 +48,13 @@ namespace BL
                 if (temp.CarType == trainee.CarType)
                 {
                     if (temp.Passed)
-                        throw new Exceptions("trainee id:" + trainee.Id + " already passed a test on car type: " + trainee.CarType+"!");
+                        throw new MyExceptions("trainee id:" + trainee.Id + " already passed a test on car type: " + trainee.CarType+"!");
                 }
             }
 
             if (trainee.NumLessons < Configuration.MinLessons)
             {
-                throw new Exceptions ("Trainee:" + trainee.FullName + " didn't reach 20 lessons yet!");
+                throw new MyExceptions ("Trainee:" + trainee.FullName + " didn't reach 20 lessons yet!");
             }
 
             if (trainee.LastTest != DateTime.MinValue) // check if trainee did a test in last 7 days
@@ -62,7 +62,7 @@ namespace BL
                 TimeSpan timeSpan = test.Date - trainee.LastTest;
                 if (timeSpan.Days <= Configuration.MinDaysBetweenTests)
                 {
-                     throw new Exceptions ( "This trainee was tested less than "+ Configuration.MinDaysBetweenTests+" days ago! ");
+                     throw new MyExceptions ( "This trainee was tested less than "+ Configuration.MinDaysBetweenTests+" days ago! ");
                 }
             }
 
@@ -75,7 +75,7 @@ namespace BL
             // if there isn't any tester that match with trainee's car type - throw
             // because there won't be created any test at all!!
             if (!TestersWithCarType.Any())
-                throw new Exceptions("No available testers with this car type!");//chek
+                throw new MyExceptions("No available testers with this car type!");//chek
 
             IEnumerable<Tester> AvailableTesters;
             DateTime OriginalTestDate = test.Date;
@@ -97,17 +97,17 @@ namespace BL
                         if (flag)
                         {
                             test.IsReturning = true;
-                            throw new Exceptions("we can't set a test in the chosen time, but we can create a test for you at:" + test.Date + " are you interested?", test);
+                            throw new MyExceptions("we can't set a test in the chosen time, but we can create a test for you at:" + test.Date + " are you interested?", test);
                         }
                         else
                         {
                             dal.AddTest(test);
-                            throw new Exceptions("test added for " + test.TraineeId + " at " + test.Date, true);
+                            throw new MyExceptions("test added for " + test.TraineeId + " at " + test.Date, true);
                         }
                     }
                     else
                     {
-                        throw new Exceptions("The system did not find a free test at the time you wanted " +
+                        throw new MyExceptions("The system did not find a free test at the time you wanted " +
                                            "The system has found another date, but at that time you have already been tested elsewhere");
 
                     }
@@ -124,7 +124,7 @@ namespace BL
 
                 if (test.Date.Month > OriginalTestDate.AddMonths(3).Month)
                 {
-                    throw new Exceptions("No available tests in next 3 months!");
+                    throw new MyExceptions("No available tests in next 3 months!");
                 }
 
             } while (!AvailableTesters.Any());
@@ -159,7 +159,7 @@ namespace BL
             // when we go to check in the matrix of work schedule we should check 
             // if the numbers are valid for the matrix indexes
             if (tempDay > Configuration.WorkDays - 1 || tempHour > Configuration.WorkHours - 1 || tempDay < 0 || tempHour < 0)
-                throw new Exceptions("You tried to check work schedule for a tester beyond the boundaries of the array of the matrix");
+                throw new MyExceptions("You tried to check work schedule for a tester beyond the boundaries of the array of the matrix");
 
             // creating a lambda expression that returns if a day & hour are at
             // the tester's working time
@@ -188,7 +188,7 @@ namespace BL
             // when we go to check in the matrix of work schedule we should check 
             // if the numbers are valid for the matrix indexes
             if (tempDay > Configuration.WorkDays - 1 || tempHour > Configuration.WorkHours - 1 || tempDay < 0 || tempHour < 0)
-                throw new Exceptions("You tried to check work schedule for a tester beyond the boundaries of the array of the matrix");
+                throw new MyExceptions("You tried to check work schedule for a tester beyond the boundaries of the array of the matrix");
 
             // creating a lambda expression that returns if a day & hour are at
             // the tester's working time
@@ -296,7 +296,7 @@ namespace BL
                 // if tester age < 40 - deny 
                 if (tester.Age < Configuration.TesterMinAge)
                 {
-                    throw new Exceptions("tester:" + tester.FullName + " is under 40 YO");
+                    throw new MyExceptions("tester:" + tester.FullName + " is under 40 YO");
                 }
                 else
                 {
@@ -306,11 +306,10 @@ namespace BL
 
         public void AddTrainee(Trainee trainee)
         {
-
                 // if age < 18 deny
                 if (trainee.Age < Configuration.TraineeMinAge)
                 {
-                    throw new Exceptions("Trainee:" + trainee.FullName + " is under 18 YO!");
+                    throw new MyExceptions("Trainee:" + trainee.FullName + " is under 18 YO!");
                 }
                 else
                 {
@@ -318,24 +317,19 @@ namespace BL
                 }
         }
 
-
         public IEnumerable<Test> TesterTestsList(Tester tester)
         {
 
             return dal.GetTestsForSpecTester(tester.Id);
         }
-        
-
         public IEnumerable<Trainee> GetTraineeList()
         {
             return dal.GetTrainees();
         }
-
         public IEnumerable<Tester> GetTesters()
         {
             return dal.GetTesters();
         }
-
         public IEnumerable<Test> GetTests()
         {
             return dal.GetTests();
@@ -345,7 +339,6 @@ namespace BL
         {
             dal.DelTester(id);
         }
-
         public void DelTrainee(string id)
         {
             dal.DelTrainee(id);
@@ -353,10 +346,10 @@ namespace BL
 
         public bool Passed ( string TraineeId )
         {
-            var check = from item in dal.GetTestsForSpecTrainee(TraineeId)
+            var check = (from item in dal.GetTestsForSpecTrainee(TraineeId)
                         where item.Passed
-                        select item;
-            return check.Any();
+                        select item).FirstOrDefault();
+            return check != null ; // If check contains any "Test" element - it means this trainee has passed a test
         }
 
         /// <summary>
@@ -542,6 +535,24 @@ namespace BL
             }
             else { dal.UpdateTest(testItem); }
                 
+        }
+
+        private bool CheckIdValidity(string id)
+        {
+            int sum = 0;
+            char[] digits = id.PadLeft(9, '0').ToCharArray();
+            int[] oneTwo = { 1, 2, 1, 2, 1, 2, 1, 2, 1 };
+            int[] multiply = new int[9];
+            int[] oneDigit = new int[9];
+            for (int i = 0; i < 9; i++)
+                multiply[i] = Convert.ToInt32(digits[i].ToString()) * oneTwo[i];
+
+            for (int i = 0; i < 9; i++)
+            {
+                oneDigit[i] = (int)(multiply[i] / 10) + multiply[i] % 10;
+                sum += oneDigit[i];
+            }
+            return (sum % 10) == 0;
         }
     }
 }

@@ -69,7 +69,7 @@ namespace PLWPF
                 bl.AddTest(TempTest);
             }
 
-            catch (Exceptions a)
+            catch (MyExceptions a)
             {
                 if (a.SuggestedTest != null)
                 {
@@ -81,7 +81,7 @@ namespace PLWPF
                         {
                             bl.AddTest(a.SuggestedTest);
                         }
-                        catch (Exceptions cat)
+                        catch (MyExceptions cat)
                         {
                             MessageBox.Show(cat._message, "", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK,
                                 MessageBoxOptions.RtlReading);

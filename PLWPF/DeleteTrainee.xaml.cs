@@ -69,7 +69,7 @@ namespace PLWPF
                 {
                     bl.DelTrainee(IdString);
                 }
-                catch (Exceptions a)
+                catch (MyExceptions a)
                 {
                     MessageBox.Show(a._message);
                     return;
@@ -97,7 +97,7 @@ namespace PLWPF
                 {
                     bl.DelTrainee(Data.UserID);
                 }
-                catch (Exceptions a)
+                catch (MyExceptions a)
                 {
                     MessageBox.Show(a._message);
                     return;

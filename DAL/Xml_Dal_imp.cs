@@ -88,6 +88,24 @@ namespace Dal
         {
             Ds.Tests.Add(test.ToXml());
             Ds.SaveTests();
+            //Ds.Tests.Add(new XElement("Test",
+            //                      new XElement("ID", test.Id.ToString(),
+            //                      new XElement("TesterID", test.TesterId),
+            //                      new XElement("TraineeID", test.TraineeId),
+            //                      new XElement("Date", test.Date.ToString()),
+            //                      new XElement("TesterComment", test.TesterComment)),
+            //                      new XElement("CarType", test.CarType),
+            //                      new XElement("StarAddress",
+            //                                     new XElement("City", test.BeginAddress.City),
+            //                                     new XElement("Street", test.BeginAddress.Street),
+            //                                     new XElement("BuildingNumber", test.BeginAddress.BuildingNumber.ToString())),
+            //                      new XElement("Parameters",
+            //                                     new XElement("Speed", test.Paramet.Speed),
+            //                                     new XElement("Distance", test.Paramet.Distance),
+            //                                     new XElement("ReversePark", test.Paramet.ReversePark),
+            //                                     new XElement("UsingVinkers", test.Paramet.UsingVinkers),
+            //                                     new XElement("UsingMirrors", test.Paramet.UsingMirrors)),
+            //                      new XElement("Passed", test.Passed)));
         }
 
         public void AddTester(Tester tester)
@@ -204,17 +222,42 @@ namespace Dal
         public List<Trainee> GetTrainees(Func<Trainee, bool> p=null)
         {
             var serializer = new XmlSerializer(typeof(Trainee));
-            var elements = Ds.Testers.Elements("Trainee");
-        
+            var elements = Ds.Trainees.Elements("Trainee");
             if (p != null)
             {
                 return elements.Select(element => (Trainee)serializer.Deserialize(element.CreateReader())).Where(p).ToList();
 
-               
+                //return result.Where(p).ToList();
             }
             return elements.Select(element => (Trainee)serializer.Deserialize(element.CreateReader())).ToList();
 
-            
+            //var result = from t in Ds.Trainees.Elements("Trainee")
+            //             select new Trainee
+            //             { 
+            //              //Common to both of persons
+            //                 Id = t.Element("ID").Value,
+            //                 FirstName = t.Element("FirstName").Value,
+            //                 LastName = t.Element("LastName").Value,
+            //                 Car_type = (CarType) Enum.Parse(typeof(CarType), t.Element("CarType").Value),
+            //                 BirthDate = DateTime.Parse(t.Element("BirthDate").Value),
+            //                 Gender = (Gender)Enum.Parse(typeof(Gender), t.Element("Gender").Value),
+            //                 PhoneNumber = t.Element("Phone").Value ,
+            //                 Address = t.Element("Address").ToAddress(),
+            //                 //new Address
+            //                 //{
+            //                 //    City = t.Element("Address").Element("City").Value,
+            //                 //    BuildingNumber = int.Parse(t.Element("Address").Element("BuildingNumber").Value),
+            //                 //    Street = t.Element("Address").Element("Street").Value
+            //                 //},
+            //              //End of common
+
+            //                 GearType = (Gear)Enum.Parse(typeof(Gear), t.Element("GearType").Value),
+            //                 TeacherName = t.Element("TeacherName").Value,
+            //                 SchoolName = t.Element("SchoolName").Value,
+            //                 NumLessons = int.Parse(t.Element("NumLessons").Value)
+            //             };
+            //return
+            //    result.ToList();
         }
 
 

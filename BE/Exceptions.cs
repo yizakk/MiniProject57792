@@ -6,32 +6,32 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class Exceptions : Exception
+    public class MyExceptions : Exception
     {
             public readonly string _message;
             public readonly string _testId;
             public readonly Test SuggestedTest;
 
-            public Exceptions(string message)
+            public MyExceptions(string message)
             {
                 _message = "ERROR! " + message;
                 SuggestedTest = null;
             }
 
-            public Exceptions(string message, bool t)
+            public MyExceptions(string message, bool t)
             {
                 _message = message;
                 SuggestedTest = null;
 
             }
 
-        public Exceptions(string message, Test test)
+        public MyExceptions(string message, Test test)
             {
                 _message = "ERROR! " + message;
                 SuggestedTest = test;
             }
 
-            public Exceptions(string message, string testId)
+            public MyExceptions(string message, string testId)
             {
                 _message = "ERROR! " + message;
                 _testId = testId;
