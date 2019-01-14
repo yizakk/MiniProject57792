@@ -49,23 +49,28 @@ namespace PLWPF
 
         public static void NumericCheck(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if (e.Key == Key.Tab)
+            if (e.Key == Key.Tab || e.Key == Key.Enter || e.Key == Key.LeftShift || e.Key == Key.RightShift
+                || e.Key == Key.LeftCtrl || e.Key == Key.LeftAlt || e.Key == Key.RightCtrl || e.Key == Key.RightAlt
+                || e.Key == Key.End || e.Key == Key.Back || e.Key == Key.Home || e.Key == Key.Delete)
             { return; }
-            if (e.Key == Key.Enter)
+
+            try
             {
-                return;
+                string key = e.Key.ToString().TrimStart('D');
+                int value = -1;
+                bool convert = int.TryParse(key, out value);
+
+                if (!convert)
+                {
+                    e.Handled = true;
+                    MessageBox.Show("השדה " + " יכול להכיל מספרים בלבד!", "", MessageBoxButton.OK, MessageBoxImage.None,
+                                        MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                }
             }
 
-            string key = e.Key.ToString().TrimStart('D');
-            int value = -1;
-            bool convert = int.TryParse(key, out value);
-
-
-            if (!convert)
+            catch (Exception)
             {
-                e.Handled = true;
-                MessageBox.Show("השדה " + " יכול להכיל רק מספרים!", "", MessageBoxButton.OK, MessageBoxImage.None,
-                                    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                return;
             }
         }
     }

@@ -46,6 +46,7 @@
     <Compile Include="DS.cs" />
     <Compile Include="DsFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XmlDs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

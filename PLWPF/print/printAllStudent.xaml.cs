@@ -48,7 +48,7 @@ namespace PLWPF
                     {
                         traineeListView.Items.Add(tester);
                     }
-                    traineeListView.Items.Add(new { ItemName = item.First().Car_type.ToString() });
+                    traineeListView.Items.Add(new { ItemName = item.First().CarType.ToString() });
                    
                 }
             }

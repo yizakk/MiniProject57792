@@ -21,8 +21,9 @@ namespace PLWPF
     public partial class UpdateTest : UserControl
     {
         BE.Address Address = new BE.Address();
-        BE.Test TestItem;
+        BE.Test TestItem = new BE.Test();
         BL.IBL bl = BL.BlFactory.GetBL();
+
         public UpdateTest()
         {
             InitializeComponent();
@@ -35,18 +36,21 @@ namespace PLWPF
                 button.IsEnabled = false;
                 comboBox.IsEnabled = false;
             }
+            button.IsEnabled = false;
+
             comboBox.ItemsSource = sourceList;
             grid2.DataContext = Address;
-            
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (comboBox.SelectedIndex != -1)
             {
+                button.IsEnabled = true;
                 TestItem = bl.FindTest(int.Parse(comboBox.SelectedValue.ToString()));
                 grid1.DataContext = TestItem;
-                ParametersGrid.DataContext = TestItem.Parameters;
+                ParametersGrid.DataContext = TestItem.Paramet;
+                grid2.DataContext = TestItem.BeginAddress;
             }
         }
 
@@ -54,17 +58,16 @@ namespace PLWPF
         {
             try
             {
-
                 TestItem.BeginAddress = Address;
-            
-
-                string temp = cityTextBox.Text + " " + streetTextBox.Text + " " + buildingNumberTextBox.Text;
-               TestItem.adress = temp;
+                //string temp = cityTextBox.Text + " " + streetTextBox.Text + " " + buildingNumberTextBox;
+                //TestItem.adress = temp;
                 bl.UpdateTest(TestItem);
             }
+
             catch (BE.Exceptions cat)
             {
                 MessageBox.Show(cat._message);
+                return;
             }
             int choice = (int)MessageBox.Show("המבחן עודכן בהצלחה, האם ברצונך לעדכן עוד מבחן?", "", MessageBoxButton.YesNo,
                                 MessageBoxImage.Asterisk, MessageBoxResult.None, MessageBoxOptions.RtlReading);
@@ -75,6 +78,11 @@ namespace PLWPF
             else
                 Data.MainUserControl = new HomePanel();
 
+        }
+
+        private void KeyDownCheckIfNotNumber(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            Data.NumericCheck(sender, e);
         }
     }
 }

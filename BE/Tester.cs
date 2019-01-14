@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace BE
 {
@@ -61,7 +62,7 @@ namespace BE
             FirstName = name;
             LastName = lastname;
             BirthDate = birth;
-            Car_type = carType;
+            CarType = carType;
             Address = new Address();
             MaxDistance = 100;
             MaxTestsPerWeek = 20;
@@ -80,10 +81,10 @@ namespace BE
             BirthDate = other.BirthDate;
             Address = other.Address;
             PhoneNumber = other.PhoneNumber;
-            Car_type = other.Car_type;
+            CarType = other.CarType;
             FirstName = other.FirstName;
             LastName = other.LastName;
-            gender = other.gender;
+            Gender = other.Gender;
             _TestsList = new List<DateTime>(other.TestsList);
             Seniority = other.Seniority;
             Address = new Address(other.Address);
@@ -99,21 +100,55 @@ namespace BE
         //*********************************************** end of  c-tors **************
         #endregion
         public int Seniority { get; set; }
-
-        // checking number of tests in week ******************************////////////////////
         public int MaxTestsPerWeek { get; set; }
-
         public int MaxDistance { get; set; } // Maximum distance (in KMs) this tester can be from his test
-
+        
         #region Work Schedule and availability
-
         // A new field we added for holding all the dates this Tester is associated to 
         private List<DateTime> _TestsList =new List<DateTime> ();
-        public List<DateTime> TestsList { get { return _TestsList; } }
+        public List<DateTime> TestsList { get { return _TestsList; } internal set { _TestsList = value; } }
 
+        [XmlIgnore]
         public bool[,] m_WorkSchedule = new bool[Configuration.WorkDays, Configuration.WorkHours];
+        [XmlIgnore]
+        public bool[,] WorkSChedule
+        {
+            get { return m_WorkSchedule; }
+            set { m_WorkSchedule = value; }
+        }
 
-        public bool [,] workSChedule { get { return m_WorkSchedule; } set { m_WorkSchedule = value; } }
+        public string WorkSave
+        {
+            get
+            {
+                if (m_WorkSchedule == null)
+                    return null;
+                string result = "";
+                if (m_WorkSchedule != null)
+                {
+                    int sizeA = m_WorkSchedule.GetLength(0);
+                    int sizeB = m_WorkSchedule.GetLength(1);
+                    result += "" + sizeA + "," + sizeB;
+                    for (int i = 0; i < sizeA; i++)
+                        for (int j = 0; j < sizeB; j++)
+                            result += "," + m_WorkSchedule[i, j]; }
+                return result;
+            }
+            set
+            {
+                if (value != null && value.Length > 0)
+                {
+                    string[] values = value.Split(',');
+                    int sizeA = int.Parse(values[0]);
+                    int sizeB = int.Parse(values[1]);
+                    m_WorkSchedule = new bool[sizeA, sizeB];
+                    int index = 2;
+                    for (int i = 0; i < sizeA; i++)
+                        for (int j = 0; j < sizeB; j++)
+                            m_WorkSchedule[i, j] = bool.Parse(values[index++]);
+                }
+            }
+        }
 
         /// <summary>
         /// Getting the value of the matrix "Work schedule" in place " [day] , [hour]"
@@ -136,12 +171,11 @@ namespace BE
         {
             m_WorkSchedule[day, hour] = (bool) value;
         }
-        //**********************************   end of  work schedule    ***************
         #endregion
 
         public override string ToString()
         {
-            return ( "Tester name: \"" + FullName + "\" Id: " + Id +" cartype: " + Car_type) ;
+            return "Tester name: \"" + FullName + "\" Id: " + Id +" cartype: " + CarType;
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace BE
 {
@@ -16,15 +17,14 @@ namespace BE
             this.TraineeId = TraineeId;
             Date = dateTime;
             BeginAddress = new Address();
-            Parameters = new Parameters();
+            Paramet = new Parameters();
 
 
         }
         public Test() // default
         {
             BeginAddress = new Address();
-            Parameters = new Parameters();
-
+            Paramet = new Parameters();
         }
 
         // copy c-tor for deep copying
@@ -37,12 +37,9 @@ namespace BE
             Date = Other.Date;
             Passed = Other.Passed;
             TesterComment = Other.TesterComment;
-            Parameters = new Parameters(Other.Parameters);
+            Paramet = new Parameters(Other.Paramet);
             BeginAddress = new Address(Other.BeginAddress);
-            Parameters = new Parameters();
-
-
-
+            Paramet = new Parameters(Other.Paramet);
         }
 
         //*************************************************************************
@@ -59,14 +56,15 @@ namespace BE
         /// Marks if a test is one that was offered to the trainee by the system , or not
         /// </summary>
         public bool IsReturning  { get; set; }
+
         public string adress { get; set; }
         public Address BeginAddress { get; set; }
         public string BeginAddressString
         {
             get
             {
-                if (BeginAddress == null)
-                    return BeginAddress.city + ", " + BeginAddress.Street + ", " + BeginAddress.BuildingNumber;
+                if (BeginAddress != null)
+                    return BeginAddress.City + ", " + BeginAddress.Street + ", " + BeginAddress.BuildingNumber;
                 else
                     return "";
             }
@@ -74,13 +72,28 @@ namespace BE
 
         public string TesterComment { get; set; }
 
-        public Parameters Parameters;
+        public Parameters Paramet;
 
         public bool Passed { get; set; }
 
+        //public static XElement ToXML(this Test test)
+        //{
+            //return new XElement("drivingtest",
+            //                     new XElement("TesterID", test.TesterId),
+            //                     new XElement("TraineeID", test.TraineeId),
+            //                     new XElement("Date", test.Date.ToString()),
+            //                     new XElement("TesterComment", test.TesterComment),
+        //                         //new XElement("Requirements",
+        //                         //                   (from r in test.Requirements
+        //                         //                    select new XElement("Require", r)).ToList()),
+        //                        // new XElement(test.BeginAddressString.ToXML()),
+        //                         new XElement("Passed", test.Passed.ToString())
+        //                        );
+        //}
+
         public override string ToString()
         {
-            return ("Test Number:" + Id + " Tester id:" + TesterId + " Trainee id:" + TraineeId + " at:" + Date+" ");
+            return ("Test Number: " + Id + ", Tester id: " + TesterId + ", Trainee id: " + TraineeId + ", at: " + Date+" ");
         }
     }
 }

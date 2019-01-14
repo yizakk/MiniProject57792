@@ -68,29 +68,40 @@ namespace PLWPF
 
             if (comboBox.SelectedIndex != -1)
             {
-                string a = comboBox.SelectedValue.ToString().Split(' ')[0];
-                TempTester = bl.FindTester(a);
-                grid1.DataContext = TempTester;
-
-                int i = 0, j = 0, k = 1;
-                foreach (var item in ScheduleGrid.Children)
+                try
                 {
-                    if (item is CheckBox)
+
+                    string a = comboBox.SelectedValue.ToString().Split(' ')[0];
+                    TempTester = bl.FindTester(a);
+                    if (TempTester != null)
+                        grid1.DataContext = TempTester;
+                    else
+                        throw new Exception("בוחן לא נמצא");
+
+                    int i = 0, j = 0, k = 1;
+                    foreach (var item in ScheduleGrid.Children)
                     {
-                        var value = item as CheckBox;
-                        if (value.Name == "checkBox" + k++)
+                        if (item is CheckBox)
                         {
-                            Binding binding = new Binding();
-                            binding.Source = TempTester.WorkSchedule(i, j++);
-                            binding.Mode = BindingMode.OneTime;
-                            value.SetBinding(ToggleButton.IsCheckedProperty, binding);
-                            if (j == 7)
+                            var value = item as CheckBox;
+                            if (value.Name == "checkBox" + k++)
                             {
-                                j = 0;
-                                i++;
+                                Binding binding = new Binding();
+                                binding.Source = TempTester.WorkSchedule(i, j++);
+                                binding.Mode = BindingMode.OneTime;
+                                value.SetBinding(ToggleButton.IsCheckedProperty, binding);
+                                if (j == 7)
+                                {
+                                    j = 0;
+                                    i++;
+                                }
                             }
                         }
                     }
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show("משהו השתבש , נסה שנית! \n (מפתח-קליטת ת.ז ממחרוזת נכשלה)");
                 }
             }
         }
@@ -136,7 +147,7 @@ namespace PLWPF
             int StartIndex = Box.Name.First(t => t>48 && t<57) - 48 ;
             StartIndex *= Configuration.WorkHours;
             int EndIndex = StartIndex;
-            StartIndex -= (Configuration.WorkHours - 1);
+            StartIndex -= Configuration.WorkHours - 1;
 
             foreach (var item in ScheduleGrid.Children)
             {
@@ -163,19 +174,7 @@ namespace PLWPF
 
         private void KeyDownCheckIfNotNumber(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            string key = e.Key.ToString().TrimStart('D');
-            int value = -1;
-            bool convert = int.TryParse(key, out value);
-
-
-            if (!convert)
-            {
-                e.Handled = true;
-                var item = (TextBox)sender;
-
-                MessageBox.Show("השדה " + " יכול להכיל רק מספרים!", "", MessageBoxButton.OK, MessageBoxImage.None,
-                                    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-            }
+            Data.NumericCheck(sender, e);
         }
     }
 }

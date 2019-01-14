@@ -42,10 +42,10 @@ namespace BE
             BirthDate = other.BirthDate;
             Address = other.Address;
             PhoneNumber = other.PhoneNumber;
-            Car_type = other.Car_type;
+            CarType = other.CarType;
             FirstName = other.FirstName;
             LastName = other.LastName;
-            gender = other.gender;
+            Gender = other.Gender;
             LastTest = other.LastTest;
             GearType = other.GearType;
             NumLessons = other.NumLessons;
@@ -70,7 +70,7 @@ namespace BE
         public override string ToString() // not finished!!!
         {
             return "student name: \"" + FullName+ "\" student id:" + 
-                Id + ", "+ gender +"\n School Name: \"" + SchoolName +
+                Id + ", "+ Gender +"\n School Name: \"" + SchoolName +
                 "\" Teacher Name: \""+ TeacherName +"\"\nbirth date: " + BirthDate;
         }
     }
