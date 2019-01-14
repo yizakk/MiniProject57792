@@ -522,7 +522,6 @@ namespace BL
         {
             var listId = from item in dal.GetTests()
                          select item.Id.ToString() ;
-
             return listId;
         }
 
