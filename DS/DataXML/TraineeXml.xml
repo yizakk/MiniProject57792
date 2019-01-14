@@ -1,37 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Trainees>
   <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <Id>1111</Id>
-    <PhoneNumber>0523333444</PhoneNumber>
+    <Id>029985090</Id>
     <Address>
-      <City>תל אביב</City>
-      <Street>דפנה</Street>
-      <BuildingNumber>17</BuildingNumber>
+      <City />
+      <Street />
+      <BuildingNumber>0</BuildingNumber>
     </Address>
     <CarType>פרטי</CarType>
-    <BirthDate>2001-01-14T15:18:25.7751536+02:00</BirthDate>
-    <LastName>אוון</LastName>
-    <FirstName>מייקל</FirstName>
+    <BirthDate>2000-01-01T00:00:00</BirthDate>
     <Gender>זכר</Gender>
     <LastTest>0001-01-01T00:00:00</LastTest>
     <GearType>אוטומטי</GearType>
     <NumLessons>0</NumLessons>
   </Trainee>
   <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <Id>1122</Id>
-    <PhoneNumber>0523333555</PhoneNumber>
+    <Id>029985090</Id>
     <Address>
-      <City>ירושלים</City>
-      <Street>הרב צבי יהודה</Street>
-      <BuildingNumber>17</BuildingNumber>
+      <City />
+      <Street />
+      <BuildingNumber>0</BuildingNumber>
     </Address>
     <CarType>פרטי</CarType>
-    <BirthDate>2000-01-14T15:18:25.8301203+02:00</BirthDate>
-    <LastName>ליאון</LastName>
-    <FirstName>יוהנה</FirstName>
-    <Gender>נקבה</Gender>
+    <BirthDate>2000-01-01T00:00:00</BirthDate>
+    <Gender>זכר</Gender>
     <LastTest>0001-01-01T00:00:00</LastTest>
     <GearType>אוטומטי</GearType>
     <NumLessons>0</NumLessons>
+  </Trainee>
+  <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>029985090</Id>
+    <Address>
+      <City />
+      <Street />
+      <BuildingNumber>0</BuildingNumber>
+    </Address>
+    <CarType>פרטי</CarType>
+    <BirthDate>2000-01-01T00:00:00</BirthDate>
+    <Gender>זכר</Gender>
+    <LastTest>0001-01-01T00:00:00</LastTest>
+    <GearType>אוטומטי</GearType>
+    <NumLessons>0</NumLessons>
+  </Trainee>
+  <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>300497385</Id>
+    <PhoneNumber>0587172682</PhoneNumber>
+    <Address>
+      <City />
+      <Street>ברגמן</Street>
+      <BuildingNumber>24</BuildingNumber>
+    </Address>
+    <CarType>פרטי</CarType>
+    <BirthDate>2000-01-01T00:00:00</BirthDate>
+    <LastName>ארביב</LastName>
+    <FirstName>בת חן</FirstName>
+    <Gender>זכר</Gender>
+    <LastTest>0001-01-01T00:00:00</LastTest>
+    <GearType>אוטומטי</GearType>
+    <SchoolName>עמית</SchoolName>
+    <TeacherName>חנהלה</TeacherName>
+    <NumLessons>30</NumLessons>
   </Trainee>
 </Trainees>

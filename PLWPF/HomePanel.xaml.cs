@@ -48,7 +48,11 @@ namespace PLWPF
         private void UpTraineeButton_Click(object sender, RoutedEventArgs e)
         {
             Data.MainUserControl = new UpStudent();
-             
+            //Data.MainUserControl = new HomePanel();
+
+
+
+
         }
 
         private void UpTesterButton_Click(object sender, RoutedEventArgs e)

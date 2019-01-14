@@ -34,6 +34,9 @@ namespace PLWPF
                 MessageBox.Show("אין תלמידים במאגר");
                 button.IsEnabled = false;
                 comboBox.IsEnabled = false;
+                Data.MainUserControl = new HomePanel();
+                Data.UserType = Data.Usertype.אורח;
+                return;
             }
 
             car_typeComboBox.ItemsSource = Enum.GetValues(typeof(CarType));
@@ -56,6 +59,7 @@ namespace PLWPF
         private void ExitFromUC()
         {
             Data.MainUserControl = new HomePanel();
+            return;
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

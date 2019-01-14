@@ -19,7 +19,6 @@ namespace BE
                 new XElement("StreetName", a.Street)
                 );
         }
-
         public static Address ToAddress(this XElement a)
         {
             return new Address
@@ -29,32 +28,18 @@ namespace BE
                 Street = a.Element("Street").Value
             };
         }
-
-
         private static List<DateTime> ToTestsList(this XElement a)
         {
             return (from item in a.Elements()
                     select DateTime.Parse(item.Element("TestDate").Value)).ToList();
         }
-
         private static bool[,] ToSchedule(this XElement a)
         {
             bool[,] temp = new bool[Configuration.WorkDays,Configuration.WorkHours];
             List<bool> Bools = (from item in a.Elements()
                                 select bool.Parse(item.Value)).ToList();
-            //XElement[,] elements = from item in a.Elements()
-            //                       select bool.Parse(item.Element(""))
-           // int boolsIndex 
-            //for (int i=0;i<Configuration.WorkDays;i++)
-            //{
-            //    for(int j=0;j<Configuration.WorkHours;j++)
-            //    {
-            //        temp[i][j] = Bools[i];
-            //    }
-            //}
             return temp;
         }
-
         public static Test ToTest(this XElement d)
         {
             return new Test
@@ -69,7 +54,6 @@ namespace BE
                 BeginAddress = d.Element("BeginAddress").ToAddress(),
             };
         }
-
         public static Tester ToTester(this XElement d)
         {
             return new Tester
@@ -88,10 +72,8 @@ namespace BE
                 TestsList = d.Element("TestsList").ToTestsList(),
                
                 Address = d.Element("Address").ToAddress(),
-
             };
         }
-
         public static XElement ToXml(this Test test)
         {
             return new XElement("Test",
@@ -101,11 +83,9 @@ namespace BE
                                   new XElement("Date", test.Date.ToString()),
                                   new XElement("TesterComment", test.TesterComment)),
                                   new XElement("CarType", test.CarType.ToString()),
-                                  new XElement("BeginAddress", test.BeginAddress.ToXML())
-                                                 //new XElement("City", test.BeginAddress.City),
-                                                 //new XElement("Street", test.BeginAddress.Street),
-                                                 //new XElement("BuildingNumber", test.BeginAddress.BuildingNumber.ToString()))
-                                                 ,
+                                  new XElement("BeginAddress", test.BeginAddress.ToXML()),
+                                               
+                                                 
                                   new XElement("Parameters",
                                                  new XElement("Speed", test.Paramet.Speed.ToString()),
                                                  new XElement("Distance", test.Paramet.Distance.ToString()),
@@ -114,7 +94,6 @@ namespace BE
                                                  new XElement("UsingMirrors", test.Paramet.UsingMirrors.ToString())),
                                   new XElement("Passed", test.Passed.ToString()));
         }
-
         public static CarType ToCarType(this XElement d)
         {
             switch (d.Value)
@@ -131,7 +110,6 @@ namespace BE
                     return CarType.פרטי;
             }
         }
-
         public static Parameters ToParameters(this XElement p)
         {
             return new Parameters
@@ -153,7 +131,6 @@ namespace BE
                 file.Close();
             }
         }
-
         public static string ToXMLstring<T>(this T toSerialize)
         {
             using (StringWriter textWriter = new StringWriter())
@@ -163,7 +140,6 @@ namespace BE
                 return textWriter.ToString();
             }
         }
-
         public static T ToObject<T>(this string toDeserialize)
         {
             using (StringReader textReader = new StringReader(toDeserialize))
@@ -172,6 +148,5 @@ namespace BE
                 return (T)xmlSerializer.Deserialize(textReader);
             }
         }
-
     }
 }
