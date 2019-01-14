@@ -284,7 +284,7 @@ namespace Dal
             {
                 try
                 {
-                    if (int.Parse(item.Element("ID").Value) == test.Id)
+                    if (int.Parse(item.Element("Id").Value) == test.Id)
                     {
                         item.Remove();
                         break;
