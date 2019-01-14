@@ -35,10 +35,8 @@ namespace PLWPF
 
             if(Data.UserType == Data.Usertype.תלמיד)
             {
-                traineeListView.Visibility = Visibility.Collapsed;
                 SearchComboBox.Visibility = Visibility.Collapsed;
                 SearchTextBlock.Visibility = Visibility.Collapsed;
-               // SearchTextBox.Visibility = Visibility.Collapsed;
                 traineeIdTextBox.Text  = Data.UserID;
                 //traineeIdTextBox.Visibility = Visibility.Visible;
                 TempTest.CarType = bl.FindTrainee(Data.UserID).CarType;
@@ -46,10 +44,8 @@ namespace PLWPF
             }
             else
             {
-                traineeListView.DataContext = bl.GetTraineeList();
                 SearchComboBox.ItemsSource = bl.GetTraineesIdList();
             }
-           
         }
 
 
@@ -59,9 +55,9 @@ namespace PLWPF
 
             if (Data.UserType != Data.Usertype.תלמיד)
             {
-                var Trainee = (Trainee)traineeListView.SelectedValue;
-                TempTest.CarType = Trainee.CarType;
-                TempTest.TraineeId = Trainee.Id;
+                Trainee tempTrainee = bl.FindTrainee(SearchComboBox.SelectedValue.ToString().Split(' ')[0]);
+                TempTest.CarType = tempTrainee.CarType;
+                TempTest.TraineeId = tempTrainee.Id;
             }
 
             try
@@ -98,7 +94,6 @@ namespace PLWPF
 
             TempTest = new Test();
             TempTest.Date = DateTime.Now;
-                 
         }
 
 
@@ -106,13 +101,7 @@ namespace PLWPF
         {
             if (SearchComboBox.SelectedIndex != -1)
             {
-                var trainee = bl.FindTrainee( SearchComboBox.SelectedValue.ToString().Split(' ')[0]);
 
-                if (trainee != null)
-                {
-                    //traineeListView.Visibility = Visibility.Collapsed;
-                    traineeListView.SelectedValue = trainee;
-                }
             }
         }
     }

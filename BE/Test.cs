@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace BE
 {
@@ -49,9 +50,26 @@ namespace BE
         public CarType CarType { get; set; }
         public string TesterId { get; set; }
         public string TraineeId { get; set; }
-
+        [XmlIgnore]
         public DateTime Date { get; set; }
-        
+
+        [XmlElement("Date")]
+        public string Time
+        {
+            get
+            {
+                return Date.ToString();
+            }
+            set
+            {
+                Date = DateTime.Parse(value);
+            }
+        }
+
+        public string TesterComment { get; set; }
+        public Parameters Paramet;
+        public bool Passed { get; set; }
+        [XmlIgnore]
         /// <summary>
         /// Marks if a test is one that was offered to the trainee by the system , or not
         /// </summary>
@@ -69,12 +87,6 @@ namespace BE
                     return "";
             }
         }
-
-        public string TesterComment { get; set; }
-
-        public Parameters Paramet;
-
-        public bool Passed { get; set; }
 
         //public static XElement ToXML(this Test test)
         //{

@@ -77,15 +77,13 @@ namespace BE
         public static XElement ToXml(this Test test)
         {
             return new XElement("Test",
-                                  new XElement("Id", test.Id.ToString(),
+                                  new XElement("Id", test.Id.ToString()),
                                   new XElement("TesterID", test.TesterId),
                                   new XElement("TraineeID", test.TraineeId),
                                   new XElement("Date", test.Date.ToString()),
-                                  new XElement("TesterComment", test.TesterComment)),
+                                  new XElement("TesterComment", test.TesterComment),
                                   new XElement("CarType", test.CarType.ToString()),
                                   new XElement("BeginAddress", test.BeginAddress.ToXML()),
-                                               
-                                                 
                                   new XElement("Parameters",
                                                  new XElement("Speed", test.Paramet.Speed.ToString()),
                                                  new XElement("Distance", test.Paramet.Distance.ToString()),
