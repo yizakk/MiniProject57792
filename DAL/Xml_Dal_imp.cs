@@ -260,10 +260,11 @@ namespace Dal
             //    result.ToList();
         }
 
-
         public IEnumerable<Tester> GetTestersWithCarType(CarType type)
         {
-            throw new NotImplementedException();
+            var serializer = new XmlSerializer(typeof(Tester));
+            var elements = Ds.Testers.Elements("Tester");
+            return  elements.Select(element => (Tester)serializer.Deserialize(element.CreateReader())).Where(t=> t.CarType==type).ToList();
         }
 
 
@@ -274,7 +275,10 @@ namespace Dal
 
         public IEnumerable<Test> GetTestsForSpecTrainee(string id)
         {
-            throw new NotImplementedException();
+            var serializer = new XmlSerializer(typeof(Test));
+            var elements = Ds.Tests.Elements("Test");
+
+            return elements.Select(element => (Test)serializer.Deserialize(element.CreateReader())).Where(t=>t.TraineeId == id).ToList();
         }
 
 
