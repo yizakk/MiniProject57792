@@ -94,6 +94,7 @@ namespace Dal
                 {
                     return test.ToTest();
                 }
+                return null; 
             }
             catch
             {
