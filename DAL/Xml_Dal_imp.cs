@@ -158,7 +158,11 @@ namespace Dal
 
         public IEnumerable<Test> GetTestsForSpecTester(string id)
         {
-            throw new NotImplementedException();
+            var serializer = new XmlSerializer(typeof(Test));
+            var elements = Ds.Tests.Elements("Test");
+
+            return elements.Select(element => (Test)serializer.Deserialize(element.CreateReader())).Where(t => t.TesterId == id).ToList();
+
         }
 
         public IEnumerable<Test> GetTestsForSpecTrainee(string id)
@@ -167,6 +171,7 @@ namespace Dal
             var elements = Ds.Tests.Elements("Test");
 
             return elements.Select(element => (Test)serializer.Deserialize(element.CreateReader())).Where(t=>t.TraineeId == id).ToList();
+
         }
 
 
