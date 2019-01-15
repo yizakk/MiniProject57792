@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Testers>
   <Tester>
-    <Id>000000018</Id>
-    <FirstName>בידקת</FirstName>
-    <LastName>טסטר</LastName>
+    <Id>000000000</Id>
+    <FirstName>בדיקה</FirstName>
+    <LastName>בודקת</LastName>
     <Gender>זכר</Gender>
-    <BirthDate>15/01/1979 19:38:33</BirthDate>
+    <BirthDate>15/01/1979 19:42:54</BirthDate>
     <CarType>פרטי</CarType>
     <MaxDistance>0</MaxDistance>
     <MaxTestsPerWeek>0</MaxTestsPerWeek>
-    <PhoneNumber></PhoneNumber>
+    <PhoneNumber>111111052</PhoneNumber>
     <Seniority>0</Seniority>
     <Address>
       <Address>
-        <City></City>
-        <BuildingNumber></BuildingNumber>
-        <Street></Street>
+        <City>ירושלים</City>
+        <BuildingNumber>67</BuildingNumber>
+        <Street>בבית</Street>
       </Address>
     </Address>
     <TestsList />
