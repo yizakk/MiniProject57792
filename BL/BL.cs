@@ -38,10 +38,10 @@ namespace BL
                 throw new MyExceptions("Trainee id:" + test.TraineeId + " doesn't exist!");
             }
 
-            if (!TraineeAvailable(test))
-            {
-                throw new MyExceptions("You can not set this time because you already have another test at the same time");
-            }
+            //if (!TraineeAvailable(test))
+            //{
+            //    throw new MyExceptions("You can not set this time because you already have another test at the same time");
+            //}
 
             foreach (Test temp in dal.GetTestsForSpecTrainee(trainee.Id))
             {
@@ -49,6 +49,10 @@ namespace BL
                 {
                     if (temp.Passed)
                         throw new MyExceptions("trainee id:" + trainee.Id + " already passed a test on car type: " + trainee.CarType+"!");
+                }
+                if(temp.Date==test.Date)
+                {
+                    throw new MyExceptions("כבר נקבע עבורך טסט באותה השעה והיום בדיוק");
                 }
             }
 

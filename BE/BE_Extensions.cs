@@ -15,17 +15,19 @@ namespace BE
         {
             return new XElement("Address",
                 new XElement("City", a.City),
-                new XElement("Number", a.BuildingNumber.ToString()),
+                new XElement("BuildingNumber", a.BuildingNumber.ToString()),
                 new XElement("StreetName", a.Street)
                 );
         }
         public static Address ToAddress(this XElement a)
         {
+            int x=0;
+            int.TryParse(a.Element("BuildingNumber").Value, out x);
             return new Address
             {
-                City = a.Element("City").Value,
-                BuildingNumber = int.Parse(a.Element("BuildingNumber").Value),
-                Street = a.Element("Street").Value
+                City = a.Element("City").Value.DefaultIfEmpty().ToString(),
+                BuildingNumber = x,
+                Street = a.Element("Street").Value.DefaultIfEmpty().ToString()
             };
         }
         private static List<DateTime> ToTestsList(this XElement a)
@@ -44,14 +46,15 @@ namespace BE
         {
             return new Test
             {
-                TesterId = d.Element("Tester_ID").Value,
-                TesterComment = d.Element("Comment").Value,
-                TraineeId = d.Element("Trainee_ID").Value,
+                Id = int.Parse(d.Element("Id").Value),
+                TesterId = d.Element("TesterId").Value,
+                TraineeId = d.Element("TraineeId").Value,
+                TesterComment = d.Element("TesterComment").Value,
                 Date = DateTime.Parse(d.Element("Date").Value),
                 CarType = d.Element("CarType").ToCarType(),
-                Paramet = d.Element("Parameters").ToParameters(),
+                Paramet = d.Element("Paramet").ToParameters(),
                 Passed = bool.Parse(d.Element("Passed").Value),
-                BeginAddress = d.Element("BeginAddress").ToAddress(),
+                BeginAddress = d.Element("BeginAddress").Element("Address").ToAddress(),
             };
         }
         public static Tester ToTester(this XElement d)
@@ -78,13 +81,13 @@ namespace BE
         {
             return new XElement("Test",
                                   new XElement("Id", test.Id.ToString()),
-                                  new XElement("TesterID", test.TesterId),
-                                  new XElement("TraineeID", test.TraineeId),
+                                  new XElement("TesterId", test.TesterId),
+                                  new XElement("TraineeId", test.TraineeId),
                                   new XElement("Date", test.Date.ToString()),
                                   new XElement("TesterComment", test.TesterComment),
                                   new XElement("CarType", test.CarType.ToString()),
                                   new XElement("BeginAddress", test.BeginAddress.ToXML()),
-                                  new XElement("Parameters",
+                                  new XElement("Paramet",
                                                  new XElement("Speed", test.Paramet.Speed.ToString()),
                                                  new XElement("Distance", test.Paramet.Distance.ToString()),
                                                  new XElement("ReversePark", test.Paramet.ReversePark.ToString()),

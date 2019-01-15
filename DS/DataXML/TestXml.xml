@@ -2,25 +2,25 @@
 <Tests>
   <Test>
     <Id>0</Id>
-    <TesterID>0000</TesterID>
-    <TraineeID>1111</TraineeID>
-    <Date>14/01/2019 09:00:00</Date>
+    <TesterId>0000</TesterId>
+    <TraineeId>1111</TraineeId>
+    <Date>15/01/2019 09:00:00</Date>
     <TesterComment />
     <CarType>פרטי</CarType>
     <BeginAddress>
       <Address>
         <City></City>
-        <Number></Number>
+        <BuildingNumber></BuildingNumber>
         <StreetName></StreetName>
       </Address>
     </BeginAddress>
-    <Parameters>
+    <Paramet>
       <Speed>False</Speed>
       <Distance>False</Distance>
       <ReversePark>False</ReversePark>
       <UsingVinkers>False</UsingVinkers>
       <UsingMirrors>False</UsingMirrors>
-    </Parameters>
+    </Paramet>
     <Passed>False</Passed>
   </Test>
 </Tests>
