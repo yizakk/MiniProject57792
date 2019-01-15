@@ -1,2 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Testers />
+<Testers>
+  <Tester>
+    <Id>000000000</Id>
+    <FirstName>בודק</FirstName>
+    <LastName>בודקת</LastName>
+    <Gender>זכר</Gender>
+    <BirthDate>15/01/1979 20:43:45</BirthDate>
+    <CarType>פרטי</CarType>
+    <MaxDistance>0</MaxDistance>
+    <MaxTestsPerWeek>0</MaxTestsPerWeek>
+    <PhoneNumber>000000000</PhoneNumber>
+    <Seniority>0</Seniority>
+    <Address>
+      <City>ירושלים</City>
+      <BuildingNumber>44</BuildingNumber>
+      <Street>ברגמן</Street>
+    </Address>
+    <TestsList />
+    <WorkSchedule>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True</WorkSchedule>
+  </Tester>
+</Testers>

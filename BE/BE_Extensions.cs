@@ -81,6 +81,46 @@ namespace BE
             return temp;
         }
 
+
+        public static Trainee ToTrainee(this XElement d)
+        {
+            Trainee temp = new Trainee();
+            temp.Id = d.Element("Id").Value;
+            temp.PhoneNumber = d.Element("PhoneNumber").Value;
+            temp.Address = d.Element("Address").ToAddress();
+            temp.CarType = d.Element("CarType").ToCarType();
+            temp.BirthDate = DateTime.Parse(d.Element("BirthDate").Value);
+            temp.LastName = d.Element("LastName").Value;
+            temp.FirstName = d.Element("FirstName").Value;
+            temp.Gender = (Gender)Enum.Parse(typeof(Gender), d.Element("Gender").Value);
+            temp.LastTest = DateTime.Parse(d.Element("LastTest").Value);
+            temp.GearType = d.Element("GearType").ToGearType();
+            temp.SchoolName = d.Element("SchoolName").Value;
+            temp.TeacherName = d.Element("TeacherName").Value;
+            temp.NumLessons = int.Parse(d.Element("NumLessons").Value);
+                return temp;
+        }
+        public static XElement ToXml(this Trainee trainee)
+        {
+            return new XElement("trainee",
+                new XElement("Id", trainee.Id),
+                new XElement("PhoneNumber", trainee.PhoneNumber),
+                trainee.Address.ToXML(),
+                new XElement("CarType", trainee.CarType.ToString()),
+                new XElement("BirthDate", trainee.BirthDate.ToString()),
+                new XElement("LastName", trainee.LastName),
+                new XElement("FirstName", trainee.FirstName),
+                new XElement("Gender", trainee.Gender.ToString()),
+                new XElement("LastTest" , trainee.LastTest),
+                new XElement("GearType", trainee.GearType),
+                new XElement("SchoolName", trainee.SchoolName),
+                new XElement("TeacherName", trainee.TeacherName),
+                new XElement("NumLessons", trainee.NumLessons)
+
+                );
+        }
+
+
         public static XElement ToXml(this Tester tester)
         {
             return new XElement("Tester",
@@ -132,6 +172,18 @@ namespace BE
                     return CarType.פול_טריילר;
                 default:
                     return CarType.פרטי;
+            }
+        }
+        public static Gear ToGearType(this XElement d)
+        {
+            switch (d.Value)
+            {
+                case "אוטומטי":
+                    return Gear.אוטומטי;
+                case "ידני":
+                    return Gear.ידני;
+                default:
+                    return Gear.אוטומטי;
             }
         }
         public static Parameters ToParameters(this XElement p)
