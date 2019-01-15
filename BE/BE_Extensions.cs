@@ -61,24 +61,45 @@ namespace BE
         }
         public static Tester ToTester(this XElement d)
         {
-            return new Tester
-            {
-                Id = d.Element("Id").Value,
-                FirstName = d.Element("FirstName").Value,
-                LastName = d.Element("LastName").Value,
-                Gender = (Gender) Enum.Parse(typeof(Gender), d.Element("Gender").Value),
-                BirthDate = DateTime.Parse(d.Element("BirthDate").Value),
-                CarType = d.Element("CarType").ToCarType(),
-                MaxDistance = int.Parse(d.Element("MaxDistance").Value),
-                MaxTestsPerWeek = int.Parse(d.Element("MaxTestsPerWeek").Value),
-                PhoneNumber = d.Element("Phone").Value,
-                Seniority = int.Parse(d.Element("Seniority").Value),
-                WorkSChedule = d.Element("Schedule").ToSchedule(),
-                TestsList = d.Element("TestsList").ToTestsList(),
-               
-                Address = d.Element("Address").ToAddress(),
-            };
+            Tester temp = new Tester();
+
+            temp.Id = d.Element("Id").Value;
+            temp.FirstName = d.Element("FirstName").Value;
+            temp.LastName = d.Element("LastName").Value;
+            temp.Gender = (Gender)Enum.Parse(typeof(Gender), d.Element("Gender").Value);
+            temp.BirthDate = DateTime.Parse(d.Element("BirthDate").Value);
+            temp.CarType = d.Element("CarType").ToCarType();
+            temp.MaxDistance = int.Parse(d.Element("MaxDistance").Value);
+            temp.MaxTestsPerWeek = int.Parse(d.Element("MaxTestsPerWeek").Value);
+            temp.PhoneNumber = d.Element("PhoneNumber").Value;
+            temp.Seniority = int.Parse(d.Element("Seniority").Value);
+            temp.WorkSave = d.Element("WorkSchedule").Value;
+            //WorkSChedule = d.Element("Schedule").ToSchedule(),
+            temp.TestsList = d.Element("TestsList").ToTestsList();
+            temp.Address = d.Element("Address").ToAddress();
+
+            return temp;
         }
+
+        public static XElement ToXml(this Tester tester)
+        {
+            return new XElement("Tester",
+                new XElement("Id", tester.Id),
+                new XElement("FirstName", tester.FirstName),
+                new XElement("LastName", tester.LastName),
+                new XElement("Gender", tester.Gender.ToString()),
+                new XElement("BirthDate", tester.BirthDate.ToString()),
+                new XElement("CarType", tester.CarType.ToString()),
+                new XElement("MaxDistance", tester.MaxDistance.ToString()),
+                new XElement("MaxTestsPerWeek", tester.MaxTestsPerWeek.ToString()),
+                new XElement("PhoneNumber", tester.PhoneNumber),
+                new XElement("Seniority", tester.Seniority.ToString()),
+                new XElement("Address", tester.Address.ToXML()),
+                new XElement("TestsList", tester.TestsList),
+                new XElement("WorkSchedule",tester.WorkSave)
+                );
+        }
+
         public static XElement ToXml(this Test test)
         {
             return new XElement("Test",

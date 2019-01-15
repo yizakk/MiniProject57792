@@ -26,9 +26,9 @@ namespace Dal
 
         public void AddTester(Tester tester)
         {
-            string str = tester.ToXMLstring();
-            XElement xml = XElement.Parse(str);
-            Ds.Testers.Add(xml);
+            //string str = tester.ToXMLstring();
+            //XElement xml = XElement.Parse(str);
+            Ds.Testers.Add(tester.ToXml());
             Ds.SaveTesters();
         }
 

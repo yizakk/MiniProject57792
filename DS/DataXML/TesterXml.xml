@@ -1,110 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Testers>
-  <Tester xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <Id>201096260</Id>
-    <Address>
-      <City />
-      <Street />
-      <BuildingNumber>0</BuildingNumber>
-    </Address>
-    <CarType>פרטי</CarType>
-    <BirthDate>1979-01-14T17:17:24.0494923+02:00</BirthDate>
-    <Gender>זכר</Gender>
-    <Seniority>0</Seniority>
-    <MaxTestsPerWeek>0</MaxTestsPerWeek>
-    <MaxDistance>0</MaxDistance>
-    <TestsList />
-    <WorkSave>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False</WorkSave>
-  </Tester>
-  <Tester xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <Id>0000</Id>
-    <PhoneNumber>0522222222</PhoneNumber>
-    <Address>
-      <City>חיפה</City>
-      <Street>שער הגיא</Street>
-      <BuildingNumber>15</BuildingNumber>
-    </Address>
-    <CarType>פרטי</CarType>
-    <BirthDate>1978-01-14T15:18:25.6752148+02:00</BirthDate>
-    <LastName>חלאסטרה</LastName>
-    <FirstName>ג'וג'ו</FirstName>
-    <Gender>זכר</Gender>
-    <Seniority>1</Seniority>
-    <MaxTestsPerWeek>7</MaxTestsPerWeek>
-    <MaxDistance>40</MaxDistance>
-    <TestsList />
-    <WorkSave>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True</WorkSave>
-  </Tester>
-  <Tester xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <Id>314784539</Id>
-    <Address>
-      <City>ירושלים</City>
-      <Street>קולומביה</Street>
-      <BuildingNumber>6</BuildingNumber>
-    </Address>
-    <CarType>אופנוע</CarType>
-    <BirthDate>1979-01-15T11:19:10.7366904+02:00</BirthDate>
-    <LastName>גרשוני</LastName>
-    <FirstName>אהוד</FirstName>
-    <Gender>זכר</Gender>
-    <Seniority>110</Seniority>
-    <MaxTestsPerWeek>1110</MaxTestsPerWeek>
-    <MaxDistance>10</MaxDistance>
-    <TestsList />
-    <WorkSave>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True</WorkSave>
-  </Tester>
-  <Tester xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <Id>300497385</Id>
-    <Address>
-      <City />
-      <Street />
-      <BuildingNumber xsi:nil="true" />
-    </Address>
-    <CarType>פרטי</CarType>
-    <BirthDate>1979-01-15T12:12:03.8647786+02:00</BirthDate>
-    <FirstName>בת חן</FirstName>
-    <Gender>זכר</Gender>
-    <Seniority>0</Seniority>
-    <MaxTestsPerWeek>0</MaxTestsPerWeek>
-    <MaxDistance>0</MaxDistance>
-    <TestsList />
-    <WorkSave>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True</WorkSave>
-  </Tester>
-  <Tester xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Tester>
     <Id>000000018</Id>
-    <Address>
-      <City>ירושלים</City>
-      <Street>גילה</Street>
-      <BuildingNumber>44</BuildingNumber>
-    </Address>
-    <CarType>פרטי</CarType>
-    <BirthDate>1979-01-15T19:11:51.5745182+02:00</BirthDate>
-    <LastName>כהן</LastName>
-    <FirstName>יוסף</FirstName>
+    <FirstName>בידקת</FirstName>
+    <LastName>טסטר</LastName>
     <Gender>זכר</Gender>
-    <Seniority>0</Seniority>
-    <MaxTestsPerWeek>0</MaxTestsPerWeek>
+    <BirthDate>15/01/1979 19:38:33</BirthDate>
+    <CarType>פרטי</CarType>
     <MaxDistance>0</MaxDistance>
-    <TestsList />
-    <WorkSave>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True</WorkSave>
-  </Tester>
-  <Tester xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <Id>810000000</Id>
-    <PhoneNumber>05877777777</PhoneNumber>
+    <MaxTestsPerWeek>0</MaxTestsPerWeek>
+    <PhoneNumber></PhoneNumber>
+    <Seniority>0</Seniority>
     <Address>
-      <City>ירושלים</City>
-      <Street>פילה</Street>
-      <BuildingNumber>56</BuildingNumber>
+      <Address>
+        <City></City>
+        <BuildingNumber></BuildingNumber>
+        <Street></Street>
+      </Address>
     </Address>
-    <CarType>פרטי</CarType>
-    <BirthDate>1979-01-17T00:00:00</BirthDate>
-    <LastName>טמבל</LastName>
-    <FirstName>מושיקטו</FirstName>
-    <Gender>זכר</Gender>
-    <Seniority>1110</Seniority>
-    <MaxTestsPerWeek>10</MaxTestsPerWeek>
-    <MaxDistance>110</MaxDistance>
     <TestsList />
-    <WorkSave>5,7,True,True,True,True,True,True,True,False,False,False,False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True</WorkSave>
+    <WorkSchedule>5,7,True,True,True,True,True,True,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False</WorkSchedule>
   </Tester>
 </Testers>
