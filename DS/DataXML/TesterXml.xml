@@ -16,7 +16,6 @@
     <TestsList />
     <WorkSave>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False</WorkSave>
   </Tester>
-
   <Tester xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <Id>0000</Id>
     <PhoneNumber>0522222222</PhoneNumber>
@@ -70,5 +69,42 @@
     <MaxDistance>0</MaxDistance>
     <TestsList />
     <WorkSave>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True</WorkSave>
+  </Tester>
+  <Tester xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>000000018</Id>
+    <Address>
+      <City>ירושלים</City>
+      <Street>גילה</Street>
+      <BuildingNumber>44</BuildingNumber>
+    </Address>
+    <CarType>פרטי</CarType>
+    <BirthDate>1979-01-15T19:11:51.5745182+02:00</BirthDate>
+    <LastName>כהן</LastName>
+    <FirstName>יוסף</FirstName>
+    <Gender>זכר</Gender>
+    <Seniority>0</Seniority>
+    <MaxTestsPerWeek>0</MaxTestsPerWeek>
+    <MaxDistance>0</MaxDistance>
+    <TestsList />
+    <WorkSave>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True</WorkSave>
+  </Tester>
+  <Tester xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>810000000</Id>
+    <PhoneNumber>05877777777</PhoneNumber>
+    <Address>
+      <City>ירושלים</City>
+      <Street>פילה</Street>
+      <BuildingNumber>56</BuildingNumber>
+    </Address>
+    <CarType>פרטי</CarType>
+    <BirthDate>1979-01-17T00:00:00</BirthDate>
+    <LastName>טמבל</LastName>
+    <FirstName>מושיקטו</FirstName>
+    <Gender>זכר</Gender>
+    <Seniority>1110</Seniority>
+    <MaxTestsPerWeek>10</MaxTestsPerWeek>
+    <MaxDistance>110</MaxDistance>
+    <TestsList />
+    <WorkSave>5,7,True,True,True,True,True,True,True,False,False,False,False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True</WorkSave>
   </Tester>
 </Testers>
