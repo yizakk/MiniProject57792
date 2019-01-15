@@ -1,39 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Testers>
-  <Tester xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <Id>201096260</Id>
-    <Address>
-      <City />
-      <Street />
-      <BuildingNumber>0</BuildingNumber>
-    </Address>
-    <CarType>פרטי</CarType>
-    <BirthDate>1979-01-14T17:17:24.0494923+02:00</BirthDate>
+  <Tester>
+    <Id>000000018</Id>
+    <FirstName>בידקת</FirstName>
+    <LastName>טסטר</LastName>
     <Gender>זכר</Gender>
-    <Seniority>0</Seniority>
-    <MaxTestsPerWeek>0</MaxTestsPerWeek>
+    <BirthDate>15/01/1979 19:38:33</BirthDate>
+    <CarType>פרטי</CarType>
     <MaxDistance>0</MaxDistance>
-    <TestsList />
-    <WorkSave>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False</WorkSave>
-  </Tester>
-
-  <Tester xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <Id>0000</Id>
-    <PhoneNumber>0522222222</PhoneNumber>
+    <MaxTestsPerWeek>0</MaxTestsPerWeek>
+    <PhoneNumber></PhoneNumber>
+    <Seniority>0</Seniority>
     <Address>
-      <City>חיפה</City>
-      <Street>שער הגיא</Street>
-      <BuildingNumber>15</BuildingNumber>
+      <Address>
+        <City></City>
+        <BuildingNumber></BuildingNumber>
+        <Street></Street>
+      </Address>
     </Address>
-    <CarType>פרטי</CarType>
-    <BirthDate>1978-01-14T15:18:25.6752148+02:00</BirthDate>
-    <LastName>חלאסטרה</LastName>
-    <FirstName>ג'וג'ו</FirstName>
-    <Gender>זכר</Gender>
-    <Seniority>1</Seniority>
-    <MaxTestsPerWeek>7</MaxTestsPerWeek>
-    <MaxDistance>40</MaxDistance>
     <TestsList />
-    <WorkSave>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True</WorkSave>
+    <WorkSchedule>5,7,True,True,True,True,True,True,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False</WorkSchedule>
   </Tester>
 </Testers>

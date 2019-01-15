@@ -94,11 +94,9 @@ namespace BE
             //    for (int j = 0; j < 7; j++)
             //        WorkSchedule(i, j, true);
             m_WorkSchedule = other.m_WorkSchedule;
-
         }
-
-        //*********************************************** end of  c-tors **************
         #endregion
+
         public int Seniority { get; set; }
         public int MaxTestsPerWeek { get; set; }
         public int MaxDistance { get; set; } // Maximum distance (in KMs) this tester can be from his test
@@ -172,7 +170,6 @@ namespace BE
             m_WorkSchedule[day, hour] = (bool) value;
         }
         #endregion
-
         public override string ToString()
         {
             return "Tester name: \"" + FullName + "\" Id: " + Id +" cartype: " + CarType;

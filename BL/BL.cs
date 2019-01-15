@@ -38,11 +38,6 @@ namespace BL
                 throw new MyExceptions("Trainee id:" + test.TraineeId + " doesn't exist!");
             }
 
-            //if (!TraineeAvailable(test))
-            //{
-            //    throw new MyExceptions("You can not set this time because you already have another test at the same time");
-            //}
-
             foreach (Test temp in dal.GetTestsForSpecTrainee(trainee.Id))
             {
                 if (temp.CarType == trainee.CarType)
