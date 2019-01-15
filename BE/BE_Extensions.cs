@@ -25,9 +25,9 @@ namespace BE
             int.TryParse(a.Element("BuildingNumber").Value, out x);
             return new Address
             {
-                City = a.Element("City").Value.DefaultIfEmpty().ToString(),
+                City = a.Element("City").Value,
                 BuildingNumber = x,
-                Street = a.Element("Street").Value.DefaultIfEmpty().ToString()
+                Street = a.Element("Street").Value
             };
         }
         private static List<DateTime> ToTestsList(this XElement a)
@@ -94,7 +94,7 @@ namespace BE
                 new XElement("MaxTestsPerWeek", tester.MaxTestsPerWeek.ToString()),
                 new XElement("PhoneNumber", tester.PhoneNumber),
                 new XElement("Seniority", tester.Seniority.ToString()),
-                new XElement("Address", tester.Address.ToXML()),
+                tester.Address.ToXML(),
                 new XElement("TestsList", tester.TestsList),
                 new XElement("WorkSchedule",tester.WorkSave)
                 );
