@@ -74,6 +74,7 @@ namespace BE
         /// Marks if a test is one that was offered to the trainee by the system , or not
         /// </summary>
         public bool IsReturning  { get; set; }
+        [XmlIgnore]
 
         public string adress { get; set; }
         public Address BeginAddress { get; set; }

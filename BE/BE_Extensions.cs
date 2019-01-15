@@ -33,6 +33,7 @@ namespace BE
             return (from item in a.Elements()
                     select DateTime.Parse(item.Element("TestDate").Value)).ToList();
         }
+
         private static bool[,] ToSchedule(this XElement a)
         {
             bool[,] temp = new bool[Configuration.WorkDays,Configuration.WorkHours];
@@ -40,6 +41,7 @@ namespace BE
                                 select bool.Parse(item.Value)).ToList();
             return temp;
         }
+
         public static Test ToTest(this XElement d)
         {
             return new Test

@@ -18,9 +18,10 @@ namespace Dal
 
         public void AddTest(Test test)
         {
+            
             Ds.Tests.Add(test.ToXml());
             Ds.SaveTests();
-                       new XElement("Passed", test.Passed)));
+                       new XElement("Passed", test.Passed);//להבין
         }
 
         public void AddTester(Tester tester)
@@ -49,6 +50,7 @@ namespace Dal
                           select it).FirstOrDefault();
                 if (tester != null)
                 {
+                    
                     tester.Remove();
                     Ds.SaveTesters();
                 }
@@ -81,7 +83,23 @@ namespace Dal
 
         public Test FindTest(int id)
         {
-            throw new NotImplementedException();
+            XElement test;
+
+            try
+            {
+                test = (from item in Ds.Tests.Elements()
+                        where item.Element("Id").Value == id.ToString()
+                           select item).FirstOrDefault();
+                if (test != null)
+                {
+                    return test.ToTest();
+                }
+            }
+            catch
+            {
+                throw new Exception("בעיה במחיקת המבחן, נסה שנית בבקשה" + "\n(dal)");
+            }
+
         }
 
         public Tester FindTester(string id)

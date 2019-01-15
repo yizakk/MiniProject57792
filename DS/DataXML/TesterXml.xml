@@ -35,4 +35,39 @@
     <TestsList />
     <WorkSave>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True</WorkSave>
   </Tester>
+  <Tester xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>314784539</Id>
+    <Address>
+      <City>ירושלים</City>
+      <Street>קולומביה</Street>
+      <BuildingNumber>6</BuildingNumber>
+    </Address>
+    <CarType>אופנוע</CarType>
+    <BirthDate>1979-01-15T11:19:10.7366904+02:00</BirthDate>
+    <LastName>גרשוני</LastName>
+    <FirstName>אהוד</FirstName>
+    <Gender>זכר</Gender>
+    <Seniority>110</Seniority>
+    <MaxTestsPerWeek>1110</MaxTestsPerWeek>
+    <MaxDistance>10</MaxDistance>
+    <TestsList />
+    <WorkSave>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True</WorkSave>
+  </Tester>
+  <Tester xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>300497385</Id>
+    <Address>
+      <City />
+      <Street />
+      <BuildingNumber xsi:nil="true" />
+    </Address>
+    <CarType>פרטי</CarType>
+    <BirthDate>1979-01-15T12:12:03.8647786+02:00</BirthDate>
+    <FirstName>בת חן</FirstName>
+    <Gender>זכר</Gender>
+    <Seniority>0</Seniority>
+    <MaxTestsPerWeek>0</MaxTestsPerWeek>
+    <MaxDistance>0</MaxDistance>
+    <TestsList />
+    <WorkSave>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True</WorkSave>
+  </Tester>
 </Testers>
