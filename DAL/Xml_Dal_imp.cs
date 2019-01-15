@@ -135,9 +135,10 @@ namespace Dal
             var elements = Ds.Tests.Elements("Test");
             if(p!=null)
             {
-                return elements.Select(element => (Test)serializer.Deserialize(element.CreateReader())).Where(p).ToList();
+                return elements.Select(t=> t.ToTest()).Where(p).ToList();
             }
-            return elements.Select(element => (Test)serializer.Deserialize(element.CreateReader())).ToList();
+            return elements.Select(t => t.ToTest()).ToList();
+            //return elements.Select(element => (Test)serializer.Deserialize(element.CreateReader())).ToList();
         }
 
         public List<Tester> GetTesters(Func<Tester,bool> p=null)
@@ -186,9 +187,9 @@ namespace Dal
         public IEnumerable<Test> GetTestsForSpecTrainee(string id)
         {
             var serializer = new XmlSerializer(typeof(Test));
-            var elements = Ds.Tests.Elements("Test");
-
-            return elements.Select(element => (Test)serializer.Deserialize(element.CreateReader())).Where(t=>t.TraineeId == id).ToList();
+            return Ds.Tests.Elements("Test").Where(t=> t.Element("TraineeId").Value==id).Select(t=>t.ToTest());
+           
+            // return elements.Select(element => (Test)serializer.Deserialize(element.CreateReader())).Where(t=>t.TraineeId == id).ToList();
 
         }
 
