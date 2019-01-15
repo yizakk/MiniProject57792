@@ -176,8 +176,9 @@ namespace Dal
                                 select item).FirstOrDefault();
             if( tester != null)
             {
-                var str = tester.ToString();
-                return str.ToObject<Tester>();
+                return tester.ToTester();
+                //var str = tester.ToString();
+                //return str.ToObject<Tester>();
             }
             return null;
         }
@@ -210,14 +211,13 @@ namespace Dal
 
         public List<Tester> GetTesters(Func<Tester,bool> p=null)
         {
-            var serializer = new XmlSerializer(typeof(Tester));
+            //var serializer = new XmlSerializer(typeof(Tester));
             var elements = Ds.Testers.Elements("Tester");
-
             if(p!=null)
             {
-                return elements.Select(element => (Tester)serializer.Deserialize(element.CreateReader())).Where(p).ToList();
+                return elements.Select(element => element.ToTester()).Where(p).ToList();
             }
-            return elements.Select(element => (Tester)serializer.Deserialize(element.CreateReader())).ToList();
+            return elements.Select(element => element.ToTester()).ToList();
         }
 
         public List<Trainee> GetTrainees(Func<Trainee, bool> p=null)
