@@ -11,7 +11,30 @@
       <Address>
         <City></City>
         <BuildingNumber></BuildingNumber>
-        <StreetName></StreetName>
+        <Street></Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>False</Speed>
+      <Distance>False</Distance>
+      <ReversePark>False</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>False</Passed>
+  </Test>
+  <Test>
+    <Id>0</Id>
+    <TesterId>0000</TesterId>
+    <TraineeId>1111</TraineeId>
+    <Date>15/01/2019 10:00:00</Date>
+    <TesterComment />
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City></City>
+        <BuildingNumber></BuildingNumber>
+        <Street></Street>
       </Address>
     </BeginAddress>
     <Paramet>

@@ -172,7 +172,8 @@ namespace Dal
         {
             var serializer = new XmlSerializer(typeof(Tester));
             var elements = Ds.Testers.Elements("Tester");
-            return  elements.Select(element => (Tester)serializer.Deserialize(element.CreateReader())).Where(t=> t.CarType==type).ToList();
+            return  elements.Select(element => element.ToTester()).Where(t=> t.CarType==type).ToList();
+
         }
 
 
@@ -181,8 +182,7 @@ namespace Dal
             var serializer = new XmlSerializer(typeof(Test));
             var elements = Ds.Tests.Elements("Test");
 
-            return elements.Select(element => (Test)serializer.Deserialize(element.CreateReader())).Where(t => t.TesterId == id).ToList();
-
+            return elements.Select(element => element.ToTest()).Where(t => t.TesterId == id).ToList();
         }
 
         public IEnumerable<Test> GetTestsForSpecTrainee(string id)

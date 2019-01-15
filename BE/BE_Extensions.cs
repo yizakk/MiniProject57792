@@ -16,7 +16,7 @@ namespace BE
             return new XElement("Address",
                 new XElement("City", a.City),
                 new XElement("BuildingNumber", a.BuildingNumber.ToString()),
-                new XElement("StreetName", a.Street)
+                new XElement("Street", a.Street)
                 );
         }
         public static Address ToAddress(this XElement a)
