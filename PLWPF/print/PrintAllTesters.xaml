@@ -15,7 +15,7 @@
                     <GridViewColumn x:Name="idColumn" Width="auto" Header="ת.ז">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="-6,-1" Text="{Binding Id, Mode=OneWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                <TextBlock  Text="{Binding Id, Mode=OneWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -23,7 +23,7 @@
                     <GridViewColumn x:Name="fullNameColumn" Width="auto" Header="שם">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="-6,-1" Text="{Binding FullName, Mode=OneWay}"/>
+                                <TextBlock Text="{Binding FullName, Mode=OneWay}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -31,14 +31,14 @@
                     <GridViewColumn x:Name="addressToStringColumn" Width="auto" Header="כתובת">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="-8,-2" Text="{Binding AddressToString}"/>
+                                <TextBlock Text="{Binding AddressToString}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn x:Name="ageColumn" Width="auto" Header="גיל">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="-6,-1" Text="{Binding Age, Mode=OneWay}"/>
+                                <TextBlock  Text="{Binding Age, Mode=OneWay}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -46,7 +46,7 @@
                     <GridViewColumn x:Name="birthDateColumn" Width="auto" Header="תאריך לידה">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="-6,-1" Text="{Binding BirthDate, Mode=OneWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                <TextBlock  Text="{Binding BirthDate, Mode=OneWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

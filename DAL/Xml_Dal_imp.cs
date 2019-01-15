@@ -34,6 +34,9 @@ namespace Dal
 
         public void AddTrainee(Trainee trainee)
         {
+            //Ds.Trainees.Add(trainee.ToXml());
+           // Ds.SaveTrainees();
+        
             string str = trainee.ToXMLstring();
             XElement xml = XElement.Parse(str);
             Ds.Trainees.Add(xml);

@@ -102,7 +102,7 @@ namespace BE
         }
         public static XElement ToXml(this Trainee trainee)
         {
-            return new XElement("trainee",
+            return new XElement("Trainee",
                 new XElement("Id", trainee.Id),
                 new XElement("PhoneNumber", trainee.PhoneNumber),
                 trainee.Address.ToXML(),
