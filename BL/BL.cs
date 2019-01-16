@@ -27,24 +27,20 @@ namespace BL
             {
                 ImmediateAddTest(test);
                     return;
-
             }
-
 
             Trainee trainee = dal.FindTrainee(test.TraineeId); //finding the trainee for this test
 
-
             if (trainee == null)
             {
-                throw new MyExceptions("Trainee id:" + test.TraineeId + " doesn't exist!");
+                throw new MyExceptions("התלמיד " + test.TraineeId + " לא נמצא");
             }
 
             foreach (Test temp in dal.GetTestsForSpecTrainee(trainee.Id))
             {
-                if (temp.CarType == trainee.CarType)
+                if (temp.CarType == trainee.CarType && temp.Passed)
                 {
-                    if (temp.Passed)
-                        throw new MyExceptions("trainee id:" + trainee.Id + " already passed a test on car type: " + trainee.CarType+"!");
+                        throw new MyExceptions("התלמיד:" + trainee.Id + " כבר עבר טסט על סוג רכב: " + trainee.CarType+"!");
                 }
                 if(temp.Date==test.Date)
                 {
@@ -54,15 +50,15 @@ namespace BL
 
             if (trainee.NumLessons < Configuration.MinLessons)
             {
-                throw new MyExceptions ("Trainee:" + trainee.FullName + " didn't reach 20 lessons yet!");
+                throw new MyExceptions ("התלמיד:" + trainee.FullName + " לא הגיע ל" + Configuration.MinLessons.ToString() +" שיעורים עדיין");
             }
 
             if (trainee.LastTest != DateTime.MinValue) // check if trainee did a test in last 7 days
             {
                 TimeSpan timeSpan = test.Date - trainee.LastTest;
-                if (timeSpan.Days <= Configuration.MinDaysBetweenTests)
+                if (timeSpan.Days < Configuration.MinDaysBetweenTests)
                 {
-                     throw new MyExceptions ( "This trainee was tested less than "+ Configuration.MinDaysBetweenTests+" days ago! ");
+                     throw new MyExceptions ( "לתלמיד זה כבר נקבע מבחן  "+ Configuration.MinDaysBetweenTests+" ימים לפני המועד המבוקש");
                 }
             }
 

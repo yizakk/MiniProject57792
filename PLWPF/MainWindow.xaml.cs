@@ -21,7 +21,7 @@ namespace PLWPF
         public MainWindow()
         {
             InitializeComponent();
-            Data.MainUserControl = new ManagementPanel();// Login();
+            Data.MainUserControl = new Login();
 
             GridMain.Children.Add(Data.MainUserControl);
             Data.UserControlChanged += UserTypeChanged; // adding local func. "userTypeChanged" to handle the change of user type
@@ -93,8 +93,6 @@ namespace PLWPF
             }
         }
 
-
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
@@ -106,7 +104,6 @@ namespace PLWPF
             {
                 case 0:
                     Data.MainUserControl = new HomePanel();
-                     
                     break;
             }
         }

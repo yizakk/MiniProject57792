@@ -16,11 +16,12 @@ namespace Dal
 
         public Xml_Dal_imp()
         {
+
             #region Saving the configurations into XML file
-            var ConfigElements = from PropertyInfo it in typeof(Configuration).GetProperties()
-                                 select new XElement(it.Name, it.GetValue(it));
-            Ds.Configuration.Add(ConfigElements);
-            Ds.SaveConfig();
+            //var ConfigElements = from PropertyInfo it in typeof(Configuration).GetProperties()
+            //                     select new XElement(it.Name, it.GetValue(it));
+            //Ds.Configuration.Add(ConfigElements);
+            //Ds.SaveConfig();
             #endregion
             #region - First time run init.
            
@@ -31,17 +32,20 @@ namespace Dal
 
         public void AddTest(Test test)
         {
-            try
-            {
+            //try
+            //{
+            //var UpdatedTestId = Ds.Configuration.Element("Configuration");
+                int CurTestId = int.Parse(Ds.Configuration.Element("TestId").Value);
+                Configuration.TestId = CurTestId;
                 test.Id = Configuration.TestId++;
                 Ds.Tests.Add(test.ToXml());
                 Ds.SaveTests();
-                new XElement("Passed", test.Passed);//להבין
-            }
-            catch
-            {
-                throw new Exception("בעיה בהוספת טסט, נסה שנית בבקשה" + "\n(dal)");
-            }
+                //new XElement("Passed", test.Passed);//להבין
+            //}
+            //catch
+            //{
+            //    throw new MyExceptions("בעיה בהוספת טסט, נסה שנית בבקשה" + "\n(dal)");
+            //}
             UpdateConfig();
             Trainee trainee = FindTrainee(test.TraineeId);
             trainee.LastTest = test.Date;
