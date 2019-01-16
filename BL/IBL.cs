@@ -107,7 +107,7 @@ namespace BL
         /// <returns></returns>
         int PersonTestsCount(Person person);
 
-
+        void UpdateConfig();
 
     }
 }

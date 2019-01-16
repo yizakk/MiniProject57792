@@ -560,6 +560,11 @@ namespace BL
             }
             return (sum % 10) == 0;
         }
+
+        public void UpdateConfig()
+        {
+            dal.UpdateConfig();
+        }
     }
 }
 

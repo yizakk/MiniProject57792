@@ -208,5 +208,10 @@ namespace Dal
         {
             return Ds.Tests2.First(t => t.Id == id);
         }
+
+        public void UpdateConfig()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -5,11 +5,38 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              x:Class="PLWPF.checkings"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" >
+             Width="500" Height="400" FlowDirection="RightToLeft">
 
 
+        <Grid>
+            <!--
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="175"/>
+                <ColumnDefinition Width="175"/>
+                <ColumnDefinition Width="175"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80" />
+                <RowDefinition Height="80" />
+            </Grid.RowDefinitions>
+            -->
+        <StackPanel>
+            <Button x:Name="traineeButton" Content="הוספת תלמיד" BorderThickness="2,2,2,2" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="60" Click="TraineeButton_Click"  />
+            <Button x:Name="testerButton" Content="הוספת בוחן"  BorderThickness="2,2,2,2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="60" Click="TesterButton_Click"  Grid.Row="2" Grid.ColumnSpan="1"   />
+            <Button x:Name="AddTestButton" Content="הוספת טסט" BorderThickness="2,2,2,2" Grid.Column="1" Grid.Row="3" Width="150" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Click="AddTestButton_Click" />
+            <Button x:Name="UpTraineeButton" Content="עדכון תלמיד" BorderThickness="2,2,2,2" Grid.Column="2"  Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="60" Grid.RowSpan="1" Click="UpTraineeButton_Click" />
+            <Button x:Name="UpTesterButton" Content="עדכון בוחן" BorderThickness="2,2,2,2" Grid.Column="2" Grid.Row="2" Width="150" Height="60" Grid.ColumnSpan="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="UpTesterButton_Click"/>
+            <Button x:Name="GroupingButton" Visibility="Collapsed" Content=" קבוצות" BorderThickness="2,2,2,2" Grid.Column="3" Grid.Row="3" Width="150" Height="60" Grid.ColumnSpan="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="GroupingButton_Click" />
 
-
-
-    <Grid />
-</UserControl>
+            <Button x:Name="UpTestButton" Content="עדכון מבחן" BorderThickness="2,2,2,2" Grid.Column="2" Grid.Row="3" Width="150" Height="60" Grid.ColumnSpan="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="UpTestButton1_Click"/>
+            <Button x:Name="delTesterButton" Content="מחק בוחן" BorderThickness="2,2,2,2" Grid.Column="3" Grid.Row="1" Width="150" Height="60"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="DelTesterButton_Click"/>
+            <Button x:Name="delTraineeButton" Content="מחק תלמיד" BorderThickness="2,2,2,2" Grid.Column="3" Grid.Row="2" Width="150" Height="60"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="DelTraineeButton_Click"/>
+            <Button x:Name="PrintButton" Content="קבלת נתונים מבסיס הנתונים" BorderThickness="2,2,2,2" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="4" Width="350" Height="60"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="PrintButton_Click"/>
+        </StackPanel>
+    </Grid>
+    </UserControl>

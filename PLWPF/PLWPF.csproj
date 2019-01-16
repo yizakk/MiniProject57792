@@ -106,6 +106,12 @@
     <Compile Include="HomePanel.xaml.cs">
       <DependentUpon>HomePanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ManagementPanel.xaml.cs">
+      <DependentUpon>ManagementPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="print\Grouping.xaml.cs">
+      <DependentUpon>Grouping.xaml</DependentUpon>
+    </Compile>
     <Compile Include="print\printAllStudent.xaml.cs">
       <DependentUpon>printAllStudent.xaml</DependentUpon>
     </Compile>
@@ -160,7 +166,6 @@
     </EmbeddedResource>
     <None Include="Properties\DataSources\BE.Address.datasource" />
     <None Include="Properties\DataSources\BE.Configuration.datasource" />
-    <None Include="Properties\DataSources\BE.Exceptions.datasource" />
     <None Include="Properties\DataSources\BE.Parameters.datasource" />
     <None Include="Properties\DataSources\BE.Person.datasource" />
     <None Include="Properties\DataSources\BE.Schedule.datasource" />
@@ -215,6 +220,14 @@
     <Page Include="HomePanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ManagementPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="print\Grouping.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="print\printAllStudent.xaml">
       <Generator>MSBuild:Compile</Generator>
