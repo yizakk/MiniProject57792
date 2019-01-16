@@ -10,8 +10,8 @@
     <CarType>פרטי</CarType>
     <BirthDate>2000-01-01T00:00:00</BirthDate>
     <Gender>זכר</Gender>
-    <LastTest>2019-05-12T14:00:00</LastTest>
+    <LastTest>2019-01-16T09:00:00</LastTest>
     <GearType>אוטומטי</GearType>
-    <NumLessons>55</NumLessons>
+    <NumLessons>88</NumLessons>
   </Trainee>
 </Trainees>

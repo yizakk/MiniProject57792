@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
@@ -533,14 +534,35 @@ namespace BL
         {
             if (testItem.Passed)
             {
+                
+                int size = 0;
                 int count = 0;
-                for (int i = 0; i < testItem.Paramet.count_parameters; i++)
+
+                foreach (PropertyInfo info in testItem.Paramet.GetType().GetProperties())
                 {
-                  
+                    size++;
+
+                    var flaf = info.GetValue(info);
+                    //if ((bool)info.GetValue(info) )
+                    //{
+                    //    count++;
+                    //}
+
                 }
+                if (count <= size / 2)
+                {
+                    testItem.Passed = false;
+                   
+                    dal.UpdateTest(testItem);
+                    throw new MyExceptions("התלמיד לא עבר את רוב הקריטריונים להעברת טסט אי לכך  התלמיד נרשם כלא עבר");
+
+
+                }
+
+
             }
             else { dal.UpdateTest(testItem); }
-                
+
         }
 
         private bool CheckIdValidity(string id)

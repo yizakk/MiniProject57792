@@ -45,30 +45,9 @@ namespace BE
         public bool UsingMirrors { get; set; }
         public bool Speed { get; set; }
         public bool UsingVinkers { get; set; }
-        public int  count_parameters = 5;
+      //  public int  count_parameters = 5;
 
-        //public static int Count {
-        //    get
-        //    {
-        //        foreach(PropertyInfo item in Parameters )
-        //    }
-        //}
-
-        //public static string ToStringProperty<T>(this T t)
-        //{
-        //    string str = "";
-        //    foreach (PropertyInfo item in t.GetType().GetProperties())
-        //        str += "\n" + item.Name + ": " + item.GetValue(t, null);
-        //    return str;
-        //}
-
-        //public IEnumerator GetEnumerator()
-        //{
-        //    foreach (var item in Yomit)
-        //    {
-        //        yield return item;
-        //    }
-        //}
+      
     }
 
     public class Address
