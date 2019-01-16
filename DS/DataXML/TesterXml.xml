@@ -2,21 +2,21 @@
 <Testers>
   <Tester>
     <Id>000000018</Id>
-    <FirstName />
-    <LastName />
+    <FirstName>בוחן</FirstName>
+    <LastName>בוחני</LastName>
     <Gender>זכר</Gender>
-    <BirthDate>16/01/1979 19:08:49</BirthDate>
+    <BirthDate>16/01/1979 19:07:54</BirthDate>
     <CarType>פרטי</CarType>
-    <MaxDistance>110</MaxDistance>
-    <MaxTestsPerWeek>110</MaxTestsPerWeek>
-    <PhoneNumber />
-    <Seniority>110</Seniority>
+    <MaxDistance>0</MaxDistance>
+    <MaxTestsPerWeek>12</MaxTestsPerWeek>
+    <PhoneNumber></PhoneNumber>
+    <Seniority>0</Seniority>
     <Address>
       <City></City>
-      <BuildingNumber></BuildingNumber>
+      <BuildingNumber>0</BuildingNumber>
       <Street></Street>
     </Address>
-    <TestsList></TestsList>
+    <TestsList>16/01/2019 09:00:00,</TestsList>
     <WorkSchedule>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True</WorkSchedule>
   </Tester>
 </Testers>

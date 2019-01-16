@@ -32,18 +32,22 @@ namespace Dal
 
         public void AddTest(Test test)
         {
-
-                int CurTestId = int.Parse(Ds.Configuration.Element("TestId").Value);
-                Configuration.TestId = CurTestId;
-                test.Id = Configuration.TestId++;
+            //try
+            //{
+            if (Ds.Configuration.Element("TestId") != null)
+            {
+                Configuration.TestId = int.Parse(Ds.Configuration.Element("TestId").Value);
+            }
+                test.Id = Configuration.TestId;
                 Ds.Tests.Add(test.ToXml());
                 Ds.SaveTests();
-                //new XElement("Passed", test.Passed);//להבין
+            //new XElement("Passed", test.Passed);//להבין
             //}
             //catch
             //{
             //    throw new MyExceptions("בעיה בהוספת טסט, נסה שנית בבקשה" + "\n(dal)");
             //}
+            Configuration.TestId++;
             UpdateConfig();
             Trainee trainee = FindTrainee(test.TraineeId);
             trainee.LastTest = test.Date;
@@ -52,7 +56,6 @@ namespace Dal
             Tester tester = FindTester(test.TesterId);
             tester.TestsList.Add(test.Date);
             UpdateTester(tester);
-           
         }
 
         public void AddTester(Tester tester)
