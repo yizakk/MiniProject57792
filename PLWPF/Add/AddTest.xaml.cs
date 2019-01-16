@@ -89,6 +89,7 @@ namespace PLWPF
                     {
                         MessageBox.Show("נסה להוסיף טסט אחר ידנית");
                     }
+                   
                 }
                 else
                     MessageBox.Show(a._message);

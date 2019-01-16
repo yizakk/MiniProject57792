@@ -55,8 +55,7 @@ namespace DS
             {
                 CreateFile("Configuration", configurationPath);
             }
-            TestRoot = LoadData(configurationPath);
-
+            configurationRoot = LoadData(configurationPath);
         }
 
         private void CreateFile(string typename, string path)
