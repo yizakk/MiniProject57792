@@ -12,24 +12,48 @@ namespace Dal
     internal class Xml_Dal_imp : IDal
     {
         static DS.XmlDs Ds = DS.DSFactory.GetXmlDS();
-
-      
-
-
+        
         public void AddTest(Test test)
         {
-            
-            Ds.Tests.Add(test.ToXml());
-            Ds.SaveTests();
-                       new XElement("Passed", test.Passed);//להבין
+            try
+            {
+
+                test.Id = Configuration.TestId++;
+                Ds.Tests.Add(test.ToXml());
+                Ds.SaveTests();
+                new XElement("Passed", test.Passed);//להבין
+            }
+            catch 
+            {
+                throw new Exception("בעיה בהוספת טסט, נסה שנית בבקשה" + "\n(dal)");
+            }
+            Trainee trainee=  FindTrainee(test.TraineeId);
+            trainee.LastTest = test.Date;
+            UpdateTrainee(trainee);
+
+            Tester tester = FindTester(test.TesterId);
+            tester.TestsList.Add(test.Date);
+            UpdateTester(tester);
+
+
         }
 
         public void AddTester(Tester tester)
         {
             //string str = tester.ToXMLstring();
             //XElement xml = XElement.Parse(str);
-            Ds.Testers.Add(tester.ToXml());
-            Ds.SaveTesters();
+            try
+            {
+                Ds.Testers.Add(tester.ToXml());
+                Ds.SaveTesters();
+            }
+            catch 
+            {
+
+                throw new Exception("בעיה בהוספת טסטר, נסה שנית בבקשה" + "\n(dal)");
+
+            }
+
         }
 
         public void AddTrainee(Trainee trainee)
@@ -39,8 +63,18 @@ namespace Dal
         
             string str = trainee.ToXMLstring();
             XElement xml = XElement.Parse(str);
-            Ds.Trainees.Add(xml);
-            Ds.SaveTrainees();
+            try
+            {
+                Ds.Trainees.Add(xml);
+                Ds.SaveTrainees();
+            }
+            catch 
+            {
+
+                throw new Exception("בעיה בהוספת תלמיד, נסה שנית בבקשה" + "\n(dal)");
+
+            }
+
         }
 
         public void DelTester(string id)
@@ -129,6 +163,7 @@ namespace Dal
             {
                 var str = trainee.ToString();
                 return str.ToObject<Trainee>();
+                
             }
             return null;
         }
@@ -218,42 +253,30 @@ namespace Dal
 
         public void UpdateTester(Tester tester)
         {
-            //foreach (var item in Ds.Testers.Elements())
-            //{
             try
             {
                 DelTester(tester.Id);
-                //if (item.Element("ID").Value == tester.Id)
-                //{
-                //    item.Remove();
-                //    break;
-                //}
+               
             }
             catch
             { throw new Exception("בעיה בעדכון, נסה שנית" + " \n(dal)"); }
 
-            //}
+            
             AddTester(tester);
         }
 
         public void UpdateTrainee(Trainee trainee)
         {
 
-            //foreach (var item in Ds.Testers.Elements())
-            //{
             try
             {
                 DelTrainee(trainee.Id);
-                //if (item.Element("ID").Value == tester.Id)
-                //{
-                //    item.Remove();
-                //    break;
-                //}
+               
             }
             catch
             { throw new Exception("בעיה בעדכון, נסה שנית" + " \n(dal)"); }
 
-            //}
+            
             AddTrainee(trainee);
         }
     }

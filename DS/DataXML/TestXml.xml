@@ -1,170 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Tests>
   <Test>
-    <Id>0</Id>
-    <TesterId>000000018</TesterId>
-    <TraineeId>000000000</TraineeId>
-    <Date>15/01/2019 10:00:00</Date>
-    <TesterComment />
-    <CarType>פרטי</CarType>
-    <BeginAddress>
-      <Address>
-        <City></City>
-        <BuildingNumber></BuildingNumber>
-        <Street></Street>
-      </Address>
-    </BeginAddress>
-    <Paramet>
-      <Speed>False</Speed>
-      <Distance>False</Distance>
-      <ReversePark>False</ReversePark>
-      <UsingVinkers>False</UsingVinkers>
-      <UsingMirrors>False</UsingMirrors>
-    </Paramet>
-    <Passed>False</Passed>
-  </Test>
-  <Test>
-    <Id>0</Id>
-    <TesterId>000000018</TesterId>
-    <TraineeId>000000000</TraineeId>
-    <Date>16/01/2019 11:00:00</Date>
-    <TesterComment />
-    <CarType>פרטי</CarType>
-    <BeginAddress>
-      <Address>
-        <City></City>
-        <BuildingNumber></BuildingNumber>
-        <Street></Street>
-      </Address>
-    </BeginAddress>
-    <Paramet>
-      <Speed>False</Speed>
-      <Distance>False</Distance>
-      <ReversePark>False</ReversePark>
-      <UsingVinkers>False</UsingVinkers>
-      <UsingMirrors>False</UsingMirrors>
-    </Paramet>
-    <Passed>False</Passed>
-  </Test>
-  <Test>
-    <Id>0</Id>
-    <TesterId>000000018</TesterId>
-    <TraineeId>000000000</TraineeId>
-    <Date>23/01/2019 14:00:00</Date>
-    <TesterComment />
-    <CarType>פרטי</CarType>
-    <BeginAddress>
-      <Address>
-        <City></City>
-        <BuildingNumber></BuildingNumber>
-        <Street></Street>
-      </Address>
-    </BeginAddress>
-    <Paramet>
-      <Speed>False</Speed>
-      <Distance>False</Distance>
-      <ReversePark>False</ReversePark>
-      <UsingVinkers>False</UsingVinkers>
-      <UsingMirrors>False</UsingMirrors>
-    </Paramet>
-    <Passed>False</Passed>
-  </Test>
-  <Test>
-    <Id>0</Id>
-    <TesterId>000000018</TesterId>
-    <TraineeId>810000000</TraineeId>
-    <Date>15/01/2019 09:00:00</Date>
-    <TesterComment />
-    <CarType>פרטי</CarType>
-    <BeginAddress>
-      <Address>
-        <City></City>
-        <BuildingNumber></BuildingNumber>
-        <Street></Street>
-      </Address>
-    </BeginAddress>
-    <Paramet>
-      <Speed>False</Speed>
-      <Distance>False</Distance>
-      <ReversePark>False</ReversePark>
-      <UsingVinkers>False</UsingVinkers>
-      <UsingMirrors>False</UsingMirrors>
-    </Paramet>
-    <Passed>False</Passed>
-  </Test>
-  <Test>
-    <Id>0</Id>
-    <TesterId>000000018</TesterId>
-    <TraineeId>810000000</TraineeId>
-    <Date>15/01/2019 10:00:00</Date>
-    <TesterComment />
-    <CarType>פרטי</CarType>
-    <BeginAddress>
-      <Address>
-        <City></City>
-        <BuildingNumber></BuildingNumber>
-        <Street></Street>
-      </Address>
-    </BeginAddress>
-    <Paramet>
-      <Speed>False</Speed>
-      <Distance>False</Distance>
-      <ReversePark>False</ReversePark>
-      <UsingVinkers>False</UsingVinkers>
-      <UsingMirrors>False</UsingMirrors>
-    </Paramet>
-    <Passed>False</Passed>
-  </Test>
-  <Test>
-    <Id>0</Id>
-    <TesterId>000000018</TesterId>
-    <TraineeId>000000000</TraineeId>
-    <Date>15/01/2019 15:00:00</Date>
-    <TesterComment />
-    <CarType>פרטי</CarType>
-    <BeginAddress>
-      <Address>
-        <City></City>
-        <BuildingNumber></BuildingNumber>
-        <Street></Street>
-      </Address>
-    </BeginAddress>
-    <Paramet>
-      <Speed>False</Speed>
-      <Distance>False</Distance>
-      <ReversePark>False</ReversePark>
-      <UsingVinkers>False</UsingVinkers>
-      <UsingMirrors>False</UsingMirrors>
-    </Paramet>
-    <Passed>False</Passed>
-  </Test>
-  <Test>
-    <Id>0</Id>
-    <TesterId>000000018</TesterId>
-    <TraineeId>000000026</TraineeId>
-    <Date>15/01/2019 09:00:00</Date>
-    <TesterComment />
-    <CarType>פרטי</CarType>
-    <BeginAddress>
-      <Address>
-        <City></City>
-        <BuildingNumber></BuildingNumber>
-        <Street></Street>
-      </Address>
-    </BeginAddress>
-    <Paramet>
-      <Speed>False</Speed>
-      <Distance>False</Distance>
-      <ReversePark>False</ReversePark>
-      <UsingVinkers>False</UsingVinkers>
-      <UsingMirrors>False</UsingMirrors>
-    </Paramet>
-    <Passed>False</Passed>
-  </Test>
-  <Test>
-    <Id>0</Id>
-    <TesterId>000000018</TesterId>
-    <TraineeId>000000026</TraineeId>
+    <Id>10000000</Id>
+    <TesterId>0000000000</TesterId>
+    <TraineeId>000000018</TraineeId>
     <Date>16/01/2019 09:00:00</Date>
     <TesterComment />
     <CarType>פרטי</CarType>
@@ -185,10 +24,10 @@
     <Passed>False</Passed>
   </Test>
   <Test>
-    <Id>0</Id>
-    <TesterId>000000018</TesterId>
-    <TraineeId>000000026</TraineeId>
-    <Date>16/01/2019 15:00:00</Date>
+    <Id>10000000</Id>
+    <TesterId>0000000000</TesterId>
+    <TraineeId>000000018</TraineeId>
+    <Date>30/01/2019 09:00:00</Date>
     <TesterComment />
     <CarType>פרטי</CarType>
     <BeginAddress>
@@ -208,10 +47,33 @@
     <Passed>False</Passed>
   </Test>
   <Test>
-    <Id>0</Id>
-    <TesterId>000000018</TesterId>
+    <Id>10000001</Id>
+    <TesterId>0000000000</TesterId>
+    <TraineeId>000000018</TraineeId>
+    <Date>27/02/2019 09:00:00</Date>
+    <TesterComment />
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City></City>
+        <BuildingNumber></BuildingNumber>
+        <Street></Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>False</Speed>
+      <Distance>False</Distance>
+      <ReversePark>False</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>False</Passed>
+  </Test>
+  <Test>
+    <Id>10000000</Id>
+    <TesterId>0000000000</TesterId>
     <TraineeId>000000026</TraineeId>
-    <Date>17/01/2019 15:00:00</Date>
+    <Date>16/01/2019 10:00:00</Date>
     <TesterComment />
     <CarType>פרטי</CarType>
     <BeginAddress>
