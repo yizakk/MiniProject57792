@@ -32,7 +32,7 @@
                     <GridViewColumn x:Name="idColumn" Header="ת.ז" Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="-6,-1" Text="{Binding Id}"/>
+                                <TextBlock  Text="{Binding Id}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -40,7 +40,7 @@
                     <GridViewColumn x:Name="fullNameColumn" Header="שם" Width="auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="-6,-1" Text="{Binding FullName, Mode=OneWay}"/>
+                                <TextBlock  Text="{Binding FullName, Mode=OneWay}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -48,7 +48,7 @@
                     <GridViewColumn x:Name="addressColumn" Header="כתובת" Width="auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="6,-1,-6,-1" Text="{Binding AddressToString }" FlowDirection="RightToLeft"/>
+                                <TextBlock Text="{Binding AddressToString }" FlowDirection="RightToLeft"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -58,7 +58,7 @@
                     <GridViewColumn x:Name="birthDateColumn" Header="ת.לידה" Width="auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="-6,-1" Text="{Binding BirthDate}"/>
+                                <TextBlock Text="{Binding BirthDate}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -67,7 +67,7 @@
                     <GridViewColumn x:Name="car_typeColumn" Header="רכב" Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="-6,-1" Text="{Binding CarType}"/>
+                                <TextBlock  Text="{Binding CarType}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -77,7 +77,7 @@
                     <GridViewColumn x:Name="gearTypeColumn" Header="הילוך" Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="-6,-1" Text="{Binding GearType}"/>
+                                <TextBlock  Text="{Binding GearType}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -86,7 +86,7 @@
                     <GridViewColumn x:Name="genderColumn" Header="מין" Width="auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="-6,-1" Text="{Binding Gender}"/>
+                                <TextBlock  Text="{Binding Gender}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -95,7 +95,7 @@
                     <GridViewColumn x:Name="numLessonsColumn" Header="# שיעורים" Width="Auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="-6,-1" Text="{Binding NumLessons}"/>
+                                <TextBlock  Text="{Binding NumLessons}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -104,7 +104,7 @@
                     <GridViewColumn x:Name="phoneNumberColumn" Header="טלפון" Width="auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="-6,-1" Text="{Binding PhoneNumber}"/>
+                                <TextBlock  Text="{Binding PhoneNumber}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -113,7 +113,7 @@
                     <GridViewColumn x:Name="schoolNameColumn" Header="בית ספר" Width="auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="-6,-1" Text="{Binding SchoolName}"/>
+                                <TextBlock  Text="{Binding SchoolName}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -122,7 +122,7 @@
                     <GridViewColumn x:Name="teacherNameColumn" Header="מורה" Width="auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="-6,-1" Text="{Binding TeacherName}"/>
+                                <TextBlock  Text="{Binding TeacherName}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

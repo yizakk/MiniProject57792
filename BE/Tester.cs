@@ -100,11 +100,11 @@ namespace BE
         public int Seniority { get; set; }
         public int MaxTestsPerWeek { get; set; }
         public int MaxDistance { get; set; } // Maximum distance (in KMs) this tester can be from his test
-        
+
         #region Work Schedule and availability
         // A new field we added for holding all the dates this Tester is associated to 
-        private List<DateTime> _TestsList =new List<DateTime> ();
-        public List<DateTime> TestsList { get { return _TestsList; } internal set { _TestsList = value; } }
+
+      
 
         [XmlIgnore]
         public bool[,] m_WorkSchedule = new bool[Configuration.WorkDays, Configuration.WorkHours];
@@ -114,6 +114,48 @@ namespace BE
             get { return m_WorkSchedule; }
             set { m_WorkSchedule = value; }
         }
+
+        private List<DateTime> _TestsList = new List<DateTime>();
+        [XmlIgnore]
+        public List<DateTime> TestsList { get { return _TestsList; } internal set { _TestsList = value; } }
+        public string TestsTime
+        {
+            get
+            {
+                if (TestsList == null)
+                    return null;
+                string result = "";
+                if (TestsList != null)
+                {
+                    foreach (var  item in TestsList)
+                    {
+                        result += item.ToString() 
+                            + ",";
+                    }
+                }
+                return result;
+            }
+            set
+            {
+                if (value != null && value.Length > 0)
+                {
+                    string[] values = value.Split(',');
+
+                    foreach (var item in values)
+                    {
+                        if (item!="")
+                        {
+                            DateTime dateTime = DateTime.Now;
+                            TestsList.Add(DateTime.Parse(item));
+                        }
+                    }
+                       
+                   
+                }
+            }
+        }
+
+
 
         public string WorkSave
         {

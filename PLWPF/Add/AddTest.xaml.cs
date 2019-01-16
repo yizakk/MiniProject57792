@@ -51,6 +51,8 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
+            TempTest.Date =(DateTime) dateDatePicker.SelectedDate;
             TempTest.Date = new DateTime(TempTest.Date.Year, TempTest.Date.Month, TempTest.Date.Day, (int)TimeComboBox.SelectedValue, 0, 0);
 
             if (Data.UserType != Data.Usertype.תלמיד)

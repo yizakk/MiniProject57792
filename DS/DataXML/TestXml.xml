@@ -1,2 +1,95 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Tests />
+<Tests>
+  <Test>
+    <Id>10000000</Id>
+    <TesterId>0000000000</TesterId>
+    <TraineeId>000000018</TraineeId>
+    <Date>16/01/2019 09:00:00</Date>
+    <TesterComment />
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City></City>
+        <BuildingNumber></BuildingNumber>
+        <Street></Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>False</Speed>
+      <Distance>False</Distance>
+      <ReversePark>False</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>False</Passed>
+  </Test>
+  <Test>
+    <Id>10000000</Id>
+    <TesterId>0000000000</TesterId>
+    <TraineeId>000000018</TraineeId>
+    <Date>30/01/2019 09:00:00</Date>
+    <TesterComment />
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City></City>
+        <BuildingNumber></BuildingNumber>
+        <Street></Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>False</Speed>
+      <Distance>False</Distance>
+      <ReversePark>False</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>False</Passed>
+  </Test>
+  <Test>
+    <Id>10000001</Id>
+    <TesterId>0000000000</TesterId>
+    <TraineeId>000000018</TraineeId>
+    <Date>27/02/2019 09:00:00</Date>
+    <TesterComment />
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City></City>
+        <BuildingNumber></BuildingNumber>
+        <Street></Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>False</Speed>
+      <Distance>False</Distance>
+      <ReversePark>False</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>False</Passed>
+  </Test>
+  <Test>
+    <Id>10000000</Id>
+    <TesterId>0000000000</TesterId>
+    <TraineeId>000000026</TraineeId>
+    <Date>16/01/2019 10:00:00</Date>
+    <TesterComment />
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City></City>
+        <BuildingNumber></BuildingNumber>
+        <Street></Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>False</Speed>
+      <Distance>False</Distance>
+      <ReversePark>False</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>False</Passed>
+  </Test>
+</Tests>

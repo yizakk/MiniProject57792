@@ -30,11 +30,17 @@ namespace BE
                 Street = a.Element("Street").Value
             };
         }
-        private static List<DateTime> ToTestsList(this XElement a)
-        {
-            return (from item in a.Elements()
-                    select DateTime.Parse(item.Element("TestDate").Value)).ToList();
-        }
+        //private static string ToTestsList(this XElement a)
+        //{
+
+        //    var dateTimesList = from item in a.Elements()
+        //                        select DateTime.Parse(item.Element("TestDate").Value.ToString());
+
+        //    return dateTimesList;
+        //}
+
+
+
         private static bool[,] ToSchedule(this XElement a)
         {
             bool[,] temp = new bool[Configuration.WorkDays,Configuration.WorkHours];
@@ -42,6 +48,7 @@ namespace BE
                                 select bool.Parse(item.Value)).ToList();
             return temp;
         }
+
         public static Test ToTest(this XElement d)
         {
             return new Test
@@ -56,6 +63,46 @@ namespace BE
                 Passed = bool.Parse(d.Element("Passed").Value),
                 BeginAddress = d.Element("BeginAddress").Element("Address").ToAddress(),
             };
+        }
+     
+
+
+        public static Trainee ToTrainee(this XElement d)
+        {
+            Trainee temp = new Trainee();
+            temp.Id = d.Element("Id").Value;
+            temp.PhoneNumber = d.Element("PhoneNumber").Value;
+            temp.Address = d.Element("Address").ToAddress();
+            temp.CarType = d.Element("CarType").ToCarType();
+            temp.BirthDate = DateTime.Parse(d.Element("BirthDate").Value);
+            temp.LastName = d.Element("LastName").Value;
+            temp.FirstName = d.Element("FirstName").Value;
+            temp.Gender = (Gender)Enum.Parse(typeof(Gender), d.Element("Gender").Value);
+            temp.LastTest = DateTime.Parse(d.Element("LastTest").Value);
+            temp.GearType = d.Element("GearType").ToGearType();
+            temp.SchoolName = d.Element("SchoolName").Value;
+            temp.TeacherName = d.Element("TeacherName").Value;
+            temp.NumLessons = int.Parse(d.Element("NumLessons").Value);
+                return temp;
+        }
+        public static XElement ToXml(this Trainee trainee)
+        {
+            return new XElement("Trainee",
+                new XElement("Id", trainee.Id),
+                new XElement("PhoneNumber", trainee.PhoneNumber),
+                trainee.Address.ToXML(),
+                new XElement("CarType", trainee.CarType.ToString()),
+                new XElement("BirthDate", trainee.BirthDate.ToString()),
+                new XElement("LastName", trainee.LastName),
+                new XElement("FirstName", trainee.FirstName),
+                new XElement("Gender", trainee.Gender.ToString()),
+                new XElement("LastTest" , trainee.LastTest),
+                new XElement("GearType", trainee.GearType),
+                new XElement("SchoolName", trainee.SchoolName),
+                new XElement("TeacherName", trainee.TeacherName),
+                new XElement("NumLessons", trainee.NumLessons)
+
+                );
         }
         public static Tester ToTester(this XElement d)
         {
@@ -73,7 +120,7 @@ namespace BE
             temp.Seniority = int.Parse(d.Element("Seniority").Value);
             temp.WorkSave = d.Element("WorkSchedule").Value;
             //WorkSChedule = d.Element("Schedule").ToSchedule(),
-            temp.TestsList = d.Element("TestsList").ToTestsList();
+            temp.TestsTime = d.Element("TestsList").Value;
             temp.Address = d.Element("Address").ToAddress();
 
             return temp;
@@ -93,7 +140,7 @@ namespace BE
                 new XElement("PhoneNumber", tester.PhoneNumber),
                 new XElement("Seniority", tester.Seniority.ToString()),
                 tester.Address.ToXML(),
-                new XElement("TestsList", tester.TestsList),
+                new XElement("TestsList", tester.TestsTime),
                 new XElement("WorkSchedule",tester.WorkSave)
                 );
         }
@@ -130,6 +177,18 @@ namespace BE
                     return CarType.פול_טריילר;
                 default:
                     return CarType.פרטי;
+            }
+        }
+        public static Gear ToGearType(this XElement d)
+        {
+            switch (d.Value)
+            {
+                case "אוטומטי":
+                    return Gear.אוטומטי;
+                case "ידני":
+                    return Gear.ידני;
+                default:
+                    return Gear.אוטומטי;
             }
         }
         public static Parameters ToParameters(this XElement p)
