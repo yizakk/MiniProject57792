@@ -293,9 +293,9 @@ namespace BL
         public void AddTester(Tester tester)
         {
             if (dal.FindTester(tester.Id) != null || dal.FindTrainee(tester.Id)!= null) 
-                throw new Exception("תעודת זהות זו כבר קיימת במערכת");
+                throw new MyExceptions("תעודת זהות זו כבר קיימת במערכת");
             if (!CheckIdValidity(tester.Id))
-                throw new Exception("תעודת זהות לא תקינה");
+                throw new MyExceptions("תעודת זהות לא תקינה");
                 // if tester age < 40 - deny 
                 if (tester.Age < Configuration.TesterMinAge)
                 {

@@ -104,8 +104,6 @@ namespace BE
         #region Work Schedule and availability
         // A new field we added for holding all the dates this Tester is associated to 
 
-      
-
         [XmlIgnore]
         public bool[,] m_WorkSchedule = new bool[Configuration.WorkDays, Configuration.WorkHours];
         [XmlIgnore]

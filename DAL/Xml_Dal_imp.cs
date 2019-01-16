@@ -14,81 +14,106 @@ namespace Dal
     {
         static DS.XmlDs Ds = DS.DSFactory.GetXmlDS();
 
-        //public Xml_Dal_imp()
-        //{
-        //    int index = 1;
-        //    AddTester(
-        //        new Tester
-        //        {
-        //            Id = "0000",
-        //            FirstName = "ג'וג'ו",
-        //            LastName = "חלאסטרה",
-        //            PhoneNumber = "0522222222",
-        //            Gender = Gender.זכר,
-        //            CarType = CarType.פרטי,
-        //            BirthDate = DateTime.Now.AddYears(-41),
-        //            Address = new Address { City = "חיפה", Street = "שער הגיא", BuildingNumber = index + 14 },
-        //            Seniority = index++,
-        //            MaxDistance = 20 * index,
-        //            MaxTestsPerWeek = index + 5,
+        public Xml_Dal_imp()
+        {
+            #region Saving the configurations into XML file
+            var ConfigElements = from PropertyInfo it in typeof(Configuration).GetProperties()
+                                 select new XElement(it.Name, it.GetValue(it));
+            Ds.Configuration.Add(ConfigElements);
+            Ds.SaveConfig();
+            #endregion
+            #region - First time run init.
+            //    int index = 1;
+            //    AddTester(
+            //        new Tester
+            //        {
+            //            Id = "0000",
+            //            FirstName = "ג'וג'ו",
+            //            LastName = "חלאסטרה",
+            //            PhoneNumber = "0522222222",
+            //            Gender = Gender.זכר,
+            //            CarType = CarType.פרטי,
+            //            BirthDate = DateTime.Now.AddYears(-41),
+            //            Address = new Address { City = "חיפה", Street = "שער הגיא", BuildingNumber = index + 14 },
+            //            Seniority = index++,
+            //            MaxDistance = 20 * index,
+            //            MaxTestsPerWeek = index + 5,
 
-        //        });
+            //        });
 
-        //    AddTester(new Tester
-        //    {
-        //        Id = "0011",
-        //        FirstName = "ג'וני",
-        //        LastName = "דף",
-        //        PhoneNumber = "0523333333",
-        //        Gender = Gender.זכר,
-        //        CarType = CarType.פרטי,
-        //        BirthDate = DateTime.Now.AddYears(-42),
-        //        Address = new Address { City = "חיפה", Street = "אליהו הנביא", BuildingNumber = index + 14 },
-        //        Seniority = index++,
-        //        MaxDistance = 50 * index,
-        //        MaxTestsPerWeek = index + 5,
+            //    AddTester(new Tester
+            //    {
+            //        Id = "0011",
+            //        FirstName = "ג'וני",
+            //        LastName = "דף",
+            //        PhoneNumber = "0523333333",
+            //        Gender = Gender.זכר,
+            //        CarType = CarType.פרטי,
+            //        BirthDate = DateTime.Now.AddYears(-42),
+            //        Address = new Address { City = "חיפה", Street = "אליהו הנביא", BuildingNumber = index + 14 },
+            //        Seniority = index++,
+            //        MaxDistance = 50 * index,
+            //        MaxTestsPerWeek = index + 5,
 
-        //    });
+            //    });
 
-        //    AddTrainee(new Trainee
-        //    {
-        //        Id = "1111",
-        //        FirstName = "מייקל",
-        //        LastName = "אוון",
-        //        PhoneNumber = "0523333444",
-        //        Gender = Gender.זכר,
-        //        CarType = CarType.פרטי,
-        //        BirthDate = DateTime.Now.AddYears(-18),
-        //        Address = new Address { City = "תל אביב", Street = "דפנה", BuildingNumber = index + 14 },
-        //        //Seniority = index++,
-        //        //MaxDistance = 50 * index,
-        //        //MaxTestsPerWeek = index + 5,
+            //    AddTrainee(new Trainee
+            //    {
+            //        Id = "1111",
+            //        FirstName = "מייקל",
+            //        LastName = "אוון",
+            //        PhoneNumber = "0523333444",
+            //        Gender = Gender.זכר,
+            //        CarType = CarType.פרטי,
+            //        BirthDate = DateTime.Now.AddYears(-18),
+            //        Address = new Address { City = "תל אביב", Street = "דפנה", BuildingNumber = index + 14 },
+            //        //Seniority = index++,
+            //        //MaxDistance = 50 * index,
+            //        //MaxTestsPerWeek = index + 5,
 
-        //    });
+            //    });
 
-        //    AddTrainee(new Trainee
-        //    {
-        //        Id = "1122",
-        //        FirstName = "יוהנה",
-        //        LastName = "ליאון",
-        //        PhoneNumber = "0523333555",
-        //        Gender = Gender.נקבה,
-        //        CarType = CarType.פרטי,
-        //        BirthDate = DateTime.Now.AddYears(-19),
-        //        Address = new Address { City = "ירושלים", Street = "הרב צבי יהודה", BuildingNumber = index + 14 },
-        //        //Seniority = index++,
-        //        //MaxDistance = 50 * index,
-        //        //MaxTestsPerWeek = index + 5,
+            //    AddTrainee(new Trainee
+            //    {
+            //        Id = "1122",
+            //        FirstName = "יוהנה",
+            //        LastName = "ליאון",
+            //        PhoneNumber = "0523333555",
+            //        Gender = Gender.נקבה,
+            //        CarType = CarType.פרטי,
+            //        BirthDate = DateTime.Now.AddYears(-19),
+            //        Address = new Address { City = "ירושלים", Street = "הרב צבי יהודה", BuildingNumber = index + 14 },
+            //        //Seniority = index++,
+            //        //MaxDistance = 50 * index,
+            //        //MaxTestsPerWeek = index + 5,
 
-        //    });
+            //    });
 
-        //}
+            #endregion
+        }
 
 
         public void AddTest(Test test)
         {
-            Ds.Tests.Add(test.ToXml());
-            Ds.SaveTests();
+            try
+            {
+                test.Id = Configuration.TestId++;
+                Ds.Tests.Add(test.ToXml());
+                Ds.SaveTests();
+                new XElement("Passed", test.Passed);//להבין
+            }
+            catch
+            {
+                throw new Exception("בעיה בהוספת טסט, נסה שנית בבקשה" + "\n(dal)");
+            }
+            UpdateConfig();
+            Trainee trainee = FindTrainee(test.TraineeId);
+            trainee.LastTest = test.Date;
+            UpdateTrainee(trainee);
+
+            Tester tester = FindTester(test.TesterId);
+            tester.TestsList.Add(test.Date);
+            UpdateTester(tester);
             //Ds.Tests.Add(new XElement("Test",
             //                      new XElement("ID", test.Id.ToString(),
             //                      new XElement("TesterID", test.TesterId),
@@ -111,19 +136,23 @@ namespace Dal
 
         public void AddTester(Tester tester)
         {
-            //string str = tester.ToXMLstring();
-            //XElement xml = XElement.Parse(str);
-            Ds.Testers.Add(tester.ToXml());
-            Ds.SaveTesters();
+            try
+            {
+                Ds.Testers.Add(tester.ToXml());
+                Ds.SaveTesters();
+            }
+            catch
+            {
+                throw new Exception("בעיה בהוספת טסטר, נסה שנית בבקשה" + "\n(dal)");
+            }
         }
 
         public void AddTrainee(Trainee trainee)
         {
-            //Ds.Trainees.Add(trainee.ToXml());
-           // Ds.SaveTrainees();
-        
+
             string str = trainee.ToXMLstring();
             XElement xml = XElement.Parse(str);
+
             try
             {
                 Ds.Trainees.Add(xml);
@@ -131,9 +160,7 @@ namespace Dal
             }
             catch 
             {
-
                 throw new Exception("בעיה בהוספת תלמיד, נסה שנית בבקשה" + "\n(dal)");
-
             }
 
         }
@@ -336,7 +363,6 @@ namespace Dal
             var ConfigElements = from PropertyInfo it in typeof(Configuration).GetProperties()
                                  select new XElement(it.Name, it.GetValue(it));
             Ds.Configuration.ReplaceAll(ConfigElements);
-            //Ds.Configuration.Add(ConfigElements);
             Ds.SaveConfig();
         }
     }
