@@ -530,7 +530,6 @@ namespace BL
         {
             if (testItem.Passed)
             {
-                
                 int size = 0;
                 int count = 0;
 
@@ -538,7 +537,7 @@ namespace BL
                 {
                     size++;
 
-                    var flaf = info.GetValue(info);
+                    bool? flag = info.GetValue(info) as bool?;
                     //if ((bool)info.GetValue(info) )
                     //{
                     //    count++;

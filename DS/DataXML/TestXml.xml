@@ -1,2 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Tests />
+<Tests>
+  <Test>
+    <Id>10000000</Id>
+    <TesterId>000000018</TesterId>
+    <TraineeId>204412712</TraineeId>
+    <Date>16/01/2019 09:00:00</Date>
+    <TesterComment />
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City></City>
+        <BuildingNumber></BuildingNumber>
+        <Street></Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>False</Speed>
+      <Distance>False</Distance>
+      <ReversePark>False</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>False</Passed>
+  </Test>
+</Tests>
