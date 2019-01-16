@@ -32,9 +32,7 @@ namespace Dal
 
         public void AddTest(Test test)
         {
-            //try
-            //{
-            //var UpdatedTestId = Ds.Configuration.Element("Configuration");
+
                 int CurTestId = int.Parse(Ds.Configuration.Element("TestId").Value);
                 Configuration.TestId = CurTestId;
                 test.Id = Configuration.TestId++;
