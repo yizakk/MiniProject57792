@@ -39,8 +39,18 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            BE.Configuration.MasterPassword = MasterPass.Password;
-            BL.BlFactory.GetBL().UpdateConfig();
+            try
+            {
+                BE.Configuration.MasterPassword = MasterPass.Password;
+                BL.BlFactory.GetBL().UpdateConfig();
+            }
+            catch
+            {
+                MessageBox.Show("קרתה תקלה בשינוי , אנא נסה שנית!");
+                return;
+            }
+            MessageBox.Show("העדכון בוצע בהצלחה!");
+            Data.MainUserControl = new HomePanel();
         }
     }
 }

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BL.BL" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>KCMgIicAAA2AAhABAYDQCIIIAQACAAAACACAAAEACQQ=</HashCode>
+      <FileName>BL.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BL.BlFactory">
+    <Position X="15.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>BlFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BL.MapRequest">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>MapRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="BL.IBL">
+    <Position X="17.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ICMAIicAAA2AABABAYDAAIAIAQAAAAAACAAAAAEACQA=</HashCode>
+      <FileName>IBL.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

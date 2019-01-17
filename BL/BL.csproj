@@ -44,6 +44,7 @@
     <Compile Include="BL.cs" />
     <Compile Include="BlFactory.cs" />
     <Compile Include="IBL.cs" />
+    <Compile Include="MapRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -55,6 +56,9 @@
       <Project>{12628814-8384-4636-8d73-29850dead8b7}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

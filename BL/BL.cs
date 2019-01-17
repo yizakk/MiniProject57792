@@ -105,7 +105,6 @@ namespace BL
                     {
                         throw new MyExceptions("The system did not find a free test at the time you wanted " +
                                            "The system has found another date, but at that time you have already been tested elsewhere");
-
                     }
                 }
                 flag = true;
@@ -385,11 +384,10 @@ namespace BL
             {
                 count++;
             }
-
             return count >= 3;
-
         }
 
+        #region Old Test Update - (Console)
         public void UpdateTest(int idtest, bool _distance , bool _ReversePark, bool _usingMirrors, bool _speed, bool _usingVinkers)
         {        Test test = null;
             foreach (Test item in dal.GetTests())
@@ -408,6 +406,7 @@ namespace BL
             dal.UpdateTest(test);
 
         }
+        #endregion
 
         public void UpdateTester(Tester tester)
         {
@@ -423,42 +422,30 @@ namespace BL
         {
             if (sort)
             {
-                IEnumerable<IGrouping<CarType, Tester>> Group = from item in dal.GetTesters()
-                                                                orderby item.FullName
-                                                                group item by item.CarType;
-
-                return Group;
+                return from item in dal.GetTesters()
+                       orderby item.FullName
+                       group item by item.CarType;
             }
             else
             {
-                IEnumerable<IGrouping<CarType, Tester>> Group = from item in dal.GetTesters()
-                                                                
-                                                                group item by item.CarType;
-
-                return Group;
+                return from item in dal.GetTesters()
+                       group item by item.CarType;
             }
         }
-
 
         public IEnumerable <IGrouping<string,Trainee>> TraineesGroupedBySchoolName(bool sort =false)
         {
             if (sort)
             {
-                IEnumerable<IGrouping<string, Trainee>> a = from item in dal.GetTrainees()
-                                                            orderby item.FullName
-                                                            group item by item.SchoolName;
-
-                return a;
+                return from item in dal.GetTrainees()
+                       orderby item.FullName
+                       group item by item.SchoolName;
             }
             else
-            { 
-                IEnumerable<IGrouping<string, Trainee>> a = from item in dal.GetTrainees()
-                                                            group item by item.SchoolName;
-
-                return a;
-
+            {
+                return from item in dal.GetTrainees()
+                       group item by item.SchoolName;
             }
-            
         }
 
 
@@ -537,11 +524,10 @@ namespace BL
                 {
                     size++;
 
-                    bool? flag = info.GetValue(info) as bool?;
-                    //if ((bool)info.GetValue(info) )
-                    //{
-                    //    count++;
-                    //}
+                    if ((bool)info.GetValue(testItem.Paramet) ==true) 
+                    {
+                        count++;
+                    }
 
                 }
                 if (count <= size / 2)
