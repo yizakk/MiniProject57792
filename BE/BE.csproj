@@ -50,7 +50,9 @@
     <Compile Include="Tester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Trainee.cs" />
-    <Compile Include="XmlSample.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

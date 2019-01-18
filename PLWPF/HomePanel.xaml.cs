@@ -10,7 +10,6 @@ namespace PLWPF
     {
         public HomePanel()
         {
-
             InitializeComponent();
 
             if (Data.UserType == Data.Usertype.תלמיד)
@@ -20,74 +19,64 @@ namespace PLWPF
                 UpTesterButton.Visibility = Visibility.Collapsed;
                 UpTestButton.Visibility = Visibility.Collapsed;
                 UpTraineeButton.Content = "עדכון פרטים אישיים";
+                return;
             }
             if (Data.UserType == Data.Usertype.בוחן)
             {
                 UpTesterButton.Content = "עדכון פרטים אישיים";
+                return;
             }
+            GroupingButton.Visibility = Visibility.Visible;
         }
 
         private void TraineeButton_Click(object sender, RoutedEventArgs e)
         {
             Data.MainUserControl = new AddStudent();
-             
         }
 
         private void TesterButton_Click(object sender, RoutedEventArgs e)
         {
             Data.MainUserControl = new AddTester();
-             
         }
 
         private void AddTestButton_Click(object sender, RoutedEventArgs e)
         {
             Data.MainUserControl = new AddTest();
-             
         }
 
         private void UpTraineeButton_Click(object sender, RoutedEventArgs e)
         {
             Data.MainUserControl = new UpStudent();
-            //Data.MainUserControl = new HomePanel();
-
-
-
-
         }
 
         private void UpTesterButton_Click(object sender, RoutedEventArgs e)
         {
             Data.MainUserControl = new UpTester();
-             
         }
 
         private void PrintButton_Click(object sender, RoutedEventArgs e)
         {
             Data.MainUserControl = new PrintOptions();
-             
         }
 
         private void DelTesterButton_Click(object sender, RoutedEventArgs e)
         {
             Data.MainUserControl = new DeleteTester();
-             
         }
 
         private void DelTraineeButton_Click(object sender, RoutedEventArgs e)
         {
             Data.MainUserControl = new DeleteTrainee();
-             
         }
 
         private void UpTestButton1_Click(object sender, RoutedEventArgs e)
         {
             Data.MainUserControl = new UpdateTest();
-             
         }
 
         private void GroupingButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            Data.MainUserControl = new ManagementPanel();
         }
     }
 }

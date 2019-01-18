@@ -13,16 +13,18 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel>
+        <StackPanel Grid.Column="1">
             <TextBlock Text="שינוי סיסמת מנהל:" FontSize="18"/>
             
         </StackPanel>
-        <StackPanel Name="FieldsPanel" Grid.Column="1" DataContext="Configu">
+        <StackPanel Name="FieldsPanel" Grid.Column="2" DataContext="Configu">
             <TextBox Name="ne" Text="הזן סיסמה חדשה" MouseMove="TextBox_MouseMove" FontSize="18"/>
             <PasswordBox Name="MasterPass" BorderThickness="2,2,2,2" />
         </StackPanel>
 
-        <Button Content="עדכן" Click="Button_Click" Grid.Row="1" Width="auto" Height="auto" HorizontalAlignment="Center" Grid.ColumnSpan="2" VerticalAlignment="Center"/>
+        <Button Content="עדכן" Click="Button_Click" Grid.Row="1" Width="auto" Height="auto" HorizontalAlignment="Center" Grid.ColumnSpan="4" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>

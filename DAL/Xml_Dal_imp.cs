@@ -17,6 +17,17 @@ namespace Dal
         public Xml_Dal_imp()
         {
 
+            XElement tempConfig = Ds.Configuration;
+            foreach(XElement item in tempConfig.Elements())
+            {
+                if (item.Value != null)
+                {
+                    PropertyInfo configItem = typeof(Configuration).GetProperties().First(e => e.Name == item.Name);
+                    if (item.Name == "MasterPassword")
+                        item.Value.Reverse();
+                    configItem.SetValue(configItem, Convert.ChangeType(item.Value,configItem.PropertyType));
+                }
+            }
             #region Saving the configurations into XML file
             //var ConfigElements = from PropertyInfo it in typeof(Configuration).GetProperties()
             //                     select new XElement(it.Name, it.GetValue(it));
@@ -73,10 +84,8 @@ namespace Dal
 
         public void AddTrainee(Trainee trainee)
         {
-
             string str = trainee.ToXMLstring();
             XElement xml = XElement.Parse(str);
-
             try
             {
                 Ds.Trainees.Add(xml);
@@ -86,7 +95,6 @@ namespace Dal
             {
                 throw new Exception("בעיה בהוספת תלמיד, נסה שנית בבקשה" + "\n(dal)");
             }
-
         }
 
         public void DelTester(string id)
@@ -175,7 +183,6 @@ namespace Dal
             {
                 var str = trainee.ToString();
                 return str.ToObject<Trainee>();
-                
             }
             return null;
         }
@@ -223,9 +230,7 @@ namespace Dal
 
         public IEnumerable<Test> GetTestsForSpecTester(string id)
         {
-            //var serializer = new XmlSerializer(typeof(Test));
             var elements = Ds.Tests.Elements("Test");
-
             return elements.Select(element => element.ToTest()).Where(t => t.TesterId == id).ToList();
         }
 
@@ -236,7 +241,7 @@ namespace Dal
         
         public void UpdateTest(Test test)
         {
-                foreach (var item in Ds.Tests.Elements())
+            foreach (var item in Ds.Tests.Elements())
             {
                 try
                 {
@@ -251,6 +256,7 @@ namespace Dal
             }
             AddTest(test);
         }
+
         public void UpdateTester(Tester tester)
         {
             try
@@ -259,32 +265,30 @@ namespace Dal
             }
             catch
             { throw new Exception("בעיה בעדכון, נסה שנית" + " \n(dal)"); }
-
             
             AddTester(tester);
         }
 
         public void UpdateTrainee(Trainee trainee)
         {
-
             try
             {
                 DelTrainee(trainee.Id);
-               
             }
             catch
             { throw new Exception("בעיה בעדכון, נסה שנית" + " \n(dal)"); }
-
             
             AddTrainee(trainee);
         }
 
         public void UpdateConfig()
         {
+            //Configuration.MasterPassword = Convert.ToString( Configuration.MasterPassword.Reverse());
             var ConfigElements = from PropertyInfo it in typeof(Configuration).GetProperties()
                                  select new XElement(it.Name, it.GetValue(it));
             Ds.Configuration.ReplaceAll(ConfigElements);
             Ds.SaveConfig();
+           // Configuration.MasterPassword = Convert.ToString( Configuration.MasterPassword.Reverse());
         }
     }
 }

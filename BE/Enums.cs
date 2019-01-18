@@ -25,13 +25,13 @@ namespace BE
     }
 
 
-    public class Parameters 
+    public class Parameters
     {
         public Parameters() { }
 
         public Parameters(Parameters other)
         {
-            if (other!=null)
+            if (other != null)
             {
                 Distance = other.Distance;
                 ReversePark = other.ReversePark;
@@ -40,14 +40,19 @@ namespace BE
                 UsingVinkers = other.UsingVinkers;
             }
         }
-        public bool Distance { get; set; }
-        public bool ReversePark { get; set; }
-        public bool UsingMirrors { get; set; }
-        public bool Speed { get; set; }
-        public bool UsingVinkers { get; set; }
-      //  public int  count_parameters = 5;
 
-      
+        private  bool _distance;
+        private  bool _reversePark;
+        private  bool _usingMirrors;
+        private  bool _speed;
+        private  bool _usingVinkers;
+
+        public bool Distance { get; set; }
+        public bool ReversePark { get => _reversePark; set => _reversePark = value; }
+        public bool UsingMirrors { get => _usingMirrors; set => _usingMirrors = value; }
+        public bool Speed { get => _speed; set => _speed = value; }
+        public bool UsingVinkers { get => _usingVinkers; set => _usingVinkers = value; }
+        //  public int  count_parameters = 5;
     }
 
     public class Address
