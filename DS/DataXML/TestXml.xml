@@ -2,9 +2,9 @@
 <Tests>
   <Test>
     <Id>10000000</Id>
-    <TesterId>000000018</TesterId>
-    <TraineeId>204412712</TraineeId>
-    <Date>16/01/2019 09:00:00</Date>
+    <TesterId>000000000</TesterId>
+    <TraineeId>000000018</TraineeId>
+    <Date>09/01/2019 09:00:00</Date>
     <TesterComment />
     <CarType>פרטי</CarType>
     <BeginAddress>

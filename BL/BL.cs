@@ -48,7 +48,7 @@ namespace BL
                 }
             }
 
-            if (trainee.NumLessons < Configuration.MinLessons)
+            if (trainee.NumLessons < Configuration.MinLessons || trainee.NumLessons == null)
             {
                 throw new MyExceptions ("התלמיד:" + trainee.FullName + " לא הגיע ל" + Configuration.MinLessons.ToString() +" שיעורים עדיין");
             }
@@ -525,41 +525,29 @@ namespace BL
         {
             return dal.FindTest(id);
         }
-
         public void UpdateTest(Test testItem)
         {
             if (testItem.Passed)
             {
                 int size = 0;
                 int count = 0;
-
                 foreach (PropertyInfo info in testItem.Paramet.GetType().GetProperties())
                 {
                     size++;
-
-                    bool? flag = info.GetValue(info) as bool?;
-                    //if ((bool)info.GetValue(info) )
-                    //{
-                    //    count++;
-                    //}
-
+                    if ((bool)info.GetValue(testItem.Paramet))
+                    {
+                        count++;
+                    }
                 }
                 if (count <= size / 2)
                 {
-                    testItem.Passed = false;
-                   
+                  //  testItem.Passed = false;
                     dal.UpdateTest(testItem);
                     throw new MyExceptions("התלמיד לא עבר את רוב הקריטריונים להעברת טסט אי לכך  התלמיד נרשם כלא עבר");
-
-
                 }
-
-
             }
             else { dal.UpdateTest(testItem); }
-
         }
-
         private bool CheckIdValidity(string id)
         {
             int sum = 0;

@@ -1,22 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Testers>
   <Tester>
-    <Id>000000018</Id>
-    <FirstName>בוחן</FirstName>
-    <LastName>בוחני</LastName>
+    <Id>000000000</Id>
+    <FirstName></FirstName>
+    <LastName></LastName>
     <Gender>זכר</Gender>
-    <BirthDate>16/01/1979 19:07:54</BirthDate>
+    <BirthDate>18/01/1979 09:07:01</BirthDate>
     <CarType>פרטי</CarType>
-    <MaxDistance>0</MaxDistance>
-    <MaxTestsPerWeek>12</MaxTestsPerWeek>
+    <MaxDistance>330</MaxDistance>
+    <MaxTestsPerWeek>110</MaxTestsPerWeek>
     <PhoneNumber></PhoneNumber>
-    <Seniority>0</Seniority>
+    <Seniority>110</Seniority>
     <Address>
       <City></City>
       <BuildingNumber>0</BuildingNumber>
       <Street></Street>
     </Address>
-    <TestsList>16/01/2019 09:00:00,</TestsList>
+    <TestsList>09/01/2019 09:00:00,</TestsList>
     <WorkSchedule>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True</WorkSchedule>
   </Tester>
 </Testers>
