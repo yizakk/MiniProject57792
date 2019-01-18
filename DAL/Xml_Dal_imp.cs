@@ -16,7 +16,18 @@ namespace Dal
 
         public Xml_Dal_imp()
         {
- 
+
+            XElement tempConfig = Ds.Configuration;
+            foreach(XElement item in tempConfig.Elements())
+            {
+                if (item.Value != null)
+                {
+                    PropertyInfo configItem = typeof(Configuration).GetProperties().First(e => e.Name == item.Name);
+                    if (item.Name == "MasterPassword")
+                        item.Value.Reverse();
+                    configItem.SetValue(configItem, Convert.ChangeType(item.Value,configItem.PropertyType));
+                }
+            }
             #region Saving the configurations into XML file
             //var ConfigElements = from PropertyInfo it in typeof(Configuration).GetProperties()
             //                     select new XElement(it.Name, it.GetValue(it));
@@ -272,10 +283,12 @@ namespace Dal
 
         public void UpdateConfig()
         {
+            //Configuration.MasterPassword = Convert.ToString( Configuration.MasterPassword.Reverse());
             var ConfigElements = from PropertyInfo it in typeof(Configuration).GetProperties()
                                  select new XElement(it.Name, it.GetValue(it));
             Ds.Configuration.ReplaceAll(ConfigElements);
             Ds.SaveConfig();
+           // Configuration.MasterPassword = Convert.ToString( Configuration.MasterPassword.Reverse());
         }
     }
 }

@@ -14,7 +14,7 @@ namespace BE
         private static int minDaysBetweenTests = 7;
         private static int testId = 10000000;
 
-        public static string MasterPassword { get => masterPassword; set { masterPassword = value; } }
+        public static string MasterPassword { get => masterPassword; set {masterPassword = value; } }
         public static string TesterPassword { get => testerPassword; set => testerPassword = value; }
         public static int WorkDays { get => workDays; set => workDays = value; }
         public static int WorkHours { get => workHours; set => workHours = value; }
