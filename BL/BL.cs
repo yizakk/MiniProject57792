@@ -48,7 +48,7 @@ namespace BL
                 }
             }
 
-            if (trainee.NumLessons < Configuration.MinLessons)
+            if (trainee.NumLessons < Configuration.MinLessons|| trainee.NumLessons==null)
             {
                 throw new MyExceptions ("התלמיד:" + trainee.FullName + " לא הגיע ל" + Configuration.MinLessons.ToString() +" שיעורים עדיין");
             }
@@ -519,49 +519,42 @@ namespace BL
             {
                 int size = 0;
                 int count = 0;
-
                 foreach (PropertyInfo info in testItem.Paramet.GetType().GetProperties())
                 {
                     size++;
-
                     if ((bool)info.GetValue(testItem.Paramet) ==true) 
                     {
                         count++;
                     }
-
                 }
                 if (count <= size / 2)
                 {
-                    testItem.Passed = false;
+                   testItem.Passed = false;
                    
                     dal.UpdateTest(testItem);
                     throw new MyExceptions("התלמיד לא עבר את רוב הקריטריונים להעברת טסט אי לכך  התלמיד נרשם כלא עבר");
-
-
                 }
-
-
+                else { dal.UpdateTest(testItem); }
             }
             else { dal.UpdateTest(testItem); }
-
         }
-
         private bool CheckIdValidity(string id)
         {
-            int sum = 0;
-            char[] digits = id.PadLeft(9, '0').ToCharArray();
-            int[] oneTwo = { 1, 2, 1, 2, 1, 2, 1, 2, 1 };
-            int[] multiply = new int[9];
-            int[] oneDigit = new int[9];
-            for (int i = 0; i < 9; i++)
-                multiply[i] = Convert.ToInt32(digits[i].ToString()) * oneTwo[i];
+            //int sum = 0;
+            //char[] digits = id.PadLeft(9, '0').ToCharArray();
+            //int[] oneTwo = { 1, 2, 1, 2, 1, 2, 1, 2, 1 };
+            //int[] multiply = new int[9];
+            //int[] oneDigit = new int[9];
+            //for (int i = 0; i < 9; i++)
+            //    multiply[i] = Convert.ToInt32(digits[i].ToString()) * oneTwo[i];
 
-            for (int i = 0; i < 9; i++)
-            {
-                oneDigit[i] = (int)(multiply[i] / 10) + multiply[i] % 10;
-                sum += oneDigit[i];
-            }
-            return (sum % 10) == 0;
+            //for (int i = 0; i < 9; i++)
+            //{
+            //    oneDigit[i] = (int)(multiply[i] / 10) + multiply[i] % 10;
+            //    sum += oneDigit[i];
+            //}
+            //return (sum % 10) == 0;
+            return true;
         }
 
         public void UpdateConfig()

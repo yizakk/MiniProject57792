@@ -248,15 +248,22 @@ namespace Dal
                     if (int.Parse(item.Element("Id").Value) == test.Id)
                     {
                         item.Remove();
+                        Ds.SaveTests();
+                    
+
                         break;
                     }
                 }
                 catch
                 { throw new Exception("בעיה בעדכון, נסה שנית" + " \n(dal)"); }
             }
-            AddTest(test);
+            addTest(test);
         }
-
+        private void addTest(Test test)//כיוון שבהוספת טסט אנחנו מוסיפים מספר סידורי למספר מבחן נצרך פונקציה להוספה שבאה מהעידכון בלי להוסיף
+        {
+            Ds.Tests.Add(test.ToXml());
+            Ds.SaveTests();
+        }
         public void UpdateTester(Tester tester)
         {
             try
