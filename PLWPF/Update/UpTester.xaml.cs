@@ -20,7 +20,7 @@ namespace PLWPF
     /// <summary>
     /// Interaction logic for UpTester.xaml
     /// </summary>
-    public partial class UpTester : UserControl
+    public partial class UpTester : UserControl//VH
     {
         public static readonly DependencyProperty ChekedProperty =
         DependencyProperty.Register("Cheked", typeof(Boolean), typeof(UpTester));
