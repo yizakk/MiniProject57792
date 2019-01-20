@@ -36,6 +36,9 @@ namespace BL
                 throw new MyExceptions("התלמיד " + test.TraineeId + " לא נמצא");
             }
 
+            if (test.Date < DateTime.Now)
+                throw new MyExceptions("לא ניתן לקבוע טסט בזמן עבר!");
+
             foreach (Test temp in dal.GetTestsForSpecTrainee(trainee.Id))
             {
                 if (temp.CarType == trainee.CarType && temp.Passed)
@@ -536,11 +539,7 @@ namespace BL
                    
                     dal.UpdateTest(testItem);
                     throw new MyExceptions("התלמיד לא עבר את רוב הקריטריונים להעברת טסט אי לכך  התלמיד נרשם כלא עבר");
-
-
                 }
-
-
             }
             else { dal.UpdateTest(testItem); }
 

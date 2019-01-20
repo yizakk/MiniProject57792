@@ -22,12 +22,9 @@ namespace PLWPF
     /// </summary>
     public partial class UpTester : UserControl
     {
-        public static readonly DependencyProperty ChekedProperty =
-        DependencyProperty.Register("Cheked", typeof(Boolean), typeof(UpTester));
-
-
         BL.IBL bl = BL.BlFactory.GetBL();
         Tester TempTester;
+
         public UpTester()
         {
             InitializeComponent();
@@ -53,7 +50,6 @@ namespace PLWPF
             }
             comboBox.ItemsSource = sourceList;
             button.IsEnabled = false;
-
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -139,8 +135,7 @@ namespace PLWPF
             }
 
             MessageBox.Show("העידכון הסתיים בהצלחה");
-
-
+            Data.MainUserControl = new HomePanel();
         }
 
         private void CheckBoxMain1_Checked(object sender, RoutedEventArgs e)

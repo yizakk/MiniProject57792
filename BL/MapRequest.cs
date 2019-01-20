@@ -13,7 +13,6 @@ namespace BL
     {
         public void Bdika()
         {
-
             string origin = "pisga 45 st. jerusalem"; //or " פתח תקווה100  "אחד העםetc.
             string destination = "gilgal 78 st. ramat-gan";//or " רמת גן10  "ז'בוטינסקיetc.
             string KEY = @"WRxFyZM1sauIAbVb40X37h3RwNbTclYF";

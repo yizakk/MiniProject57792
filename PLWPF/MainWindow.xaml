@@ -28,8 +28,10 @@
         </Style>
 
         <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="FontSize" Value="15"  />
+            <Setter Property="FontSize" Value="20"  />
             <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Width" Value="auto" />
+            
         </Style>
 
 

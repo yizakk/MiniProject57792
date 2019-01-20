@@ -17,6 +17,6 @@
       <Street></Street>
     </Address>
     <TestsList>16/01/2019 09:00:00,03/02/2019 09:00:00,17/03/2019 10:00:00,25/03/2019 09:00:00,19/01/2020 09:00:00,16/01/2019 09:00:00,16/01/2019 09:00:00,</TestsList>
-    <WorkSchedule>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True</WorkSchedule>
+    <WorkSchedule>5,7,False,False,False,False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False</WorkSchedule>
   </Tester>
 </Testers>
