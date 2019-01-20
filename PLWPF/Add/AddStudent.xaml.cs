@@ -62,13 +62,13 @@ namespace PLWPF
 
         private void CheckAndAdd()
         {
-            if (TempTrainee.Id.Length !=9)
-            {
-                MessageBox.Show("תעודת זהות צריכה  להכיל  9 ספרות","",MessageBoxButton.OK,MessageBoxImage.None,
-                    MessageBoxResult.OK,MessageBoxOptions.RtlReading);
-                idTextBox.Clear();
-                return;
-            }
+            //if (TempTrainee.Id.Length !=9)
+            //{
+            //    MessageBox.Show("תעודת זהות צריכה  להכיל  9 ספרות","",MessageBoxButton.OK,MessageBoxImage.None,
+            //        MessageBoxResult.OK,MessageBoxOptions.RtlReading);
+            //    idTextBox.Clear();
+            //    return;
+            //}
 
             TimeSpan a = DateTime.Now - birthDateDatePicker.SelectedDate.Value;
             if (a.Days / 365 < 18)

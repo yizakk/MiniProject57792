@@ -51,7 +51,12 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (SearchComboBox.SelectedValue==null)
+            {
 
+                MessageBox.Show("אנא בחר תלמיד");
+                return;
+            }
             TempTest.Date =(DateTime) dateDatePicker.SelectedDate;
             TempTest.Date = new DateTime(TempTest.Date.Year, TempTest.Date.Month, TempTest.Date.Day, (int)TimeComboBox.SelectedValue, 0, 0);
 

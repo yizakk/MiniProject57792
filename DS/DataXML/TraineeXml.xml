@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Trainees>
   <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <Id>204412712</Id>
+    <Id>1</Id>
     <Address>
       <City />
       <Street />
@@ -9,11 +9,70 @@
     </Address>
     <CarType>פרטי</CarType>
     <BirthDate>2000-01-01T00:00:00</BirthDate>
-    <LastName>תלמידי</LastName>
-    <FirstName>תלמיד</FirstName>
     <Gender>זכר</Gender>
-    <LastTest>2019-01-16T09:00:00</LastTest>
+    <LastTest>0001-01-01T00:00:00</LastTest>
     <GearType>אוטומטי</GearType>
+    <SchoolName>מושיקו</SchoolName>
+    <NumLessons>555</NumLessons>
+  </Trainee>
+  <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>2</Id>
+    <Address>
+      <City />
+      <Street />
+      <BuildingNumber xsi:nil="true" />
+    </Address>
+    <CarType>פרטי</CarType>
+    <BirthDate>2000-01-01T00:00:00</BirthDate>
+    <Gender>זכר</Gender>
+    <LastTest>0001-01-01T00:00:00</LastTest>
+    <GearType>אוטומטי</GearType>
+    <SchoolName>של החיים</SchoolName>
+    <NumLessons>555</NumLessons>
+  </Trainee>
+  <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>4</Id>
+    <Address>
+      <City />
+      <Street />
+      <BuildingNumber xsi:nil="true" />
+    </Address>
+    <CarType>פרטי</CarType>
+    <BirthDate>2000-01-01T00:00:00</BirthDate>
+    <Gender>זכר</Gender>
+    <LastTest>0001-01-01T00:00:00</LastTest>
+    <GearType>אוטומטי</GearType>
+    <SchoolName>של החיים</SchoolName>
+    <NumLessons xsi:nil="true" />
+  </Trainee>
+  <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>22</Id>
+    <Address>
+      <City />
+      <Street />
+      <BuildingNumber xsi:nil="true" />
+    </Address>
+    <CarType>פרטי</CarType>
+    <BirthDate>2000-01-01T00:00:00</BirthDate>
+    <Gender>זכר</Gender>
+    <LastTest>0001-01-01T00:00:00</LastTest>
+    <GearType>אוטומטי</GearType>
+    <SchoolName> מושיקו</SchoolName>
+    <NumLessons xsi:nil="true" />
+  </Trainee>
+  <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>4444</Id>
+    <Address>
+      <City />
+      <Street />
+      <BuildingNumber xsi:nil="true" />
+    </Address>
+    <CarType>פרטי</CarType>
+    <BirthDate>2000-01-01T00:00:00</BirthDate>
+    <Gender>זכר</Gender>
+    <LastTest>0001-01-01T00:00:00</LastTest>
+    <GearType>אוטומטי</GearType>
+    <SchoolName>של החיים</SchoolName>
     <NumLessons xsi:nil="true" />
   </Trainee>
 </Trainees>
