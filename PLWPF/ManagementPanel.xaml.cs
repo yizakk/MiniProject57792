@@ -46,7 +46,11 @@ namespace PLWPF
             //}
             #endregion
         }
-
+        /// <summary>
+        /// The button is disabled , we use "enter" key instead
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //try
@@ -64,7 +68,7 @@ namespace PLWPF
             //Data.MainUserControl = new HomePanel();
         }
         /// <summary>
-        /// This event handler is made to update the fields in the configuration to the user input data
+        /// This event handler is made to update the fields in the configuration to the user-input data
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -82,7 +86,10 @@ namespace PLWPF
                         bl.UpdateConfig();
                     }
                     catch
-                    { MessageBox.Show("קרתה תקלה בשינוי , אנא נסה שנית"); }
+                    {
+                        MessageBox.Show("קרתה תקלה בשינוי , אנא נסה שנית");
+                        return;
+                    }
 
                     MessageBox.Show("העדכון בוצע בהצלחה!");
                     Data.MainUserControl = new ManagementPanel();
@@ -90,13 +97,16 @@ namespace PLWPF
 
                 else if(sender is TextBox TBox)
                 {
-                    try
-                    {
+                    //try
+                    //{
                         typeof(BE.Configuration).GetProperty(TBox.Name).SetValue(TBox.Name, TBox.Text);
                         bl.UpdateConfig();
-                    }
-                    catch
-                    { MessageBox.Show("קרתה תקלה בשינוי , אנא נסה שנית"); }
+                    //}
+                    //catch
+                    //{
+                    //    MessageBox.Show("קרתה תקלה בשינוי , אנא נסה שנית");
+                    //    return;
+                    //}
 
                     MessageBox.Show("העדכון בוצע בהצלחה!");
                     Data.MainUserControl = new ManagementPanel();

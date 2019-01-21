@@ -487,13 +487,11 @@ namespace BL
             }
             
         }
-        
+
         public IEnumerable<Test> TestsListByCondition(Func<Test, bool> func)
         {
-            var testCondition = from item in dal.GetTests()
-                                where func(item)
-                                select item;
-            return testCondition;
+            return from item in dal.GetTests(func)
+                   select item;
         }
 
         public IEnumerable<Tester> TestersOver60YO()
@@ -535,7 +533,7 @@ namespace BL
                    testItem.Passed = false;
                    
                     dal.UpdateTest(testItem);
-                    throw new MyExceptions("התלמיד לא עבר את רוב הקריטריונים להעברת טסט אי לכך  התלמיד נרשם כלא עבר");
+                    throw new MyExceptions("התלמיד לא עבר את רוב הקריטריונים להעברת טסט אי לכך הטסט נרשם כלא עבר");
                 }
                 else { dal.UpdateTest(testItem); }
             }

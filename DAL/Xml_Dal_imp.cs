@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using BE;
@@ -16,30 +14,44 @@ namespace Dal
 
         public Xml_Dal_imp()
         {
-
+            #region Re-Loading the configuration class from the xml file
+            // loading the "ConfigXml" to a XElemnt Object 
             XElement tempConfig = Ds.Configuration;
+            // than foreach elemnt in the file
             foreach(XElement item in tempConfig.Elements())
             {
+                // check if it's value isn't null.
                 if (item.Value != null)
                 {
-                    PropertyInfo configItem = typeof(Configuration).GetProperties().First(e => e.Name == item.Name);
-                    if (item.Name == "MasterPassword")
-                        item.Value.Reverse();
-                    configItem.SetValue(configItem, Convert.ChangeType(item.Value,configItem.PropertyType));
+                    // finding the field in the configuration class with the name of the current elemnt
+                    PropertyInfo configItem = typeof(Configuration).GetProperties().FirstOrDefault(e => e.Name == item.Name);
+                    // if there was found an object with that name-
+                    if (configItem != null)
+                    {
+                        //case it is 1 of the 2 passwords - using the decrypting func. to load the value
+                        // to the matching field
+                        if (configItem.Name == "EncryptedMasterPass")
+                        {
+                            Configuration.MasterPassword = Configuration.Decrypt(item.Value);
+                        }
+                        else if (configItem.Name == "EncryptedTesterPass")
+                        {
+                            Configuration.TesterPassword = Configuration.Decrypt(item.Value);
+                        }
+                        
+                        else // else - simply loading the value from the element into the matching field
+                             // of the configuration class
+                            configItem.SetValue(configItem, Convert.ChangeType(item.Value, configItem.PropertyType));
+                    }
                 }
             }
-            #region Saving the configurations into XML file
-            //var ConfigElements = from PropertyInfo it in typeof(Configuration).GetProperties()
-            //                     select new XElement(it.Name, it.GetValue(it));
-            //Ds.Configuration.Add(ConfigElements);
-            //Ds.SaveConfig();
             #endregion
+
             #region - First time run init.
-           
+
 
             #endregion
         }
-
 
         public void AddTest(Test test)
         {
@@ -58,12 +70,15 @@ namespace Dal
             //{
             //    throw new MyExceptions("בעיה בהוספת טסט, נסה שנית בבקשה" + "\n(dal)");
             //}
+
+            // if the test was added to DS correctly - increasing the serial number of the tests-than updating the config file
             Configuration.TestId++;
             UpdateConfig();
+            // updating the lastTest field of the trainee to the current test he registered to
             Trainee trainee = FindTrainee(test.TraineeId);
             trainee.LastTest = test.Date;
             UpdateTrainee(trainee);
-
+            // adding this test date to the list of the dates of tests for this tester
             Tester tester = FindTester(test.TesterId);
             tester.TestsList.Add(test.Date);
             UpdateTester(tester);
@@ -102,12 +117,12 @@ namespace Dal
             XElement tester;
             try
             {
+                // trying to find the ID from the UI - and delete it from elements  
                 tester = (from it in Ds.Testers.Elements()
                           where it.Element("Id").Value == id
                           select it).FirstOrDefault();
                 if (tester != null)
                 {
-                    
                     tester.Remove();
                     Ds.SaveTesters();
                 }
@@ -187,16 +202,13 @@ namespace Dal
             return null;
         }
 
-
         public List<Test> GetTests(Func<Test,bool> p=null)
         {
-            var serializer = new XmlSerializer(typeof(Test));
-            var elements = Ds.Tests.Elements("Test");
             if(p!=null)
             {
-                return elements.Select(t=> t.ToTest()).Where(p).ToList();
+                return Ds.Tests.Elements("Test").Select(t=> t.ToTest()).Where(p).ToList();
             }
-            return elements.Select(t => t.ToTest()).ToList();
+            return Ds.Tests.Elements("Test").Select(t => t.ToTest()).ToList();
         }
 
         public List<Tester> GetTesters(Func<Tester,bool> p=null)
@@ -218,27 +230,26 @@ namespace Dal
                 return elements.Select(element => (Trainee)serializer.Deserialize(element.CreateReader())).Where(p).ToList();
             }
             return elements.Select(element => (Trainee)serializer.Deserialize(element.CreateReader())).ToList();
-
         }
 
         public IEnumerable<Tester> GetTestersWithCarType(CarType type)
         {
-            var elements = Ds.Testers.Elements("Tester");
-            return  elements.Select(element => element.ToTester()).Where(t=> t.CarType==type).ToList();
+         //   var elements = Ds.Testers.Elements("Tester");
+            return Ds.Testers.Elements("Tester").Select(element => element.ToTester()).Where(t=> t.CarType==type).ToList();
         }
 
 
         public IEnumerable<Test> GetTestsForSpecTester(string id)
         {
-            var elements = Ds.Tests.Elements("Test");
-            return elements.Select(element => element.ToTest()).Where(t => t.TesterId == id).ToList();
+           // var elements = Ds.Tests.Elements("Test");
+            return Ds.Tests.Elements("Test").Select(element => element.ToTest()).Where(t => t.TesterId == id).ToList();
         }
 
         public IEnumerable<Test> GetTestsForSpecTrainee(string id)
         {
             return Ds.Tests.Elements("Test").Where(t=> t.Element("TraineeId").Value==id).Select(t=>t.ToTest());
         }
-        
+
         public void UpdateTest(Test test)
         {
             foreach (var item in Ds.Tests.Elements())
@@ -249,8 +260,6 @@ namespace Dal
                     {
                         item.Remove();
                         Ds.SaveTests();
-                    
-
                         break;
                     }
                 }
@@ -259,11 +268,16 @@ namespace Dal
             }
             addTest(test);
         }
+
         private void addTest(Test test)//כיוון שבהוספת טסט אנחנו מוסיפים מספר סידורי למספר מבחן נצרך פונקציה להוספה שבאה מהעידכון בלי להוסיף
         {
             Ds.Tests.Add(test.ToXml());
             Ds.SaveTests();
         }
+        /// <summary>
+        /// The update is done by deleting the "old" tester in DS , than adding a new one
+        /// </summary>
+        /// <param name="tester">the Tester object to add to the DS</param>
         public void UpdateTester(Tester tester)
         {
             try
@@ -290,9 +304,11 @@ namespace Dal
 
         public void UpdateConfig()
         {
-
-            var ConfigElements = from PropertyInfo it in typeof(Configuration).GetProperties()
+            // pulling each element of the configuration class , except the two passwords,
+            IEnumerable<XElement> ConfigElements = from PropertyInfo it in typeof(Configuration).GetProperties()
+                                 where !it.Name.Contains("Password")
                                  select new XElement(it.Name, it.GetValue(it));
+            // than replacing the whole config.xml file with the "new" updated data
             Ds.Configuration.ReplaceAll(ConfigElements);
             Ds.SaveConfig();
         }

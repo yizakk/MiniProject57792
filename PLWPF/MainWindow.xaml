@@ -28,7 +28,7 @@
         </Style>
 
         <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="FontSize" Value="20"  />
+            <Setter Property="FontSize" Value="16"  />
             <Setter Property="Foreground" Value="Black" />
             <Setter Property="Width" Value="auto" />
             
@@ -104,7 +104,7 @@
                             VerticalAlignment="Center" 
                             Margin="3,3,23,3"
                             Focusable="True" 
-                            Background="Beige"
+                            Background="BlanchedAlmond"
                             Foreground="Red"
                             Visibility="Hidden"
                             IsReadOnly="{TemplateBinding IsReadOnly}"/>
@@ -122,8 +122,7 @@
                               MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                     <Border 
                                 x:Name="DropDownBorder"
-                                Background="Crimson"
-
+                                Background="Tomato"
                                 BorderThickness="1"
                                 BorderBrush="#888888"/>
                                     <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
