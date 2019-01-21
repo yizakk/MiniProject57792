@@ -58,7 +58,7 @@
                     <GridViewColumn x:Name="birthDateColumn" Header="ת.לידה" Width="auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding BirthDate}"/>
+                                <TextBlock Text="{Binding BirthDate, StringFormat=yyyy MM dd }" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

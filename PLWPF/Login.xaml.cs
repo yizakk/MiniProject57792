@@ -16,7 +16,7 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Data.UserID = IdTextBox.GetLineText(0);
+            Data.UserID = IdTextBox.Password;
 
             if (Data.UserID.Length == 0)
             {

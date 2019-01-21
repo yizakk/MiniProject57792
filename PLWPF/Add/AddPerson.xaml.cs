@@ -43,7 +43,7 @@ namespace PLWPF
                 return;
             }
 
-            if (textBox.GetLineText(0) == BE.Configuration.TesterPassword)
+            if (textBox.Password == BE.Configuration.TesterPassword)
             {
                 Data.MainUserControl = new AddTester();
                 Data.UserType = Data.Usertype.בוחן;

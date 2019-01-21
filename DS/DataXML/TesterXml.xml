@@ -1,41 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Testers>
   <Tester>
-    <Id>201096260</Id>
-    <FirstName>ררררר</FirstName>
-    <LastName>נוסבאום</LastName>
+    <Id>300497385</Id>
+    <FirstName>מושיקו</FirstName>
+    <LastName>כהן</LastName>
     <Gender>זכר</Gender>
-    <BirthDate>20/01/1979 21:34:31</BirthDate>
-    <CarType>פרטי</CarType>
-    <MaxDistance>0</MaxDistance>
-    <MaxTestsPerWeek>0</MaxTestsPerWeek>
-    <PhoneNumber></PhoneNumber>
-    <Seniority>0</Seniority>
-    <Address>
-      <City></City>
-      <BuildingNumber>0</BuildingNumber>
-      <Street></Street>
-    </Address>
-    <TestsList></TestsList>
-    <WorkSchedule>5,7,False,False,False,False,False,False,False,True,True,True,True,True,True,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,True,True,True,True,True,True</WorkSchedule>
-  </Tester>
-  <Tester>
-    <Id>000000018</Id>
-    <FirstName>בוחן</FirstName>
-    <LastName>בוחני</LastName>
-    <Gender>זכר</Gender>
-    <BirthDate>16/01/1979 19:07:54</BirthDate>
-    <CarType>פרטי</CarType>
-    <MaxDistance>100</MaxDistance>
-    <MaxTestsPerWeek>12</MaxTestsPerWeek>
-    <PhoneNumber></PhoneNumber>
-    <Seniority>0</Seniority>
+    <BirthDate>21/01/1979 17:28:39</BirthDate>
+    <CarType>אופנוע</CarType>
+    <MaxDistance>110</MaxDistance>
+    <MaxTestsPerWeek>29</MaxTestsPerWeek>
+    <PhoneNumber>0587172682</PhoneNumber>
+    <Seniority>10</Seniority>
     <Address>
       <City>חיפה</City>
-      <BuildingNumber>12</BuildingNumber>
-      <Street>שער הגיא</Street>
+      <BuildingNumber>55</BuildingNumber>
+      <Street>אורליאן</Street>
     </Address>
-    <TestsList>16/01/2019 09:00:00,03/02/2019 09:00:00,17/03/2019 10:00:00,25/03/2019 09:00:00,19/01/2020 09:00:00,16/01/2019 09:00:00,16/01/2019 09:00:00,22/01/2019 09:00:00,29/01/2019 09:00:00,05/02/2019 09:00:00,</TestsList>
-    <WorkSchedule>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,False,False,False,False,False,False,False</WorkSchedule>
+    <TestsList>23/01/2019 09:00:00,</TestsList>
+    <WorkSchedule>5,7,True,True,True,False,True,True,True,True,True,True,True,True,True,True,False,False,False,False,False,False,False,True,True,False,True,True,True,True,False,False,False,False,False,False,False</WorkSchedule>
+  </Tester>
+  <Tester>
+    <Id>209126309</Id>
+    <FirstName>עידו</FirstName>
+    <LastName>אשואל</LastName>
+    <Gender>זכר</Gender>
+    <BirthDate>21/01/1979 18:13:47</BirthDate>
+    <CarType>אופנוע</CarType>
+    <MaxDistance>100</MaxDistance>
+    <MaxTestsPerWeek>20</MaxTestsPerWeek>
+    <PhoneNumber>0502245682</PhoneNumber>
+    <Seniority>99990</Seniority>
+    <Address>
+      <City>פתח תקווה</City>
+      <BuildingNumber>12</BuildingNumber>
+      <Street>גיחגי</Street>
+    </Address>
+    <TestsList>21/02/2019 12:00:00,25/04/2019 12:00:00,</TestsList>
+    <WorkSchedule>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,False,False,False,False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,True</WorkSchedule>
+  </Tester>
+  <Tester>
+    <Id>335191102</Id>
+    <FirstName>נח</FirstName>
+    <LastName>זקן</LastName>
+    <Gender>זכר</Gender>
+    <BirthDate>10/01/1950 00:00:00</BirthDate>
+    <CarType>פרטי</CarType>
+    <MaxDistance>70</MaxDistance>
+    <MaxTestsPerWeek>40</MaxTestsPerWeek>
+    <PhoneNumber></PhoneNumber>
+    <Seniority>30</Seniority>
+    <Address>
+      <City>חיפה</City>
+      <BuildingNumber>22</BuildingNumber>
+      <Street>ברגמן</Street>
+    </Address>
+    <TestsList>11/06/2020 14:00:00,</TestsList>
+    <WorkSchedule>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,True,True,True,True,True,True</WorkSchedule>
   </Tester>
 </Testers>

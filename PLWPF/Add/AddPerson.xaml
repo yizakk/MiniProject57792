@@ -14,7 +14,7 @@
         <Button x:Name="testerButton" Content="הוספת בוחן"  Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="60" Click="TesterButton_Click"/>
 
         <Button x:Name="buttonIfIsTester" Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Width="auto" Content="אשר" Visibility="Hidden" Click="ButtonIfIsTester_Click" />
-        <TextBox x:Name="textBox" KeyDown="TextBox_KeyDown" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Visibility="Hidden" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+        <PasswordBox x:Name="textBox" KeyDown="TextBox_KeyDown" HorizontalAlignment="Center" Height="23"   VerticalAlignment="Center" Width="120" Visibility="Hidden" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
         <Label x:Name="label" Content="על מנת להוסיף בוחן עליך להזין סיסמת בוחנים"  Height="auto" Width="auto" VerticalAlignment="Top" FontSize="20" HorizontalAlignment="Center" Visibility="Hidden" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
 
     </Grid>

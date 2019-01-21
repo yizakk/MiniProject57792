@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Tests>
   <Test>
-    <Id>10000005</Id>
-    <TesterId>000000018</TesterId>
-    <TraineeId>2</TraineeId>
-    <Date>22/01/2019 09:00:00</Date>
+    <Id>10000002</Id>
+    <TesterId>209126309</TesterId>
+    <TraineeId>029985090</TraineeId>
+    <Date>25/04/2019 12:00:00</Date>
     <TesterComment />
-    <CarType>פרטי</CarType>
+    <CarType>אופנוע</CarType>
     <BeginAddress>
       <Address>
         <City></City>
@@ -24,12 +24,12 @@
     <Passed>False</Passed>
   </Test>
   <Test>
-    <Id>10000006</Id>
-    <TesterId>000000018</TesterId>
-    <TraineeId>2</TraineeId>
-    <Date>29/01/2019 09:00:00</Date>
-    <TesterComment />
-    <CarType>פרטי</CarType>
+    <Id>10000000</Id>
+    <TesterId>300497385</TesterId>
+    <TraineeId>029985090</TraineeId>
+    <Date>23/01/2019 09:00:00</Date>
+    <TesterComment></TesterComment>
+    <CarType>אופנוע</CarType>
     <BeginAddress>
       <Address>
         <City></City>
@@ -39,18 +39,41 @@
     </BeginAddress>
     <Paramet>
       <Speed>False</Speed>
-      <Distance>False</Distance>
-      <ReversePark>False</ReversePark>
+      <Distance>True</Distance>
+      <ReversePark>True</ReversePark>
       <UsingVinkers>False</UsingVinkers>
       <UsingMirrors>False</UsingMirrors>
     </Paramet>
     <Passed>False</Passed>
   </Test>
   <Test>
-    <Id>10000007</Id>
-    <TesterId>000000018</TesterId>
-    <TraineeId>2</TraineeId>
-    <Date>05/02/2019 09:00:00</Date>
+    <Id>10000001</Id>
+    <TesterId>209126309</TesterId>
+    <TraineeId>029985090</TraineeId>
+    <Date>21/02/2019 12:00:00</Date>
+    <TesterComment>אההההה</TesterComment>
+    <CarType>אופנוע</CarType>
+    <BeginAddress>
+      <Address>
+        <City></City>
+        <BuildingNumber></BuildingNumber>
+        <Street></Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>True</Speed>
+      <Distance>True</Distance>
+      <ReversePark>True</ReversePark>
+      <UsingVinkers>True</UsingVinkers>
+      <UsingMirrors>True</UsingMirrors>
+    </Paramet>
+    <Passed>True</Passed>
+  </Test>
+  <Test>
+    <Id>10000003</Id>
+    <TesterId>335191102</TesterId>
+    <TraineeId>029985090</TraineeId>
+    <Date>11/06/2020 14:00:00</Date>
     <TesterComment />
     <CarType>פרטי</CarType>
     <BeginAddress>

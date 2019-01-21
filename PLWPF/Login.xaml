@@ -18,7 +18,7 @@
             </Grid.RowDefinitions>
 
             <Label Name="Label1" Content="ברוכים הבאים! אנא הזינו ת.ז" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontFamily="Guttman Haim" Grid.ColumnSpan="1" Width="auto"  />
-            <TextBox Name="IdTextBox" KeyDown="IdTextBox_KeyDown" Grid.ColumnSpan="1" Grid.Row="1" BorderThickness="4,4,4,4" HorizontalAlignment="Center" VerticalAlignment="Center" Width="160" Height="40" />
+            <PasswordBox Name="IdTextBox" KeyDown="IdTextBox_KeyDown" Grid.ColumnSpan="1" Grid.Row="1" BorderThickness="4,4,4,4" HorizontalAlignment="Center" VerticalAlignment="Center" Width="160" Height="40" />
             <Button Name="button1" Content="לחץ לאישור" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="34"  Width="auto" FontSize="14" FontFamily="Guttman Hatzvi" Click="Button_Click" />
 
         </Grid>

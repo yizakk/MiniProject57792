@@ -1,7 +1,19 @@
 ﻿<UserControl x:Class="PLWPF.HomePanel"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              Background="Transparent" FlowDirection="RightToLeft">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="FontSize" Value="15"  />
+            <Setter Property="Foreground" Value="Blue"  />
+           
+
+
+        </Style>
+    </UserControl.Resources>
+   
 <!--
     <Grid>
         <Grid.ColumnDefinitions>
@@ -48,18 +60,30 @@
         <TextBlock Text="ברוכים הבאים למסך הבית. הפעולות שבאפשרותך לבצע:" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22"/>
         
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="traineeButton" Content="הוספת תלמיד" BorderThickness="2,2,2,2" Grid.Column="1" Grid.Row="1" Margin="2,2,2,2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="60" Click="TraineeButton_Click"  />
-            <Button x:Name="testerButton" Content="הוספת בוחן"  BorderThickness="2,2,2,2" Grid.Column="1" HorizontalAlignment="Center" Margin="2,2,2,2" VerticalAlignment="Center" Width="150" Height="60" Click="TesterButton_Click"  Grid.Row="2" Grid.ColumnSpan="1"   />
-            <Button x:Name="AddTestButton" Content="הוספת טסט" BorderThickness="2,2,2,2" Grid.Column="1" Grid.Row="3" Width="150" Height="60" Margin="2,2,2,2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="AddTestButton_Click" />
-            <Button x:Name="UpTraineeButton" Content="עדכון תלמיד" BorderThickness="2,2,2,2" Grid.Column="2"  Grid.Row="1" HorizontalAlignment="Center" Margin="2,2,2,2" VerticalAlignment="Center" Width="165" Height="60" Grid.RowSpan="1" Click="UpTraineeButton_Click" />
-            <Button x:Name="UpTesterButton" Content="עדכון בוחן" BorderThickness="2,2,2,2" Grid.Column="2" Grid.Row="2" Width="165" Height="60" Grid.ColumnSpan="1" Margin="2,2,2,2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="UpTesterButton_Click"/>
+            <Button x:Name="traineeButton" Content="הוספת תלמיד" BorderThickness="2,2,2,2" Grid.Column="1" Grid.Row="1"    HorizontalAlignment="Center" VerticalAlignment="Center" Width="163" Height="60" Click="TraineeButton_Click"  />
+            <Button x:Name="testerButton" Content="הוספת בוחן"  BorderThickness="2,2,2,2" Grid.Column="1" HorizontalAlignment="Center"    VerticalAlignment="Center" Width="162" Height="60" Click="TesterButton_Click"  Grid.Row="2" Grid.ColumnSpan="1"   />
+            <Grid>
+                <materialDesign:PackIcon Name="delicon2" Kind="Upload" Width="240" Height="69" Margin="0,0,0,-9"/>
+
+                <Button x:Name="AddTestButton" Background="{Binding ElementName=delicon2}" Content="הוספת טסט" BorderThickness="2,2,2,2" Grid.Column="1" Grid.Row="3" Width="166" Height="60"    HorizontalAlignment="Center" VerticalAlignment="Center" Click="AddTestButton_Click" />
+            </Grid>
+                <Button x:Name="UpTraineeButton" Content="עדכון תלמיד" BorderThickness="2,2,2,2" Grid.Column="2"  Grid.Row="1" HorizontalAlignment="Center"    VerticalAlignment="Center" Width="165" Height="60" Grid.RowSpan="1" Click="UpTraineeButton_Click" />
+            <Button x:Name="UpTesterButton" Content="עדכון בוחן" BorderThickness="2,2,2,2" Grid.Column="2" Grid.Row="2" Width="165" Height="60" Grid.ColumnSpan="1"    HorizontalAlignment="Center" VerticalAlignment="Center" Click="UpTesterButton_Click"/>
         </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2,2,2,2" >
-            <Button x:Name="GroupingButton" Visibility="Collapsed" Content="ניהול" BorderThickness="2,2,2,2" Margin="2,2,2,2" Grid.Column="3" Grid.Row="3" Width="150" Height="60" Grid.ColumnSpan="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="GroupingButton_Click" />
-            <Button x:Name="UpTestButton" Content="עדכון מבחן" BorderThickness="2,2,2,2" Grid.Column="2" Grid.Row="3" Width="150" Margin="2,2,2,2" Height="60" Grid.ColumnSpan="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="UpTestButton1_Click"/>
-            <Button x:Name="delTesterButton" Content="מחק בוחן" BorderThickness="2,2,2,2" Grid.Column="3" Grid.Row="1" Width="150" Height="60" Margin="2,2,2,2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="DelTesterButton_Click"/>
-            <Button x:Name="delTraineeButton" Content="מחק תלמיד" BorderThickness="2,2,2,2" Grid.Column="3" Grid.Row="2" Width="auto" Height="60" Margin="2,2,2,2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="DelTraineeButton_Click"/>
-            <Button x:Name="PrintButton" Content="קבלת נתונים מבסיס הנתונים" BorderThickness="2,2,2,2" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="4" Margin="2,2,2,2" Width="250" Height="60"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="PrintButton_Click"/>
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"    >
+            <Button x:Name="GroupingButton" Visibility="Collapsed" Content="ניהול" BorderThickness="2,2,2,2"    Grid.Column="3" Grid.Row="3" Width="150" Height="60" Grid.ColumnSpan="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="GroupingButton_Click" />
+            <Button x:Name="UpTestButton"  Content="עדכון מבחן" BorderThickness="2,2,2,2" Grid.Column="2" Grid.Row="3" Width="251"    Height="60" Grid.ColumnSpan="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="UpTestButton1_Click"/>
+            <Button x:Name="delTesterButton"  Content="מחק בוחן" BorderThickness="2,2,2,2" Grid.Column="3" Grid.Row="1" Width="251" Height="60"    HorizontalAlignment="Center" VerticalAlignment="Center" Click="DelTesterButton_Click"/>
+            <Grid>
+                <materialDesign:PackIcon Name="delicon" Kind="DeleteForever" Width="240" Height="69" Margin="0,0,0,-9"/>
+                <Button x:Name="delTraineeButton" Background="{Binding ElementName=delicon}" Content="מחק תלמיד" BorderThickness="2,2,2,2" Grid.Column="3" Grid.Row="2" Width="251" Height="60"    HorizontalAlignment="Center" VerticalAlignment="Center" Click="DelTraineeButton_Click"/>
+            </Grid>
+            <Grid>
+
+                <materialDesign:PackIcon Name="delicon1" Kind="DeleteSweep" Width="240" Height="69" Margin="0,0,0,-9"/>
+
+                <Button x:Name="PrintButton"  Background="{Binding ElementName=delicon1}" Content="קבלת נתונים מבסיס הנתונים" BorderThickness="2,2,2,2" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="4"  Width="250" Height="60"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="PrintButton_Click"/>
+            </Grid>
         </StackPanel>
     </Grid>
 </UserControl>
