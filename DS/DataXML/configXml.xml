@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuration>
-  <MasterPassword>1234</MasterPassword>
+  <MasterPassword>123</MasterPassword>
   <TesterPassword>123</TesterPassword>
   <WorkDays>5</WorkDays>
   <WorkHours>7</WorkHours>

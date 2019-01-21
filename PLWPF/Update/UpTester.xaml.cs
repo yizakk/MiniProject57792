@@ -109,9 +109,8 @@ namespace PLWPF
             int i = 0, j = 0, k = 1;
             foreach (var item in ScheduleGrid.Children)
             {
-                if (item is CheckBox)
+                if (item is CheckBox value)
                 {
-                    var value = item as CheckBox;
                     if (value.Name == "checkBox" + k++)
                     {
                         TempTester.WorkSchedule(i, j++, value.IsChecked);

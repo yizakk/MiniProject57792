@@ -290,12 +290,11 @@ namespace Dal
 
         public void UpdateConfig()
         {
-            //Configuration.MasterPassword = Convert.ToString( Configuration.MasterPassword.Reverse());
+
             var ConfigElements = from PropertyInfo it in typeof(Configuration).GetProperties()
                                  select new XElement(it.Name, it.GetValue(it));
             Ds.Configuration.ReplaceAll(ConfigElements);
             Ds.SaveConfig();
-           // Configuration.MasterPassword = Convert.ToString( Configuration.MasterPassword.Reverse());
         }
     }
 }

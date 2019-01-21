@@ -54,8 +54,7 @@ namespace BL
             {
                 Console.WriteLine("We have'nt got an answer, maybe the net is busy...");
             }
-
-
         }
     }
 }
+
