@@ -14,8 +14,15 @@ namespace BL
         /// </summary>
         /// <param name="test">A Test instance to add</param>
         void AddTest(Test test);
-
+        /// <summary>
+        /// Adding a tester to the DS, checking first if it satisfies all conditions
+        /// </summary>
+        /// <param name="tester">A Tester instance to be added</param>
         void AddTester(Tester tester);
+        /// <summary>
+        /// Adding a trainee to the DS, checking first if it satisfies all conditions
+        /// </summary>
+        /// <param name="trainee">A Trainee instance to be added</param>
         void AddTrainee(Trainee trainee);
 
         void DelTester(string id);
@@ -37,7 +44,10 @@ namespace BL
         /// </summary>
         /// <param name="tester">the Tester item to update</param>
         void UpdateTester(Tester tester);
-        
+        /// <summary>
+        /// Updating a trainee's details
+        /// </summary>
+        /// <param name="trainee">The trainee instance with the updated details</param>
         void UpdateTrainee(Trainee trainee);
 
         Tester FindTester(string id);
@@ -62,51 +72,46 @@ namespace BL
         /// <param name="dateTime">The time in which we look for available testers</param>
         /// <returns></returns>
         IEnumerable<Tester> FindAvilableTesters(DateTime dateTime);
-
         /// <summary>
         /// Returns list of all testers, grouped by there car_type speciallity
         /// </summary>
         /// <returns>IEnumerable <IGrouping> Tester </Igrouping></returns>
         IEnumerable<IGrouping<CarType, Tester>> TestersGroupedByCarType(bool sort=false);
-
         /// <summary>
         /// Returns list of all students, grouped by school name
         /// </summary>
         /// <returns> IEnumerable <IGrouping>Trainee</IGrouping></returns>
         IEnumerable<IGrouping<string, Trainee>> TraineesGroupedBySchoolName(bool sort = false);
-        
         /// <summary>
         /// Returns list of all students, grouped by theyre teacher name
         /// </summary>
         /// <returns> IEnumerable <IGrouping>Trainee</IGrouping></returns>
         IEnumerable<IGrouping<string, Trainee>> TraineesGroupedByTeacherName(bool sort = false);
-        
         /// <summary>
         /// Returns list of all students, grouped by the number of tests they've done
         /// </summary>
         /// <returns> IEnumerable <IGrouping>Trainee</IGrouping></returns>
         IEnumerable<IGrouping<int, Trainee>> TraineesGroupedByNumOfTestsDone(bool sort = false);
-
         /// <summary>
         /// Returning list of all tests match to the predicate given as argument
         /// </summary>
         /// <param name="func">a delegate to the function that checks if test matches the condition </param>
         /// <returns></returns>
         IEnumerable<Test> TestsListByCondition(Func<Test, bool> func);
-
         /// <summary>
         /// Returns a list of testers that are in the range, at the moment - randomally 
         /// </summary>
         /// <returns></returns>
         IEnumerable<Tester> GetTestersByDistance() ;
-
         /// <summary>
         /// Returns the number of tests specific trainee has done
         /// </summary>
         /// <param name="trainee">The Trainee instance to count number of test for</param>
         /// <returns></returns>
         int PersonTestsCount(Person person);
-
+        /// <summary>
+        /// Sending to Dal UpdateConfig function, for saving the current config. to the xml file
+        /// </summary>
         void UpdateConfig();
 
     }

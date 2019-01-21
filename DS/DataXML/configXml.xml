@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuration>
-  <MasterPassword>123</MasterPassword>
-  <TesterPassword>123</TesterPassword>
+  <EncryptedMasterPass>00110001001100100011001100110100</EncryptedMasterPass>
+  <EncryptedTesterPass>00110001001100010011000100110001</EncryptedTesterPass>
   <WorkDays>5</WorkDays>
   <WorkHours>7</WorkHours>
   <MinLessons>20</MinLessons>
