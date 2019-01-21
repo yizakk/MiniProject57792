@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using BE;
 using Dal;
@@ -61,11 +62,9 @@ namespace BL
                 TimeSpan timeSpan = test.Date - trainee.LastTest;
                 if (timeSpan.Days < Configuration.MinDaysBetweenTests)
                 {
-                     throw new MyExceptions ( "לתלמיד זה כבר נקבע מבחן  "+ Configuration.MinDaysBetweenTests+" ימים לפני המועד המבוקש");
+                     throw new MyExceptions ( "לתלמיד זה כבר נקבע מבחן  "+ Configuration.MinDaysBetweenTests.ToString()+" ימים לפני המועד המבוקש");
                 }
             }
-
-            //************************  trying to find a tester for the test  ***************88
 
             // getting testers with same car_type as trainee's
 
@@ -81,7 +80,7 @@ namespace BL
             bool flag = false;
             do
             {
-                AvailableTesters = FindAvilableTesters(TestersWithCarType, test.Date);
+                AvailableTesters = FindAvilableTesters(TestersWithCarType, test.Date, trainee.AddressToString);
                 if (AvailableTesters != null && AvailableTesters.Any())
                 {
                     // create a test, check if the
@@ -150,28 +149,27 @@ namespace BL
             dal.AddTest(test);
         }
 
-        public IEnumerable<Tester> FindAvilableTesters(DateTime dateTime)
-        {
-            int tempDay = (int)dateTime.DayOfWeek, tempHour = dateTime.Hour -9;
+        //public IEnumerable<Tester> FindAvilableTesters(DateTime dateTime)
+        //{
+        //    int tempDay = (int)dateTime.DayOfWeek, tempHour = dateTime.Hour -9;
 
-            // when we go to check in the matrix of work schedule we should check 
-            // if the numbers are valid for the matrix indexes
-            if (tempDay > Configuration.WorkDays - 1 || tempHour > Configuration.WorkHours - 1 || tempDay < 0 || tempHour < 0)
-                throw new MyExceptions("You tried to check work schedule for a tester beyond the boundaries of the array of the matrix");
+        //    // when we go to check in the matrix of work schedule we should check 
+        //    // if the numbers are valid for the matrix indexes
+        //    if (tempDay > Configuration.WorkDays - 1 || tempHour > Configuration.WorkHours - 1 || tempDay < 0 || tempHour < 0)
+        //        throw new MyExceptions("ימי העבודה הינן בין ראשון-חמישי" + "בשעות 9-16 בלבד");
 
-            // creating a lambda expression that returns if a day & hour are at
-            // the tester's working time
-            Func<Tester, int, int, bool> func = 
-                (tester, day, hour) => tester.WorkSchedule(day, hour);
+        //    // creating a lambda expression that returns if a day & hour are at
+        //    // the tester's working time
+        //    Func<Tester, int, int, bool> func = 
+        //        (tester, day, hour) => tester.WorkSchedule(day, hour);
 
-            var WorkingInChosenTime = from item in dal.GetTesters()
-                                      where func(item, tempDay, tempHour) && !item.TestsList.Contains(dateTime)
-                                      && SumTestsInWeek(item,dal.GetTestsForSpecTester(item.Id)) < item.MaxTestsPerWeek
-                                      select item;
-            return WorkingInChosenTime;
+        //    return from item in dal.GetTesters()
+        //           where func(item, tempDay, tempHour) && !item.TestsList.Contains(dateTime)
+        //           && SumTestsInWeek(item, dal.GetTestsForSpecTester(item.Id)) < item.MaxTestsPerWeek
+        //           select item;
 
-        }
 
+        //}
 
         /// <summary>
         /// A overloading for FindAvailableTesters, that gets a IEnumerable of testers with specific car type and search availability only among them
@@ -179,25 +177,40 @@ namespace BL
         /// <param name="testers">IEnumerable of testers</param>
         /// <param name="dateTime"> date for looking for availability</param>
         /// <returns></returns>
-        private IEnumerable<Tester> FindAvilableTesters(IEnumerable<Tester> testers, DateTime dateTime)
+        public IEnumerable<Tester> FindAvilableTesters(IEnumerable<Tester> testers, DateTime dateTime, string TraineeAddress)
         {
             int tempDay = (int)dateTime.DayOfWeek, tempHour = dateTime.Hour - 9;
 
             // when we go to check in the matrix of work schedule we should check 
             // if the numbers are valid for the matrix indexes
             if (tempDay > Configuration.WorkDays - 1 || tempHour > Configuration.WorkHours - 1 || tempDay < 0 || tempHour < 0)
-                throw new MyExceptions("You tried to check work schedule for a tester beyond the boundaries of the array of the matrix");
+                throw new MyExceptions("שעות העבודה הינם רק בין 9-15");
 
             // creating a lambda expression that returns if a day & hour are at
             // the tester's working time
             Func<Tester, int, int, bool> func =
                 (tester, day, hour) => tester.WorkSchedule(day, hour);
 
-            var WorkingInChosenTime = from item in testers
-                                          where func(item, tempDay, tempHour) &&
-                                       !item.TestsList.Contains(dateTime)&&
-                                         SumTestsInWeek(item, dal.GetTestsForSpecTester(item.Id)) < item.MaxTestsPerWeek
-                                      select item;
+            var WorkingInChosenTime = (from item in testers
+                                      where func(item, tempDay, tempHour) &&
+                                           !item.TestsList.Contains(dateTime) &&
+                                           SumTestsInWeek(item, dal.GetTestsForSpecTester(item.Id)) < item.MaxTestsPerWeek
+                                      select item).ToList();
+
+            foreach (Tester item in WorkingInChosenTime)
+            {
+                Thread thread = new Thread(()=>MapRequest.MapRequestLoop(TraineeAddress,item.AddressToString));
+                thread.Start();
+                if(MapRequest.Distance!=null)
+                {
+                    if (item.MaxDistance > MapRequest.Distance)
+                        WorkingInChosenTime.Remove(item);
+                }
+                else
+                { }
+            }
+
+
             return WorkingInChosenTime;
 
         }

@@ -71,7 +71,7 @@ namespace BL
         /// </summary>
         /// <param name="dateTime">The time in which we look for available testers</param>
         /// <returns></returns>
-        IEnumerable<Tester> FindAvilableTesters(DateTime dateTime);
+        IEnumerable<Tester> FindAvilableTesters(IEnumerable<Tester> testers, DateTime dateTime, string TraineeAddress);
         /// <summary>
         /// Returns list of all testers, grouped by there car_type speciallity
         /// </summary>

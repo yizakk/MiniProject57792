@@ -9,51 +9,58 @@ using System.Xml;
 
 namespace BL
 {
-    class MapRequest
+    public static class MapRequest
     {
-        public void Bdika()
+        public static double? Distance = null;
+
+        public static void MapRequestLoop(string TraineeAddress, string TesterAddress)
         {
-            string origin = "pisga 45 st. jerusalem"; //or " פתח תקווה100  "אחד העםetc.
-            string destination = "gilgal 78 st. ramat-gan";//or " רמת גן10  "ז'בוטינסקיetc.
-            string KEY = @"WRxFyZM1sauIAbVb40X37h3RwNbTclYF";
-            string url = @"https://www.mapquestapi.com/directions/v2/route" +
-                         @"?key=" + KEY +
-                         @"&from=" + origin +
-                         @"&to=" + destination +
-                         @"&outFormat=xml" +
-                         @"&ambiguities=ignore&routeType=fastest&doReverseGeocode=false" +
-                         @"&enhancedNarrative=false&avoidTimedConditions=false";
-            //request from MapQuest service the distance between the 2 addresses
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            WebResponse response = request.GetResponse();
-            Stream dataStream = response.GetResponseStream();
-            StreamReader sreader = new StreamReader(dataStream);
-            string responsereader = sreader.ReadToEnd();
-            response.Close();
-            //the response is given in an XML format
-            XmlDocument xmldoc = new XmlDocument();
-            xmldoc.LoadXml(responsereader);
-            if (xmldoc.GetElementsByTagName("statusCode")[0].ChildNodes[0].InnerText == "0")
-            //we have the expected answer
+            DateTime Start = DateTime.Now;
+            do
             {
-                //display the returned distance
-                XmlNodeList distance = xmldoc.GetElementsByTagName("distance");
-                double distInMiles = Convert.ToDouble(distance[0].ChildNodes[0].InnerText);
-                Console.WriteLine("Distance In KM: " + distInMiles * 1.609344);
-                //display the returned driving time
-                XmlNodeList formattedTime = xmldoc.GetElementsByTagName("formattedTime");
-                string fTime = formattedTime[0].ChildNodes[0].InnerText;
-                Console.WriteLine("Driving Time: " + fTime);
-            }
-            else if (xmldoc.GetElementsByTagName("statusCode")[0].ChildNodes[0].InnerText == "402")
-            //we have an answer that an error occurred, one of the addresses is not found
-            {
-                Console.WriteLine("an error occurred, one of the addresses is not found. try again.");
-            }
-            else //busy network or other error...
-            {
-                Console.WriteLine("We have'nt got an answer, maybe the net is busy...");
-            }
+                string origin = TraineeAddress; //כתובת התלמיד 
+                string destination = TesterAddress;//כתובת המורה
+                string KEY = @"WRxFyZM1sauIAbVb40X37h3RwNbTclYF";
+                string url = @"https://www.mapquestapi.com/directions/v2/route" +
+                             @"?key=" + KEY +
+                             @"&from=" + origin +
+                             @"&to=" + destination +
+                             @"&outFormat=xml" +
+                             @"&ambiguities=ignore&routeType=fastest&doReverseGeocode=false" +
+                             @"&enhancedNarrative=false&avoidTimedConditions=false";
+                //request from MapQuest service the distance between the 2 addresses
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                WebResponse response = request.GetResponse();
+                Stream dataStream = response.GetResponseStream();
+                StreamReader sreader = new StreamReader(dataStream);
+                string responsereader = sreader.ReadToEnd();
+                response.Close();
+                //the response is given in an XML format
+                XmlDocument xmldoc = new XmlDocument();
+                xmldoc.LoadXml(responsereader);
+                if (xmldoc.GetElementsByTagName("statusCode")[0].ChildNodes[0].InnerText == "0")
+                //we have the expected answer
+                {
+                    //display the returned distance
+                    XmlNodeList distance = xmldoc.GetElementsByTagName("distance");
+                    double distInMiles = Convert.ToDouble(distance[0].ChildNodes[0].InnerText);
+                    Distance = distInMiles * 1.609344;
+                    //Console.WriteLine("Distance In KM: " + distInMiles * 1.609344);
+                    //display the returned driving time
+                    XmlNodeList formattedTime = xmldoc.GetElementsByTagName("formattedTime");
+                    string fTime = formattedTime[0].ChildNodes[0].InnerText;
+                   // Console.WriteLine("Driving Time: " + fTime);
+                }
+                else if (xmldoc.GetElementsByTagName("statusCode")[0].ChildNodes[0].InnerText == "402")
+                //we have an answer that an error occurred, one of the addresses is not found
+                {
+                    throw new Exception("one of the addresses is incorrect");
+                }
+                else //busy network or other error...
+                {
+                    throw new Exception("Maybe the net is busy");
+                }
+            } while (Distance != null || DateTime.Now < Start.AddSeconds(120) );
         }
     }
 }
