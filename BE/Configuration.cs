@@ -14,13 +14,17 @@ namespace BE
         // and so to decrypt it from a binary sequence to a string
         public static string Decrypt(string value)
         {
-            List<byte> byteList = new List<byte>();
-
-            for (int i = 0; i < value.Length; i += 8)
+            if (true)
             {
-                byteList.Add(Convert.ToByte(value.Substring(i, 8), 2));
+                List<byte> byteList = new List<byte>();
+
+                for (int i = 0; i < value.Length; i += 8)
+                {
+                    byteList.Add(Convert.ToByte(value.Substring(i, 8), 2));
+                }
+                return Encoding.ASCII.GetString(byteList.ToArray());
             }
-            return Encoding.ASCII.GetString(byteList.ToArray());
+           
         }
         private static string Encrypt(string value)
         {
@@ -69,8 +73,8 @@ namespace BE
         public static int MinDaysBetweenTests { get => minDaysBetweenTests; set => minDaysBetweenTests = value; }
         public static int TestId { get => testId; set => testId = value; }
 
-        private static string masterPassword = "1234";
-        private static string testerPassword = "123";
+        private static string masterPassword = "00110001001100100011001100110100";
+        private static string testerPassword = "";
         private static int workDays = 5;
         private static int workHours = 7;
         private static int minLessons = 20;
