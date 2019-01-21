@@ -199,7 +199,9 @@ namespace BL
 
             foreach (Tester item in WorkingInChosenTime)
             {
-                Thread thread = new Thread(()=>MapRequest.MapRequestLoop(TraineeAddress,item.AddressToString));
+                try
+                {
+                     Thread thread = new Thread(()=>MapRequest.MapRequestLoop(TraineeAddress,item.AddressToString));
                 thread.Start();
                 if(MapRequest.Distance!=null)
                 {
@@ -208,6 +210,13 @@ namespace BL
                 }
                 else
                 { }
+                }
+                catch (Exception a)
+                {
+
+                    throw a;
+                }
+               
             }
 
 

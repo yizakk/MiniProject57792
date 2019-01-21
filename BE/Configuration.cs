@@ -74,7 +74,7 @@ namespace BE
         public static int TestId { get => testId; set => testId = value; }
 
         private static string masterPassword = "00110001001100100011001100110100";
-        private static string testerPassword = "";
+        private static string testerPassword = "00110001001100010011000100110001";
         private static int workDays = 5;
         private static int workHours = 7;
         private static int minLessons = 20;

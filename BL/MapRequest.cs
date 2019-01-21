@@ -49,12 +49,12 @@ namespace BL
                     //display the returned driving time
                     XmlNodeList formattedTime = xmldoc.GetElementsByTagName("formattedTime");
                     string fTime = formattedTime[0].ChildNodes[0].InnerText;
-                   // Console.WriteLine("Driving Time: " + fTime);
+               //  throw new Exception ("Driving Time: " + fTime);
                 }
                 else if (xmldoc.GetElementsByTagName("statusCode")[0].ChildNodes[0].InnerText == "402")
                 //we have an answer that an error occurred, one of the addresses is not found
                 {
-                    throw new Exception("one of the addresses is incorrect");
+                   //throw new Exception("one of the addresses is incorrect");
                 }
                 else //busy network or other error...
                 {
