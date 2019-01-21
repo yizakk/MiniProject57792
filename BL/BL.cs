@@ -201,13 +201,16 @@ namespace BL
             {
                 Thread thread = new Thread(()=>MapRequest.MapRequestLoop(TraineeAddress,item.AddressToString));
                 thread.Start();
+                Thread.Sleep(2000);
                 if(MapRequest.Distance!=null)
                 {
                     if (item.MaxDistance > MapRequest.Distance)
                         WorkingInChosenTime.Remove(item);
                 }
                 else
-                { }
+                {
+                    //
+                }
             }
 
 

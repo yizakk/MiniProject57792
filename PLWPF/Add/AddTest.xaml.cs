@@ -53,7 +53,6 @@ namespace PLWPF
         {
             if (SearchComboBox.SelectedValue==null)
             {
-
                 MessageBox.Show("אנא בחר תלמיד");
                 return;
             }

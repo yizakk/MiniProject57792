@@ -38,8 +38,7 @@ namespace BL
                 //the response is given in an XML format
                 XmlDocument xmldoc = new XmlDocument();
                 xmldoc.LoadXml(responsereader);
-                if (xmldoc.GetElementsByTagName("statusCode")[0].ChildNodes[0].InnerText == "0")
-                //we have the expected answer
+                if (xmldoc.GetElementsByTagName("statusCode")[0].ChildNodes[0].InnerText == "0") //we have the expected answer
                 {
                     //display the returned distance
                     XmlNodeList distance = xmldoc.GetElementsByTagName("distance");
@@ -52,15 +51,14 @@ namespace BL
                    // Console.WriteLine("Driving Time: " + fTime);
                 }
                 else if (xmldoc.GetElementsByTagName("statusCode")[0].ChildNodes[0].InnerText == "402")
-                //we have an answer that an error occurred, one of the addresses is not found
-                {
+                { //we have an answer that an error occurred, one of the addresses is not found
                     throw new Exception("one of the addresses is incorrect");
                 }
                 else //busy network or other error...
                 {
                     throw new Exception("Maybe the net is busy");
                 }
-            } while (Distance != null || DateTime.Now < Start.AddSeconds(120) );
+            } while (Distance != null || DateTime.Now < Start.AddSeconds(5) );
         }
     }
 }
