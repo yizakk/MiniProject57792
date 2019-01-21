@@ -22,12 +22,9 @@ namespace PLWPF
     /// </summary>
     public partial class UpTester : UserControl//VH
     {
-        public static readonly DependencyProperty ChekedProperty =
-        DependencyProperty.Register("Cheked", typeof(Boolean), typeof(UpTester));
-
-
         BL.IBL bl = BL.BlFactory.GetBL();
         Tester TempTester;
+
         public UpTester()
         {
             InitializeComponent();
@@ -53,7 +50,6 @@ namespace PLWPF
             }
             comboBox.ItemsSource = sourceList;
             button.IsEnabled = false;
-
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -113,9 +109,8 @@ namespace PLWPF
             int i = 0, j = 0, k = 1;
             foreach (var item in ScheduleGrid.Children)
             {
-                if (item is CheckBox)
+                if (item is CheckBox value)
                 {
-                    var value = item as CheckBox;
                     if (value.Name == "checkBox" + k++)
                     {
                         TempTester.WorkSchedule(i, j++, value.IsChecked);
@@ -139,8 +134,7 @@ namespace PLWPF
             }
 
             MessageBox.Show("העידכון הסתיים בהצלחה");
-
-
+            Data.MainUserControl = new HomePanel();
         }
 
         private void CheckBoxMain1_Checked(object sender, RoutedEventArgs e)

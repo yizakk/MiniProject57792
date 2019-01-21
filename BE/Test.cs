@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace BE
 {
-    public class Test : Address
+    public class Test 
     {
         #region C-tors
         // ******************************    c-tors     ****************
@@ -74,8 +69,8 @@ namespace BE
         /// Marks if a test is one that was offered to the trainee by the system , or not
         /// </summary>
         public bool IsReturning  { get; set; }
-    //    [XmlIgnore]
-        public string adress { get; set; }
+       // public string adress { get; set; }
+        
         public Address BeginAddress { get; set; }
         [XmlIgnore]
         public string BeginAddressString
@@ -88,21 +83,6 @@ namespace BE
                     return "";
             }
         }
-
-        //public static XElement ToXML(this Test test)
-        //{
-            //return new XElement("drivingtest",
-            //                     new XElement("TesterID", test.TesterId),
-            //                     new XElement("TraineeID", test.TraineeId),
-            //                     new XElement("Date", test.Date.ToString()),
-            //                     new XElement("TesterComment", test.TesterComment),
-        //                         //new XElement("Requirements",
-        //                         //                   (from r in test.Requirements
-        //                         //                    select new XElement("Require", r)).ToList()),
-        //                        // new XElement(test.BeginAddressString.ToXML()),
-        //                         new XElement("Passed", test.Passed.ToString())
-        //                        );
-        //}
 
         public override string ToString()
         {

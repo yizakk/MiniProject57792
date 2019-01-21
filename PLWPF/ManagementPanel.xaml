@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" FlowDirection="RightToLeft">
+  
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -16,15 +18,18 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="1">
+       
+        
+        <StackPanel Grid.Column="1" Name="LabelPanel">
             <TextBlock Text="שינוי סיסמת מנהל:" FontSize="18"/>
-            
+            <TextBlock Text="שינוי סיסמת בוחנים" FontSize="18" />
         </StackPanel>
-        <StackPanel Name="FieldsPanel" Grid.Column="2" DataContext="Configu">
-            <TextBox Name="ne" Text="הזן סיסמה חדשה" MouseMove="TextBox_MouseMove" FontSize="18"/>
-            <PasswordBox Name="MasterPass" BorderThickness="2,2,2,2" />
+        
+        <StackPanel Name="FieldsPanel" Grid.Column="2">
+            <PasswordBox Name="MasterPassword" KeyDown="TesterPass_KeyDown" BorderThickness="2,2,2,2" ToolTip="הזן סיסמה ולחץ ENTER לעדכון"  />
+            <PasswordBox Name="TesterPassword" ToolTip="הזן סיסמה ולחץ ENTER לעדכון" KeyDown="TesterPass_KeyDown" BorderThickness="2,2,2,2" />
         </StackPanel>
 
-        <Button Content="עדכן" Click="Button_Click" Grid.Row="1" Width="auto" Height="auto" HorizontalAlignment="Center" Grid.ColumnSpan="4" VerticalAlignment="Center"/>
+        <Button Content="עדכן" Visibility="Collapsed" Click="Button_Click" Grid.Row="1" Width="auto" Height="auto" HorizontalAlignment="Center" Grid.ColumnSpan="4" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>

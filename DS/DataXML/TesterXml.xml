@@ -1,33 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Testers>
   <Tester>
-    <Id>029985090</Id>
-    <FirstName />
-    <LastName />
+    <Id>000000018</Id>
+    <FirstName>בוחן</FirstName>
+    <LastName>בוחני</LastName>
     <Gender>זכר</Gender>
-    <BirthDate>20/01/1979 19:11:47</BirthDate>
+    <BirthDate>16/01/1979 19:07:54</BirthDate>
     <CarType>פרטי</CarType>
-    <MaxDistance>440</MaxDistance>
-    <MaxTestsPerWeek>440</MaxTestsPerWeek>
-    <PhoneNumber />
-    <Seniority>0</Seniority>
-    <Address>
-      <City>רטכ</City>
-      <BuildingNumber>44</BuildingNumber>
-      <Street>כיכ</Street>
-    </Address>
-    <TestsList></TestsList>
-    <WorkSchedule>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False</WorkSchedule>
-  </Tester>
-  <Tester>
-    <Id>3</Id>
-    <FirstName></FirstName>
-    <LastName></LastName>
-    <Gender>זכר</Gender>
-    <BirthDate>19/01/1979 23:08:01</BirthDate>
-    <CarType>פרטי</CarType>
-    <MaxDistance>440</MaxDistance>
-    <MaxTestsPerWeek>220</MaxTestsPerWeek>
+    <MaxDistance>0</MaxDistance>
+    <MaxTestsPerWeek>12</MaxTestsPerWeek>
     <PhoneNumber></PhoneNumber>
     <Seniority>0</Seniority>
     <Address>
@@ -35,7 +16,26 @@
       <BuildingNumber>0</BuildingNumber>
       <Street></Street>
     </Address>
-    <TestsList>20/01/2019 09:00:00,</TestsList>
-    <WorkSchedule>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True</WorkSchedule>
+    <TestsList>16/01/2019 09:00:00,03/02/2019 09:00:00,17/03/2019 10:00:00,25/03/2019 09:00:00,19/01/2020 09:00:00,16/01/2019 09:00:00,16/01/2019 09:00:00,</TestsList>
+    <WorkSchedule>5,7,False,False,False,False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False</WorkSchedule>
+  </Tester>
+  <Tester>
+    <Id>201096260</Id>
+    <FirstName>ררררר</FirstName>
+    <LastName>נוסבאום</LastName>
+    <Gender>זכר</Gender>
+    <BirthDate>20/01/1979 21:34:31</BirthDate>
+    <CarType>פרטי</CarType>
+    <MaxDistance>0</MaxDistance>
+    <MaxTestsPerWeek>0</MaxTestsPerWeek>
+    <PhoneNumber></PhoneNumber>
+    <Seniority>0</Seniority>
+    <Address>
+      <City></City>
+      <BuildingNumber>0</BuildingNumber>
+      <Street></Street>
+    </Address>
+    <TestsList></TestsList>
+    <WorkSchedule>5,7,False,False,False,False,False,False,False,True,True,True,True,True,True,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,True,True,True,True,True,True</WorkSchedule>
   </Tester>
 </Testers>

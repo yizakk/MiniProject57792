@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuration>
-  <MasterPassword>1234</MasterPassword>
+  <MasterPassword>123</MasterPassword>
   <TesterPassword>123</TesterPassword>
   <WorkDays>5</WorkDays>
   <WorkHours>7</WorkHours>
@@ -9,5 +9,5 @@
   <TraineeMinAge>18</TraineeMinAge>
   <TesterMinAge>40</TesterMinAge>
   <MinDaysBetweenTests>7</MinDaysBetweenTests>
-  <TestId>10000001</TestId>
+  <TestId>10000005</TestId>
 </Configuration>

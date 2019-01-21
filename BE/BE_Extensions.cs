@@ -30,6 +30,7 @@ namespace BE
                 Street = a.Element("Street").Value
             };
         }
+
         //private static string ToTestsList(this XElement a)
         //{
 
@@ -38,16 +39,6 @@ namespace BE
 
         //    return dateTimesList;
         //}
-
-
-
-        private static bool[,] ToSchedule(this XElement a)
-        {
-            bool[,] temp = new bool[Configuration.WorkDays,Configuration.WorkHours];
-            List<bool> Bools = (from item in a.Elements()
-                                select bool.Parse(item.Value)).ToList();
-            return temp;
-        }
 
         public static Test ToTest(this XElement d)
         {
@@ -65,8 +56,6 @@ namespace BE
             };
         }
      
-
-
         public static Trainee ToTrainee(this XElement d)
         {
             Trainee temp = new Trainee();
