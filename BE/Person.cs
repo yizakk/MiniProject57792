@@ -28,7 +28,6 @@ namespace BE
                 if (Address.City.Length >= 2) // assuming that a city is not less than 2 chars.
                 {
                     return Address.City + "," + Address.Street + " " + Address.BuildingNumber.ToString();
-
                 }
                 else // else - there is no address
                     return "";
