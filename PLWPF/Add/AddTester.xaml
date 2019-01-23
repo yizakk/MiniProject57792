@@ -179,7 +179,7 @@
 
 
         </Grid>
-        <Label x:Name="label" Content="לוז עבודה שבועי" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95" Height="31" Grid.Row="1" Margin="474,17.4,0,0"/>
+        <Label x:Name="label" Content="לו&quot;ז עבודה שבועי" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95" Height="31" Grid.Row="1" Margin="474,17.4,0,0"/>
 
 
 

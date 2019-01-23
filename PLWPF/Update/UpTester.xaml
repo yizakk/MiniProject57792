@@ -118,7 +118,7 @@
                 <RowDefinition Height="30*"/>
                 <RowDefinition Height="30*"/>
             </Grid.RowDefinitions>
-            <Label x:Name="label" FontSize="16" Content="לוז עבודה שבועי" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="auto" Height="31" Grid.ColumnSpan="6"/>
+            <Label x:Name="label" FontSize="16" Content="לו&quot;ז עבודה שבועי" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="auto" Height="31" Grid.ColumnSpan="6"/>
             <CheckBox x:Name="checkBox1" IsChecked="{Binding ElementName=checkBoxMain1, Path=IsChecked, Mode=OneWay}"  Grid.Column="1" Grid.Row="2" Width=" auto" Margin="0,4.4,0,0"/>
             <CheckBox x:Name="checkBox2" IsChecked="{Binding ElementName=checkBoxMain1, Path=IsChecked, Mode=OneWay}" Grid.Column="1" Grid.Row="3" Width=" auto" Margin="0,0,0,0.4"/>
             <CheckBox x:Name="checkBox3" IsChecked="{Binding ElementName=checkBoxMain1, Path=IsChecked, Mode=OneWay}" Grid.Column="1" Grid.Row="4" Width=" auto" Margin="0,0.6,0,29.4" Grid.RowSpan="2"/>

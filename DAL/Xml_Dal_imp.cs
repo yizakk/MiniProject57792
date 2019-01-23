@@ -17,7 +17,7 @@ namespace Dal
             #region Re-Loading the configuration class from the xml file
             // loading the "ConfigXml" to a XElemnt Object 
             XElement tempConfig = Ds.Configuration;
-            // than foreach elemnt in the file
+            // than foreach element in the file
             foreach(XElement item in tempConfig.Elements())
             {
                 // check if it's value isn't null.
@@ -26,20 +26,13 @@ namespace Dal
                     // finding the field in the configuration class with the name of the current elemnt
                     PropertyInfo configItem = typeof(Configuration).GetProperties().FirstOrDefault(e => e.Name == item.Name);
                     // if there was found an object with that name-
-                    if (configItem != null)
+                    if (configItem != null && !configItem.Name.Contains("Pass"))
                     {
                         //case it is 1 of the 2 passwords - using the decrypting func. to load the value
                         // to the matching field
-                        if (configItem.Name == "EncryptedMasterPass")
-                        {
-                            Configuration.MasterPassword = Configuration.Decrypt(item.Value);
-                        }
-                        else if (configItem.Name == "EncryptedTesterPass")
-                        {
-                            Configuration.TesterPassword = Configuration.Decrypt(item.Value);
-                        }
-                        
-                        else // else - simply loading the value from the element into the matching field
+                         
+
+                         // else - simply loading the value from the element into the matching field
                              // of the configuration class
                             configItem.SetValue(configItem, Convert.ChangeType(item.Value, configItem.PropertyType));
                     }

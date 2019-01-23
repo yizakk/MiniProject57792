@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace BE
 {
@@ -10,6 +12,7 @@ namespace BE
     // and a password for adding tester to the DS
     public class Configuration
     {
+        #region Encrypting in Bytes
         // the above 2 functions are made to get a string and encrypt it into a binary sequence
         // and so to decrypt it from a binary sequence to a string
         public static string Decrypt(string value)
@@ -40,28 +43,29 @@ namespace BE
         // for saving it into the xml file
         public static string EncryptedMasterPass { get => masterPassword; }
         public static string EncryptedTesterPass { get => testerPassword; }
+        #endregion
         // the property for the two passwords getting a string , and encrypting it using the function
         // to set the value of the matching private fields. when returning it back- it uses the decrypt function
         public static string MasterPassword
         {
             get
             {
-                return Decrypt(masterPassword);
+                return masterPassword;// Decrypt(masterPassword);
             }
             set
             {
-                masterPassword = Encrypt(value);
+                masterPassword = Encryption.GeneratePasswordHash(value);
             }
         }
         public static string TesterPassword
         {
             get
             {
-                return Decrypt(testerPassword);
+                return testerPassword;// Decrypt(testerPassword);
             }
             set
             {
-                testerPassword = Encrypt(value);
+                testerPassword = Encryption.GeneratePasswordHash(value);
             }
         }
         public static int WorkDays { get => workDays; set => workDays = value; }
@@ -73,8 +77,8 @@ namespace BE
         public static int MinDaysBetweenTests { get => minDaysBetweenTests; set => minDaysBetweenTests = value; }
         public static int TestId { get => testId; set => testId = value; }
 
-        private static string masterPassword = "00110001001100100011001100110100";
-        private static string testerPassword = "00110001001100010011000100110001";
+        private static string masterPassword = Encryption.GeneratePasswordHash("1234");
+        private static string testerPassword = Encryption.GeneratePasswordHash("123");
         private static int workDays = 5;
         private static int workHours = 7;
         private static int minLessons = 20;
@@ -84,5 +88,39 @@ namespace BE
         private static int minDaysBetweenTests = 7;
         private static int testId = 10000000;
 
+    }
+
+    public static class Encryption
+    {
+        public static string SanitizeInput(string thisInput)
+        {
+            Regex regX = new Regex(@"([<>""'%;()&])");
+            return regX.Replace(thisInput, "");
+        }
+
+        public static bool VerifyHashPassword(string thisPassword, string thisHash)
+        {
+            bool IsValid = false;
+            string tmpHash = GeneratePasswordHash(thisPassword); // Call the routine on user input
+            if (tmpHash == thisHash) IsValid = true;  // Compare to previously generated hash
+            return IsValid;
+        }
+
+        public static string GeneratePasswordHash(string thisPassword)
+        {
+            // byte[] tmpSource;
+            //  byte[] tmpHash;
+            thisPassword = SanitizeInput(thisPassword);
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+            byte[] tmpSource = Encoding.ASCII.GetBytes(thisPassword); // Turn password into byte array
+            byte[] tmpHash = md5.ComputeHash(tmpSource);
+
+            StringBuilder sOutput = new StringBuilder(tmpHash.Length);
+            for (int i = 0; i < tmpHash.Length; i++)
+            {
+                sOutput.Append(tmpHash[i].ToString("X2"));  // X2 formats to hexadecimal
+            }
+            return sOutput.ToString();
+        }
     }
 }

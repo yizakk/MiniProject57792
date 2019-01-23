@@ -13,7 +13,6 @@ namespace PLWPF
         public AddPerson()
         {
             InitializeComponent();
-            
         }
 
         private void TraineeButton_Click(object sender, RoutedEventArgs e)
@@ -43,11 +42,10 @@ namespace PLWPF
                 return;
             }
 
-            if (textBox.Password == BE.Configuration.TesterPassword)
+            if (BE.Encryption.VerifyHashPassword(textBox.Password, BE.Configuration.TesterPassword))
             {
                 Data.MainUserControl = new AddTester();
                 Data.UserType = Data.Usertype.בוחן;
-                 
             }
 
             else

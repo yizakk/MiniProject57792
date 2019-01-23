@@ -26,7 +26,7 @@ namespace PLWPF
                 return;
             }
 
-            if (Data.UserID == BE.Configuration.MasterPassword)
+            if (BE.Encryption.VerifyHashPassword( Data.UserID, BE.Configuration.MasterPassword))
             {
                 MessageBox.Show("שלום מנהל", "", MessageBoxButton.OK, MessageBoxImage.None,
                     MessageBoxResult.OK, MessageBoxOptions.RtlReading);
@@ -86,13 +86,13 @@ namespace PLWPF
             if(x==6)
             {
                 Data.MainUserControl = new AddPerson();
-                 
             }
 
             else
             {
-                MessageBox.Show("שלום ולהתראות", "GB", MessageBoxButton.OK, MessageBoxImage.Hand,
-                    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                //MessageBox.Show("שלום ולהתראות", "GB", MessageBoxButton.OK, MessageBoxImage.Hand,
+                //    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                Data.MainUserControl = new Login();
             }
         }
 
