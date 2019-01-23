@@ -13,7 +13,9 @@
         <CollectionViewSource x:Key="parametersViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Parameters}, CreateList=True}"/>
         <CollectionViewSource x:Key="addressViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Address}, CreateList=True}"/>
     </UserControl.Resources>
-
+    <UserControl.Background>
+        <ImageBrush  ImageSource ="C:\Users\אלחנן\Source\Repos\yizakk\MiniProject57792\PLWPF\images\stamp_rubber_-update22918231_s-300x225.jpg "></ImageBrush>
+    </UserControl.Background>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="79*"/>

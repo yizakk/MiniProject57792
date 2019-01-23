@@ -112,6 +112,12 @@
     <Compile Include="ManagementPanel.xaml.cs">
       <DependentUpon>ManagementPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="mengerPasword.xaml.cs">
+      <DependentUpon>mengerPasword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="paswordMenger.xaml.cs">
+      <DependentUpon>paswordMenger.xaml</DependentUpon>
+    </Compile>
     <Compile Include="print\Grouping.xaml.cs">
       <DependentUpon>Grouping.xaml</DependentUpon>
     </Compile>
@@ -232,6 +238,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="mengerPasword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="paswordMenger.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="print\Grouping.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -304,6 +318,20 @@
   <ItemGroup>
     <Resource Include="images\p_911_drive.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="התרעה-מפני-התנגשות-ברכב-שמלפנים.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\התרעה-מפני-התנגשות-ברכב-שמלפנים.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\stamp_rubber_-update22918231_s-300x225.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="84b890824e8893abed002399f29a3154.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\מנהל.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

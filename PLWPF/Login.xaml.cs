@@ -30,10 +30,13 @@ namespace PLWPF
             {
                 MessageBox.Show("שלום מנהל", "", MessageBoxButton.OK, MessageBoxImage.None,
                     MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                // Window window = new paswordMenger();
+                // window.Show();
+                Data.MainUserControl = new mengerPasword();
 
-                Data.logged = true;
-                Data.UserType = Data.Usertype.מנהל;
-                Data.MainUserControl = new HomePanel();
+              //  Data.logged = true;
+              //  Data.UserType = Data.Usertype.מנהל;
+              //  Data.MainUserControl = new HomePanel();
                  
                 return;
             }

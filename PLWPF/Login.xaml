@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              FlowDirection="RightToLeft">
 
-
+    <UserControl.Background>
+        <ImageBrush  ImageSource ="C:\Users\אלחנן\Source\Repos\yizakk\MiniProject57792\PLWPF\images\התרעה-מפני-התנגשות-ברכב-שמלפנים.jpg "></ImageBrush>
+    </UserControl.Background>
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -23,7 +25,8 @@
 
         </Grid>
         <Grid Grid.Row="1" Width="150" Height="100">
-            <Image x:Name="image" Source="images/login.png" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
+            
         </Grid>
+       
     </Grid>
 </UserControl>
