@@ -81,5 +81,6 @@ namespace PLWPF
         {
             Data.MainUserControl = new ManagementPanel();
         }
+
     }
 }
