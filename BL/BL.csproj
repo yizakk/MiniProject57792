@@ -44,7 +44,6 @@
     <Compile Include="BL.cs" />
     <Compile Include="BlFactory.cs" />
     <Compile Include="IBL.cs" />
-    <Compile Include="MapRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

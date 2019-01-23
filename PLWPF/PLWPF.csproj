@@ -169,7 +169,6 @@
     <None Include="Properties\DataSources\BE.Configuration.datasource" />
     <None Include="Properties\DataSources\BE.Parameters.datasource" />
     <None Include="Properties\DataSources\BE.Person.datasource" />
-    <None Include="Properties\DataSources\BE.Schedule.datasource" />
     <None Include="Properties\DataSources\BE.Test.datasource" />
     <None Include="Properties\DataSources\BE.Tester.datasource" />
     <None Include="Properties\DataSources\BE.Trainee.datasource" />

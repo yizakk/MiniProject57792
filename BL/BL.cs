@@ -80,6 +80,7 @@ namespace BL
             bool flag = false;
             do
             {
+                // trying to find an available tester
                 AvailableTesters = FindAvilableTesters(TestersWithCarType, test.Date, trainee.AddressToString);
                 if (AvailableTesters != null && AvailableTesters.Any())
                 {
@@ -88,19 +89,30 @@ namespace BL
                     // "ask" the user if he wants the test in the date 
                     // system found available. 
                     // we do it by sending back to UI a test instance,
-                    // if user will choose to add it
-                    test.TesterId = AvailableTesters.First().Id;
+                    // if user will choose to add it it will "return" to BL and immiedietly be sent to DAL
+
+                    // if the web service returned a value of "distance" between the required begin address
+                    // we compare it to the testers max distance
+                    if (BE.MapRequest.Distance != null)
+                    {
+                        test.TesterId = AvailableTesters.FirstOrDefault(t => t.MaxDistance < BE.MapRequest.Distance).Id;
+                    }
+                    else
+                    {
+                        Random rand = new Random();
+                        test.TesterId = AvailableTesters.FirstOrDefault(t => t.MaxDistance <rand.Next(150)).Id;
+                    }
                     if (TraineeAvailable(test))
                     {
                         if (flag)
                         {
                             test.IsReturning = true;
-                            throw new MyExceptions("we can't set a test in the chosen time, but we can create a test for you at:" + test.Date + " are you interested?", test);
+                            throw new MyExceptions("לא ניתן לקבוע טסט בזמן המבוקש, אך המערכת מצאה טסט זמין ב: " + test.Date + " האם אתה מעוניין?", test);
                         }
                         else
                         {
                             dal.AddTest(test);
-                            throw new MyExceptions("test added for " + test.TraineeId + " at " + test.Date, true);
+                            throw new MyExceptions("נרשם טסט עבור: " + test.TraineeId + " ב: " + test.Date, true);
                         }
                     }
                     else
@@ -121,7 +133,7 @@ namespace BL
 
                 if (test.Date.Month > OriginalTestDate.AddMonths(3).Month)
                 {
-                    throw new MyExceptions("No available tests in next 3 months!");
+                    throw new MyExceptions("אין טסטים זמינים בשלושת החודשים הקרובים!");
                 }
 
             } while (!AvailableTesters.Any());

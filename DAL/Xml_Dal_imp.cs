@@ -269,8 +269,8 @@ namespace Dal
             addTest(test);
         }
 
-        private void addTest(Test test)//כיוון שבהוספת טסט אנחנו מוסיפים מספר סידורי למספר מבחן נצרך פונקציה להוספה שבאה מהעידכון בלי להוסיף
-        {
+        private void addTest(Test test)// when updating a test we should add it immedietly to the DS, without 
+        {                               // adding a serial number etc. and that is the target of this func.
             Ds.Tests.Add(test.ToXml());
             Ds.SaveTests();
         }

@@ -54,7 +54,7 @@
       <BuildingNumber>22</BuildingNumber>
       <Street>ברגמן</Street>
     </Address>
-    <TestsList>11/06/2020 14:00:00,</TestsList>
+    <TestsList>11/06/2020 14:00:00,24/01/2019 09:00:00,</TestsList>
     <WorkSchedule>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,True,True,True,True,True,True</WorkSchedule>
   </Tester>
 </Testers>
