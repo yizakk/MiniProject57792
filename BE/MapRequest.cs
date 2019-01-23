@@ -7,19 +7,19 @@ using System.IO;
 using System.Net;
 using System.Xml;
 
-namespace BL
+namespace BE
 {
     public static class MapRequest
     {
         public static double? Distance = null;
 
-        public static void MapRequestLoop(string TraineeAddress, string TesterAddress)
+        public static void MapRequestLoop(string TraineeAddress, string TestAddress)
         {
             DateTime Start = DateTime.Now;
             do
             {
                 string origin = TraineeAddress; //כתובת התלמיד 
-                string destination = TesterAddress;//כתובת המורה
+                string destination = TestAddress;//כתובת המורה
                 string KEY = @"WRxFyZM1sauIAbVb40X37h3RwNbTclYF";
                 string url = @"https://www.mapquestapi.com/directions/v2/route" +
                              @"?key=" + KEY +
@@ -60,8 +60,7 @@ namespace BL
                 {
                     throw new Exception("Maybe the net is busy");
                 }
-            } while (Distance != null || DateTime.Now < Start.AddSeconds(120) );
+            } while (Distance != null || DateTime.Now < Start.AddSeconds(5) );
         }
     }
 }
-

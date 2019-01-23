@@ -103,6 +103,9 @@
     <Compile Include="DeleteTrainee.xaml.cs">
       <DependentUpon>DeleteTrainee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HomeButton.xaml.cs">
+      <DependentUpon>HomeButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HomePanel.xaml.cs">
       <DependentUpon>HomePanel.xaml</DependentUpon>
     </Compile>
@@ -169,7 +172,6 @@
     <None Include="Properties\DataSources\BE.Configuration.datasource" />
     <None Include="Properties\DataSources\BE.Parameters.datasource" />
     <None Include="Properties\DataSources\BE.Person.datasource" />
-    <None Include="Properties\DataSources\BE.Schedule.datasource" />
     <None Include="Properties\DataSources\BE.Test.datasource" />
     <None Include="Properties\DataSources\BE.Tester.datasource" />
     <None Include="Properties\DataSources\BE.Trainee.datasource" />
@@ -215,6 +217,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DeleteTrainee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HomeButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

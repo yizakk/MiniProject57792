@@ -25,23 +25,19 @@
         <Style TargetType="{x:Type TextBox}">
             <Setter Property="FontSize" Value="15"  />
             <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Background" Value="BlanchedAlmond" />
         </Style>
 
         <Style TargetType="{x:Type Label}">
             <Setter Property="FlowDirection" Value="RightToLeft" />
         </Style>
 
-       
-
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="16"  />
             <Setter Property="Foreground" Value="Black" />
             <Setter Property="Width" Value="auto" />
             <Setter Property="FlowDirection" Value="RightToLeft" />
-
-
         </Style>
-
 
         <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
             <Grid>
@@ -223,12 +219,6 @@
                 </Canvas>
             </Button>
 
-            <Button Height="Auto" Margin="980,14,65,16" Click="Button_Click">
-                <Canvas Width="24" Height="24">
-                    <Path Data="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" Fill="Black" Height="21.6"  Stretch="Fill" Width="27.2" Canvas.Left="-11.2" />
-                </Canvas>
-            </Button>
-
             <materialDesign:PopupBox Visibility="Collapsed" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Margin="837,7,0,13">
                 <StackPanel Width="150">
                     <Button Content="Settings"/>
@@ -237,7 +227,8 @@
                 </StackPanel>
             </materialDesign:PopupBox>
             
-            <local:BackButton HorizontalAlignment="Left" Height="36" Margin="913,13,0,0" VerticalAlignment="Top" Width="50"/>
+            <local:BackButton HorizontalAlignment="Left" Height="50" Margin="919,5,0,0" VerticalAlignment="Top" Width="50"/>
+            <local:HomeButton  HorizontalAlignment="Left" Height="50" Margin="943,5,0,0" VerticalAlignment="Top" Width="100"/>
         </Grid>
         <Grid x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="#FF31577E">
             <Grid.Effect>

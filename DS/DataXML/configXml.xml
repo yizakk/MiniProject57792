@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuration>
-  <EncryptedMasterPass>00110001001100100011001100110100</EncryptedMasterPass>
-  <EncryptedTesterPass>00110001001100010011000100110001</EncryptedTesterPass>
+  <EncryptedMasterPass>81DC9BDB52D04DC20036DBD8313ED055</EncryptedMasterPass>
+  <EncryptedTesterPass>202CB962AC59075B964B07152D234B70</EncryptedTesterPass>
   <WorkDays>5</WorkDays>
   <WorkHours>7</WorkHours>
   <MinLessons>20</MinLessons>
@@ -9,5 +9,5 @@
   <TraineeMinAge>18</TraineeMinAge>
   <TesterMinAge>40</TesterMinAge>
   <MinDaysBetweenTests>7</MinDaysBetweenTests>
-  <TestId>10000004</TestId>
+  <TestId>10000000</TestId>
 </Configuration>

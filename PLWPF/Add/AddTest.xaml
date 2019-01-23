@@ -7,9 +7,10 @@
              x:Class="PLWPF.AddTest"
              mc:Ignorable="d" FlowDirection="RightToLeft">
 
-    
+
     <UserControl.Resources>
         <CollectionViewSource x:Key="traineeViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Trainee}, CreateList=True}"/>
+        <CollectionViewSource x:Key="addressViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Address}, CreateList=True}"/>
     </UserControl.Resources>
 
     <Grid Width="375" Height="500" DataContext="{StaticResource traineeViewSource}">
@@ -32,12 +33,31 @@
         <Label Content="שעה:" VerticalAlignment="Center" Grid.Row="1"  HorizontalAlignment="Center" Grid.Column="0" Height="26"  Width="37"  />
         <ComboBox Width="80" x:Name="TimeComboBox" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" RenderTransformOrigin="-0.235,0.512" Grid.ColumnSpan="2" Height="28"  />
 
-        <Button x:Name="button" Content="קבע טסט" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="95" Click="Button_Click" />
+        <Button x:Name="button" Content="קבע טסט" IsEnabled="{Binding Calc}" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="95" Click="Button_Click" />
 
         <TextBox IsEnabled="False" Name="traineeIdTextBox"  Grid.Row="3" Grid.Column="0" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center" Height="20" Width="60"/>
 
         <TextBlock Name="SearchTextBlock" Grid.Row="2" FontSize="14" Text="בחר תלמיד מהרשימה למטה או לחילופין חפש לפי מספר ת.ז" Grid.ColumnSpan="2" HorizontalAlignment="Center"  Width="357"/>
         <ComboBox Name="SearchComboBox" Width="130" IsEditable="True" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom"  SelectionChanged="SearchComboBox_SelectionChanged"  Height="28"/>
+        
+        <Label Width="auto" Content="הזן כתובת ולחץ ENTER לבדיקת זמינות" Grid.Row="3" FontSize="14" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="60"/>
+        <Grid x:Name="AddressGrid" Grid.Column="0" Grid.ColumnSpan="2" DataContext="{StaticResource addressViewSource}" HorizontalAlignment="Center"  Grid.Row="3" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="מספר בית" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <TextBox x:Name="buildingNumberTextBox" KeyDown="CityTextBox_KeyDown" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding BuildingNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="רחוב" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+            <TextBox x:Name="streetTextBox" KeyDown="CityTextBox_KeyDown" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding Street, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/> 
+            <Label Content="עיר" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+            <TextBox x:Name="cityTextBox" KeyDown="CityTextBox_KeyDown" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding City, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+        </Grid>
 
 
 

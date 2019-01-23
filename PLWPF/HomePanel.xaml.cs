@@ -21,6 +21,8 @@ namespace PLWPF
                 UpTraineeButton.Content = "עדכון פרטים אישיים";
                 traineeButton.Visibility = Visibility.Collapsed;
                 delTraineeButton.Content = "הסר עצמך מהמערכת";
+                PrintButton.Visibility = Visibility.Collapsed;
+                AddTestButton.Content = "רישום לטסט";
                 return;
             }
             if (Data.UserType == Data.Usertype.בוחן)
