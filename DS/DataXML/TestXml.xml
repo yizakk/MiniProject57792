@@ -23,4 +23,73 @@
     </Paramet>
     <Passed>False</Passed>
   </Test>
+  <Test>
+    <Id>10000000</Id>
+    <TesterId>300497385</TesterId>
+    <TraineeId>000000018</TraineeId>
+    <Date>27/01/2019 10:00:00</Date>
+    <TesterComment />
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City>r</City>
+        <BuildingNumber>3</BuildingNumber>
+        <Street>r</Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>False</Speed>
+      <Distance>False</Distance>
+      <ReversePark>False</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>False</Passed>
+  </Test>
+  <Test>
+    <Id>10000001</Id>
+    <TesterId>300497385</TesterId>
+    <TraineeId>000000018</TraineeId>
+    <Date>20/02/2019 12:00:00</Date>
+    <TesterComment />
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City>q</City>
+        <BuildingNumber>12</BuildingNumber>
+        <Street>w</Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>False</Speed>
+      <Distance>False</Distance>
+      <ReversePark>False</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>False</Passed>
+  </Test>
+  <Test>
+    <Id>10000002</Id>
+    <TesterId>300497385</TesterId>
+    <TraineeId>000000018</TraineeId>
+    <Date>13/03/2019 09:00:00</Date>
+    <TesterComment />
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City>תל אביב</City>
+        <BuildingNumber>7</BuildingNumber>
+        <Street>דפנה</Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>False</Speed>
+      <Distance>False</Distance>
+      <ReversePark>False</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>False</Passed>
+  </Test>
 </Tests>

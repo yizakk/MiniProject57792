@@ -1,25 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Testers>
   <Tester>
-    <Id>300497385</Id>
-    <FirstName>מושיקו</FirstName>
-    <LastName>כהן</LastName>
-    <Gender>זכר</Gender>
-    <BirthDate>21/01/1979 17:28:39</BirthDate>
-    <CarType>אופנוע</CarType>
-    <MaxDistance>110</MaxDistance>
-    <MaxTestsPerWeek>29</MaxTestsPerWeek>
-    <PhoneNumber>0587172682</PhoneNumber>
-    <Seniority>10</Seniority>
-    <Address>
-      <City>חיפה</City>
-      <BuildingNumber>55</BuildingNumber>
-      <Street>אורליאן</Street>
-    </Address>
-    <TestsList>23/01/2019 09:00:00,</TestsList>
-    <WorkSchedule>5,7,True,True,True,False,True,True,True,True,True,True,True,True,True,True,False,False,False,False,False,False,False,True,True,False,True,True,True,True,False,False,False,False,False,False,False</WorkSchedule>
-  </Tester>
-  <Tester>
     <Id>209126309</Id>
     <FirstName>עידו</FirstName>
     <LastName>אשואל</LastName>
@@ -56,5 +37,24 @@
     </Address>
     <TestsList>11/06/2020 14:00:00,24/01/2019 09:00:00,</TestsList>
     <WorkSchedule>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,True,True,True,True,True,True</WorkSchedule>
+  </Tester>
+  <Tester>
+    <Id>300497385</Id>
+    <FirstName>מושיקו</FirstName>
+    <LastName>כהן</LastName>
+    <Gender>זכר</Gender>
+    <BirthDate>21/01/1979 17:28:39</BirthDate>
+    <CarType>פרטי</CarType>
+    <MaxDistance>110</MaxDistance>
+    <MaxTestsPerWeek>29</MaxTestsPerWeek>
+    <PhoneNumber>0587172682</PhoneNumber>
+    <Seniority>10</Seniority>
+    <Address>
+      <City>חיפה</City>
+      <BuildingNumber>55</BuildingNumber>
+      <Street>אורליאן</Street>
+    </Address>
+    <TestsList>23/01/2019 09:00:00,27/01/2019 10:00:00,20/02/2019 12:00:00,13/03/2019 09:00:00,</TestsList>
+    <WorkSchedule>5,7,True,True,True,False,True,True,True,True,True,True,True,True,True,True,False,False,False,False,False,False,False,True,True,False,True,True,True,True,False,False,False,False,False,False,False</WorkSchedule>
   </Tester>
 </Testers>

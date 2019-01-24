@@ -81,30 +81,33 @@ namespace BL
             bool flag = false;
             do
             {
+
                 // trying to find an available tester
                 AvailableTesters = FindAvilableTesters(TestersWithCarType, test.Date);
                 if (AvailableTesters != null && AvailableTesters.Any())
                 {
-                    // create a test, check if the
-                    // original date for the test was changed, if it did-
-                    // "ask" the user if he wants the test in the date 
-                    // system found available. 
-                    // we do it by sending back to UI a test instance,
-                    // if user will choose to add it it will "return" to BL and immiedietly be sent to DAL
-
-                    // if the web service returned a value of "distance" between the required begin address
-                    // we compare it to the testers max distance
-                    //if (BE.MapRequest.Distance != null)
+                    //if(BE_Extensions.CheckForInternetConnection())
                     //{
-                    //    test.TesterId = AvailableTesters.FirstOrDefault(t => t.MaxDistance < BE.MapRequest.Distance).Id;
+                    //    Thread thread = new Thread(() => MapRequest.MapRequestLoop(AvailableTesters, test));
+                    //    thread.Start();
                     //}
-                    //else // else , randomizing a number
-                    //{
-                    //    Random rand = new Random();
-                    //    test.TesterId = AvailableTesters.FirstOrDefault(t => t.MaxDistance < rand.Next(250)).Id;
-                    //}
+                    AvailableTesters = AvailableTesters.Where(item => item.MaxDistance >= MapRequest.MapRequestLoop(item, test.BeginAddressString));
+                    if (AvailableTesters != null)
+                    {
+                        // create a test, check if the
+                        // original date for the test was changed, if it did-
+                        // "ask" the user if he wants the test in the date 
+                        // system found available. 
+                        // we do it by sending back to UI a test instance,
+                        // if user will choose to add it it will "return" to BL and immiedietly be sent to DAL
 
-                    test.TesterId = AvailableTesters.First().Id;
+                        test.TesterId = AvailableTesters.First().Id;
+                    }
+                    else
+                    {
+                        throw new MyExceptions("לא נמצאו טסטרים בטווח");
+                    }
+
                     if (flag) // flag is raised if we change the time for the date
                     {
                         test.IsReturning = true; // so we mark the test as "returning" (from UI), and offering it to user
@@ -115,6 +118,7 @@ namespace BL
                         dal.AddTest(test);
                         throw new MyExceptions("נרשם טסט עבור: " + test.TraineeId + " ב: " + test.Date, true);
                     }
+
                 }
                 flag = true; // if a test wasn't signed until first iteration here - it means we are changing the original time he asked
                 test.Date = test.Date.AddHours(1); // now adding an hour to the time of test, and re-checking for avalability
@@ -171,13 +175,12 @@ namespace BL
             Func<Tester, int, int, bool> func =
                 (tester, day, hour) => tester.WorkSchedule(day, hour);
 
-            TestersInChosenTimeFromThread = from item in dal.GetTesters()
-                                            where func(item, tempDay, tempHour) && !item.TestsList.Contains(dateTime)
-                                            && SumTestsInWeek(item, dal.GetTestsForSpecTester(item.Id)) < item.MaxTestsPerWeek
-                                            select item;
-            return TestersInChosenTimeFromThread;
+            var MatchingTesters = from item in dal.GetTesters()
+                                  where func(item, tempDay, tempHour) && !item.TestsList.Contains(dateTime)
+                                  && SumTestsInWeek(item, dal.GetTestsForSpecTester(item.Id)) < item.MaxTestsPerWeek
+                                  select item;
 
-
+            return MatchingTesters;
         }
 
         /// <summary>
@@ -206,15 +209,7 @@ namespace BL
                                          SumTestsInWeek(item, dal.GetTestsForSpecTester(item.Id)) < item.MaxTestsPerWeek // and that he didn't reach maximum of weekly tests
                                     select item;
 
-            if (BE.MapRequest.Distance != null)
-            {
-                AvailableTesters= AvailableTesters.Where(t => t.MaxDistance < BE.MapRequest.Distance);
-            }
-            else // else , randomizing a number
-            {
-                Random rand = new Random();
-                AvailableTesters =  AvailableTesters.Where(t => t.MaxDistance < rand.Next(250));
-            }
+
 
             return AvailableTesters;
         }

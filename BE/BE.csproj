@@ -44,7 +44,6 @@
     <Compile Include="BE_Extensions.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Enums.cs" />
-    <Compile Include="MapRequest.cs" />
     <Compile Include="MyExceptions.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Test.cs" />

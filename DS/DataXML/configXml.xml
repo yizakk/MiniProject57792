@@ -9,5 +9,6 @@
   <TraineeMinAge>18</TraineeMinAge>
   <TesterMinAge>40</TesterMinAge>
   <MinDaysBetweenTests>7</MinDaysBetweenTests>
-  <TestId>10000000</TestId>
+  <TestId>10000003</TestId>
+  <StartHour>9</StartHour>
 </Configuration>
