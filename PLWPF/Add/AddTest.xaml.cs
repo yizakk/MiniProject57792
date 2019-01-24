@@ -2,9 +2,7 @@
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Timers;
 using BE;
-using Timer = System.Timers.Timer;
 
 namespace PLWPF
 {
@@ -13,7 +11,7 @@ namespace PLWPF
     /// </summary>
     public partial class AddTest : UserControl
     {
-        Timer timer = new Timer(1000);
+        DateTime PageLoad; 
         // creating a test instance for adding data to , setting the time to be now
         Test TempTest = new Test
         {
@@ -23,9 +21,10 @@ namespace PLWPF
         int counter = 0;
         bool searching = false;
 
+
         public AddTest()
         {
-        //    timer.Start();
+            PageLoad = DateTime.Now;
             InitializeComponent();
             MessageBox.Show("בבקשה מלא את הטופס מלמעלה למטה", "", MessageBoxButton.OK,
                                  MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
@@ -185,7 +184,11 @@ namespace PLWPF
 
         private void TimeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            CheckAndFind();
+            
+            
+                CheckAndFind();
+
+            
         }
 
         private void DateDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
@@ -195,6 +198,9 @@ namespace PLWPF
 
         private void CheckAndFind()
         {
+            TimeSpan timeSpan = new TimeSpan();
+
+            timeSpan = DateTime.Now - PageLoad;
             if (TestersThread != null && TestersThread.IsAlive) 
                 TestersThread.Abort();
             if (dateDatePicker.SelectedDate.Value.DayOfWeek == DayOfWeek.Friday
@@ -205,15 +211,15 @@ namespace PLWPF
                 dateDatePicker.SelectedDate = dateDatePicker.SelectedDate.Value.AddDays(2);
                 return;
             }
-
-            timer.Stop();
+            if (timeSpan.Seconds>=2)
+            {
                 if (TimeComboBox.SelectedIndex == -1)
                 {
                     MessageBox.Show("אנא בחר שעה", "", MessageBoxButton.OK,
                                      MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
                     return;
                 }
-            
+            }
             FindingAvailableTesters();
         }
 
