@@ -103,6 +103,9 @@
     <Compile Include="DeleteTrainee.xaml.cs">
       <DependentUpon>DeleteTrainee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Exsemple.xaml.cs">
+      <DependentUpon>Exsemple.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HomeButton.xaml.cs">
       <DependentUpon>HomeButton.xaml</DependentUpon>
     </Compile>
@@ -114,9 +117,6 @@
     </Compile>
     <Compile Include="mengerPasword.xaml.cs">
       <DependentUpon>mengerPasword.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="paswordMenger.xaml.cs">
-      <DependentUpon>paswordMenger.xaml</DependentUpon>
     </Compile>
     <Compile Include="print\Grouping.xaml.cs">
       <DependentUpon>Grouping.xaml</DependentUpon>
@@ -226,6 +226,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Exsemple.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HomeButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -239,10 +243,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="mengerPasword.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="paswordMenger.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

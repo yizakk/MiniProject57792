@@ -45,7 +45,7 @@
     <Gender>זכר</Gender>
     <BirthDate>10/01/1950 00:00:00</BirthDate>
     <CarType>פרטי</CarType>
-    <MaxDistance>70</MaxDistance>
+    <MaxDistance>8870</MaxDistance>
     <MaxTestsPerWeek>40</MaxTestsPerWeek>
     <PhoneNumber></PhoneNumber>
     <Seniority>30</Seniority>

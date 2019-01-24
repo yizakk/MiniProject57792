@@ -10,18 +10,28 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for paswordMenger.xaml
+    /// Interaction logic for Exsemple.xaml
     /// </summary>
-    public partial class paswordMenger : Window
+    public partial class Exsemple : UserControl
     {
-        public paswordMenger()
+        public Exsemple()
         {
-            InitializeComponent();
+         
+           
+
+            MessageBox.Show("gujhj");
+
+        }
+
+        private void Exsemple_Initialized(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
         }
     }
 }
