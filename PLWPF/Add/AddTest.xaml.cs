@@ -224,7 +224,7 @@ namespace PLWPF
         }
 
         Thread TestersThread;
-
+       
         private void FindingAvailableTesters()
         {
             if (TestersThread == null )
