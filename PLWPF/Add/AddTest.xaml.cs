@@ -11,6 +11,7 @@ namespace PLWPF
     /// </summary>
     public partial class AddTest : UserControl
     {
+        DateTime PageLoad; 
         // creating a test instance for adding data to , setting the time to be now
         Test TempTest = new Test
         {
@@ -19,18 +20,23 @@ namespace PLWPF
         BL.IBL bl = BL.BlFactory.GetBL(); // getting a bl instance
         int counter = 0;
         bool searching = false;
+
+
         public AddTest()
         {
+            PageLoad = DateTime.Now;
             InitializeComponent();
-
-// initiaing the working hours of the day, for showing in the combobox to choose hour for the test
-            int[] array = new int[Configuration.WorkHours];
+            MessageBox.Show("בבקשה מלא את הטופס מלמעלה למטה", "", MessageBoxButton.OK,
+                                 MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+        
+        // initiaing the working hours of the day, for showing in the combobox to choose hour for the test
+        int[] array = new int[Configuration.WorkHours];
             for(int i=0;i<Configuration.WorkHours;i++)
             {
                 array[i] = i + 9;
             }
             TimeComboBox.ItemsSource = array;
-            TimeComboBox.SelectedIndex = 0;
+         //   TimeComboBox.SelectedIndex = 0;
             dateDatePicker.DataContext = TempTest;
             
             // if ser type is a trainee - hide the searching for students, only let him choose address,
@@ -60,19 +66,19 @@ namespace PLWPF
                 SearchDistance();
                 return;
             }
-            if (MapRequest.Distance == null && counter++ < 3)
-            {
-                MessageBox.Show("עדיין לא נמצאו בוחנים באזורך, אנא נסה שנית בעוד מספר שניות", "", MessageBoxButton.OK,
-                     MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-
-                return;
-            }
-
             if (SearchComboBox.SelectedValue == null)
             {
                 MessageBox.Show("אנא בחר תלמיד");
                 return;
             }
+
+            if (MapRequest.Distance == null && counter++ < 1)
+            {
+                MessageBox.Show("עדיין לא נמצאו בוחנים באזורך, אנא נסה שנית בעוד מספר שניות", "", MessageBoxButton.OK,
+                     MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                return;
+            }
+
             // taking the date user chose , adding to it the chosen hour (by creating a new
             //instance with the old values of day month and year + the hour from the combobox
             TempTest.Date = (DateTime)dateDatePicker.SelectedDate;
@@ -127,14 +133,17 @@ namespace PLWPF
 
         private void SearchComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            // since we allow searching, we have to insure the ID selected is a real one retrieved from
+            // the DS. 
             if (SearchComboBox.SelectedIndex != -1)
-            {
+            {// if it is - setting the trainee ID in the test object to be the chosen id
                 TempTest.TraineeId = SearchComboBox.SelectedValue.ToString().Split(' ')[0];
             }
         }
 
         private void CityTextBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
+            // activating the searching for distance function in a thread - if user clicked ENTER
             if (e.Key == System.Windows.Input.Key.Enter)
             {
                 SearchDistance();
@@ -143,9 +152,10 @@ namespace PLWPF
 
         private void SearchDistance()
         {
+            // first checking if there wasn't activated a search thread already
             if (!searching)
             {
-                if (bl.FindTrainee(TempTest.TraineeId) == null)
+                if (SearchComboBox.SelectedIndex == -1)
                 {
                     MessageBox.Show("אנא בחר תלמיד", "", MessageBoxButton.OK,
                                     MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
@@ -158,12 +168,65 @@ namespace PLWPF
                     {
                         MessageBox.Show("החל ברקע חיפוש בוחן באזורך", "", MessageBoxButton.OK,
                                         MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+
                         Thread thread = new Thread(() => BE.MapRequest.MapRequestLoop(bl.FindTrainee(TempTest.TraineeId).AddressToString, TempTest.BeginAddressString));
+                        Thread.BeginCriticalRegion();
+                        thread.Name = "LocatingTesters";
                         thread.Start();
+                        
+                        Thread.EndCriticalRegion();
                     }
-                    catch
+                    catch(MyExceptions a)
                     { bl.AddTest(TempTest); }
                 }
+            }
+        }
+
+        private void TimeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CheckAndFind();
+        }
+
+        private void DateDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CheckAndFind();
+        }
+
+        private void CheckAndFind()
+        {
+            if (TestersThread != null && TestersThread.IsAlive) 
+                TestersThread.Abort();
+            if (dateDatePicker.SelectedDate.Value.DayOfWeek == DayOfWeek.Friday
+                && dateDatePicker.SelectedDate.Value.DayOfWeek == DayOfWeek.Saturday)
+            {
+                MessageBox.Show("ימי העבודה הינם בין ראשון - חמישי", "", MessageBoxButton.OK,
+                MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                dateDatePicker.SelectedDate = dateDatePicker.SelectedDate.Value.AddDays(2);
+                return;
+            }
+            if (!)
+            {
+                if (TimeComboBox.SelectedIndex == -1)
+                {
+                    MessageBox.Show("אנא בחר שעה", "", MessageBoxButton.OK,
+                                     MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                    return;
+                }
+            }
+            FindingAvailableTesters();
+        }
+
+        Thread TestersThread;
+
+        private void FindingAvailableTesters()
+        {
+            if (TestersThread == null )
+            {
+                TestersThread = new Thread(() => bl.Kuku((DateTime)dateDatePicker.SelectedDate));
+            }
+            if (!TestersThread.IsAlive)
+            {
+                TestersThread.Start();
             }
         }
     }

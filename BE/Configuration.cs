@@ -12,7 +12,7 @@ namespace BE
     // and a password for adding tester to the DS
     public class Configuration
     {
-        #region Encrypting in Bytes
+        #region Encrypting in Bytes - not used right now
         // the above 2 functions are made to get a string and encrypt it into a binary sequence
         // and so to decrypt it from a binary sequence to a string
         public static string Decrypt(string value)
@@ -45,7 +45,8 @@ namespace BE
         public static string EncryptedTesterPass { get => testerPassword; }
         #endregion
         // the property for the two passwords getting a string , and encrypting it using the function
-        // to set the value of the matching private fields. when returning it back- it uses the decrypt function
+        // to set the value of the matching private fields. while checking for validity- if compares the hashed string
+        // user inputed with the existing hashed password
         public static string MasterPassword
         {
             get
@@ -76,11 +77,13 @@ namespace BE
         public static int TesterMinAge { get => testerMinAge; set => testerMinAge = value; }
         public static int MinDaysBetweenTests { get => minDaysBetweenTests; set => minDaysBetweenTests = value; }
         public static int TestId { get => testId; set => testId = value; }
+        public static int StartHour { get => startHour; set => startHour = value; }
 
         private static string masterPassword = Encryption.GeneratePasswordHash("1234");
         private static string testerPassword = Encryption.GeneratePasswordHash("123");
         private static int workDays = 5;
         private static int workHours = 7;
+        private static int startHour = 9;
         private static int minLessons = 20;
         private static int testerMaxAge = 0;
         private static int traineeMinAge = 18;

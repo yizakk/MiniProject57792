@@ -94,9 +94,6 @@
     <Compile Include="BackButton.xaml.cs">
       <DependentUpon>BackButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="checkings.xaml.cs">
-      <DependentUpon>checkings.xaml</DependentUpon>
-    </Compile>
     <Compile Include="DeleteTester.xaml.cs">
       <DependentUpon>DeleteTester.xaml</DependentUpon>
     </Compile>
@@ -214,10 +211,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="checkings.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="DeleteTester.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -319,16 +312,13 @@
     <Resource Include="images\p_911_drive.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="התרעה-מפני-התנגשות-ברכב-שמלפנים.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="images\התרעה-מפני-התנגשות-ברכב-שמלפנים.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\stamp_rubber_-update22918231_s-300x225.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="84b890824e8893abed002399f29a3154.jpg" />
+    <Resource Include="images\84b890824e8893abed002399f29a3154.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\מנהל.jpg" />

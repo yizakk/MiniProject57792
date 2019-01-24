@@ -40,9 +40,11 @@ namespace BL
                 throw new MyExceptions("התלמיד " + test.TraineeId + " לא נמצא");
             }
 
+            // checking in all the tests this trainee has done , to check if already passed
+            // a test on the same car type
             foreach (Test temp in dal.GetTestsForSpecTrainee(trainee.Id))
             {
-                if (temp.CarType == trainee.CarType && temp.Passed)
+                if (temp.CarType == test.CarType && temp.Passed)
                 {
                         throw new MyExceptions("התלמיד:" + trainee.Id + " כבר עבר טסט על סוג רכב: " + trainee.CarType+"!");
                 }
@@ -51,8 +53,8 @@ namespace BL
                     throw new MyExceptions("כבר נקבע עבורך טסט באותה השעה והיום בדיוק");
                 }
             }
-
-            if (trainee.NumLessons < Configuration.MinLessons|| trainee.NumLessons==null)
+            // if trainee didn't reach min required lessons - throwing
+            if (trainee.NumLessons < Configuration.MinLessons || trainee.NumLessons==null)
             {
                 throw new MyExceptions ("התלמיד:" + trainee.FullName + " לא הגיע ל" + Configuration.MinLessons.ToString() +" שיעורים עדיין");
             }
@@ -75,12 +77,12 @@ namespace BL
                 throw new MyExceptions("No available testers with this car type!");//chek
 
             IEnumerable<Tester> AvailableTesters;
-            DateTime OriginalTestDate = test.Date;
+            DateTime OriginalTestDate = test.Date; // saving the original date and time, because we might change it, so we should count 3 month from the original time
             bool flag = false;
             do
             {
                 // trying to find an available tester
-                AvailableTesters = FindAvilableTesters(TestersWithCarType, test.Date, trainee.AddressToString);
+                AvailableTesters = FindAvilableTesters(TestersWithCarType, test.Date);
                 if (AvailableTesters != null && AvailableTesters.Any())
                 {
                     // create a test, check if the
@@ -92,50 +94,44 @@ namespace BL
 
                     // if the web service returned a value of "distance" between the required begin address
                     // we compare it to the testers max distance
-                    if (BE.MapRequest.Distance != null)
+                    //if (BE.MapRequest.Distance != null)
+                    //{
+                    //    test.TesterId = AvailableTesters.FirstOrDefault(t => t.MaxDistance < BE.MapRequest.Distance).Id;
+                    //}
+                    //else // else , randomizing a number
+                    //{
+                    //    Random rand = new Random();
+                    //    test.TesterId = AvailableTesters.FirstOrDefault(t => t.MaxDistance < rand.Next(250)).Id;
+                    //}
+
+                    test.TesterId = AvailableTesters.First().Id;
+                    if (flag) // flag is raised if we change the time for the date
                     {
-                        test.TesterId = AvailableTesters.FirstOrDefault(t => t.MaxDistance < BE.MapRequest.Distance).Id;
+                        test.IsReturning = true; // so we mark the test as "returning" (from UI), and offering it to user
+                        throw new MyExceptions("לא ניתן לקבוע טסט בזמן המבוקש, אך המערכת מצאה טסט זמין ב: " + test.Date + " האם אתה מעוניין?", test);
                     }
-                    else
+                    else // if it is in the time user asked - simply sending it to the dal
                     {
-                        Random rand = new Random();
-                        test.TesterId = AvailableTesters.FirstOrDefault(t => t.MaxDistance <rand.Next(150)).Id;
-                    }
-                    if (TraineeAvailable(test))
-                    {
-                        if (flag)
-                        {
-                            test.IsReturning = true;
-                            throw new MyExceptions("לא ניתן לקבוע טסט בזמן המבוקש, אך המערכת מצאה טסט זמין ב: " + test.Date + " האם אתה מעוניין?", test);
-                        }
-                        else
-                        {
-                            dal.AddTest(test);
-                            throw new MyExceptions("נרשם טסט עבור: " + test.TraineeId + " ב: " + test.Date, true);
-                        }
-                    }
-                    else
-                    {
-                        throw new MyExceptions("The system did not find a free test at the time you wanted " +
-                                           "The system has found another date, but at that time you have already been tested elsewhere");
+                        dal.AddTest(test);
+                        throw new MyExceptions("נרשם טסט עבור: " + test.TraineeId + " ב: " + test.Date, true);
                     }
                 }
-                flag = true;
-                test.Date = test.Date.AddHours(1);
-                if (test.Date.Hour == 16)
+                flag = true; // if a test wasn't signed until first iteration here - it means we are changing the original time he asked
+                test.Date = test.Date.AddHours(1); // now adding an hour to the time of test, and re-checking for avalability
+                if (test.Date.Hour == Configuration.WorkHours + Configuration.StartHour) // if the time is beyond work schedule of the office-
                 {
-                    test.Date = test.Date.AddDays(1);
-                    test.Date = test.Date.AddHours(-7);
-                    if (test.Date.DayOfWeek == DayOfWeek.Friday)
+                    test.Date = test.Date.AddDays(1); // adding another day
+                    test.Date = test.Date.AddHours(-Configuration.WorkHours); // decreasing the hour by the number of working hours
+                    if (test.Date.DayOfWeek == DayOfWeek.Friday) // if friday - jumping forward to sunday
                         test.Date = test.Date.AddDays(2);
                 }
 
-                if (test.Date.Month > OriginalTestDate.AddMonths(3).Month)
+                if (test.Date.Month > OriginalTestDate.AddMonths(3).Month) // if we already checked 3 months forward - throwing 
                 {
                     throw new MyExceptions("אין טסטים זמינים בשלושת החודשים הקרובים!");
                 }
 
-            } while (!AvailableTesters.Any());
+            } while (!AvailableTesters.Any()); // returning as long as there wasn't found an available tester
             
         }
         /// <summary>
@@ -160,35 +156,37 @@ namespace BL
             dal.AddTest(test);
         }
 
-        //public IEnumerable<Tester> FindAvilableTesters(DateTime dateTime)
-        //{
-        //    int tempDay = (int)dateTime.DayOfWeek, tempHour = dateTime.Hour -9;
+        public IEnumerable<Tester> TestersInChosenTimeFromThread;
+        public IEnumerable<Tester> FindAvilableTesters(DateTime dateTime)
+        {
+            int tempDay = (int)dateTime.DayOfWeek, tempHour = dateTime.Hour - 9;
 
-        //    // when we go to check in the matrix of work schedule we should check 
-        //    // if the numbers are valid for the matrix indexes
-        //    if (tempDay > Configuration.WorkDays - 1 || tempHour > Configuration.WorkHours - 1 || tempDay < 0 || tempHour < 0)
-        //        throw new MyExceptions("ימי העבודה הינן בין ראשון-חמישי" + "בשעות 9-16 בלבד");
+            // when we go to check in the matrix of work schedule we should check 
+            // if the numbers are valid for the matrix indexes
+            if (tempDay > Configuration.WorkDays - 1 || tempHour > Configuration.WorkHours - 1 || tempDay < 0 || tempHour < 0)
+                throw new MyExceptions("ימי העבודה הינם בין ראשון-חמישי" + "בשעות 9-16 בלבד");
 
-        //    // creating a lambda expression that returns if a day & hour are at
-        //    // the tester's working time
-        //    Func<Tester, int, int, bool> func = 
-        //        (tester, day, hour) => tester.WorkSchedule(day, hour);
+            // creating a lambda expression that returns if a day & hour are at
+            // the tester's working time
+            Func<Tester, int, int, bool> func =
+                (tester, day, hour) => tester.WorkSchedule(day, hour);
 
-        //    return from item in dal.GetTesters()
-        //           where func(item, tempDay, tempHour) && !item.TestsList.Contains(dateTime)
-        //           && SumTestsInWeek(item, dal.GetTestsForSpecTester(item.Id)) < item.MaxTestsPerWeek
-        //           select item;
+            TestersInChosenTimeFromThread = from item in dal.GetTesters()
+                                            where func(item, tempDay, tempHour) && !item.TestsList.Contains(dateTime)
+                                            && SumTestsInWeek(item, dal.GetTestsForSpecTester(item.Id)) < item.MaxTestsPerWeek
+                                            select item;
+            return TestersInChosenTimeFromThread;
 
 
-        //}
+        }
 
         /// <summary>
-        /// A overloading for FindAvailableTesters, that gets a IEnumerable of testers with specific car type and search availability only among them
+        /// Returning testers available on specific time
         /// </summary>
-        /// <param name="testers">IEnumerable of testers</param>
-        /// <param name="dateTime"> date for looking for availability</param>
+        /// <param name="testers">IEnumerable<tester></param>
+        /// <param name="dateTime">date for looking for availability</param>
         /// <returns></returns>
-        public IEnumerable<Tester> FindAvilableTesters(IEnumerable<Tester> testers, DateTime dateTime, string TraineeAddress)
+        public IEnumerable<Tester> FindAvilableTesters(IEnumerable<Tester> testers, DateTime dateTime)
         {
             int tempDay = (int)dateTime.DayOfWeek, tempHour = dateTime.Hour - 9;
 
@@ -202,37 +200,23 @@ namespace BL
             Func<Tester, int, int, bool> func =
                 (tester, day, hour) => tester.WorkSchedule(day, hour);
 
-            var WorkingInChosenTime = (from item in testers
-                                      where func(item, tempDay, tempHour) &&
-                                           !item.TestsList.Contains(dateTime) &&
-                                           SumTestsInWeek(item, dal.GetTestsForSpecTester(item.Id)) < item.MaxTestsPerWeek
-                                      select item).ToList();
+            var AvailableTesters = from item in testers
+                                    where func(item, tempDay, tempHour) && // check if tester is usually working in this time
+                                         !item.TestsList.Contains(dateTime) && // and that he hasn't already signed to another test
+                                         SumTestsInWeek(item, dal.GetTestsForSpecTester(item.Id)) < item.MaxTestsPerWeek // and that he didn't reach maximum of weekly tests
+                                    select item;
 
-            foreach (Tester item in WorkingInChosenTime)
+            if (BE.MapRequest.Distance != null)
             {
-                try
-                {
-                     Thread thread = new Thread(()=>MapRequest.MapRequestLoop(TraineeAddress,item.AddressToString));
-                thread.Start();
-                if(MapRequest.Distance!=null)
-                {
-                    if (item.MaxDistance > MapRequest.Distance)
-                        WorkingInChosenTime.Remove(item);
-                }
-                else
-                { }
-                }
-                catch (Exception a)
-                {
-
-                    throw a;
-                }
-               
+                AvailableTesters= AvailableTesters.Where(t => t.MaxDistance < BE.MapRequest.Distance);
+            }
+            else // else , randomizing a number
+            {
+                Random rand = new Random();
+                AvailableTesters =  AvailableTesters.Where(t => t.MaxDistance < rand.Next(250));
             }
 
-
-            return WorkingInChosenTime;
-
+            return AvailableTesters;
         }
 
         private int SumTestsInWeek(Tester a , IEnumerable<Test> tests)
@@ -245,14 +229,12 @@ namespace BL
             }
             return count;
         }
-        
-        private IEnumerable<Test> testsInSomeWeek(DateTime date)
-        {
-            var a = from item in dal.GetTests()
-                     where DatesInTheSameWeek(item.Date, date)
-                     select item;
 
-            return a;
+        private IEnumerable<Test> TestsInSomeWeek(DateTime date)
+        {
+            return from item in dal.GetTests()
+                   where DatesInTheSameWeek(item.Date, date)
+                   select item;
         }
 
         public IEnumerable<Tester> GetTestersByDistance()
@@ -298,10 +280,8 @@ namespace BL
 
         public IEnumerable<string> GetTraineesIdList()
         {
-            var listId = from item in dal.GetTrainees()
-                         select item.Id +" " + item.FullName;
-
-            return listId;
+            return from item in dal.GetTrainees()
+                   select item.Id + " " + item.FullName;
 
         }
         public IEnumerable<string> GetTesterIdList()
@@ -339,13 +319,17 @@ namespace BL
                 }
         }
 
+        public void Kuku(DateTime time) // למצוא שם
+        {
+            FindAvilableTesters(time);
+        }
         public void AddTrainee(Trainee trainee)
         {
             if (dal.FindTester(trainee.Id) != null || dal.FindTrainee(trainee.Id) != null)
                 throw new Exception("תעודת זהות זו כבר קיימת במערכת");
             if (!CheckIdValidity(trainee.Id))
                 throw new Exception("תעודת זהות לא תקינה");
-            // if age < 18 deny
+            // if age < 18 throw
             if (trainee.Age < Configuration.TraineeMinAge)
                 {
                     throw new MyExceptions("Trainee:" + trainee.FullName + " is under 18 YO!");
@@ -383,66 +367,65 @@ namespace BL
             dal.DelTrainee(id);
         }
 
-        public bool Passed ( string TraineeId )
+        public bool Passed(string TraineeId)
         {
-            var check = (from item in dal.GetTestsForSpecTrainee(TraineeId)
-                        where item.Passed
-                        select item).FirstOrDefault();
-            return check != null ; // If check contains any "Test" element - it means this trainee has passed a test
+            return (from item in dal.GetTestsForSpecTrainee(TraineeId) // searching DS for all tests trainee
+                    where item.Passed                                  // did, returning (is 1 of it marked as passed?)
+                    select item).FirstOrDefault() != null;
         }
 
-        /// <summary>
-        /// Checking if a test could be marked as "passed" or not
-        /// </summary>
-        /// <param name="test">The Test instance for which te check the parameters for evaluation</param>
-        /// <returns></returns>
-        private bool Passchek (Test test)
-        {
-            int count = 0;
+        ///// <summary>
+        ///// Checking if a test could be marked as "passed" or not
+        ///// </summary>
+        ///// <param name="test">The Test instance for which te check the parameters for evaluation</param>
+        ///// <returns></returns>
+        //private bool Passchek (Test test)
+        //{
+        //    int count = 0;
 
-            if (test.Paramet.Distance == true)
-            {
-                count++;
-            }
-            if (test.Paramet.ReversePark == true)
-            {
-                count++;
-            }
-            if (test.Paramet.Speed == true)
-            {
-                count++;
-            }
-            if (test.Paramet.UsingMirrors == true)
-            {
-                count++;
-            }
-            if (test.Paramet.UsingVinkers == true)
-            {
-                count++;
-            }
-            return count >= 3;
-        }
+        //    if (test.Paramet.Distance == true)
+        //    {
+        //        count++;
+        //    }
+        //    if (test.Paramet.ReversePark == true)
+        //    {
+        //        count++;
+        //    }
+        //    if (test.Paramet.Speed == true)
+        //    {
+        //        count++;
+        //    }
+        //    if (test.Paramet.UsingMirrors == true)
+        //    {
+        //        count++;
+        //    }
+        //    if (test.Paramet.UsingVinkers == true)
+        //    {
+        //        count++;
+        //    }
+        //    return count >= 3;
+        //}
 
-        #region Old Test Update - (Console)
-        public void UpdateTest(int idtest, bool _distance , bool _ReversePark, bool _usingMirrors, bool _speed, bool _usingVinkers)
-        {        Test test = null;
-            foreach (Test item in dal.GetTests())
-                if (item.Id== idtest)
-                {
-                    test = item;
-                    break;
-                }
-            test.Paramet.Distance = _distance;
-            test.Paramet.ReversePark = _ReversePark;
-            test.Paramet.UsingMirrors = _usingMirrors;
-            test.Paramet.Speed = _speed;
-            test.Paramet.UsingVinkers = _usingVinkers;
-            if (Passchek(test))
-                test.Passed = true;
-            dal.UpdateTest(test);
+        //#region Old Test Update - (Console)
+        //public void UpdateTest(int idtest, bool _distance , bool _ReversePark, bool _usingMirrors, bool _speed, bool _usingVinkers)
+        //{        Test test = null;
+        //    foreach (Test item in dal.GetTests())
+        //        if (item.Id== idtest)
+        //        {
+        //            test = item;
+        //            break;
+        //        }
+        //    test.Paramet.Distance = _distance;
+        //    test.Paramet.ReversePark = _ReversePark;
+        //    test.Paramet.UsingMirrors = _usingMirrors;
+        //    test.Paramet.Speed = _speed;
+        //    test.Paramet.UsingVinkers = _usingVinkers;
+        //    if (Passchek(test))
+        //        test.Passed = true;
+        //    dal.UpdateTest(test);
 
-        }
-        #endregion
+        //}
+        //#endregion
 
         public void UpdateTester(Tester tester)
         {
@@ -483,7 +466,6 @@ namespace BL
                        group item by item.SchoolName;
             }
         }
-
 
         public IEnumerable<IGrouping<string, Trainee>> TraineesGroupedByTeacherName( bool sort = false)
         {
@@ -529,17 +511,14 @@ namespace BL
 
         public IEnumerable<Tester> TestersOver60YO()
         {
-            var Group = from item in dal.GetTesters()
-                        where item.Age >= 60
-                        select new Tester(item.Id, item.FirstName, item.LastName);
-            return Group;
+            return from item in dal.GetTesters(t => t.Age >= 60)
+                   select new Tester(item.Id, item.FirstName, item.LastName);
         }
 
         public IEnumerable<string> GetTestsIdList()
         {
-            var listId = from item in dal.GetTests()
-                         select item.Id.ToString() ;
-            return listId;
+            return from item in dal.GetTests()
+                   select item.Id.ToString();
         }
 
         public Test FindTest(int id)
@@ -548,11 +527,12 @@ namespace BL
         }
 
         public void UpdateTest(Test testItem)
-        {
+        { //while updating a test, we check if it's marked as "passed"
             if (testItem.Passed)
             {
                 int size = 0;
-                int count = 0;
+                int count = 0; // if it is - we check by reflection to the "parameters" class , if most
+                               // of the parameters marked as passed
                 foreach (PropertyInfo info in testItem.Paramet.GetType().GetProperties())
                 {
                     size++;
@@ -561,17 +541,18 @@ namespace BL
                         count++;
                     }
                 }
-                if (count <= size / 2)
+                if (count <= size / 2) // if less than a half marked as passed -
                 {
-                   testItem.Passed = false;
+                   testItem.Passed = false; // we mark the test an failed,
                    
-                    dal.UpdateTest(testItem);
+                    dal.UpdateTest(testItem); // and throwing info about it
                     throw new MyExceptions("התלמיד לא עבר את רוב הקריטריונים להעברת טסט אי לכך הטסט נרשם כלא עבר");
                 }
-                else { dal.UpdateTest(testItem); }
+                else { dal.UpdateTest(testItem); } // if passed and more than a half of the parameters marked as passed - everything is OK
             }
-            else { dal.UpdateTest(testItem); }
+            else { dal.UpdateTest(testItem); } // if didn't pass
         }
+        // a silly private function to validate the ID number 
         private bool CheckIdValidity(string id)
         {
             int sum = 0;

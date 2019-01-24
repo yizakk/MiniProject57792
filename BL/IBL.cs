@@ -37,7 +37,7 @@ namespace BL
         /// <param name="_usingMirrors">did trainee use mirrors as required</param>
         /// <param name="_speed">did trainee kept allowed speed</param>
         /// <param name="_usingVinkers">did trainee used vinkers when required</param>
-        void UpdateTest(int idtest, bool _distance, bool _ReversePark, bool _usingMirrors, bool _speed, bool _usingVinkers);
+        //void UpdateTest(int idtest, bool _distance, bool _ReversePark, bool _usingMirrors, bool _speed, bool _usingVinkers);
 
         /// <summary>
         /// Updating  tester details
@@ -52,16 +52,38 @@ namespace BL
 
         Tester FindTester(string id);
         Trainee FindTrainee(string id);
-
+        /// <summary>
+        /// returning a list of al trainees
+        /// </summary>
+        /// <returns>IEnumerable<Trainee></returns>
         IEnumerable<Trainee> GetTraineeList();
-        void UpdateTest(Test testItem);
+        /// <summary>
+        /// returning a list of al testers
+        /// </summary>
+        /// <returns>IEnumerable<Tester></returns>
+        IEnumerable<Tester> GetTesters();
+        /// <summary>
+        /// returning a list of al tests
+        /// </summary>
+        /// <returns>IEnumerable<Test></returns>
         IEnumerable<Test> GetTests();
 
-        IEnumerable<Tester> GetTesters();
+        void UpdateTest(Test testItem);
         IEnumerable<Tester> TestersOver60YO();
-
+        /// <summary>
+        /// Returning a list of all the tests' IDs
+        /// </summary>
+        /// <returns>IEnumerable<string></returns>
         IEnumerable<string> GetTestsIdList();
+        /// <summary>
+        /// Returning a list of all the trainees , with only IDs and FullName
+        /// </summary>
+        /// <returns>IEnumerable<string></returns>
         IEnumerable<string> GetTraineesIdList();
+        /// <summary>
+        /// Returning a list of all the testers , with only IDs and FullName
+        /// </summary>
+        /// <returns>IEnumerable<string></returns>
         IEnumerable<string> GetTesterIdList();
 
         Test FindTest(int id);
@@ -71,7 +93,7 @@ namespace BL
         /// </summary>
         /// <param name="dateTime">The time in which we look for available testers</param>
         /// <returns></returns>
-        IEnumerable<Tester> FindAvilableTesters(IEnumerable<Tester> testers, DateTime dateTime, string TraineeAddress);
+        IEnumerable<Tester> FindAvilableTesters(IEnumerable<Tester> testers, DateTime dateTime);
         /// <summary>
         /// Returns list of all testers, grouped by there car_type speciallity
         /// </summary>
@@ -114,5 +136,7 @@ namespace BL
         /// </summary>
         void UpdateConfig();
 
+        IEnumerable<Tester> FindAvilableTesters(DateTime dateTime);
+        void Kuku(DateTime time);
     }
 }
