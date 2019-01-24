@@ -184,7 +184,11 @@ namespace PLWPF
 
         private void TimeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            CheckAndFind();
+            
+            
+                CheckAndFind();
+
+            
         }
 
         private void DateDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
@@ -194,6 +198,9 @@ namespace PLWPF
 
         private void CheckAndFind()
         {
+            TimeSpan timeSpan = new TimeSpan();
+
+            timeSpan = DateTime.Now - PageLoad;
             if (TestersThread != null && TestersThread.IsAlive) 
                 TestersThread.Abort();
             if (dateDatePicker.SelectedDate.Value.DayOfWeek == DayOfWeek.Friday
@@ -204,7 +211,7 @@ namespace PLWPF
                 dateDatePicker.SelectedDate = dateDatePicker.SelectedDate.Value.AddDays(2);
                 return;
             }
-            if (!)
+            if (timeSpan.Seconds>=2)
             {
                 if (TimeComboBox.SelectedIndex == -1)
                 {
