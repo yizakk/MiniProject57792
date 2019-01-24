@@ -4,7 +4,7 @@
              FlowDirection="RightToLeft">
 
     <UserControl.Background>
-        <ImageBrush  ImageSource ="C:\Users\אלחנן\Source\Repos\yizakk\MiniProject57792\PLWPF\images\התרעה-מפני-התנגשות-ברכב-שמלפנים.jpg "></ImageBrush>
+        <ImageBrush  ImageSource ="images\התרעה-מפני-התנגשות-ברכב-שמלפנים.jpg "></ImageBrush>
     </UserControl.Background>
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>
@@ -19,8 +19,8 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
 
-            <Label Name="Label1" Content="ברוכים הבאים! אנא הזינו ת.ז" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontFamily="Guttman Haim" Grid.ColumnSpan="1" Width="auto"  />
-            <PasswordBox Name="IdTextBox" KeyDown="IdTextBox_KeyDown" Grid.ColumnSpan="1" Grid.Row="1" BorderThickness="4,4,4,4" HorizontalAlignment="Center" VerticalAlignment="Center" Width="160" Height="40" />
+            <Label Name="Label1" Content="ברוכים הבאים! אנא הזינו ת.ז להתחברות/רישום" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontFamily="Guttman Haim" Grid.ColumnSpan="1" Width="auto" VerticalContentAlignment="Center" TextOptions.TextFormattingMode="Display"  />
+            <PasswordBox Name="IdTextBox" BorderBrush="Black" Background="BlanchedAlmond" Foreground="DarkBlue" KeyDown="IdTextBox_KeyDown" Grid.ColumnSpan="1" Grid.Row="1" BorderThickness="4,4,4,4" HorizontalAlignment="Center" VerticalAlignment="Center" Width="160" Height="30" />
             <Button Name="button1" Content="לחץ לאישור" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="34"  Width="auto" FontSize="14" FontFamily="Guttman Hatzvi" Click="Button_Click" />
 
         </Grid>

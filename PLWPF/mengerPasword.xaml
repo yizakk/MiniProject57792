@@ -3,19 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:PLWPF"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
 
     <UserControl.Background>
-    <ImageBrush  ImageSource ="C:\Users\אלחנן\Source\Repos\yizakk\MiniProject57792\PLWPF\images\מנהל.jpg"></ImageBrush>
+    <ImageBrush  ImageSource ="images\מנהל.jpg"></ImageBrush>
     </UserControl.Background>
 
     <Grid>
-        <Label x:Name="label" Content="הכנס קוד סודי" HorizontalAlignment="Left" Margin="357,95,0,0" VerticalAlignment="Top" FontStyle="Oblique" FontSize=" 24" />
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="373,316,0,0" VerticalAlignment="Top" Width="75"/>
-        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="299,205,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label x:Name="label" Content="הכנס קוד סודי" HorizontalAlignment="Left" Margin="357,95,0,0" VerticalAlignment="Top" FontStyle="Oblique" FontSize="26" Background="BlanchedAlmond"/>
+        <Button x:Name="button" Content="אישור" HorizontalAlignment="Left" Margin="373,316,0,0" VerticalAlignment="Top" Width="75"/>
+        <PasswordBox x:Name="passwordBox" Background="BlanchedAlmond" BorderBrush="Black" BorderThickness="4,4,4,4" HorizontalAlignment="Left" Margin="355,213,0,0" VerticalAlignment="Top" Width="100"/>
 
     </Grid>
 </UserControl>
