@@ -11,20 +11,20 @@ namespace PLWPF
     /// </summary>
     public partial class AddTest : UserControl
     {
+        // creating a test instance for adding data to , setting the time to be now
         Test TempTest = new Test
         {
             Date = DateTime.Now
         };
-        BL.IBL bl = BL.BlFactory.GetBL();
+        BL.IBL bl = BL.BlFactory.GetBL(); // getting a bl instance
         int counter = 0;
-
+        bool searching = false;
         public AddTest()
         {
             InitializeComponent();
 
-// initiaing the kowking hours of the day, for showing in the combobox to choose hour for the test
+// initiaing the working hours of the day, for showing in the combobox to choose hour for the test
             int[] array = new int[Configuration.WorkHours];
-
             for(int i=0;i<Configuration.WorkHours;i++)
             {
                 array[i] = i + 9;
@@ -32,7 +32,9 @@ namespace PLWPF
             TimeComboBox.ItemsSource = array;
             TimeComboBox.SelectedIndex = 0;
             dateDatePicker.DataContext = TempTest;
-
+            
+            // if ser type is a trainee - hide the searching for students, only let him choose address,
+            // date and time
             if(Data.UserType == Data.Usertype.תלמיד)
             {
                 SearchComboBox.Visibility = Visibility.Collapsed;
@@ -43,20 +45,26 @@ namespace PLWPF
                 TempTest.TraineeId = Data.UserID;
             }
             else
-            {
+            { // if it's a manager or tester - let him choose one of all students
                 SearchComboBox.ItemsSource = bl.GetTraineesIdList();
             }
 
-            AddressGrid.DataContext = TempTest.BeginAddress;
+            AddressGrid.DataContext = TempTest.BeginAddress; 
         //    button.IsEnabled = false;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (BE.MapRequest.Distance == null && counter++ < 3)
+            if(!searching)
+            {
+                SearchDistance();
+                return;
+            }
+            if (MapRequest.Distance == null && counter++ < 3)
             {
                 MessageBox.Show("עדיין לא נמצאו בוחנים באזורך, אנא נסה שנית בעוד מספר שניות", "", MessageBoxButton.OK,
                      MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+
                 return;
             }
 
@@ -82,8 +90,8 @@ namespace PLWPF
                 bl.AddTest(TempTest);
             }
 
-            catch (MyExceptions a) // here we might get another optional test to offer to the trainee
-            {
+            catch (MyExceptions a) // here we might get another optional test to offer to the trainee 
+            { // for details - see program documentation of contact dev. (or just look in the BL doc.)
                 if (a.SuggestedTest != null)
                 {
                     int x = (int)MessageBox.Show(a._message, "הצעת טסט חלופי", MessageBoxButton.YesNo, MessageBoxImage.Question,
@@ -129,6 +137,14 @@ namespace PLWPF
         {
             if (e.Key == System.Windows.Input.Key.Enter)
             {
+                SearchDistance();
+            }
+        }
+
+        private void SearchDistance()
+        {
+            if (!searching)
+            {
                 if (bl.FindTrainee(TempTest.TraineeId) == null)
                 {
                     MessageBox.Show("אנא בחר תלמיד", "", MessageBoxButton.OK,
@@ -137,10 +153,16 @@ namespace PLWPF
 
                 else
                 {
-                    MessageBox.Show("החל ברקע חיפוש בוחן באזורך", "", MessageBoxButton.OK,
-                                    MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-                    Thread thread = new Thread(() => BE.MapRequest.MapRequestLoop(bl.FindTrainee(TempTest.TraineeId).AddressToString, TempTest.BeginAddressString));
-                    thread.Start();
+                    searching = true;
+                    try
+                    {
+                        MessageBox.Show("החל ברקע חיפוש בוחן באזורך", "", MessageBoxButton.OK,
+                                        MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                        Thread thread = new Thread(() => BE.MapRequest.MapRequestLoop(bl.FindTrainee(TempTest.TraineeId).AddressToString, TempTest.BeginAddressString));
+                        thread.Start();
+                    }
+                    catch
+                    { bl.AddTest(TempTest); }
                 }
             }
         }

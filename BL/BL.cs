@@ -67,7 +67,6 @@ namespace BL
             }
 
             // getting testers with same car_type as trainee's
-
             var TestersWithCarType = dal.GetTestersWithCarType(test.CarType);
 
             // if there isn't any tester that match with trainee's car type - throw

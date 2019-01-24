@@ -5,6 +5,8 @@ namespace PLWPF
 {
     /// <summary>
     /// Interaction logic for Login.xaml
+    /// 
+    /// this class is made to log the user into the system, using his ID 
     /// </summary>
     public partial class Login : UserControl
     {
@@ -16,8 +18,9 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            // we save the ID user inputed in a local class named DATA , for re using later
             Data.UserID = IdTextBox.Password;
-
+            // checking there are any char. in the textbox
             if (Data.UserID.Length == 0)
             {
                 MessageBox.Show("אנא הכנס מספר!",
@@ -41,8 +44,8 @@ namespace PLWPF
                 return;
             }
 
-            // trying to get a trainee or a tester that has this id user inputed
-            // by sending this id to search in the BL that sends it into the DAL
+            // trying to get a trainee or a tester that has the ID user inputed
+            // by sending this id to search in the BL unction that sends it into the DAL
             BE.Tester TesterFound =  bl.FindTester(Data.UserID);
             BE.Trainee TraineeFound = bl.FindTrainee(Data.UserID);
 

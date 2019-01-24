@@ -7,7 +7,6 @@
              x:Class="PLWPF.AddTest"
              mc:Ignorable="d" FlowDirection="RightToLeft">
 
-
     <UserControl.Resources>
         <CollectionViewSource x:Key="traineeViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Trainee}, CreateList=True}"/>
         <CollectionViewSource x:Key="addressViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Address}, CreateList=True}"/>
@@ -40,7 +39,7 @@
         <TextBlock Name="SearchTextBlock" Grid.Row="2" FontSize="14" Text="בחר תלמיד מהרשימה למטה או לחילופין חפש לפי מספר ת.ז" Grid.ColumnSpan="2" HorizontalAlignment="Center"  Width="357"/>
         <ComboBox Name="SearchComboBox" Width="130" IsEditable="True" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom"  SelectionChanged="SearchComboBox_SelectionChanged"  Height="28"/>
         
-        <Label Width="auto" Content="הזן כתובת ולחץ ENTER לבדיקת זמינות" Grid.Row="3" FontSize="14" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="60"/>
+        <Label Width="auto" Content="הזן כתובת יציאה לטסט ולחץ ENTER לבדיקת זמינות" Grid.Row="3" FontSize="14" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="60"/>
         <Grid x:Name="AddressGrid" Grid.Column="0" Grid.ColumnSpan="2" DataContext="{StaticResource addressViewSource}" HorizontalAlignment="Center"  Grid.Row="3" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -58,8 +57,6 @@
             <Label Content="עיר" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
             <TextBox x:Name="cityTextBox" KeyDown="CityTextBox_KeyDown" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding City, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
-
-
 
     </Grid>
 </UserControl>

@@ -27,6 +27,8 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            // by clicking the button you are disconnected from the system.
+            Data.UserID = "";
             Data.UserType = Data.Usertype.אורח;
             Data.logged = false;
             Data.MainUserControl = new Login();
