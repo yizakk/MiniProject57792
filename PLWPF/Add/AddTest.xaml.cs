@@ -95,17 +95,25 @@ namespace PLWPF
             TempTest.Date = ((DateTime)dateDatePicker.SelectedDate).AddHours(TimeComboBox.SelectedIndex + Configuration.StartHour);
             TempTest.TraineeId = SearchComboBox.SelectedValue.ToString().Split(' ')[0];
             TempTest.CarType = bl.FindTrainee(TempTest.TraineeId).CarType;
+            image.Visibility = Visibility.Visible;
 
             new Thread(() =>
             {
                 try
                 {
+                   
+
                     bl.AddTest(TempTest);
                 }
                 catch (MyExceptions ex)
                 {
+
                     if (ex.SuggestedTest == null)
+                    {
+                    
+
                         MessageBox.Show(ex._message);
+                    }
                     else
                     {
                         int choice = (int)MessageBox.Show(ex._message, "", MessageBoxButton.YesNo,
@@ -126,11 +134,13 @@ namespace PLWPF
                 {
                     try
                     {
+                        image.Visibility = Visibility.Hidden;
 
                     }
                     catch (Exception n)
                     {
                         MessageBox.Show(n.Message);
+
                     }
                 }));
 
@@ -164,30 +174,18 @@ namespace PLWPF
             //        }
             //    }
             //}
-        }
 
+
+
+        }
+       
         private void CityTextBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
 
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
         //private void SearchComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         //{
         //    // since we allow searching, we have to insure the ID selected is a real one retrieved from

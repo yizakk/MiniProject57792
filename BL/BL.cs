@@ -92,7 +92,7 @@ namespace BL
                     //    thread.Start();
                     //}
                     AvailableTesters = AvailableTesters.Where(item => item.MaxDistance >= MapRequest.MapRequestLoop(item, test.BeginAddressString));
-                    if (AvailableTesters != null)
+                    if (AvailableTesters.Any())
                     {
                         // create a test, check if the
                         // original date for the test was changed, if it did-
