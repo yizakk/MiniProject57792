@@ -368,4 +368,50 @@
     </Paramet>
     <Passed>False</Passed>
   </Test>
+  <Test>
+    <Id>10000015</Id>
+    <TesterId>335191102</TesterId>
+    <TraineeId>300497385</TraineeId>
+    <Date>31/07/2019 10:00:00</Date>
+    <TesterComment />
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City>jj</City>
+        <BuildingNumber>22</BuildingNumber>
+        <Street>jj</Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>False</Speed>
+      <Distance>False</Distance>
+      <ReversePark>False</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>False</Passed>
+  </Test>
+  <Test>
+    <Id>10000016</Id>
+    <TesterId>335191102</TesterId>
+    <TraineeId>029985090</TraineeId>
+    <Date>13/08/2020 10:00:00</Date>
+    <TesterComment />
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City>gg</City>
+        <BuildingNumber>66</BuildingNumber>
+        <Street>gg</Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>False</Speed>
+      <Distance>False</Distance>
+      <ReversePark>False</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>False</Passed>
+  </Test>
 </Tests>

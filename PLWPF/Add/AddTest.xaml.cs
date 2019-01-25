@@ -26,8 +26,7 @@ namespace PLWPF
         public AddTest()
         {
 
-            gif gif = new gif();
-            gif.Show();
+           
             
             PageLoad = DateTime.Now;
             InitializeComponent();
@@ -65,6 +64,8 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            gif gif = new gif();
+            gif.Show();
             if (TimeComboBox.SelectedIndex == -1)
             {
                 MessageBox.Show("אנא בחר שעה", "", MessageBoxButton.OK,
@@ -150,7 +151,7 @@ namespace PLWPF
                         image.Visibility = Visibility.Hidden;
                         button.IsEnabled = true;
                         mediaElement.Visibility = Visibility.Collapsed;
-                      //  gif.Close();
+                       gif.Close();
 
                     }
                     catch (Exception n)
