@@ -7,19 +7,21 @@ using System.IO;
 using System.Net;
 using System.Xml;
 using System.Threading;
+using BE;
 
-namespace BE
+namespace BL
 {
     public static class MapRequest
     {
-        public static double? Distance = null;
 
-        public static void MapRequestLoop(string TraineeAddress, string TestAddress)
+        public static int MapRequestLoop(Tester tester , string TestAddress)
         {
+            int i = 0;
+            int? Distance = null;
             DateTime Start = DateTime.Now;
             do
             {
-                string origin = TraineeAddress; //כתובת התלמיד 
+                string origin = tester.AddressToString; //כתובת התלמיד 
                 string destination = TestAddress;//כתובת המורה
                 string KEY = @"WRxFyZM1sauIAbVb40X37h3RwNbTclYF";
                 string url = @"https://www.mapquestapi.com/directions/v2/route" +
@@ -47,12 +49,10 @@ namespace BE
                         //display the returned distance
                         XmlNodeList distance = xmldoc.GetElementsByTagName("distance");
                         double distInMiles = Convert.ToDouble(distance[0].ChildNodes[0].InnerText);
-                        Distance = distInMiles * 1.609344;
-                        //Console.WriteLine("Distance In KM: " + distInMiles * 1.609344);
+                        Distance = (int)(distInMiles * 1.609344);
                         //display the returned driving time
                         XmlNodeList formattedTime = xmldoc.GetElementsByTagName("formattedTime");
                         string fTime = formattedTime[0].ChildNodes[0].InnerText;
-                        //  throw new Exception ("Driving Time: " + fTime);
                     }
                     else if (xmldoc.GetElementsByTagName("statusCode")[0].ChildNodes[0].InnerText == "402")
                     //we have an answer that an error occurred, one of the addresses is not found
@@ -68,7 +68,13 @@ namespace BE
                 { //throw new MyExceptions("שירות האינטרנט לא זמין כרגע"); 
                     break;
                 }
-            } while (Distance == null && DateTime.Now < Start.AddSeconds(5) );
+
+            } while (i++ < 2 && Distance==null);
+
+            if (Distance != null)
+                return (int)Distance;
+            Random rand = new Random();
+            return rand.Next(10);
         }
     }
 }

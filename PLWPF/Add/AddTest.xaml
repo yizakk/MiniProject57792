@@ -28,16 +28,16 @@
         </Grid.ColumnDefinitions>
 
         <Label Content="תאריך:" VerticalAlignment="Center" Grid.Row="1" HorizontalAlignment="Center" Grid.Column="0" Height="26" Width="45"  />
-        <DatePicker x:Name="dateDatePicker" SelectedDateChanged="DateDatePicker_SelectedDateChanged" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" SelectedDate="{Binding Date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  HorizontalAlignment="Left" Grid.ColumnSpan="2" Height="30" Width="auto"  />
+        <DatePicker x:Name="dateDatePicker" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" SelectedDate="{Binding Date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  HorizontalAlignment="Left" Grid.ColumnSpan="2" Height="30" Width="auto"  />
 
         <Label Content="שעה:" VerticalAlignment="Center" Grid.Row="2"  HorizontalAlignment="Center" Grid.Column="0" Height="26"  Width="37"  />
-        <ComboBox Width="80" x:Name="TimeComboBox" SelectionChanged="TimeComboBox_SelectionChanged" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" RenderTransformOrigin="-0.235,0.512" Grid.ColumnSpan="2" Height="28"  />
+        <ComboBox Width="80" x:Name="TimeComboBox" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" RenderTransformOrigin="-0.235,0.512" Grid.ColumnSpan="2" Height="28"  />
 
         <Button x:Name="button" Content="קבע טסט" IsEnabled="{Binding Calc}" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Width="95" Click="Button_Click" />
 
         <TextBox IsEnabled="False" Name="traineeIdTextBox"  Grid.Row="0" Grid.Column="0" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center" Height="20" Width="60"/>
         <TextBlock Name="SearchTextBlock" Grid.Row="0" FontSize="14" Text="בחר תלמיד מהרשימה למטה או לחילופין חפש לפי מספר ת.ז" Grid.ColumnSpan="2" HorizontalAlignment="Center"  Width="357"/>
-        <ComboBox Name="SearchComboBox" Width="130" IsEditable="True" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom"  SelectionChanged="SearchComboBox_SelectionChanged"  Height="28"/>
+        <ComboBox Name="SearchComboBox" Width="130" IsEditable="True" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Height="28"/>
         <Label Width="auto" Content="הזן כתובת יציאה לטסט ולחץ ENTER לבדיקת זמינות" Grid.Row="4" FontSize="14" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="60"/>
         <Grid x:Name="AddressGrid" Grid.Column="0" Grid.ColumnSpan="2" DataContext="{StaticResource addressViewSource}" HorizontalAlignment="Center"  Grid.Row="4" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -21,7 +22,7 @@ namespace BE
         }
         public static Address ToAddress(this XElement a)
         {
-            int x=0;
+            int x = 0;
             int.TryParse(a.Element("BuildingNumber").Value, out x);
             return new Address
             {
@@ -55,7 +56,7 @@ namespace BE
                 BeginAddress = d.Element("BeginAddress").Element("Address").ToAddress(),
             };
         }
-     
+
         public static Trainee ToTrainee(this XElement d)
         {
             Trainee temp = new Trainee();
@@ -72,7 +73,7 @@ namespace BE
             temp.SchoolName = d.Element("SchoolName").Value;
             temp.TeacherName = d.Element("TeacherName").Value;
             temp.NumLessons = int.Parse(d.Element("NumLessons").Value);
-                return temp;
+            return temp;
         }
         public static XElement ToXml(this Trainee trainee)
         {
@@ -85,7 +86,7 @@ namespace BE
                 new XElement("LastName", trainee.LastName),
                 new XElement("FirstName", trainee.FirstName),
                 new XElement("Gender", trainee.Gender.ToString()),
-                new XElement("LastTest" , trainee.LastTest),
+                new XElement("LastTest", trainee.LastTest),
                 new XElement("GearType", trainee.GearType),
                 new XElement("SchoolName", trainee.SchoolName),
                 new XElement("TeacherName", trainee.TeacherName),
@@ -130,7 +131,7 @@ namespace BE
                 new XElement("Seniority", tester.Seniority.ToString()),
                 tester.Address.ToXML(),
                 new XElement("TestsList", tester.TestsTime),
-                new XElement("WorkSchedule",tester.WorkSave)
+                new XElement("WorkSchedule", tester.WorkSave)
                 );
         }
 
@@ -216,6 +217,22 @@ namespace BE
             {
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
                 return (T)xmlSerializer.Deserialize(textReader);
+            }
+        }
+
+        public static bool CheckForInternetConnection()
+        {
+            try
+            {
+                using (var client = new WebClient())
+                using (client.OpenRead("http://clients3.google.com/generate_204"))
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
             }
         }
     }
