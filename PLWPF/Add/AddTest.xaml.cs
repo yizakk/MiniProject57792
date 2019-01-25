@@ -25,6 +25,10 @@ namespace PLWPF
 
         public AddTest()
         {
+
+            gif gif = new gif();
+            gif.Show();
+            
             PageLoad = DateTime.Now;
             InitializeComponent();
             //MessageBox.Show("בבקשה מלא את הטופס מלמעלה למטה", "", MessageBoxButton.OK,
@@ -98,8 +102,8 @@ namespace PLWPF
                 TempTest.TraineeId = Data.UserID;
 
             TempTest.CarType = bl.FindTrainee(TempTest.TraineeId).CarType;
-            gif gif = new gif();
-            gif.Show();
+            //gif gif = new gif();
+            //gif.Show();
             image.Visibility = Visibility.Visible;
             button.IsEnabled = false;
             mediaElement.Visibility = Visibility.Visible;
@@ -146,7 +150,7 @@ namespace PLWPF
                         image.Visibility = Visibility.Hidden;
                         button.IsEnabled = true;
                         mediaElement.Visibility = Visibility.Collapsed;
-                        gif.Close();
+                      //  gif.Close();
 
                     }
                     catch (Exception n)

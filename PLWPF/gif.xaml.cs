@@ -22,6 +22,12 @@ namespace PLWPF
         public gif()
         {
             InitializeComponent();
+          
+        }
+
+        private void MediaElement_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
