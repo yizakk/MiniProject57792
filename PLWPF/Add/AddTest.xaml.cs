@@ -98,9 +98,9 @@ namespace PLWPF
                 TempTest.TraineeId = Data.UserID;
 
             TempTest.CarType = bl.FindTrainee(TempTest.TraineeId).CarType;
-            //image.Visibility = Visibility.Visible;
-
-            
+            image.Visibility = Visibility.Visible;
+            button.IsEnabled = false;
+            mediaElement.Visibility = Visibility.Visible;
             new Thread(() => // Activating the bl layer by thread 
             {
                 try
@@ -141,7 +141,9 @@ namespace PLWPF
                 {
                     try
                     {
-                       // image.Visibility = Visibility.Hidden;
+                        image.Visibility = Visibility.Hidden;
+                        button.IsEnabled = true;
+                        mediaElement.Visibility = Visibility.Collapsed;
                     }
                     catch (Exception n)
                     {

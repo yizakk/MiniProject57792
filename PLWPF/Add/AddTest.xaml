@@ -57,9 +57,9 @@
             <TextBox x:Name="cityTextBox" KeyDown="CityTextBox_KeyDown" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding City, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
         
-        <Image x:Name="image" Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="150.667,192.333,-63.333,0" Grid.Row="4" Grid.RowSpan="2" VerticalAlignment="Top" Width="100" 
-               Source="C:\Users\אלחנן\Source\Repos\yizakk\MiniProject57792\PLWPF\images\התרעה-מפני-התנגשות-ברכב-שמלפנים.jpg " Visibility="Hidden"/>
-        <MediaElement x:Name="mediaElement" HorizontalAlignment="Left" Height="100" Grid.RowSpan="3" VerticalAlignment="Top" Width="100" Source="images\giphy.gif"/>
+        <Image x:Name="image" Grid.Column="1" HorizontalAlignment="Left" Height="100" Grid.Row="4" VerticalAlignment="Top" Width="100" 
+               Source="/images/התרעה-מפני-התנגשות-ברכב-שמלפנים.jpg" Grid.ColumnSpan="5" Grid.RowSpan="6" Visibility="Hidden"/>
+        <MediaElement x:Name="mediaElement" HorizontalAlignment="Left" Grid.ColumnSpan="3" Height="500" Grid.RowSpan="9" VerticalAlignment="Top" Width="375" Visibility="Collapsed" Source="/images\giphy.gif"/>
 
     </Grid>
 </UserControl>
