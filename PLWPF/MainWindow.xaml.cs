@@ -60,42 +60,37 @@ namespace PLWPF
 
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Data.logged)
-            {
-                switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
-                {
-                    case "ItemHome":
-                        Data.MainUserControl = new Login();
-                        GridMain.Children.Clear();
-                        GridMain.Children.Add(Data.MainUserControl);
-
-                        break;
-                    case "ItemCreate":
-                        Data.MainUserControl = new AddStudent();
-                        GridMain.Children.Clear();
-                        GridMain.Children.Add(Data.MainUserControl);
-                        break;
-
-                    case "move":
-                        Data.MainUserControl = new PrintOptions();
-                        GridMain.Children.Clear();
-                        GridMain.Children.Add(Data.MainUserControl);
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            else
-            {
-                MessageBox.Show("אתה חייב להיות מחובר כדי לנווט!", "נדרשת התחברות", MessageBoxButton.OK, MessageBoxImage.Error,
+                MessageBox.Show("התפריט בשלבי בנייה","", MessageBoxButton.OK, MessageBoxImage.Error,
                     MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-            }
-        }
+            //if (Data.logged)
+            //{
+            //    switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
+            //    {
+            //        case "ItemHome":
+            //            Data.MainUserControl = new Login();
+            //            GridMain.Children.Clear();
+            //            GridMain.Children.Add(Data.MainUserControl);
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
+            //            break;
+            //        case "ItemCreate":
+            //            Data.MainUserControl = new AddStudent();
+            //            GridMain.Children.Clear();
+            //            GridMain.Children.Add(Data.MainUserControl);
+            //            break;
+
+            //        case "move":
+            //            Data.MainUserControl = new PrintOptions();
+            //            GridMain.Children.Clear();
+            //            GridMain.Children.Add(Data.MainUserControl);
+            //            break;
+            //        default:
+            //            break;
+            //    }
+            //}
+
+            //else
+            //{
+            //}
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -108,5 +103,22 @@ namespace PLWPF
             }
         }
 
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void HomePanelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Data.MainUserControl = new HomePanel();
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            Data.UserID = "";
+            Data.UserType = Data.Usertype.אורח;
+            Data.logged = false;
+            Data.MainUserControl = new Login();
+        }
     }
 }

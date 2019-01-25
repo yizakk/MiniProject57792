@@ -91,9 +91,6 @@
     <Compile Include="Add\schedule.xaml.cs">
       <DependentUpon>schedule.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BackButton.xaml.cs">
-      <DependentUpon>BackButton.xaml</DependentUpon>
-    </Compile>
     <Compile Include="DeleteTester.xaml.cs">
       <DependentUpon>DeleteTester.xaml</DependentUpon>
     </Compile>
@@ -102,9 +99,6 @@
     </Compile>
     <Compile Include="Exsemple.xaml.cs">
       <DependentUpon>Exsemple.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="HomeButton.xaml.cs">
-      <DependentUpon>HomeButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="HomePanel.xaml.cs">
       <DependentUpon>HomePanel.xaml</DependentUpon>
@@ -207,10 +201,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="BackButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="DeleteTester.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -220,10 +210,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Exsemple.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="HomeButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -322,6 +308,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\מנהל.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\giphy.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\SpongeBob.webm" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

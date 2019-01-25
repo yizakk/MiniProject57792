@@ -56,10 +56,7 @@
             <Label Content="עיר" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
             <TextBox x:Name="cityTextBox" KeyDown="CityTextBox_KeyDown" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding City, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
-        
-        <Image x:Name="image" Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="150.667,192.333,-63.333,0" Grid.Row="4" Grid.RowSpan="2" VerticalAlignment="Top" Width="100" 
-               Source="C:\Users\אלחנן\Source\Repos\yizakk\MiniProject57792\PLWPF\images\התרעה-מפני-התנגשות-ברכב-שמלפנים.jpg " Visibility="Hidden"/>
-        <MediaElement x:Name="mediaElement" HorizontalAlignment="Left" Height="100" Grid.RowSpan="3" VerticalAlignment="Top" Width="100" Source=" "/>
 
+        <MediaElement x:Name="WaitGif" Height="500" Width="375" Source="images\SpongeBob.webm" HorizontalAlignment="Left" Grid.RowSpan="6" Grid.ColumnSpan="3" Visibility="Visible" VerticalAlignment="Top" />
     </Grid>
 </UserControl>

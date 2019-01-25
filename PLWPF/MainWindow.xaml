@@ -198,26 +198,15 @@
     <Grid Background="#FFDEDEDE">
         <Grid x:Name="GridMain" Margin="50,50,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="514" Width="900">
             <Grid.Effect>
-
                 <DropShadowEffect BlurRadius="1" ShadowDepth="1" Color="#FFACACAC"/>
             </Grid.Effect>
         </Grid>
-
         <Grid Height="60" VerticalAlignment="Top" Background="#FF5C99D6">
-
             <Grid.Effect>
-
                 <DropShadowEffect BlurRadius="1" ShadowDepth="1" Color="#FFACACAC"/>
             </Grid.Effect>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"/>
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Margin="436,14,408,16"><Run Text="ממשק ניהול לימודי נהיגה"/></TextBlock>
-
-            <Button Height="Auto" Click="Button_Click_1" Margin="1027,7,8,7" RenderTransformOrigin="0.381,0.452">
-                <Canvas Width="30" Height="20" RenderTransformOrigin="3.033,1.117">
-                    <Path Data="M19,3H16.3H7.7H5A2,2 0 0,0 3,5V7.7V16.4V19A2,2 0 0,0 5,21H7.7H16.4H19A2,2 0 0,0 21,19V16.3V7.7V5A2,2 0 0,0 19,3M15.6,17L12,13.4L8.4,17L7,15.6L10.6,12L7,8.4L8.4,7L12,10.6L15.6,7L17,8.4L13.4,12L17,15.6L15.6,17Z" 
-                          Fill="Blue" Canvas.Left="-2.4" Stretch="Fill" Width="20" RenderTransformOrigin="0.276,0.256" Canvas.Top="0.8" />
-                </Canvas>
-            </Button>
 
             <materialDesign:PopupBox Visibility="Collapsed" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Margin="837,7,0,13">
                 <StackPanel Width="150">
@@ -226,9 +215,29 @@
                     <Button Content="Help"/>
                 </StackPanel>
             </materialDesign:PopupBox>
-            
-            <local:BackButton HorizontalAlignment="Left" Height="50" Margin="919,5,0,0" VerticalAlignment="Top" Width="50"/>
-            <local:HomeButton  HorizontalAlignment="Left" Height="50" Margin="943,5,0,0" VerticalAlignment="Top" Width="100"/>
+
+            <Grid Name="NavigateMenuGrid" Width="180" Height="60" VerticalAlignment="Top" HorizontalAlignment="Right">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Name="HomePanelButton" ToolTip="מסך הבית" HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Center" Height="45" Width="50" Click="HomePanelButton_Click" Background="Transparent">
+                    <Canvas HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="auto">
+                        <materialDesign:PackIcon Kind="Home" ToolTip="מסך הבית" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="auto" Foreground="PeachPuff" Canvas.Left="-11" Canvas.Top="-11" />
+                    </Canvas>
+                </Button>
+                <Button Name="LogoutButton" HorizontalAlignment="Center" ToolTip="התנתק" VerticalAlignment="Center" Height="45" Width="50" Click="LogoutButton_Click" Background="Transparent">
+                    <Canvas HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="auto">
+                        <materialDesign:PackIcon Kind="LogoutVariant" ToolTip="התנתק" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="auto" Foreground="PeachPuff" Canvas.Left="-11" Canvas.Top="-11" />
+                    </Canvas>
+                </Button>
+                <Button Name="ExitButton" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="45" Width="50" Click="ExitButton_Click" Background="Transparent">
+                    <Canvas HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="auto">
+                        <materialDesign:PackIcon Kind="CloseBox" ToolTip="סגירת התוכנית" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="auto" Foreground="PeachPuff" Canvas.Left="-11" Canvas.Top="-11" />
+                    </Canvas>
+                </Button>
+            </Grid>
         </Grid>
         <Grid x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="#FF31577E">
             <Grid.Effect>

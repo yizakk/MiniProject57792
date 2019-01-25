@@ -230,4 +230,27 @@
     </Paramet>
     <Passed>False</Passed>
   </Test>
+  <Test>
+    <Id>10000009</Id>
+    <TesterId>335191102</TesterId>
+    <TraineeId>201096260</TraineeId>
+    <Date>27/01/2019 11:00:00</Date>
+    <TesterComment />
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City>g</City>
+        <BuildingNumber>12</BuildingNumber>
+        <Street>g</Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>False</Speed>
+      <Distance>False</Distance>
+      <ReversePark>False</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>False</Passed>
+  </Test>
 </Tests>

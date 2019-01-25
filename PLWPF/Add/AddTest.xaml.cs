@@ -27,8 +27,8 @@ namespace PLWPF
         {
             PageLoad = DateTime.Now;
             InitializeComponent();
-            MessageBox.Show("בבקשה מלא את הטופס מלמעלה למטה", "", MessageBoxButton.OK,
-                                 MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+            //MessageBox.Show("בבקשה מלא את הטופס מלמעלה למטה", "", MessageBoxButton.OK,
+            //                     MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
 
             // initiaing the working hours of the day, for showing in the combobox to choose hour for the test
             int[] array = new int[Configuration.WorkHours];
@@ -48,8 +48,7 @@ namespace PLWPF
                 SearchTextBlock.Visibility = Visibility.Collapsed;
                 traineeIdTextBox.Text = Data.UserID;
                 //traineeIdTextBox.Visibility = Visibility.Visible;
-                TempTest.CarType = bl.FindTrainee(Data.UserID).CarType;
-                TempTest.TraineeId = Data.UserID;
+              //  TempTest.CarType = bl.FindTrainee(Data.UserID).CarType;
             }
             else
             { // if it's a manager or tester - let him choose one of all students
@@ -69,7 +68,7 @@ namespace PLWPF
                 return;
             }
 
-            if (SearchComboBox.SelectedIndex == -1)
+            if (SearchComboBox.SelectedIndex == -1 && TempTest.TraineeId.Length<7)
             {
                 MessageBox.Show("אנא בחר תלמיד", "", MessageBoxButton.OK,
                                 MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
@@ -93,34 +92,42 @@ namespace PLWPF
             }
 
             TempTest.Date = ((DateTime)dateDatePicker.SelectedDate).AddHours(TimeComboBox.SelectedIndex + Configuration.StartHour);
-            TempTest.TraineeId = SearchComboBox.SelectedValue.ToString().Split(' ')[0];
-            TempTest.CarType = bl.FindTrainee(TempTest.TraineeId).CarType;
-            image.Visibility = Visibility.Visible;
+            if (Data.UserType != Data.Usertype.תלמיד) // if user type isn't trainee - pull id from combobox
+                TempTest.TraineeId = SearchComboBox.SelectedValue.ToString().Split(' ')[0];
+            else // if user is a trainee - we "pull" his id from DATA class
+                TempTest.TraineeId = Data.UserID;
 
-            new Thread(() =>
+            TempTest.CarType = bl.FindTrainee(TempTest.TraineeId).CarType;
+            //image.Visibility = Visibility.Visible;
+
+            
+            new Thread(() => // Activating the bl layer by thread 
             {
                 try
                 {
-                   
-
                     bl.AddTest(TempTest);
                 }
                 catch (MyExceptions ex)
                 {
-
                     if (ex.SuggestedTest == null)
                     {
-                    
-
                         MessageBox.Show(ex._message);
                     }
-                    else
+                    else // there is a suggested test to offer to user
                     {
                         int choice = (int)MessageBox.Show(ex._message, "", MessageBoxButton.YesNo,
                         MessageBoxImage.Information, MessageBoxResult.No, MessageBoxOptions.RtlReading);
                         if (choice == 6)
                         {
-                            bl.AddTest(ex.SuggestedTest);
+                            try
+                            {
+                                bl.AddTest(ex.SuggestedTest);
+                            }
+                            catch(MyExceptions Mex)
+                            {
+                                MessageBox.Show(Mex._message, "", MessageBoxButton.OK,
+                                                MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                            }
                         }
                         else
                         {
@@ -134,13 +141,11 @@ namespace PLWPF
                 {
                     try
                     {
-                        image.Visibility = Visibility.Hidden;
-
+                       // image.Visibility = Visibility.Hidden;
                     }
                     catch (Exception n)
                     {
                         MessageBox.Show(n.Message);
-
                     }
                 }));
 
