@@ -100,7 +100,9 @@ namespace PLWPF
             TempTest.CarType = bl.FindTrainee(TempTest.TraineeId).CarType;
             image.Visibility = Visibility.Visible;
             button.IsEnabled = false;
+            
             mediaElement.Visibility = Visibility.Visible;
+            mediaElement.IsEnabled = true;
             new Thread(() => // Activating the bl layer by thread 
             {
                 try

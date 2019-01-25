@@ -16,7 +16,7 @@
       <BuildingNumber>0</BuildingNumber>
       <Street></Street>
     </Address>
-    <TestsList>27/01/2019 09:00:00,27/01/2019 10:00:00,03/02/2019 09:00:00,04/03/2019 09:00:00,02/04/2019 09:00:00,02/04/2019 10:00:00,01/05/2019 10:00:00,08/05/2019 10:00:00,16/05/2019 10:00:00,23/05/2019 10:00:00,25/02/2019 10:00:00,</TestsList>
-    <WorkSchedule>5,7,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True</WorkSchedule>
+    <TestsList>27/01/2019 09:00:00,27/01/2019 10:00:00,03/02/2019 09:00:00,04/03/2019 09:00:00,02/04/2019 09:00:00,02/04/2019 10:00:00,01/05/2019 10:00:00,08/05/2019 10:00:00,16/05/2019 10:00:00,23/05/2019 10:00:00,25/02/2019 10:00:00,25/06/2019 09:00:00,</TestsList>
+    <WorkSchedule>5,7,False,False,False,False,False,False,False,False,False,False,False,False,False,False,True,True,True,True,True,True,True,True,True,True,True,True,True,True,False,False,False,False,False,False,False</WorkSchedule>
   </Tester>
 </Testers>
