@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="gif" Height="300" Width="500">
+        Title="gif" >
     <Grid>
-        <MediaElement Source="C:\Users\אלחנן\Source\Repos\yizakk\MiniProject57792\PLWPF\images\gggg.mp4 " Width=" 250" Height="575" LoadedBehavior="Play">
+        <MediaElement Source="/images\gggg.mp4 " LoadedBehavior="Play">
 
         </MediaElement>
 
