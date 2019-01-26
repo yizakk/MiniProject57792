@@ -14,7 +14,7 @@
         <CollectionViewSource x:Key="addressViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Address}, CreateList=True}"/>
     </UserControl.Resources>
     <UserControl.Background>
-        <ImageBrush  ImageSource ="C:\Users\אלחנן\Source\Repos\yizakk\MiniProject57792\PLWPF\images\stamp_rubber_-update22918231_s-300x225.jpg "></ImageBrush>
+        <ImageBrush ImageSource="/images\stamp_rubber.jpg" Opacity=".4" FrameworkElement.FlowDirection="RightToLeft"/>
     </UserControl.Background>
     <Grid>
         <Grid.RowDefinitions>

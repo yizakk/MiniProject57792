@@ -85,6 +85,7 @@ namespace PLWPF
                 return;
             }
             MessageBox.Show("העידכון הסתיים בהצלחה");
+            Data.MainUserControl = new HomePanel();
 
         }
 
@@ -92,8 +93,5 @@ namespace PLWPF
         {
             Data.NumericCheck(sender, e);
         }
-
-
     }
 }
-;
