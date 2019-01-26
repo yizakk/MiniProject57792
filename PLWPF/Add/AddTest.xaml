@@ -13,7 +13,7 @@
     </UserControl.Resources>
 
     <Grid Width="375" Height="500" DataContext="{StaticResource traineeViewSource}">
-        <Grid Name="FieldGrid" Visibility="Collapsed">
+        <Grid Name="FieldGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="63*"/>
                 <RowDefinition Height="44*"/>
@@ -61,8 +61,8 @@
             <Image x:Name="image" Grid.Column="1" HorizontalAlignment="Left" Height="100" Grid.Row="4" VerticalAlignment="Top" Width="100" 
                 Source="/images\giphy.gif" Grid.ColumnSpan="5" Grid.RowSpan="6" Visibility="Hidden"/>
         </Grid>
-        <Grid Name="AnimationGrid" Visibility="Visible" >
-            <MediaElement x:Name="mediaElement" HorizontalAlignment="Center" Grid.ColumnSpan="3" Height="500" Grid.RowSpan="9" VerticalAlignment="Center" Width="375" Source="/images\giphy.gif" Stretch="Fill"/>
+        <Grid Name="AnimationGrid" Visibility="Visible">
+            <MediaElement x:Name="mediaElement" LoadedBehavior="Play" HorizontalAlignment="Center" Grid.ColumnSpan="3" Height="500" Grid.RowSpan="9" VerticalAlignment="Center" Width="375" Source="/images\SpongeBob.MP4"/>
         </Grid>
     </Grid>
 </UserControl>

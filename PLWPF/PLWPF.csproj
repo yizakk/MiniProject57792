@@ -320,6 +320,7 @@
     <Resource Include="images\giphy.gif" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\SpongeBob.mp4" />
     <Content Include="images\SpongeBob.webm" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
