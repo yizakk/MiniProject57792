@@ -29,39 +29,34 @@ namespace PLWPF
                 return;
             }
 
-            if (BE.Encryption.VerifyHashPassword( Data.UserID, BE.Configuration.MasterPassword))
+            if (Data.UserID == "204412712")
             {
-                MessageBox.Show("שלום מנהל", "", MessageBoxButton.OK, MessageBoxImage.None,
+                MessageBox.Show("שלום מנהל, אנא הזן סיסמה", "", MessageBoxButton.OK, MessageBoxImage.None,
                     MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-                // Window window = new paswordMenger();
-                // window.Show();
-                Data.MainUserControl = new mengerPasword();
-
-              //  Data.logged = true;
-              //  Data.UserType = Data.Usertype.מנהל;
-              //  Data.MainUserControl = new HomePanel();
-                 
+                //MainGrid.Children.Clear();
+                ManagerPasswordBox.Visibility = Visibility.Visible;
+                IdTextBox.Visibility = Visibility.Collapsed;
+                button1.Visibility = Visibility.Collapsed;
+                button2.Visibility = Visibility.Visible;
                 return;
             }
 
             // trying to get a trainee or a tester that has the ID user inputed
             // by sending this id to search in the BL unction that sends it into the DAL
-            BE.Tester TesterFound =  bl.FindTester(Data.UserID);
+            BE.Tester TesterFound = bl.FindTester(Data.UserID);
             BE.Trainee TraineeFound = bl.FindTrainee(Data.UserID);
 
             // if not found - go to matching function 
-            if (TesterFound==null && TraineeFound==null)
+            if (TesterFound == null && TraineeFound == null)
             {
                 IdNotFound();
                 return;
             }
 
-                 
-
-            if(TesterFound!=null)
+            if (TesterFound != null)
             {
-                MessageBox.Show("שלום  " + TesterFound.FullName,"",MessageBoxButton.OK,MessageBoxImage.None,
-                    MessageBoxResult.OK,MessageBoxOptions.RtlReading);
+                MessageBox.Show("שלום  " + TesterFound.FullName, "", MessageBoxButton.OK, MessageBoxImage.None,
+                    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
 
                 Data.UserType = Data.Usertype.בוחן;
 
@@ -69,7 +64,7 @@ namespace PLWPF
                 Data.MainUserControl = new HomePanel();
             }
 
-            if(TraineeFound!=null)
+            if (TraineeFound != null)
             {
                 MessageBox.Show("שלום  " + TraineeFound.FullName, "", MessageBoxButton.OK, MessageBoxImage.None,
                     MessageBoxResult.OK, MessageBoxOptions.RtlReading);
@@ -96,8 +91,6 @@ namespace PLWPF
 
             else
             {
-                //MessageBox.Show("שלום ולהתראות", "GB", MessageBoxButton.OK, MessageBoxImage.Hand,
-                //    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
                 Data.MainUserControl = new Login();
             }
         }
@@ -107,6 +100,22 @@ namespace PLWPF
         {
             if (e.Key == System.Windows.Input.Key.Enter)
                 Button_Click(null, e);
+        }
+
+        private void Button2_Click(object sender, RoutedEventArgs e)
+        {
+            if (BE.Encryption.VerifyHashPassword(ManagerPasswordBox.Password, BE.Configuration.MasterPassword))
+            {
+                Data.UserType = Data.Usertype.מנהל;
+                Data.MainUserControl = new HomePanel();
+            }
+
+        }
+
+        private void ManagerPasswordBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+                Button2_Click(null, e);
         }
     }
 }

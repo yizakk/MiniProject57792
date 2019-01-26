@@ -56,13 +56,15 @@
                 <TextBox x:Name="streetTextBox" KeyDown="CityTextBox_KeyDown" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding Street, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                 <Label Content="עיר" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
                 <TextBox x:Name="cityTextBox" KeyDown="CityTextBox_KeyDown" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding City, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            </Grid>
 
-            <Image x:Name="image" Grid.Column="1" HorizontalAlignment="Left" Height="100" Grid.Row="4" VerticalAlignment="Top" Width="100" 
-                Source="/images\giphy.gif" Grid.ColumnSpan="5" Grid.RowSpan="6" Visibility="Hidden"/>
+            </Grid>
+<!--
+                <MediaElement x:Name="mediaElement" LoadedBehavior="Play" Grid.Row="1" HorizontalAlignment="Center" Grid.ColumnSpan="3" Height="500" 
+                              Grid.RowSpan="9" Grid.Column="0" VerticalAlignment="Center" Width="375" Source="/images\SpongeBob.wmv"/>
+    -->
+            <Image x:Name="image" Grid.Column="0" HorizontalAlignment="Left" Height="500" Grid.Row="0" VerticalAlignment="Top" Width="375" 
+                Source="/images\p_911_drive.jpg" Grid.ColumnSpan="9" Grid.RowSpan="9" Visibility="Collapsed"/>
         </Grid>
-        <Grid Name="AnimationGrid" Visibility="Visible">
-            <MediaElement x:Name="mediaElement" LoadedBehavior="Play" HorizontalAlignment="Center" Grid.ColumnSpan="3" Height="500" Grid.RowSpan="9" VerticalAlignment="Center" Width="375" Source="/images\SpongeBob.MP4"/>
-        </Grid>
+
     </Grid>
 </UserControl>

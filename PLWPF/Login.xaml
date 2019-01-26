@@ -4,29 +4,30 @@
              FlowDirection="RightToLeft">
 
     <UserControl.Background>
-        <ImageBrush  ImageSource ="images\התרעה-מפני-התנגשות-ברכב-שמלפנים.jpg "></ImageBrush>
+        <ImageBrush Opacity="0.4" ImageSource ="images\התרעה-מפני-התנגשות-ברכב-שמלפנים.jpg " FrameworkElement.FlowDirection="RightToLeft"></ImageBrush>
     </UserControl.Background>
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
-        <Grid Name="TextGrid" Grid.Row="0" Width="450">
+
+        <Grid Name="TextGrid" Grid.Row="0" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
 
-            <Label Name="Label1" Content="ברוכים הבאים! אנא הזינו ת.ז להתחברות/רישום" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontFamily="Guttman Haim" Grid.ColumnSpan="1" Width="auto" VerticalContentAlignment="Center" TextOptions.TextFormattingMode="Display"  />
+            <Label Name="Label1" Background="Black" BorderThickness="4,4,4,4" Content="ברוכים הבאים! אנא הזינו ת.ז להתחברות/רישום" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="AntiqueWhite" Foreground="BlanchedAlmond" FontSize="24" FontFamily="Guttman Haim" Grid.ColumnSpan="1" Width="auto" VerticalContentAlignment="Center" TextOptions.TextFormattingMode="Display"  />
             <PasswordBox Name="IdTextBox" BorderBrush="Black" Background="BlanchedAlmond" Foreground="DarkBlue" KeyDown="IdTextBox_KeyDown" Grid.ColumnSpan="1" Grid.Row="1" BorderThickness="4,4,4,4" HorizontalAlignment="Center" VerticalAlignment="Center" Width="160" Height="30" />
             <Button Name="button1" Content="לחץ לאישור" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="34"  Width="auto" FontSize="14" FontFamily="Guttman Hatzvi" Click="Button_Click" />
+            <PasswordBox Name="ManagerPasswordBox" Visibility="Collapsed" BorderBrush="Black" Background="BlanchedAlmond" Foreground="DarkBlue" KeyDown="ManagerPasswordBox_KeyDown" Grid.ColumnSpan="1" Grid.Row="1" BorderThickness="4,4,4,4" HorizontalAlignment="Center" VerticalAlignment="Center" Width="160" Height="30" />
+            <Button Name="button2" Content="לחץ לאישור" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="34"  Width="auto" FontSize="14" FontFamily="Guttman Hatzvi" Click="Button2_Click" />
 
         </Grid>
         <Grid Grid.Row="1" Width="150" Height="100">
             
         </Grid>
-       
     </Grid>
 </UserControl>

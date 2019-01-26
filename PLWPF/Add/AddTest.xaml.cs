@@ -19,14 +19,9 @@ namespace PLWPF
             Date = DateTime.Now
         };
         BL.IBL bl = BL.BlFactory.GetBL(); // getting a bl instance
-        int counter = 0;
-        bool searching = false;
-
 
         public AddTest()
         {
-
-           
             
             PageLoad = DateTime.Now;
             InitializeComponent();
@@ -64,8 +59,6 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            gif gif = new gif();
-            gif.Show();
             if (TimeComboBox.SelectedIndex == -1)
             {
                 MessageBox.Show("אנא בחר שעה", "", MessageBoxButton.OK,
@@ -103,17 +96,16 @@ namespace PLWPF
                 TempTest.TraineeId = Data.UserID;
 
             TempTest.CarType = bl.FindTrainee(TempTest.TraineeId).CarType;
-            //gif gif = new gif();
-            //gif.Show();
+            
             image.Visibility = Visibility.Visible;
             button.IsEnabled = false;
-            
-            mediaElement.Visibility = Visibility.Visible;
-            mediaElement.IsEnabled = true;
+            //mediaElement.IsEnabled = true;
+                //    mediaElement.Visibility = Visibility.Visible;
             new Thread(() => // Activating the bl layer by thread 
             {
                 try
                 {
+                  //  mediaElement.FlowDirection = FlowDirection.RightToLeft;
                     bl.AddTest(TempTest);
                 }
                 catch (MyExceptions ex)
@@ -136,6 +128,7 @@ namespace PLWPF
                             {
                                 MessageBox.Show(Mex._message, "", MessageBoxButton.OK,
                                                 MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                                Data.MainUserControl = new AddTest();
                             }
                         }
                         else
@@ -152,8 +145,9 @@ namespace PLWPF
                     {
                         image.Visibility = Visibility.Hidden;
                         button.IsEnabled = true;
-                        mediaElement.Visibility = Visibility.Collapsed;
-                       gif.Close();
+                        Data.MainUserControl = new AddTest();
+                        //   mediaElement.Visibility = Visibility.Collapsed;
+                        //  gif.Close();
 
                     }
                     catch (Exception n)

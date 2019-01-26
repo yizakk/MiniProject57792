@@ -66,7 +66,8 @@ namespace PLWPF
 
             catch (BE.MyExceptions cat)
             {
-                MessageBox.Show(cat._message);
+                MessageBox.Show(cat._message, "", MessageBoxButton.YesNo,
+                                MessageBoxImage.Information, MessageBoxResult.None, MessageBoxOptions.RtlReading);
                 return;
             }
             int choice = (int)MessageBox.Show("המבחן עודכן בהצלחה, האם ברצונך לעדכן עוד מבחן?", "", MessageBoxButton.YesNo,

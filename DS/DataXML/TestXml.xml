@@ -391,4 +391,119 @@
     </Paramet>
     <Passed>False</Passed>
   </Test>
+  <Test>
+    <Id>10000017</Id>
+    <TesterId>335191102</TesterId>
+    <TraineeId>204412712</TraineeId>
+    <Date>28/01/2019 12:00:00</Date>
+    <TesterComment />
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City>טבריה</City>
+        <BuildingNumber>12</BuildingNumber>
+        <Street>ויצמן</Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>False</Speed>
+      <Distance>False</Distance>
+      <ReversePark>False</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>False</Passed>
+  </Test>
+  <Test>
+    <Id>10000018</Id>
+    <TesterId>335191102</TesterId>
+    <TraineeId>204412712</TraineeId>
+    <Date>04/02/2019 13:00:00</Date>
+    <TesterComment />
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City>ירושלים</City>
+        <BuildingNumber>12</BuildingNumber>
+        <Street>השיטה</Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>False</Speed>
+      <Distance>False</Distance>
+      <ReversePark>False</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>False</Passed>
+  </Test>
+  <Test>
+    <Id>10000019</Id>
+    <TesterId>335191102</TesterId>
+    <TraineeId>204412712</TraineeId>
+    <Date>26/02/2019 14:00:00</Date>
+    <TesterComment />
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City>תל אביב</City>
+        <BuildingNumber>12</BuildingNumber>
+        <Street>דבורה</Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>False</Speed>
+      <Distance>False</Distance>
+      <ReversePark>False</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>False</Passed>
+  </Test>
+  <Test>
+    <Id>10000021</Id>
+    <TesterId>335191102</TesterId>
+    <TraineeId>201096260</TraineeId>
+    <Date>26/01/2023 13:00:00</Date>
+    <TesterComment></TesterComment>
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City></City>
+        <BuildingNumber></BuildingNumber>
+        <Street></Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>True</Speed>
+      <Distance>True</Distance>
+      <ReversePark>True</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>True</Passed>
+  </Test>
+  <Test>
+    <Id>10000020</Id>
+    <TesterId>335191102</TesterId>
+    <TraineeId>204412712</TraineeId>
+    <Date>05/03/2019 14:00:00</Date>
+    <TesterComment></TesterComment>
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City></City>
+        <BuildingNumber></BuildingNumber>
+        <Street></Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>False</Speed>
+      <Distance>True</Distance>
+      <ReversePark>True</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>False</Passed>
+  </Test>
 </Tests>
