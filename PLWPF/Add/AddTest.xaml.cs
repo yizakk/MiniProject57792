@@ -68,6 +68,8 @@ namespace PLWPF
             gif.Show();
             if (TimeComboBox.SelectedIndex == -1)
             {
+                gif.Close();
+
                 MessageBox.Show("אנא בחר שעה", "", MessageBoxButton.OK,
                                 MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
                 return;
@@ -75,6 +77,8 @@ namespace PLWPF
 
             if (SearchComboBox.SelectedIndex == -1 && TempTest.TraineeId.Length<7)
             {
+                gif.Close();
+
                 MessageBox.Show("אנא בחר תלמיד", "", MessageBoxButton.OK,
                                 MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
                 return;
@@ -83,6 +87,8 @@ namespace PLWPF
             if (dateDatePicker.SelectedDate.Value.DayOfWeek == DayOfWeek.Friday
                 || dateDatePicker.SelectedDate.Value.DayOfWeek == DayOfWeek.Saturday)
             {
+                gif.Close();
+
                 MessageBox.Show("ימי העבודה הינם בין ראשון - חמישי", "", MessageBoxButton.OK,
                 MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
                 dateDatePicker.SelectedDate = dateDatePicker.SelectedDate.Value.AddDays(2);
@@ -91,6 +97,8 @@ namespace PLWPF
 
             if (cityTextBox.Text.Length == 0 || streetTextBox.Text.Length == 0 || buildingNumberTextBox.Text.Length == 0)
             {
+                gif.Close();
+
                 MessageBox.Show("אנא מלא את 3 השדות של הכתובת", "", MessageBoxButton.OK,
                 MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
                 return;
@@ -156,6 +164,8 @@ namespace PLWPF
                     }
                     catch (Exception n)
                     {
+                        gif.Close();
+
                         MessageBox.Show(n.Message);
                     }
                 }));
