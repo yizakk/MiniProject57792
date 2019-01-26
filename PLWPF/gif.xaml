@@ -3,9 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="gif" >
+        Title="gif" Height="300" Width="500">
     <Grid>
-        <MediaElement x:Name="mediaElement" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/images\giphy.gif"/>
+        <MediaElement Source="C:\Users\אלחנן\Source\Repos\yizakk\MiniProject57792\PLWPF\images\gggg.mp4 " Width=" 250" Height="575" LoadedBehavior="Play">
+
+        </MediaElement>
+
     </Grid>
-</Window>
+</Window> 

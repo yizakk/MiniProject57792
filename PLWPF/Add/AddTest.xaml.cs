@@ -25,6 +25,9 @@ namespace PLWPF
 
         public AddTest()
         {
+
+           
+            
             PageLoad = DateTime.Now;
             InitializeComponent();
             //MessageBox.Show("בבקשה מלא את הטופס מלמעלה למטה", "", MessageBoxButton.OK,
@@ -61,6 +64,8 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            gif gif = new gif();
+            gif.Show();
             if (TimeComboBox.SelectedIndex == -1)
             {
                 MessageBox.Show("אנא בחר שעה", "", MessageBoxButton.OK,
@@ -98,8 +103,8 @@ namespace PLWPF
                 TempTest.TraineeId = Data.UserID;
 
             TempTest.CarType = bl.FindTrainee(TempTest.TraineeId).CarType;
-            gif gif = new gif();
-            gif.Show();
+            //gif gif = new gif();
+            //gif.Show();
             image.Visibility = Visibility.Visible;
             button.IsEnabled = false;
             
@@ -148,7 +153,7 @@ namespace PLWPF
                         image.Visibility = Visibility.Hidden;
                         button.IsEnabled = true;
                         mediaElement.Visibility = Visibility.Collapsed;
-                        gif.Close();
+                       gif.Close();
 
                     }
                     catch (Exception n)

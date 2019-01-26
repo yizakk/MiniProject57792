@@ -1,6 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Trainees>
   <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>201096260</Id>
+    <Address>
+      <City>מורשת</City>
+      <Street>השילוח</Street>
+      <BuildingNumber>17</BuildingNumber>
+    </Address>
+    <CarType>פרטי</CarType>
+    <BirthDate>2000-01-01T00:00:00</BirthDate>
+    <LastName>נוסבאום</LastName>
+    <FirstName>רעות</FirstName>
+    <Gender>נקבה</Gender>
+    <LastTest>2019-08-20T10:00:00</LastTest>
+    <GearType>ידני</GearType>
+    <SchoolName>מרשווטר</SchoolName>
+    <TeacherName>גוזלין</TeacherName>
+    <NumLessons>22</NumLessons>
+  </Trainee>
+  <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <Id>300497385</Id>
     <Address>
       <City />
@@ -10,7 +28,7 @@
     <CarType>פרטי</CarType>
     <BirthDate>2000-01-01T00:00:00</BirthDate>
     <Gender>זכר</Gender>
-    <LastTest>2019-05-23T10:00:00</LastTest>
+    <LastTest>2019-07-31T10:00:00</LastTest>
     <GearType>אוטומטי</GearType>
     <NumLessons>33</NumLessons>
   </Trainee>
@@ -25,26 +43,8 @@
     <BirthDate>2000-01-01T00:00:00</BirthDate>
     <FirstName>משה</FirstName>
     <Gender>זכר</Gender>
-    <LastTest>2020-02-13T09:00:00</LastTest>
+    <LastTest>2020-08-13T10:00:00</LastTest>
     <GearType>אוטומטי</GearType>
     <NumLessons>33</NumLessons>
-  </Trainee>
-  <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <Id>201096260</Id>
-    <Address>
-      <City>מורשת</City>
-      <Street>השילוח</Street>
-      <BuildingNumber>17</BuildingNumber>
-    </Address>
-    <CarType>פרטי</CarType>
-    <BirthDate>2000-01-01T00:00:00</BirthDate>
-    <LastName>נוסבאום</LastName>
-    <FirstName>רעות</FirstName>
-    <Gender>נקבה</Gender>
-    <LastTest>2020-01-27T13:00:00</LastTest>
-    <GearType>ידני</GearType>
-    <SchoolName>מרשווטר</SchoolName>
-    <TeacherName>גוזלין</TeacherName>
-    <NumLessons>22</NumLessons>
   </Trainee>
 </Trainees>
