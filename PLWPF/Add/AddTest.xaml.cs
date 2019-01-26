@@ -78,7 +78,7 @@ namespace PLWPF
             }
 
             if (dateDatePicker.SelectedDate.Value.DayOfWeek == DayOfWeek.Friday
-                || dateDatePicker.SelectedDate.Value.DayOfWeek == DayOfWeek.Saturday)
+                || dateDatePicker.SelectedDate.Value.DayOfWeek == DayOfWeek.Saturday)//
             {
                 gif.Close();
 
