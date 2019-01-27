@@ -1,6 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Trainees>
   <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>300497385</Id>
+    <Address>
+      <City />
+      <Street />
+      <BuildingNumber xsi:nil="true" />
+    </Address>
+    <CarType>פרטי</CarType>
+    <BirthDate>2000-01-01T00:00:00</BirthDate>
+    <Gender>זכר</Gender>
+    <LastTest>2019-07-31T10:00:00</LastTest>
+    <GearType>אוטומטי</GearType>
+    <NumLessons>33</NumLessons>
+  </Trainee>
+  <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <Id>029985090</Id>
     <Address>
       <City />
@@ -53,65 +67,35 @@
     <NumLessons>22</NumLessons>
   </Trainee>
   <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <Id>300497385</Id>
+    <Id>055311948</Id>
     <Address>
-      <City />
-      <Street />
-      <BuildingNumber xsi:nil="true" />
-    </Address>
-    <CarType>אופנוע</CarType>
-    <BirthDate>2000-01-01T00:00:00</BirthDate>
-    <Gender>זכר</Gender>
-    <LastTest>2019-07-31T10:00:00</LastTest>
-    <GearType>אוטומטי</GearType>
-    <NumLessons>33</NumLessons>
-  </Trainee>
-  <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <Id>810000000</Id>
-    <Address>
-      <City>דימונה</City>
-      <Street>שדרות הנשיא</Street>
-      <BuildingNumber>1</BuildingNumber>
-    </Address>
-    <CarType>אופנוע</CarType>
-    <BirthDate>2000-01-01T00:00:00</BirthDate>
-    <Gender>זכר</Gender>
-    <LastTest>2019-11-27T11:00:00</LastTest>
-    <GearType>אוטומטי</GearType>
-    <NumLessons>77</NumLessons>
-  </Trainee>
-  <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <Id>319185997</Id>
-    <Address>
-      <City>בית שמש</City>
-      <Street>הרצל</Street>
-      <BuildingNumber>631</BuildingNumber>
+      <City>תקוע</City>
+      <Street>תקוע</Street>
+      <BuildingNumber>12</BuildingNumber>
     </Address>
     <CarType>פרטי</CarType>
     <BirthDate>2000-01-01T00:00:00</BirthDate>
-    <FirstName>אלישע</FirstName>
-    <Gender>זכר</Gender>
-    <LastTest>2020-03-23T10:00:00</LastTest>
+    <LastName>תלמידי</LastName>
+    <FirstName>תלמיד</FirstName>
+    <Gender>נקבה</Gender>
+    <LastTest>2019-02-05T13:00:00</LastTest>
     <GearType>אוטומטי</GearType>
-    <NumLessons>50</NumLessons>
+    <NumLessons>22</NumLessons>
   </Trainee>
   <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <Id>341317378</Id>
-    <PhoneNumber>053283103</PhoneNumber>
+    <Id>053418307</Id>
     <Address>
-      <City>jerusalem</City>
-      <Street>hvaad haleumi</Street>
-      <BuildingNumber>21</BuildingNumber>
+      <City>חספין</City>
+      <Street>דבורה</Street>
+      <BuildingNumber>68</BuildingNumber>
     </Address>
     <CarType>פרטי</CarType>
-    <BirthDate>1999-01-01T00:00:00</BirthDate>
-    <LastName>cohenca</LastName>
-    <FirstName>manu</FirstName>
+    <BirthDate>2000-01-01T00:00:00</BirthDate>
+    <LastName>נוסבאום</LastName>
+    <FirstName>שמואל</FirstName>
     <Gender>זכר</Gender>
-    <LastTest>0001-01-01T00:00:00</LastTest>
-    <GearType>אוטומטי</GearType>
-    <SchoolName>jnx</SchoolName>
-    <TeacherName>chaim</TeacherName>
-    <NumLessons>23</NumLessons>
+    <LastTest>2019-02-26T15:00:00</LastTest>
+    <GearType>ידני</GearType>
+    <NumLessons>29</NumLessons>
   </Trainee>
 </Trainees>

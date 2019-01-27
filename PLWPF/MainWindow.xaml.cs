@@ -23,7 +23,6 @@ namespace PLWPF
             InitializeComponent();
             Data.MainUserControl = new Login();
            
-
             GridMain.Children.Add(Data.MainUserControl);
             Data.UserControlChanged += UserTypeChanged; // adding local func. "userTypeChanged" to handle the change of user type
 

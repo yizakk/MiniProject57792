@@ -25,188 +25,173 @@ namespace PLWPF
             
             PageLoad = DateTime.Now;
             InitializeComponent();
-            try
+            //MessageBox.Show("בבקשה מלא את הטופס מלמעלה למטה", "", MessageBoxButton.OK,
+            //                     MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+
+            // initiaing the working hours of the day, for showing in the combobox to choose hour for the test
+            int[] array = new int[Configuration.WorkHours];
+            for (int i = 0; i < Configuration.WorkHours; i++)
             {
-                //MessageBox.Show("בבקשה מלא את הטופס מלמעלה למטה", "", MessageBoxButton.OK,
-                //                     MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-
-                // initiaing the working hours of the day, for showing in the combobox to choose hour for the test
-                int[] array = new int[Configuration.WorkHours];
-                for (int i = 0; i < Configuration.WorkHours; i++)
-                {
-                    array[i] = i + 9;
-                }
-                TimeComboBox.ItemsSource = array;
-                //   TimeComboBox.SelectedIndex = 0;
-
-                dateDatePicker.DataContext = TempTest;
-
-                // if ser type is a trainee - hide the searching for students, only let him choose address,
-                // date and time
-                if (Data.UserType == Data.Usertype.תלמיד)
-                {
-                    SearchComboBox.Visibility = Visibility.Collapsed;
-                    SearchTextBlock.Visibility = Visibility.Collapsed;
-                    traineeIdTextBox.Text = Data.UserID;
-                    TempTest.TraineeId = Data.UserID;
-                    //traineeIdTextBox.Visibility = Visibility.Visible;
-                    //  TempTest.CarType = bl.FindTrainee(Data.UserID).CarType;
-                }
-                else
-                { // if it's a manager or tester - let him choose one of all students
-                    SearchComboBox.ItemsSource = bl.GetTraineesIdList();
-                }
-
-                AddressGrid.DataContext = TempTest.BeginAddress;
-                //    button.IsEnabled = false;
+                array[i] = i + 9;
             }
-            catch { }
+            TimeComboBox.ItemsSource = array;
+            //   TimeComboBox.SelectedIndex = 0;
+            dateDatePicker.DataContext = TempTest;
+
+            // if ser type is a trainee - hide the searching for students, only let him choose address,
+            // date and time
+            if (Data.UserType == Data.Usertype.תלמיד)
+            {
+                SearchComboBox.Visibility = Visibility.Collapsed;
+                SearchTextBlock.Visibility = Visibility.Collapsed;
+                traineeIdTextBox.Text = Data.UserID;
+                //traineeIdTextBox.Visibility = Visibility.Visible;
+              //  TempTest.CarType = bl.FindTrainee(Data.UserID).CarType;
+            }
+            else
+            { // if it's a manager or tester - let him choose one of all students
+                SearchComboBox.ItemsSource = bl.GetTraineesIdList();
+            }
+
+            AddressGrid.DataContext = TempTest.BeginAddress;
+            //    button.IsEnabled = false;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (TimeComboBox.SelectedIndex == -1)
             {
-                if (TimeComboBox.SelectedIndex == -1)
-                {
-                    // gif.Close();
+               // gif.Close();
+                MessageBox.Show("אנא בחר שעה", "", MessageBoxButton.OK,
+                                MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                return;
+            }
 
-                    MessageBox.Show("אנא בחר שעה", "", MessageBoxButton.OK,
-                                    MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-                    return;
+            if (SearchComboBox.SelectedIndex == -1 && TempTest.TraineeId.Length<7)
+            {
+               // gif.Close();
+
+                MessageBox.Show("אנא בחר תלמיד", "", MessageBoxButton.OK,
+                                MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                return;
+            }
+
+            if (dateDatePicker.SelectedDate.Value.DayOfWeek == DayOfWeek.Friday
+                || dateDatePicker.SelectedDate.Value.DayOfWeek == DayOfWeek.Saturday)
+            {
+                // gif.Close();
+                MessageBox.Show("ימי העבודה הינם בין ראשון - חמישי", "", MessageBoxButton.OK,
+                MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                dateDatePicker.SelectedDate = dateDatePicker.SelectedDate.Value.AddDays(2);
+                return;
+            }
+        
+            if (cityTextBox.Text.Length == 0 || streetTextBox.Text.Length == 0 || buildingNumberTextBox.Text.Length == 0)
+            {
+             //   gif.Close();
+                MessageBox.Show("אנא מלא את 3 השדות של הכתובת", "", MessageBoxButton.OK,
+                MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                return;
+            }
+
+            TempTest.Date = ((DateTime)dateDatePicker.SelectedDate).AddHours(TimeComboBox.SelectedIndex + Configuration.StartHour);
+            if (Data.UserType != Data.Usertype.תלמיד) // if user type isn't trainee - pull id from combobox
+                TempTest.TraineeId = SearchComboBox.SelectedValue.ToString().Split(' ')[0];
+            else // if user is a trainee - we "pull" his id from DATA class
+                TempTest.TraineeId = Data.UserID;
+
+            TempTest.CarType = bl.FindTrainee(TempTest.TraineeId).CarType;
+            
+            image.Visibility = Visibility.Visible;
+            button.IsEnabled = false;
+            new Thread(() => // Activating the bl layer by thread 
+            {
+                try
+                {
+                    bl.AddTest(TempTest);
                 }
-
-                if (SearchComboBox.SelectedIndex == -1 && TempTest.TraineeId.Length < 7)
+                catch (MyExceptions ex)
                 {
-                    // gif.Close();
-
-                    MessageBox.Show("אנא בחר תלמיד", "", MessageBoxButton.OK,
-                                    MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-                    return;
-                }
-
-                if (dateDatePicker.SelectedDate.Value.DayOfWeek == DayOfWeek.Friday
-                    || dateDatePicker.SelectedDate.Value.DayOfWeek == DayOfWeek.Saturday)//
-                {
-                    // gif.Close();
-
-                    MessageBox.Show("ימי העבודה הינם בין ראשון - חמישי", "", MessageBoxButton.OK,
-                    MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-                    dateDatePicker.SelectedDate = dateDatePicker.SelectedDate.Value.AddDays(2);
-                    return;
-                }
-
-                if (cityTextBox.Text.Length == 0 || streetTextBox.Text.Length == 0 || buildingNumberTextBox.Text.Length == 0)
-                {
-                    //   gif.Close();
-
-                    MessageBox.Show("אנא מלא את 3 השדות של הכתובת", "", MessageBoxButton.OK,
-                    MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-                    return;
-                }
-
-                TempTest.Date = ((DateTime)dateDatePicker.SelectedDate).AddHours(TimeComboBox.SelectedIndex + Configuration.StartHour);
-                if (Data.UserType != Data.Usertype.תלמיד) // if user type isn't trainee - pull id from combobox
-                    TempTest.TraineeId = SearchComboBox.SelectedValue.ToString().Split(' ')[0];
-                else // if user is a trainee - we "pull" his id from DATA class
-                    TempTest.TraineeId = Data.UserID;
-
-                TempTest.CarType = bl.FindTrainee(TempTest.TraineeId).CarType;
-
-                image.Visibility = Visibility.Visible;
-                button.IsEnabled = false;
-                //mediaElement.IsEnabled = true;
-                //    mediaElement.Visibility = Visibility.Visible;
-                new Thread(() => // Activating the bl layer by thread 
-                {
-                    try
+                    if (ex.SuggestedTest == null)
                     {
-                        //  mediaElement.FlowDirection = FlowDirection.RightToLeft;
-                        bl.AddTest(TempTest);
+                        MessageBox.Show(ex._message);
                     }
-                    catch (MyExceptions ex)
+                    else // there is a suggested test to offer to user
                     {
-                        if (ex.SuggestedTest == null)
+                        int choice = (int)MessageBox.Show(ex._message, "", MessageBoxButton.YesNo,
+                        MessageBoxImage.Information, MessageBoxResult.No, MessageBoxOptions.RtlReading);
+                        if (choice == 6)
                         {
-                            MessageBox.Show(ex._message);
-                        }
-                        else // there is a suggested test to offer to user
-                        {
-                            int choice = (int)MessageBox.Show(ex._message, "", MessageBoxButton.YesNo,
-                            MessageBoxImage.Information, MessageBoxResult.No, MessageBoxOptions.RtlReading);
-                            if (choice == 6)
+                            try
                             {
-                                try
-                                {
-                                    bl.AddTest(ex.SuggestedTest);
-                                }
-                                catch (MyExceptions Mex)
-                                {
-                                    MessageBox.Show(Mex._message, "", MessageBoxButton.OK,
-                                                    MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-                                    Data.MainUserControl = new AddTest();
-                                }
+                                bl.AddTest(ex.SuggestedTest);
                             }
-                            else
+                            catch(MyExceptions Mex)
                             {
-                                MessageBox.Show("נסה להוסיף טסט אחר ידנית", "", MessageBoxButton.OK,
-                                        MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                                MessageBox.Show(Mex._message, "", MessageBoxButton.OK,
+                                                MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
                                 Data.MainUserControl = new AddTest();
                             }
                         }
-                    }
-                    Dispatcher.Invoke(new Action(() =>
-                    {
-                        try
+                        else
                         {
-                            image.Visibility = Visibility.Hidden;
-                            button.IsEnabled = true;
+                            MessageBox.Show("נסה להוסיף טסט אחר ידנית", "", MessageBoxButton.OK,
+                                    MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
                             Data.MainUserControl = new AddTest();
-                            //   mediaElement.Visibility = Visibility.Collapsed;
-                            //  gif.Close();
-
                         }
-                        catch (Exception n)
-                        {
-                            //  gif.Close();
+                    }
+                }
+                Dispatcher.Invoke(new Action(() =>
+                {
+                    try
+                    {
+                        image.Visibility = Visibility.Hidden;
+                        button.IsEnabled = true;
+                        Data.MainUserControl = new AddTest();
+                        //   mediaElement.Visibility = Visibility.Collapsed;
+                        //  gif.Close();
 
-                            MessageBox.Show(n.Message);
-                        }
-                    }));
+                    }
+                    catch (Exception n)
+                    {
+                      //  gif.Close();
 
-                }).Start();
+                        MessageBox.Show(n.Message);
+                    }
+                }));
 
-                //    try
-                //    {
-                //        bl.AddTest(TempTest);
-                //    }
-                //    catch(MyExceptions ex)
-                //    {
-                //        if(ex.SuggestedTest==null)
-                //        {
-                //            MessageBox.Show(ex._message, "", MessageBoxButton.OK,
-                //            MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-                //        }
-                //        else // offering user additional test
-                //        {
-                //            int choice = (int) MessageBox.Show(ex._message, "", MessageBoxButton.YesNo,
-                //            MessageBoxImage.Information, MessageBoxResult.No, MessageBoxOptions.RtlReading);
-                //            if(choice==6)
-                //            {
-                //                bl.AddTest(ex.SuggestedTest);
-                //            }
-                //            else
-                //            {
-                //                MessageBox.Show("נסה להוסיף טסט אחר ידנית", "", MessageBoxButton.OK,
-                //                        MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-                //                Data.MainUserControl = new AddTest();
-                //            }
-                //        }
-                //    }
-                //}
+            }).Start();
 
-            }
-            catch { }
+            //    try
+            //    {
+            //        bl.AddTest(TempTest);
+            //    }
+            //    catch(MyExceptions ex)
+            //    {
+            //        if(ex.SuggestedTest==null)
+            //        {
+            //            MessageBox.Show(ex._message, "", MessageBoxButton.OK,
+            //            MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+            //        }
+            //        else // offering user additional test
+            //        {
+            //            int choice = (int) MessageBox.Show(ex._message, "", MessageBoxButton.YesNo,
+            //            MessageBoxImage.Information, MessageBoxResult.No, MessageBoxOptions.RtlReading);
+            //            if(choice==6)
+            //            {
+            //                bl.AddTest(ex.SuggestedTest);
+            //            }
+            //            else
+            //            {
+            //                MessageBox.Show("נסה להוסיף טסט אחר ידנית", "", MessageBoxButton.OK,
+            //                        MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+            //                Data.MainUserControl = new AddTest();
+            //            }
+            //        }
+            //    }
+            //}
+
+
 
         }
        
