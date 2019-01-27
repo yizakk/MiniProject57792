@@ -76,31 +76,30 @@ namespace BL
             if (!TestersWithCarType.Any())
                 throw new MyExceptions("No available testers with this car type!");//chek
 
-            IEnumerable<Tester> AvailableTesters;
+            List<Tester> AvailableTesters;
             DateTime OriginalTestDate = test.Date; // saving the original date and time, because we might change it, so we should count 3 month from the original time
             bool flag = false;
             do
             {
-
                 // trying to find an available tester
-                AvailableTesters = FindAvilableTesters(TestersWithCarType, test.Date);
+                AvailableTesters = FindAvilableTesters(TestersWithCarType, test.Date).ToList();
                 if (AvailableTesters != null && AvailableTesters.Any())
                 {
-                    //if(BE_Extensions.CheckForInternetConnection())
-                    //{
-                    //    Thread thread = new Thread(() => MapRequest.MapRequestLoop(AvailableTesters, test));
-                    //    thread.Start();
-                    //}
-                    AvailableTesters = AvailableTesters.Where(item => item.MaxDistance >= MapRequest.MapRequestLoop(item, test.BeginAddressString));
+                   // AvailableTesters = AvailableTesters.ToList();
+                    try
+                    {
+                        foreach( var item in AvailableTesters)
+                        {
+                            if (item.MaxDistance < MapRequest.MapRequestLoop(item, test.BeginAddressString))
+                                AvailableTesters.Remove(item);
+                        }
+                      //  AvailableTesters = AvailableTesters.Where(item => item.MaxDistance >= MapRequest.MapRequestLoop(item, test.BeginAddressString));
+                    }
+                    catch(MyExceptions a)
+                    { throw a; }
+
                     if (AvailableTesters.Any())
                     {
-                        // create a test, check if the
-                        // original date for the test was changed, if it did-
-                        // "ask" the user if he wants the test in the date 
-                        // system found available. 
-                        // we do it by sending back to UI a test instance,
-                        // if user will choose to add it it will "return" to BL and immiedietly be sent to DAL
-
                         test.TesterId = AvailableTesters.First().Id;
                     }
                     else
@@ -209,8 +208,6 @@ namespace BL
                                          SumTestsInWeek(item, dal.GetTestsForSpecTester(item.Id)) < item.MaxTestsPerWeek // and that he didn't reach maximum of weekly tests
                                     select item;
 
-
-
             return AvailableTesters;
         }
 
@@ -281,11 +278,8 @@ namespace BL
         }
         public IEnumerable<string> GetTesterIdList()
         {
-            var listId = from item in dal.GetTesters()
+            return from item in dal.GetTesters()
                          select item.Id + " " + item.FullName;
-
-            return listId;
-
         }
 
         private bool DatesInTheSameWeek(DateTime date1, DateTime date2)
@@ -337,7 +331,6 @@ namespace BL
 
         public IEnumerable<Test> TesterTestsList(Tester tester)
         {
-
             return dal.GetTestsForSpecTester(tester.Id);
         }
         public IEnumerable<Trainee> GetTraineeList()
@@ -369,6 +362,7 @@ namespace BL
                     select item).FirstOrDefault() != null;
         }
 
+        #region Old Passed Check (console)
         ///// <summary>
         ///// Checking if a test could be marked as "passed" or not
         ///// </summary>
@@ -400,8 +394,8 @@ namespace BL
         //    }
         //    return count >= 3;
         //}
-
-        //#region Old Test Update - (Console)
+        #endregion
+        #region Old Test Update - (Console)
         //public void UpdateTest(int idtest, bool _distance , bool _ReversePark, bool _usingMirrors, bool _speed, bool _usingVinkers)
         //{        Test test = null;
         //    foreach (Test item in dal.GetTests())
@@ -420,7 +414,7 @@ namespace BL
         //    dal.UpdateTest(test);
 
         //}
-        //#endregion
+        #endregion
 
         public void UpdateTester(Tester tester)
         {

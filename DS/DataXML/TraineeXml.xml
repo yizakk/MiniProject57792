@@ -66,4 +66,36 @@
     <TeacherName>גוזלין</TeacherName>
     <NumLessons>22</NumLessons>
   </Trainee>
+  <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>055311948</Id>
+    <Address>
+      <City>תקוע</City>
+      <Street>תקוע</Street>
+      <BuildingNumber>12</BuildingNumber>
+    </Address>
+    <CarType>פרטי</CarType>
+    <BirthDate>2000-01-01T00:00:00</BirthDate>
+    <LastName>תלמידי</LastName>
+    <FirstName>תלמיד</FirstName>
+    <Gender>נקבה</Gender>
+    <LastTest>2019-02-05T13:00:00</LastTest>
+    <GearType>אוטומטי</GearType>
+    <NumLessons>22</NumLessons>
+  </Trainee>
+  <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>053418307</Id>
+    <Address>
+      <City>חספין</City>
+      <Street>דבורה</Street>
+      <BuildingNumber>68</BuildingNumber>
+    </Address>
+    <CarType>פרטי</CarType>
+    <BirthDate>2000-01-01T00:00:00</BirthDate>
+    <LastName>נוסבאום</LastName>
+    <FirstName>שמואל</FirstName>
+    <Gender>זכר</Gender>
+    <LastTest>2019-02-26T15:00:00</LastTest>
+    <GearType>ידני</GearType>
+    <NumLessons>29</NumLessons>
+  </Trainee>
 </Trainees>

@@ -62,7 +62,6 @@ namespace PLWPF
             if (TimeComboBox.SelectedIndex == -1)
             {
                // gif.Close();
-
                 MessageBox.Show("אנא בחר שעה", "", MessageBoxButton.OK,
                                 MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
                 return;
@@ -81,7 +80,6 @@ namespace PLWPF
                 || dateDatePicker.SelectedDate.Value.DayOfWeek == DayOfWeek.Saturday)
             {
                 // gif.Close();
-
                 MessageBox.Show("ימי העבודה הינם בין ראשון - חמישי", "", MessageBoxButton.OK,
                 MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
                 dateDatePicker.SelectedDate = dateDatePicker.SelectedDate.Value.AddDays(2);
@@ -91,7 +89,6 @@ namespace PLWPF
             if (cityTextBox.Text.Length == 0 || streetTextBox.Text.Length == 0 || buildingNumberTextBox.Text.Length == 0)
             {
              //   gif.Close();
-
                 MessageBox.Show("אנא מלא את 3 השדות של הכתובת", "", MessageBoxButton.OK,
                 MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
                 return;
@@ -107,13 +104,10 @@ namespace PLWPF
             
             image.Visibility = Visibility.Visible;
             button.IsEnabled = false;
-            //mediaElement.IsEnabled = true;
-                //    mediaElement.Visibility = Visibility.Visible;
             new Thread(() => // Activating the bl layer by thread 
             {
                 try
                 {
-                  //  mediaElement.FlowDirection = FlowDirection.RightToLeft;
                     bl.AddTest(TempTest);
                 }
                 catch (MyExceptions ex)

@@ -506,4 +506,96 @@
     </Paramet>
     <Passed>False</Passed>
   </Test>
+  <Test>
+    <Id>10000022</Id>
+    <TesterId>335191102</TesterId>
+    <TraineeId>055311948</TraineeId>
+    <Date>28/01/2019 11:00:00</Date>
+    <TesterComment />
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City>מורשת</City>
+        <BuildingNumber>12</BuildingNumber>
+        <Street>השילוח</Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>False</Speed>
+      <Distance>False</Distance>
+      <ReversePark>False</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>False</Passed>
+  </Test>
+  <Test>
+    <Id>10000023</Id>
+    <TesterId>335191102</TesterId>
+    <TraineeId>055311948</TraineeId>
+    <Date>05/02/2019 13:00:00</Date>
+    <TesterComment />
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City>תל אביב</City>
+        <BuildingNumber>2</BuildingNumber>
+        <Street>בגין</Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>False</Speed>
+      <Distance>False</Distance>
+      <ReversePark>False</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>False</Passed>
+  </Test>
+  <Test>
+    <Id>10000024</Id>
+    <TesterId>335191102</TesterId>
+    <TraineeId>053418307</TraineeId>
+    <Date>27/01/2019 15:00:00</Date>
+    <TesterComment />
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City>עליכם</City>
+        <BuildingNumber>12</BuildingNumber>
+        <Street>שלום</Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>False</Speed>
+      <Distance>False</Distance>
+      <ReversePark>False</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>False</Passed>
+  </Test>
+  <Test>
+    <Id>10000025</Id>
+    <TesterId>335191102</TesterId>
+    <TraineeId>053418307</TraineeId>
+    <Date>26/02/2019 15:00:00</Date>
+    <TesterComment />
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City>ירושלים</City>
+        <BuildingNumber>9</BuildingNumber>
+        <Street>הנביאים</Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>False</Speed>
+      <Distance>False</Distance>
+      <ReversePark>False</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>False</Passed>
+  </Test>
 </Tests>
