@@ -59,6 +59,7 @@ namespace BL
                     }
                     else //busy network or other error...
                     {
+
                         throw new MyExceptions("תקלה ברשת");
                     }
                 } while (i++ < 2 && Distance == null);
