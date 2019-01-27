@@ -24,30 +24,34 @@ namespace PLWPF
         public DeleteTester()
         {
             InitializeComponent();
-            if (Data.UserType == Data.Usertype.בוחן)
+            try
             {
-                comboBox.Visibility = Visibility.Collapsed;
-
-                TesterId.Text = Data.UserID;
-                TesterId.Visibility = Visibility.Visible;
-                textBlock.Text = "באפשרותך להסיר רק את עצמך";
-                return;
-            }
-
-            else
-            {
-                var sourceList = bl.GetTesterIdList();
-                if (!sourceList.Any())
+                if (Data.UserType == Data.Usertype.בוחן)
                 {
-                    MessageBox.Show("אין בוחנים במאגר", "", MessageBoxButton.OK, MessageBoxImage.None,
-                                        MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-                    button.IsEnabled = false;
-                    comboBox.IsEnabled = false;
+                    comboBox.Visibility = Visibility.Collapsed;
+
+                    TesterId.Text = Data.UserID;
+                    TesterId.Visibility = Visibility.Visible;
+                    textBlock.Text = "באפשרותך להסיר רק את עצמך";
+                    return;
                 }
 
-                comboBox.ItemsSource = sourceList;
-                comboBox.SelectedIndex = 0;
+                else
+                {
+                    var sourceList = bl.GetTesterIdList();
+                    if (!sourceList.Any())
+                    {
+                        MessageBox.Show("אין בוחנים במאגר", "", MessageBoxButton.OK, MessageBoxImage.None,
+                                            MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                        button.IsEnabled = false;
+                        comboBox.IsEnabled = false;
+                    }
+
+                    comboBox.ItemsSource = sourceList;
+                    comboBox.SelectedIndex = 0;
+                }
             }
+            catch { }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

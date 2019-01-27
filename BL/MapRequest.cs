@@ -57,7 +57,7 @@ namespace BL
                     else if (xmldoc.GetElementsByTagName("statusCode")[0].ChildNodes[0].InnerText == "402")
                     //we have an answer that an error occurred, one of the addresses is not found
                     {
-                        //throw new Exception("one of the addresses is incorrect");
+                        throw new Exception("one of the addresses is incorrect");
                     }
                     else //busy network or other error...
                     {
