@@ -34,9 +34,9 @@ namespace PLWPF
                 MessageBox.Show("שלום מנהל, אנא הזן סיסמה", "", MessageBoxButton.OK, MessageBoxImage.None,
                     MessageBoxResult.OK, MessageBoxOptions.RtlReading);
                 //MainGrid.Children.Clear();
-                ManagerPasswordBox.Visibility = Visibility.Visible;
                 IdTextBox.Visibility = Visibility.Collapsed;
                 button1.Visibility = Visibility.Collapsed;
+                ManagerPasswordBox.Visibility = Visibility.Visible;
                 button2.Visibility = Visibility.Visible;
                 return;
             }
