@@ -16,7 +16,6 @@ namespace DS
             return source;
         }
 
-
         static DataSource Data = null;
         public static DataSource GetDS() // a singleton design pattern for one instance of dal
         {
@@ -24,6 +23,5 @@ namespace DS
                 Data = new DataSource();
             return Data;
         }
-
     }
 }

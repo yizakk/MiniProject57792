@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using BE;
 using Dal;
 
 namespace BL
 {
-
     public class BL : IBL
     {
         IDal dal = DalFactory.GetDal(); // getting an instance of "dal"
@@ -52,7 +48,12 @@ namespace BL
                 {
                     throw new MyExceptions("כבר נקבע עבורך טסט באותה השעה והיום בדיוק");
                 }
+
             }
+                //// הוספה ביום המבחן - אם יש בעיה להוריד מכאן
+                //if(DateTime.Now.AddMonths(3) < test.Date.AddMonths(3))
+                //    throw new MyExceptions("לא ניתן לקבוע מראש יותר מטסט אחד בשלושה חודשים ");
+                //// לבדוק אם עובד
             // if trainee didn't reach min required lessons - throwing
             if (trainee.NumLessons < Configuration.MinLessons || trainee.NumLessons==null)
             {
@@ -115,9 +116,8 @@ namespace BL
                     else // if it is in the time user asked - simply sending it to the dal
                     {
                         dal.AddTest(test);
-                        throw new MyExceptions("נרשם טסט עבור: " + test.TraineeId + " ב: " + test.Date, true);
+                        throw new MyExceptions("נרשם טסט עבור: " + test.TraineeId + " ב: " + test.Date);
                     }
-
                 }
                 flag = true; // if a test wasn't signed until first iteration here - it means we are changing the original time he asked
                 test.Date = test.Date.AddHours(1); // now adding an hour to the time of test, and re-checking for avalability
@@ -308,10 +308,10 @@ namespace BL
                 }
         }
 
-        public void Kuku(DateTime time) // למצוא שם
-        {
-            FindAvilableTesters(time);
-        }
+        //public void Kuku(DateTime time) // למצוא שם
+        //{
+        //    FindAvilableTesters(time);
+        //}
         public void AddTrainee(Trainee trainee)
         {
             if (dal.FindTester(trainee.Id) != null || dal.FindTrainee(trainee.Id) != null)
@@ -541,7 +541,7 @@ namespace BL
             }
             else { dal.UpdateTest(testItem); } // if didn't pass
         }
-        // a silly private function to validate the ID number 
+        // a private function to validate the ID number 
         private bool CheckIdValidity(string id)
         {
             int sum = 0;

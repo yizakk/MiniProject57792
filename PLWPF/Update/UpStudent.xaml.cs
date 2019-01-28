@@ -84,6 +84,16 @@ namespace PLWPF
                 MessageBox.Show(a._message);
                 return;
             }
+            if(Data.UserType!= Data.Usertype.תלמיד) // if user isn't a trainee - offer him to make another update
+            {
+             int ch = (int)   MessageBox.Show("העדכון הסתיים בהצלחה! \n האם ברצונך לבצע עדכון נוסף?", "", MessageBoxButton.YesNo, MessageBoxImage.Question,
+                                MessageBoxResult.Yes, MessageBoxOptions.RtlReading);
+                if (ch == 6)
+                    Data.MainUserControl = new UpStudent();
+                else
+                    Data.MainUserControl = new HomePanel();
+                return;
+            }
             MessageBox.Show("העידכון הסתיים בהצלחה");
             Data.MainUserControl = new HomePanel();
 

@@ -10,8 +10,16 @@ using System.Xml.Serialization;
 
 namespace BE
 {
+    /// <summary>
+    /// here we hold some exrensions for all the program , such as converting to and from XML
+    /// </summary>
     public static class BE_Extensions
     {
+        /// <summary>
+        /// Returning the XML representation of an address instance
+        /// </summary>
+        /// <param name="a"> An Address object</param>
+        /// <returns>XElemnt</returns>
         public static XElement ToXML(this Address a)
         {
             return new XElement("Address",
@@ -20,10 +28,14 @@ namespace BE
                 new XElement("Street", a.Street)
                 );
         }
+        /// <summary>
+        /// Returning an Address object read from XElement
+        /// </summary>
+        /// <param name="a">XElement of the address</param>
+        /// <returns>Address instance</returns>
         public static Address ToAddress(this XElement a)
         {
-            int x = 0;
-            int.TryParse(a.Element("BuildingNumber").Value, out x);
+            int.TryParse(a.Element("BuildingNumber").Value, out int x);
             return new Address
             {
                 City = a.Element("City").Value,
@@ -40,7 +52,11 @@ namespace BE
 
         //    return dateTimesList;
         //}
-
+        /// <summary>
+        /// Returning a Test object read from an XElement object
+        /// </summary>
+        /// <param name="d">XElement</param>
+        /// <returns>Test object</returns>
         public static Test ToTest(this XElement d)
         {
             return new Test
@@ -56,7 +72,11 @@ namespace BE
                 BeginAddress = d.Element("BeginAddress").Element("Address").ToAddress(),
             };
         }
-
+        /// <summary>
+        /// Returning the trainee object contained in the XElement
+        /// </summary>
+        /// <param name="d">XElement object containing the trainee info.</param>
+        /// <returns>Trainee</returns>
         public static Trainee ToTrainee(this XElement d)
         {
             Trainee temp = new Trainee();
@@ -75,6 +95,11 @@ namespace BE
             temp.NumLessons = int.Parse(d.Element("NumLessons").Value);
             return temp;
         }
+        /// <summary>
+        /// Returning the XElement representation of a trainee
+        /// </summary>
+        /// <param name="d">trainee object containing the trainee info.</param>
+        /// <returns>XElement</returns>
         public static XElement ToXml(this Trainee trainee)
         {
             return new XElement("Trainee",
@@ -94,6 +119,11 @@ namespace BE
 
                 );
         }
+        /// <summary>
+        /// Returning a tester object based on the info. from XElement
+        /// </summary>
+        /// <param name="d"></param>
+        /// <returns></returns>
         public static Tester ToTester(this XElement d)
         {
             Tester temp = new Tester();
@@ -115,7 +145,11 @@ namespace BE
 
             return temp;
         }
-
+        /// <summary>
+        /// Returning the XML representation of the tester object
+        /// </summary>
+        /// <param name="tester"></param>
+        /// <returns></returns>
         public static XElement ToXml(this Tester tester)
         {
             return new XElement("Tester",
@@ -134,7 +168,11 @@ namespace BE
                 new XElement("WorkSchedule", tester.WorkSave)
                 );
         }
-
+        /// <summary>
+        /// Returning the XML representation of a test object
+        /// </summary>
+        /// <param name="test"></param>
+        /// <returns></returns>
         public static XElement ToXml(this Test test)
         {
             return new XElement("Test",
@@ -153,7 +191,12 @@ namespace BE
                                                  new XElement("UsingMirrors", test.Paramet.UsingMirrors.ToString())),
                                   new XElement("Passed", test.Passed.ToString()));
         }
-        public static CarType ToCarType(this XElement d)
+        /// <summary>
+        /// Converting XElement to car type. only for inner user by this class
+        /// </summary>
+        /// <param name="d"></param>
+        /// <returns></returns>
+        private static CarType ToCarType(this XElement d)
         {
             switch (d.Value)
             {
@@ -169,7 +212,12 @@ namespace BE
                     return CarType.פרטי;
             }
         }
-        public static Gear ToGearType(this XElement d)
+        /// <summary>
+        /// Converting XElement to gear type. only for inner user by this class
+        /// </summary>
+        /// <param name="d"></param>
+        /// <returns></returns>
+        private static Gear ToGearType(this XElement d)
         {
             switch (d.Value)
             {
@@ -181,7 +229,12 @@ namespace BE
                     return Gear.אוטומטי;
             }
         }
-        public static Parameters ToParameters(this XElement p)
+        /// <summary>
+        /// Converting XElement to test parameters. only for inner user by this class
+        /// </summary>
+        /// <param name="d"></param>
+        /// <returns></returns>
+        private static Parameters ToParameters(this XElement p)
         {
             return new Parameters
             {

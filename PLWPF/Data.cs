@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
 namespace PLWPF
-{ /// <summary>
+{ 
+    /// <summary>
 /// this Class is made for holding data for the PL. it holds the user ID, user type, 
 /// the user control currently showed in the main window etc.
 /// </summary>
@@ -53,7 +50,11 @@ namespace PLWPF
             מנהל
         }
 
-
+        /// <summary>
+        /// Validating that all chars inserted to a field are numbers and not other chars.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public static void NumericCheck(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == Key.Tab || e.Key == Key.Enter || e.Key == Key.LeftShift || e.Key == Key.RightShift

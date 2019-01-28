@@ -92,7 +92,9 @@ namespace BE
         private static int testId = 10000000;
 
     }
-
+    /// <summary>
+    /// this class is for hashing the password and comparing the user input to the the stored password
+    /// </summary>
     public static class Encryption
     {
         public static string SanitizeInput(string thisInput)

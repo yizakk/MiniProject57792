@@ -13,12 +13,16 @@ namespace DS
         private static string solutionDirectory = Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName;
 
         private static string filePath = Path.Combine(solutionDirectory, "DS", "DataXML");
-
+        /// <summary>
+        /// Holding XElements for testers,trainees,tests and configuration
+        /// </summary>
         private static XElement configurationRoot = null;
         private static XElement traineeRoot = null;
         private static XElement TesterRoot = null;
         private static XElement TestRoot = null;
-
+        /// <summary>
+        /// The fileNames for the 4 XMLs
+        /// </summary>
         private static string configurationPath = Path.Combine(filePath, "configXml.xml");
         private static string traineesPath = Path.Combine(filePath, "TraineeXml.xml");
         private static string TestersPath = Path.Combine(filePath, "TesterXml.xml");
@@ -26,18 +30,19 @@ namespace DS
 
         internal XmlDs()
         {
+            // if the directory we want to store in it the XML files doesn't exist - create it
             bool exists = Directory.Exists(filePath);
             if (!exists)
             {
                 Directory.CreateDirectory(filePath);
             }
 
+            // now checking for each file from the 4
             if (!File.Exists(traineesPath))
             {
                 CreateFile("Trainees", traineesPath);
             }
-            traineeRoot = LoadData(traineesPath);
-
+            traineeRoot = LoadData(traineesPath); // and loading the XML data from file
 
             if (!File.Exists(TestersPath))
             {
@@ -57,24 +62,29 @@ namespace DS
             }
             configurationRoot = LoadData(configurationPath);
         }
-
-        private void CreateFile(string typename, string path)
+        /// <summary>
+        /// Creating a XML file with the given name
+        /// </summary>
+        /// <param name="typename"></param>
+        /// <param name="path"></param>
+        private void CreateFile(string typename, string path) 
         {
             XElement root = new XElement(typename);
             root.Save(path);
         }
 
-        public   void SaveTrainees()
+        #region Updating the XML files from RAM
+        public void SaveTrainees() 
         {
             traineeRoot.Save(traineesPath);
         }
 
-        public   void SaveTesters()
+        public void SaveTesters()
         {
             TesterRoot.Save(TestersPath);
         }
 
-        public   void SaveTests()
+        public void SaveTests()
         {
             TestRoot.Save(TestsPath);
         }
@@ -83,7 +93,8 @@ namespace DS
         {
             configurationRoot.Save(configurationPath);
         }
-
+        #endregion
+        #region XElement properties to return updated-from-file XElements
         public XElement Configuration
         {
             get
@@ -92,8 +103,7 @@ namespace DS
                 return configurationRoot;
             }
         }
-        
-        public   XElement Trainees
+        public XElement Trainees
         {
             get
             {
@@ -101,8 +111,7 @@ namespace DS
                 return traineeRoot;
             }
         }
-
-        public   XElement Testers
+        public XElement Testers
         {
             get
             {
@@ -110,8 +119,7 @@ namespace DS
                 return TesterRoot;
             }
         }
-
-        public   XElement Tests
+        public XElement Tests
         {
             get
             {
@@ -119,8 +127,9 @@ namespace DS
                 return TestRoot;
             }
         }
+        #endregion
 
-        private   XElement LoadData(string path)
+        private XElement LoadData(string path)
         {
             XElement root;
             try
