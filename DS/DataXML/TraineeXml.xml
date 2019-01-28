@@ -1,20 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Trainees>
   <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <Id>300497385</Id>
-    <Address>
-      <City />
-      <Street />
-      <BuildingNumber xsi:nil="true" />
-    </Address>
-    <CarType>פרטי</CarType>
-    <BirthDate>2000-01-01T00:00:00</BirthDate>
-    <Gender>זכר</Gender>
-    <LastTest>2019-07-31T10:00:00</LastTest>
-    <GearType>אוטומטי</GearType>
-    <NumLessons>33</NumLessons>
-  </Trainee>
-  <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <Id>029985090</Id>
     <Address>
       <City />
@@ -97,5 +83,43 @@
     <LastTest>2019-02-26T15:00:00</LastTest>
     <GearType>ידני</GearType>
     <NumLessons>29</NumLessons>
+  </Trainee>
+  <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>000000000</Id>
+    <PhoneNumber>0000000000</PhoneNumber>
+    <Address>
+      <City />
+      <Street />
+      <BuildingNumber xsi:nil="true" />
+    </Address>
+    <CarType>פרטי</CarType>
+    <BirthDate>2000-01-01T00:00:00</BirthDate>
+    <LastName>חיצמצ</LastName>
+    <FirstName>'ג</FirstName>
+    <Gender>זכר</Gender>
+    <LastTest>0001-01-01T00:00:00</LastTest>
+    <GearType>אוטומטי</GearType>
+    <SchoolName>קכ</SchoolName>
+    <TeacherName>כבס</TeacherName>
+    <NumLessons>11</NumLessons>
+  </Trainee>
+  <Trainee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Id>000000026</Id>
+    <PhoneNumber>1111111111</PhoneNumber>
+    <Address>
+      <City>גג</City>
+      <Street>גג</Street>
+      <BuildingNumber>44</BuildingNumber>
+    </Address>
+    <CarType>פרטי</CarType>
+    <BirthDate>2000-01-01T00:00:00</BirthDate>
+    <LastName>ייע</LastName>
+    <FirstName>יעימ</FirstName>
+    <Gender>זכר</Gender>
+    <LastTest>0001-01-01T00:00:00</LastTest>
+    <GearType>אוטומטי</GearType>
+    <SchoolName>''</SchoolName>
+    <TeacherName>''</TeacherName>
+    <NumLessons>33</NumLessons>
   </Trainee>
 </Trainees>

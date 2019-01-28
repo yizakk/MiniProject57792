@@ -27,7 +27,7 @@ namespace PLWPF
             InitializeComponent();
             //MessageBox.Show("בבקשה מלא את הטופס מלמעלה למטה", "", MessageBoxButton.OK,
             //                     MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-
+            
             // initiaing the working hours of the day, for showing in the combobox to choose hour for the test
             int[] array = new int[Configuration.WorkHours];
             for (int i = 0; i < Configuration.WorkHours; i++)
@@ -59,139 +59,142 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (TimeComboBox.SelectedIndex == -1)
+            try
             {
-               // gif.Close();
-                MessageBox.Show("אנא בחר שעה", "", MessageBoxButton.OK,
-                                MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-                return;
-            }
-
-            if (SearchComboBox.SelectedIndex == -1 && TempTest.TraineeId.Length<7)
-            {
-               // gif.Close();
-
-                MessageBox.Show("אנא בחר תלמיד", "", MessageBoxButton.OK,
-                                MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-                return;
-            }
-
-            if (dateDatePicker.SelectedDate.Value.DayOfWeek == DayOfWeek.Friday
-                || dateDatePicker.SelectedDate.Value.DayOfWeek == DayOfWeek.Saturday)
-            {
-                // gif.Close();
-                MessageBox.Show("ימי העבודה הינם בין ראשון - חמישי", "", MessageBoxButton.OK,
-                MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-                dateDatePicker.SelectedDate = dateDatePicker.SelectedDate.Value.AddDays(2);
-                return;
-            }
-        
-            if (cityTextBox.Text.Length == 0 || streetTextBox.Text.Length == 0 || buildingNumberTextBox.Text.Length == 0)
-            {
-             //   gif.Close();
-                MessageBox.Show("אנא מלא את 3 השדות של הכתובת", "", MessageBoxButton.OK,
-                MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-                return;
-            }
-
-            TempTest.Date = ((DateTime)dateDatePicker.SelectedDate).AddHours(TimeComboBox.SelectedIndex + Configuration.StartHour);
-            if (Data.UserType != Data.Usertype.תלמיד) // if user type isn't trainee - pull id from combobox
-                TempTest.TraineeId = SearchComboBox.SelectedValue.ToString().Split(' ')[0];
-            else // if user is a trainee - we "pull" his id from DATA class
-                TempTest.TraineeId = Data.UserID;
-
-            TempTest.CarType = bl.FindTrainee(TempTest.TraineeId).CarType;
-            
-            image.Visibility = Visibility.Visible;
-            button.IsEnabled = false;
-            new Thread(() => // Activating the bl layer by thread 
-            {
-                try
+                if (TimeComboBox.SelectedIndex == -1)
                 {
-                    bl.AddTest(TempTest);
-                }
-                catch (MyExceptions ex)
-                {
-                    if (ex.SuggestedTest == null)
-                    {
-                        MessageBox.Show(ex._message);
-                    }
-                    else // there is a suggested test to offer to user
-                    {
-                        int choice = (int)MessageBox.Show(ex._message, "", MessageBoxButton.YesNo,
-                        MessageBoxImage.Information, MessageBoxResult.No, MessageBoxOptions.RtlReading);
-                        if (choice == 6)
-                        {
-                            try
-                            {
-                                bl.AddTest(ex.SuggestedTest);
-                            }
-                            catch(MyExceptions Mex)
-                            {
-                                MessageBox.Show(Mex._message, "", MessageBoxButton.OK,
-                                                MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-                                Data.MainUserControl = new AddTest();
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("נסה להוסיף טסט אחר ידנית", "", MessageBoxButton.OK,
+                    // gif.Close();
+                    MessageBox.Show("אנא בחר שעה", "", MessageBoxButton.OK,
                                     MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-                            Data.MainUserControl = new AddTest();
-                        }
-                    }
+                    return;
                 }
-                Dispatcher.Invoke(new Action(() =>
+
+                if (SearchComboBox.SelectedIndex == -1 && TempTest.TraineeId.Length < 7)
+                {
+                    // gif.Close();
+
+                    MessageBox.Show("אנא בחר תלמיד", "", MessageBoxButton.OK,
+                                    MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                    return;
+                }
+
+                if (dateDatePicker.SelectedDate.Value.DayOfWeek == DayOfWeek.Friday
+                    || dateDatePicker.SelectedDate.Value.DayOfWeek == DayOfWeek.Saturday)
+                {
+                    // gif.Close();
+                    MessageBox.Show("ימי העבודה הינם בין ראשון - חמישי", "", MessageBoxButton.OK,
+                    MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                    dateDatePicker.SelectedDate = dateDatePicker.SelectedDate.Value.AddDays(2);
+                    return;
+                }
+
+                if (cityTextBox.Text.Length == 0 || streetTextBox.Text.Length == 0 || buildingNumberTextBox.Text.Length == 0)
+                {
+                    //   gif.Close();
+                    MessageBox.Show("אנא מלא את 3 השדות של הכתובת", "", MessageBoxButton.OK,
+                    MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                    return;
+                }
+
+                TempTest.Date = ((DateTime)dateDatePicker.SelectedDate).AddHours(TimeComboBox.SelectedIndex + Configuration.StartHour);
+                if (Data.UserType != Data.Usertype.תלמיד) // if user type isn't trainee - pull id from combobox
+                    TempTest.TraineeId = SearchComboBox.SelectedValue.ToString().Split(' ')[0];
+                else // if user is a trainee - we "pull" his id from DATA class
+                    TempTest.TraineeId = Data.UserID;
+
+                TempTest.CarType = bl.FindTrainee(TempTest.TraineeId).CarType;
+
+                image.Visibility = Visibility.Visible;
+                button.IsEnabled = false;
+                new Thread(() => // Activating the bl layer by thread 
                 {
                     try
                     {
-                        image.Visibility = Visibility.Hidden;
-                        button.IsEnabled = true;
-                        Data.MainUserControl = new AddTest();
+                        bl.AddTest(TempTest);
+                    }
+                    catch (MyExceptions ex)
+                    {
+                        if (ex.SuggestedTest == null)
+                        {
+                            MessageBox.Show(ex._message);
+                        }
+                        else // there is a suggested test to offer to user
+                    {
+                            int choice = (int)MessageBox.Show(ex._message, "", MessageBoxButton.YesNo,
+                            MessageBoxImage.Information, MessageBoxResult.No, MessageBoxOptions.RtlReading);
+                            if (choice == 6)
+                            {
+                                try
+                                {
+                                    bl.AddTest(ex.SuggestedTest);
+                                }
+                                catch (MyExceptions Mex)
+                                {
+                                    MessageBox.Show(Mex._message, "", MessageBoxButton.OK,
+                                                    MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                                    Data.MainUserControl = new AddTest();
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("נסה להוסיף טסט אחר ידנית", "", MessageBoxButton.OK,
+                                        MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                                Data.MainUserControl = new AddTest();
+                            }
+                        }
+                    }
+                    Dispatcher.Invoke(new Action(() =>
+                    {
+                        try
+                        {
+                            image.Visibility = Visibility.Hidden;
+                            button.IsEnabled = true;
+                            Data.MainUserControl = new AddTest();
                         //   mediaElement.Visibility = Visibility.Collapsed;
                         //  gif.Close();
 
                     }
-                    catch (Exception n)
-                    {
-                      //  gif.Close();
+                        catch (Exception n)
+                        {
+                        //  gif.Close();
 
                         MessageBox.Show(n.Message);
-                    }
-                }));
+                        }
+                    }));
 
-            }).Start();
+                }).Start();
 
-            //    try
-            //    {
-            //        bl.AddTest(TempTest);
-            //    }
-            //    catch(MyExceptions ex)
-            //    {
-            //        if(ex.SuggestedTest==null)
-            //        {
-            //            MessageBox.Show(ex._message, "", MessageBoxButton.OK,
-            //            MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-            //        }
-            //        else // offering user additional test
-            //        {
-            //            int choice = (int) MessageBox.Show(ex._message, "", MessageBoxButton.YesNo,
-            //            MessageBoxImage.Information, MessageBoxResult.No, MessageBoxOptions.RtlReading);
-            //            if(choice==6)
-            //            {
-            //                bl.AddTest(ex.SuggestedTest);
-            //            }
-            //            else
-            //            {
-            //                MessageBox.Show("נסה להוסיף טסט אחר ידנית", "", MessageBoxButton.OK,
-            //                        MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-            //                Data.MainUserControl = new AddTest();
-            //            }
-            //        }
-            //    }
-            //}
+                //    try
+                //    {
+                //        bl.AddTest(TempTest);
+                //    }
+                //    catch(MyExceptions ex)
+                //    {
+                //        if(ex.SuggestedTest==null)
+                //        {
+                //            MessageBox.Show(ex._message, "", MessageBoxButton.OK,
+                //            MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                //        }
+                //        else // offering user additional test
+                //        {
+                //            int choice = (int) MessageBox.Show(ex._message, "", MessageBoxButton.YesNo,
+                //            MessageBoxImage.Information, MessageBoxResult.No, MessageBoxOptions.RtlReading);
+                //            if(choice==6)
+                //            {
+                //                bl.AddTest(ex.SuggestedTest);
+                //            }
+                //            else
+                //            {
+                //                MessageBox.Show("נסה להוסיף טסט אחר ידנית", "", MessageBoxButton.OK,
+                //                        MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                //                Data.MainUserControl = new AddTest();
+                //            }
+                //        }
+                //    }
+                //}
 
-
+            }
+            catch { }
 
         }
        

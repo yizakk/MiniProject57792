@@ -56,6 +56,24 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(CityTextBox.Text))
+            {
+                MessageBox.Show("נא להכניס את שם העיר", "", MessageBoxButton.OK, MessageBoxImage.None,
+                    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                return;
+            }
+            if (string.IsNullOrEmpty(streetTextBox.Text))
+            {
+                MessageBox.Show("נא להכניס את שם הרחוב", "", MessageBoxButton.OK, MessageBoxImage.None,
+                    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                return;
+            }
+            if (string.IsNullOrEmpty(buildingNumberTextBox.Text))
+            {
+                MessageBox.Show("נא להכניס את מספר בנין", "", MessageBoxButton.OK, MessageBoxImage.None,
+                    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                return;
+            }
             try
             {
                 TestItem.BeginAddress = Address;
