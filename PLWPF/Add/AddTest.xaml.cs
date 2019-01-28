@@ -22,6 +22,8 @@ namespace PLWPF
         public AddTest()
         {
             InitializeComponent();
+            
+
             //MessageBox.Show("בבקשה מלא את הטופס מלמעלה למטה", "", MessageBoxButton.OK,
             //                     MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
 
@@ -61,7 +63,7 @@ namespace PLWPF
                 return;
             }
 
-            if (SearchComboBox.SelectedIndex == -1 && TempTest.TraineeId.Length<7)
+            if (SearchComboBox.SelectedIndex == -1)
             {
                 MessageBox.Show("אנא בחר תלמיד", "", MessageBoxButton.OK,
                                 MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.RtlReading);
@@ -94,6 +96,12 @@ namespace PLWPF
             
             image.Visibility = Visibility.Visible; // showing an image during the looking for tester
             button.IsEnabled = false; // disabling the button during the waiting
+            Message.Visibility = Visibility.Visible;
+            //Window gif = new gif
+            //{
+            //    ShowActivated = true
+            //};
+            //gif.Show();
 
             new Thread(() => // Activating the bl layer by thread 
             {
@@ -138,6 +146,7 @@ namespace PLWPF
                     {
                         image.Visibility = Visibility.Hidden;
                         button.IsEnabled = true;
+
                         Data.MainUserControl = new AddTest();
                     }
                     catch (Exception n)

@@ -22,7 +22,7 @@ namespace PLWPF
         {
             InitializeComponent();
             Data.MainUserControl = new Login();
-           
+            
             GridMain.Children.Add(Data.MainUserControl);
             Data.UserControlChanged += UserTypeChanged; // adding local func. "userTypeChanged" to handle the change of user type
         }
@@ -82,12 +82,12 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            switch(Data.BackPage) // right now - only going to home panel. in the future- going to the page you came from
-            {
-                case 0:
+            //switch(Data.BackPage) // right now - only going to home panel. in the future- going to the page you came from
+            //{
+            //    case 0:
+            if(Data.UserType != Data.Usertype.אורח)
                     Data.MainUserControl = new HomePanel();
-                    break;
-            }
+            //}
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
@@ -97,7 +97,11 @@ namespace PLWPF
 
         private void HomePanelButton_Click(object sender, RoutedEventArgs e)
         {
-            Data.MainUserControl = new HomePanel();
+            if (Data.UserType != Data.Usertype.אורח)
+                Data.MainUserControl = new HomePanel();
+            else
+                MessageBox.Show("נדרשת התחברות לגישה למסך הבית", "", MessageBoxButton.OK, MessageBoxImage.None,
+                    MessageBoxResult.OK, MessageBoxOptions.RtlReading);
         }
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)

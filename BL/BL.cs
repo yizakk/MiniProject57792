@@ -77,7 +77,7 @@ namespace BL
             if (!TestersWithCarType.Any())
                 throw new MyExceptions("No available testers with this car type!");//chek
 
-            List<Tester> AvailableTesters;
+            IEnumerable<Tester> AvailableTesters;
             DateTime OriginalTestDate = test.Date; // saving the original date and time, because we might change it, so we should count 3 month from the original time
             bool flag = false;
             do
@@ -89,12 +89,12 @@ namespace BL
                    // AvailableTesters = AvailableTesters.ToList();
                     try
                     {
-                        foreach( var item in AvailableTesters)
-                        {
-                            if (item.MaxDistance < MapRequest.MapRequestLoop(item, test.BeginAddressString))
-                                AvailableTesters.Remove(item);
-                        }
-                      //  AvailableTesters = AvailableTesters.Where(item => item.MaxDistance >= MapRequest.MapRequestLoop(item, test.BeginAddressString));
+                        //foreach( var item in AvailableTesters)
+                        //{
+                        //    if (item.MaxDistance < MapRequest.MapRequestLoop(item, test.BeginAddressString))
+                        //        AvailableTesters.Remove(item);
+                        //}
+                       AvailableTesters = AvailableTesters.Where(item => item.MaxDistance >= MapRequest.MapRequestLoop(item, test.BeginAddressString));
                     }
                     catch(MyExceptions a)
                     { throw a; }

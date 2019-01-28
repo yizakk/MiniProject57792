@@ -94,20 +94,11 @@
     <Compile Include="DeleteTrainee.xaml.cs">
       <DependentUpon>DeleteTrainee.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Exsemple.xaml.cs">
-      <DependentUpon>Exsemple.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="gif.xaml.cs">
-      <DependentUpon>gif.xaml</DependentUpon>
-    </Compile>
     <Compile Include="HomePanel.xaml.cs">
       <DependentUpon>HomePanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="ManagementPanel.xaml.cs">
       <DependentUpon>ManagementPanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="mengerPasword.xaml.cs">
-      <DependentUpon>mengerPasword.xaml</DependentUpon>
     </Compile>
     <Compile Include="print\printAllStudent.xaml.cs">
       <DependentUpon>printAllStudent.xaml</DependentUpon>
@@ -201,23 +192,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Exsemple.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="gif.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="HomePanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ManagementPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="mengerPasword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -299,13 +278,7 @@
     <Resource Include="images\מנהל.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\giphy.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="images\gggg.mp4" />
-    <Content Include="images\SpongeBob.wmv" />
     <Resource Include="images\try.gif" />
-    <Resource Include="images\tenor.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

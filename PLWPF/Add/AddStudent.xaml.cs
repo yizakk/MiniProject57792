@@ -24,28 +24,19 @@ namespace PLWPF
 
             bl = BL.BlFactory.GetBL();
             TempTrainee = new Trainee();
-            TempTrainee.BirthDate = DateTime.Parse("2000 01 01");
-            birthDateDatePicker.DisplayDateEnd = DateTime.Now.AddYears(-18);
+            TempTrainee.BirthDate = DateTime.Now.AddYears(Configuration.TraineeMinAge);
             buildingNumberTextBox1.Text = "";
             try
             {
                 grid1.DataContext = TempTrainee;
-            }
-            catch (Exception a)
-            {
-                MessageBox.Show(a.Message);
-            }
-
-            try
-            {
                 grid2.DataContext = address;
             }
             catch (Exception a)
             {
                 MessageBox.Show(a.Message);
             }
-
-            TempTrainee.Id = Data.UserID;
+            if (Data.UserType == Data.Usertype.תלמיד)
+                TempTrainee.Id = Data.UserID;
             
 // קשירת הקומבובוקסים
             car_typeComboBox.ItemsSource = Enum.GetValues(typeof(CarType));
@@ -159,11 +150,9 @@ namespace PLWPF
                 }
                 catch (Exception c)
                 {
-                    if (c is MyExceptions)
+                    if (c is MyExceptions b)
                     {
-                        var b = (MyExceptions)c;
                         MessageBox.Show(b._message);
-
                         return;
                     }
                     MessageBox.Show(c.Message);

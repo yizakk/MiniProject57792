@@ -18,7 +18,7 @@ namespace BE
 
         public MyExceptions(string message)
         {
-            _message = "שגיאה! " + message;
+            _message = message;
             SuggestedTest = null;
         }
 
@@ -35,7 +35,7 @@ namespace BE
         /// <param name="test"></param>
         public MyExceptions(string message, Test test)
         {
-            _message = "ERROR! " + message;
+            _message =  message;
             SuggestedTest = test;
         }
     }

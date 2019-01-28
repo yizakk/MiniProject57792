@@ -598,4 +598,50 @@
     </Paramet>
     <Passed>False</Passed>
   </Test>
+  <Test>
+    <Id>10000026</Id>
+    <TesterId>335191102</TesterId>
+    <TraineeId>055311948</TraineeId>
+    <Date>19/02/2019 12:00:00</Date>
+    <TesterComment />
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City>תל אביב</City>
+        <BuildingNumber>12</BuildingNumber>
+        <Street>דפנה</Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>False</Speed>
+      <Distance>False</Distance>
+      <ReversePark>False</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>False</Passed>
+  </Test>
+  <Test>
+    <Id>10000027</Id>
+    <TesterId>335191102</TesterId>
+    <TraineeId>055311948</TraineeId>
+    <Date>06/03/2019 09:00:00</Date>
+    <TesterComment />
+    <CarType>פרטי</CarType>
+    <BeginAddress>
+      <Address>
+        <City>אשדוד</City>
+        <BuildingNumber>2</BuildingNumber>
+        <Street>ה באייר</Street>
+      </Address>
+    </BeginAddress>
+    <Paramet>
+      <Speed>False</Speed>
+      <Distance>False</Distance>
+      <ReversePark>False</ReversePark>
+      <UsingVinkers>False</UsingVinkers>
+      <UsingMirrors>False</UsingMirrors>
+    </Paramet>
+    <Passed>False</Passed>
+  </Test>
 </Tests>

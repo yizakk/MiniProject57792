@@ -19,7 +19,7 @@ namespace PLWPF
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // we save the ID user inputed in a local class named DATA , for re using later
-            Data.UserID = IdTextBox.Password;
+            Data.UserID = IdTextBox.Text;
             // checking there are any char. in the textbox
             if (Data.UserID.Length == 0)
             {
@@ -33,6 +33,7 @@ namespace PLWPF
             {
                 MessageBox.Show("שלום מנהל, אנא הזן סיסמה", "", MessageBoxButton.OK, MessageBoxImage.None,
                     MessageBoxResult.OK, MessageBoxOptions.RtlReading);
+                Label1.Content = "הזנת סיסמת מנהל";
                 IdTextBox.Visibility = Visibility.Collapsed;
                 button1.Visibility = Visibility.Collapsed;
                 ManagerPasswordBox.Visibility = Visibility.Visible;
