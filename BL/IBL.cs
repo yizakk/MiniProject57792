@@ -24,8 +24,15 @@ namespace BL
         /// </summary>
         /// <param name="trainee">A Trainee instance to be added</param>
         void AddTrainee(Trainee trainee);
-
+        /// <summary>
+        /// Deleting a tester from DS
+        /// </summary>
+        /// <param name="id">the ID of the tester to delete</param>
         void DelTester(string id);
+        /// <summary>
+        /// Deleting a trainee from DS
+        /// </summary>
+        /// <param name="id">the ID of the trainee to delete</param>
         void DelTrainee(string id);
 
         /// <summary>
@@ -49,8 +56,17 @@ namespace BL
         /// </summary>
         /// <param name="trainee">The trainee instance with the updated details</param>
         void UpdateTrainee(Trainee trainee);
-
+        /// <summary>
+        /// Returning a specific tester from DS
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         Tester FindTester(string id);
+        /// <summary>
+        /// Returning a specific trainee from DS
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         Trainee FindTrainee(string id);
         /// <summary>
         /// returning a list of al trainees
@@ -67,8 +83,15 @@ namespace BL
         /// </summary>
         /// <returns>IEnumerable<Test></returns>
         IEnumerable<Test> GetTests();
-
+        /// <summary>
+        /// Updating a "Test" item with inputed details.
+        /// </summary>
+        /// <param name="testItem"></param>
         void UpdateTest(Test testItem);
+        /// <summary>
+        /// Finding testers passed 60 YO
+        /// </summary>
+        /// <returns></returns>
         IEnumerable<Tester> TestersOver60YO();
         /// <summary>
         /// Returning a list of all the tests' IDs
@@ -85,9 +108,12 @@ namespace BL
         /// </summary>
         /// <returns>IEnumerable<string></returns>
         IEnumerable<string> GetTesterIdList();
-
+        /// <summary>
+        /// Finding a specific test in DS
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         Test FindTest(int id);
-
         /// <summary>
         /// Finding every available testers in specific DateTime instance
         /// </summary>
@@ -135,8 +161,12 @@ namespace BL
         /// Sending to Dal UpdateConfig function, for saving the current config. to the xml file
         /// </summary>
         void UpdateConfig();
-
+        /// <summary>
+        /// Finding all available testers in specific DateTime object
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
         IEnumerable<Tester> FindAvilableTesters(DateTime dateTime);
-        void Kuku(DateTime time);
+        //void Kuku(DateTime time);
     }
 }

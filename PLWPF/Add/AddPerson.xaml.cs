@@ -20,8 +20,8 @@ namespace PLWPF
         private void TraineeButton_Click(object sender, RoutedEventArgs e)
         {  // as we have to store which type the current user is, if he clicks the trainee button
             // he is probably not a manager or a tester (cause they can add trainee through there panel)
-            Data.MainUserControl = new AddStudent();
             Data.UserType = Data.Usertype.תלמיד;
+            Data.MainUserControl = new AddStudent();
              
         }
 
@@ -49,11 +49,11 @@ namespace PLWPF
                 return;
             }
 
-            
+             // matching the user input with the "testers" password we have in DS
             if (BE.Encryption.VerifyHashPassword(textBox.Password, BE.Configuration.TesterPassword))
             {
-                Data.MainUserControl = new AddTester();
                 Data.UserType = Data.Usertype.בוחן;
+                Data.MainUserControl = new AddTester();
             }
             // wrong password - counting it and rejecting
             else

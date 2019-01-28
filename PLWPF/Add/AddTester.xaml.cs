@@ -21,33 +21,28 @@ namespace PLWPF
     /// </summary>
     public partial class AddTester : UserControl
     {
-
         Tester TempTester;
         BE.Address address = new Address();
-
         BL.IBL bl;
         public AddTester()
         {
             InitializeComponent();
 
             bl = BL.BlFactory.GetBL();
-
-            TempTester = new Tester();
-            TempTester.BirthDate = DateTime.Now.AddYears(-Configuration.TesterMinAge);
-
+            TempTester = new Tester
+            {
+                BirthDate = DateTime.Now.AddYears(-Configuration.TesterMinAge)
+            };
 
             try
             {
                 grid1.DataContext = TempTester;
+                grid2.DataContext = address;
             }
             catch (Exception a)
             {
                 MessageBox.Show(a.Message);
             }
-
-            
-
-            grid2.DataContext = address;
 
             TempTester.Id = Data.UserID;
             car_typeComboBox.ItemsSource = Enum.GetValues(typeof(CarType));
@@ -58,12 +53,10 @@ namespace PLWPF
         {
             TempTester.Address = address;
             CheckAndAdd();
-            
         }
 
         private void CheckAndAdd()
         {
-
             if (TempTester.Id.Length == 0)
             {
                 MessageBox.Show("נא להכניס תעודת זהות", "", MessageBoxButton.OK, MessageBoxImage.Stop, MessageBoxResult.OK
@@ -134,8 +127,7 @@ namespace PLWPF
             }
             if (seniorityTextBox.Text.Any())
             {
-                int Tempsum = 0;
-                int.TryParse(seniorityTextBox.Text, out Tempsum);
+                int.TryParse(seniorityTextBox.Text, out int Tempsum);
                 SeniorityScrollBar.Value = Tempsum;
                 seniorityTextBox.Text = ((int) (e.NewValue- e.OldValue) + Tempsum).ToString();
             }
@@ -146,7 +138,6 @@ namespace PLWPF
         private void KeyDownCheckIfNotNumber(object sender, System.Windows.Input.KeyEventArgs e)
         {
             Data.NumericCheck(sender,e);
-
         }
     }
 }

@@ -11,11 +11,10 @@ namespace PLWPF
     /// </summary>
     public partial class AddStudent : UserControl
     {
-
+        // creating a temp instance of trainee , address and bl
         Trainee TempTrainee;
         BL.IBL bl;
-        BE.Address address = new Address();
-
+        Address address = new Address();
 
         public AddStudent()
         {
@@ -23,21 +22,16 @@ namespace PLWPF
             InitializeComponent();
 
             bl = BL.BlFactory.GetBL();
-            TempTrainee = new Trainee();
-            TempTrainee.BirthDate = DateTime.Parse("2000 01 01");
-            birthDateDatePicker.DisplayDateEnd = DateTime.Now.AddYears(-18);
+            TempTrainee = new Trainee
+            {
+                BirthDate = DateTime.Now.AddYears(-Configuration.TraineeMinAge) // setting trainee's birthday to required years ago
+            };
+            if (Data.UserType == Data.Usertype.תלמיד)// if user type is trainee - pulling his inserted ID to be added now to DS
+                TempTrainee.Id = Data.UserID;
             buildingNumberTextBox1.Text = "";
             try
             {
-                grid1.DataContext = TempTrainee;
-            }
-            catch (Exception a)
-            {
-                MessageBox.Show(a.Message);
-            }
-
-            try
-            {
+                grid1.DataContext = TempTrainee; 
                 grid2.DataContext = address;
             }
             catch (Exception a)
@@ -45,7 +39,6 @@ namespace PLWPF
                 MessageBox.Show(a.Message);
             }
 
-            TempTrainee.Id = Data.UserID;
             
 // קשירת הקומבובוקסים
             car_typeComboBox.ItemsSource = Enum.GetValues(typeof(CarType));
@@ -62,21 +55,12 @@ namespace PLWPF
 
         private void CheckAndAdd()
         {
-            //if (TempTrainee.Id.Length !=9)
-            //{
-            //    MessageBox.Show("תעודת זהות צריכה  להכיל  9 ספרות","",MessageBoxButton.OK,MessageBoxImage.None,
-            //        MessageBoxResult.OK,MessageBoxOptions.RtlReading);
-            //    idTextBox.Clear();
-            //    return;
-            //}
-
             TimeSpan a = DateTime.Now - birthDateDatePicker.SelectedDate.Value;
             if (a.Days / 365 < 18)
             {
                 MessageBox.Show("אין אפשרות להוסיף תלמיד שטרם מלאו לו 18 שנים", "", MessageBoxButton.OK, MessageBoxImage.None,
                     MessageBoxResult.OK, MessageBoxOptions.RtlReading);
-                birthDateDatePicker.SelectedDate = DateTime.Parse("01 01 2000");
-
+                birthDateDatePicker.SelectedDate = DateTime.Now.AddYears(-18);
                 return;
             }
 
@@ -95,11 +79,9 @@ namespace PLWPF
             }
             catch (Exception c)
             {
-                if (c is MyExceptions)
+                if (c is MyExceptions b)
                 {
-                    var b = (MyExceptions)c;
                     MessageBox.Show(b._message);
-
                     return;
                 }
                 MessageBox.Show(c.Message);
@@ -112,10 +94,9 @@ namespace PLWPF
                     MessageBoxOptions.RtlReading);
                 Data.UserID = TempTrainee.Id;
                 Data.MainUserControl = new  HomePanel();
-                 
                 return;
             }
-
+            // if user type is not trainee - offering him to add additional trainees
             int choice = (int)MessageBox.Show("התלמיד נוסף בהצלחה , האם ברצונך להוסיף עוד תלמיד?", "", MessageBoxButton.YesNo,
                             MessageBoxImage.Asterisk, MessageBoxResult.None, MessageBoxOptions.RtlReading);
             if(choice == 6)

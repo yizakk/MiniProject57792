@@ -27,7 +27,7 @@
 
         </Grid>
         <Grid Grid.Row="1" Width="150" Height="100">
-            
+
         </Grid>
     </Grid>
 </UserControl>
